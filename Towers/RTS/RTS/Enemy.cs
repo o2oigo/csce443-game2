@@ -112,27 +112,23 @@ namespace RTS
             {
                 shootElapsedTime = 0;
 
-                //Random Variation
+                //Create new projectiles
                 Projectile projectile = new Projectile();
                 projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 6f);
                 projectile.LoadContent("Projectile");
                 projectileList.Add(projectile);
 
+                //Add explosion to particle system
                 game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
                 game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
             }
+            
+            //Update Projectiles
+            foreach (Projectile proj in projectileList)
+            {
+                proj.Update(gameTime);
+            }
 
-            Rectangle playerRect = new Rectangle((int)player.getPosition().X, (int)player.getPosition().Y, player.getTexture().Width, player.getTexture().Height);
-            Rectangle enemyRect = new Rectangle((int)this.getPosition().X, (int)this.getPosition().Y, this.getTexture().Width, this.getTexture().Height);
-                if (playerRect.Intersects(enemyRect))
-                {
-                    player.Hit();
-                }
-
-                foreach (Projectile proj in projectileList)
-                {
-                    proj.Update(gameTime);
-                }
             //Remove Projectile if it goes off-screen
             for (int i = 0; i < projectileList.Count; i++)
             {   

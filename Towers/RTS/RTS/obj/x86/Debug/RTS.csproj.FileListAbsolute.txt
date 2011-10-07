@@ -54,3 +54,20 @@ C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\b
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Icon.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Projectile.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\RTS.exe
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\RTS.pdb
+H:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+H:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
+H:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
