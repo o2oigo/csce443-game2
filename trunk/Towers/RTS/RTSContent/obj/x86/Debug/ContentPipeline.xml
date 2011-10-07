@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\Icon.xnb</Output>
-      <Time>2011-10-04T20:09:38-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Icon.xnb</Output>
+      <Time>2011-10-07T10:15:11.361985-05:00</Time>
     </Item>
     <Item>
       <Source>vegeta_projectile.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\Projectile.xnb</Output>
-      <Time>2011-10-05T15:14:46.8259482-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Projectile.xnb</Output>
+      <Time>2011-10-07T10:15:11.794554-05:00</Time>
     </Item>
     <Item>
       <Source>Turret.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\Turret.xnb</Output>
-      <Time>2011-10-04T20:09:38-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb</Output>
+      <Time>2011-10-07T10:15:10.671674-05:00</Time>
     </Item>
     <Item>
       <Source>explosion.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\explosion.xnb</Output>
-      <Time>2011-10-04T20:09:38-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb</Output>
+      <Time>2011-10-07T10:15:11.203145-05:00</Time>
     </Item>
     <Item>
       <Source>smoke.bmp</Source>
@@ -43,17 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\smoke.xnb</Output>
-      <Time>2011-10-04T20:09:40-05:00</Time>
-    </Item>
-    <Item>
-      <Source>SpriteFont1.spritefont</Source>
-      <Name>font</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2011-10-04T20:09:38-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb</Output>
+      <Time>2011-10-07T10:15:10.049297-05:00</Time>
     </Item>
     <Item>
       <Source>TankEnemy.png</Source>
@@ -61,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb</Output>
-      <Time>2011-10-05T17:45:34.9374706-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb</Output>
+      <Time>2011-10-07T10:15:10.530821-05:00</Time>
     </Item>
     <Item>
       <Source>TankPlayer.png</Source>
@@ -70,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb</Output>
-      <Time>2011-10-05T17:44:05.726368-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb</Output>
+      <Time>2011-10-07T10:15:11.651694-05:00</Time>
     </Item>
     <Item>
       <Source>TurretEnemy.png</Source>
@@ -79,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb</Output>
-      <Time>2011-10-05T18:02:03.1929956-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb</Output>
+      <Time>2011-10-07T10:15:11.942404-05:00</Time>
     </Item>
     <Item>
       <Source>TurretPlayer.png</Source>
@@ -88,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb</Output>
-      <Time>2011-10-05T17:49:55.0233467-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb</Output>
+      <Time>2011-10-07T10:15:10.20015-05:00</Time>
     </Item>
     <Item>
       <Source>TankcolouredC.png</Source>
@@ -97,8 +88,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\Tank.xnb</Output>
-      <Time>2011-10-05T15:14:04.2695141-05:00</Time>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb</Output>
+      <Time>2011-10-07T10:15:10.842503-05:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont1.spritefont</Source>
+      <Name>font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2011-10-07T10:15:08.859494-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -106,39 +106,39 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTSContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTSContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>H:\443-2\443Game2\Towers\RTS\RTSContent\</RootDirectory>
+      <LoggerRootDirectory>H:\443-2\443Game2\Towers\RTS\RTS\</LoggerRootDirectory>
+      <IntermediateDirectory>H:\443-2\443Game2\Towers\RTS\RTSContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T14:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T14:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T14:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T14:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T14:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T14:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-06-03T19:16:25.6463242-05:00</Value>
+        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2011-08-20T11:05:33.8511412-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

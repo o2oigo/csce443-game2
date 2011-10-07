@@ -89,13 +89,12 @@ namespace RTS
 
         public virtual void Update(GameTime gameTime)
         {
-            //game.DrawText();
-
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
            
             // Get the game pad state.
             currentState = GamePad.GetState(PlayerIndex.One);
             
+            //Game Pad
             if (currentState.IsConnected)
             {
                 if (Math.Abs(currentState.ThumbSticks.Left.X) > 0 || Math.Abs(currentState.ThumbSticks.Left.Y) > 0)
@@ -120,6 +119,7 @@ namespace RTS
                     shootRotationAngle = shootRotationAngle % circle;
                 }
 
+                //Shoot
                 if (currentState.Triggers.Right >= .5f && oldState.Triggers.Right < .5)
                 {
                     Projectile projectile = new Projectile();
@@ -131,6 +131,7 @@ namespace RTS
                     game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength())); 
                 }
             }
+            //Keyboard and Mouse
             else
             {
                 keystate = Keyboard.GetState();
@@ -187,7 +188,7 @@ namespace RTS
                 //Shoot angle between player position and mouse position
                 shootRotationAngle = Math.Atan2(mousePos.Y - position.Y, mousePos.X - position.X);
 
-                //If mouse is clicked and released
+                //If mouse is clicked and released - Shoot
                 if (oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
                 {
                     Projectile projectile = new Projectile();
