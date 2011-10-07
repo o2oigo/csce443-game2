@@ -87,11 +87,21 @@ namespace RTS
             //Elapsed Time Calculations
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             shootElapsedTime += elapsedTime;
-            
+
+            //Update movement and angles
+            updateMovement(player);
+
+            //Create and update projectiles (shoot)
+            updateProjectiles();
+
+        }
+
+        public void updateMovement(Player player)
+        {
             //Calculate Rotation Angles and Enemy Movement
-            playerRotationAngle = (Math.Atan2(player.getPosition().Y - position.Y, player.getPosition().X - position.X) + 2*circle) % circle; 
+            playerRotationAngle = (Math.Atan2(player.getPosition().Y - position.Y, player.getPosition().X - position.X) + 2 * circle) % circle;
             float difference = WrapAngle((float)playerRotationAngle - (float)moveRotationAngle);
-            difference = MathHelper.Clamp(difference, -elapsedTime, elapsedTime);      
+            difference = MathHelper.Clamp(difference, -elapsedTime, elapsedTime);
             moveRotationAngle += difference;
             moveRotationAngle = moveRotationAngle % circle;
 
@@ -101,12 +111,15 @@ namespace RTS
 
             //Shoot angle
             shootRotationAngle = Math.Atan2(player.getPosition().Y - position.Y, player.getPosition().X - position.X);
-            
+
             //Adjusted shoot angle with variation for bullet realism
             int xVariation = rand.Next(-100, 100);
             int yVariation = rand.Next(-100, 100);
             projectileRotationAngle = Math.Atan2(player.getPosition().Y + yVariation - position.Y, player.getPosition().X + xVariation - position.X);
+        }
 
+        public void updateProjectiles()
+        {
             //Shoot every few seconds / Adds projectiles to screen / Adds particle effects
             if (shootElapsedTime >= shootTimer)
             {
@@ -122,16 +135,16 @@ namespace RTS
                 game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
                 game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
             }
-            
+
             //Update Projectiles
             foreach (Projectile proj in projectileList)
             {
-                proj.Update(gameTime);
+                proj.Update();
             }
 
             //Remove Projectile if it goes off-screen
             for (int i = 0; i < projectileList.Count; i++)
-            {   
+            {
                 Projectile proj = projectileList[i];
                 if (proj.getPosition().X > graphicsDevice.Viewport.Width || proj.getPosition().X < 0
                     || proj.getPosition().Y > graphicsDevice.Viewport.Height || proj.getPosition().Y < 0)
@@ -140,6 +153,7 @@ namespace RTS
                 }
             }      
         }
+
 
         private static float WrapAngle(float radians)
         {
