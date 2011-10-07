@@ -41,7 +41,7 @@ namespace RTS
             origin.Y = texture.Height / 2;
         }
         
-        public void Update(GameTime gameTime)
+        public void Update()
         {   
             projectilePosition.X += (float)(Math.Cos(shootRotationAngle) * speed);
             projectilePosition.Y += (float)(Math.Sin(shootRotationAngle) * speed);
