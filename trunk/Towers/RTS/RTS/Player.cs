@@ -14,6 +14,8 @@ namespace RTS
     {
         Game1 game;
 
+        PlayerIndex playerIndex;
+
         ContentManager contentManager;
         GraphicsDevice graphicsDevice;
         SpriteBatch spriteBatch;
@@ -44,16 +46,19 @@ namespace RTS
         private Texture2D mouseTexture;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
+
+        private int enemiesDestroyed = 0;
   
         private float circle = MathHelper.Pi * 2;
  
-        public void Initialize(Game1 game, Vector2 startPosition)
+        public void Initialize(Game1 game, PlayerIndex index, Vector2 startPosition)
         {
             this.game = game;
             contentManager = game.Content;
             graphicsDevice = game.GraphicsDevice;
             position = startPosition;
-            currentState = GamePad.GetState(PlayerIndex.One);
+            playerIndex = index;
+            currentState = GamePad.GetState(playerIndex);
         }
 
         public void LoadContent(String textureName)
@@ -83,12 +88,12 @@ namespace RTS
             spriteBatch.End();
         }
 
-        public virtual void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
            
             // Get the game pad state.
-            currentState = GamePad.GetState(PlayerIndex.One);
+            currentState = GamePad.GetState(playerIndex);
             
             //Get Input
             if (currentState.IsConnected)//Game Pad
@@ -283,6 +288,16 @@ namespace RTS
         public int getTimesHit()
         {
             return timesHit;
+        }
+
+        public int getEnemiesDestroyed()
+        {
+            return enemiesDestroyed;
+        }
+
+        public void enemyDestroyed()
+        {
+            this.enemiesDestroyed++;
         }
 
         //If the player was hit by an enemy or projectile
