@@ -80,7 +80,7 @@ namespace RTS
             spriteBatch.End();
         }
 
-        public virtual void Update(GameTime gameTime, Player player)
+        public virtual void Update(GameTime gameTime, List<Player> players)
         {
             
 
@@ -89,7 +89,12 @@ namespace RTS
             shootElapsedTime += elapsedTime;
 
             //Update movement and angles
-            updateMovement(player);
+
+            if (Vector2.Distance(this.position, players[0].getPosition()) < Vector2.Distance(this.position, players[1].getPosition()))
+                updateMovement(players[0]);
+            else
+                updateMovement(players[1]);
+
 
             //Create and update projectiles (shoot)
             updateProjectiles();

@@ -18,11 +18,12 @@ namespace RTS
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Player player;
+        Player player1;
+        Player player2;
         //Enemy enemy;
         List<Enemy> enemies;
+        List<Player> players;
         float enemyTimer = 0;
-        float destroyed = 0;
         Random rand = new Random();
         public ExplosionParticleSystem explosion;
         public ExplosionParticleSystem explosion2;
@@ -71,11 +72,20 @@ namespace RTS
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            player = new Player();
-            player.Initialize(this, new Vector2(100,100));
-            player.LoadContent("TankPlayer");
+            player1 = new Player();
+            player1.Initialize(this, PlayerIndex.One, new Vector2(100,100));
+            player1.LoadContent("TankPlayer");
+
+            player2 = new Player();
+            player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
+            player2.LoadContent("TankPlayer");
 
             enemies = new List<Enemy>(5);
+            players = new List<Player>(4);
+
+            players.Add(player1);
+            players.Add(player2);
+
            
             font = Content.Load<SpriteFont>("font");
         }
@@ -104,14 +114,17 @@ namespace RTS
             spawnEnemies(gameTime);
             
             //Update Player
-            player.Update(gameTime);
+            foreach (Player player in players)
+            {
+                player.Update(gameTime);
+            }
 
             //Update Enemies
             for (int i = 0; i < enemies.Count; i++)
             {
                 //Get current enemy and update
                 Enemy currentEnemy = enemies[i];
-                currentEnemy.Update(gameTime, player);
+                currentEnemy.Update(gameTime, players);
             }
 
             //Detect Collisions
@@ -128,7 +141,8 @@ namespace RTS
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            player.Draw(spriteBatch);
+            player1.Draw(spriteBatch);
+            player2.Draw(spriteBatch);
             for(int i = 0; i < enemies.Count; i++)
                 enemies[i].Draw(spriteBatch);
             drawText();
@@ -138,7 +152,7 @@ namespace RTS
         public void spawnEnemies(GameTime gameTime)
         {
             enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (enemyTimer > .9f && enemies.Count < 0)          /// Set enemy number here
+            if (enemyTimer > .9f && enemies.Count < 25)          /// Set enemy number here
             {
                 int random = rand.Next(100);
                 Enemy spawn = new Enemy();
@@ -160,12 +174,13 @@ namespace RTS
         public void detectCollisions()
         {
             //COLLISION DETECTION
-            Rectangle playerRect = new Rectangle((int)player.getPosition().X, (int)player.getPosition().Y, player.getTexture().Width, player.getTexture().Height);
+            Rectangle playerRect = new Rectangle((int)player1.getPosition().X, (int)player1.getPosition().Y, player1.getTexture().Width, player1.getTexture().Height);
+            Rectangle player2Rect = new Rectangle((int)player2.getPosition().X, (int)player2.getPosition().Y, player2.getTexture().Width, player2.getTexture().Height);
 
             //Loop through all enemies
             for (int i = 0; i < enemies.Count; i++)
             {
-                //Get current enemy and creat collision box
+                //Get current enemy and create collision box
                 Enemy currentEnemy = enemies[i];  
                 Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.getPosition().X, (int)currentEnemy.getPosition().Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
@@ -177,23 +192,45 @@ namespace RTS
                     if (playerRect.Intersects(enemyProjectileRect))
                     {
                         currentEnemy.getProjectiles().Remove(proj);
-                        player.Hit();
+                        player1.Hit();
+                    }
+                    if (player2Rect.Intersects(enemyProjectileRect))
+                    {
+                        currentEnemy.getProjectiles().Remove(proj);
+                        player2.Hit();
                     }
                 }
 
                 //Check if current enemy is hit by any of player's projectiles
-                for (int j = 0; j < player.getProjectiles().Count; j++)
+                for (int j = 0; j < player1.getProjectiles().Count; j++)
                 {
-                    Projectile proj = player.getProjectiles()[j];
+                    Projectile proj = player1.getProjectiles()[j];
                     Rectangle playerProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
+                    
                     if (currentEnemyRect.Intersects(playerProjectileRect))
                     {
-                        player.getProjectiles().Remove(proj);
+                        player1.getProjectiles().Remove(proj);
                         currentEnemy.Hit();
                         if (enemies[i].isDead())
                         {
                             enemies.RemoveAt(i);
-                            destroyed++;
+                            player1.enemyDestroyed();
+                        }
+                    }
+                }
+                for (int j = 0; j < player2.getProjectiles().Count; j++)
+                {
+                    Projectile proj = player2.getProjectiles()[j];
+                    Rectangle player2ProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
+
+                    if (currentEnemyRect.Intersects(player2ProjectileRect))
+                    {
+                        player2.getProjectiles().Remove(proj);
+                        currentEnemy.Hit();
+                        if (enemies[i].isDead())
+                        {
+                            enemies.RemoveAt(i);
+                            player2.enemyDestroyed();
                         }
                     }
                 }
@@ -204,8 +241,11 @@ namespace RTS
         public void drawText()
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Enemies Destroyed: " + destroyed, new Vector2(30, 45), Color.White);
-            spriteBatch.DrawString(font, "Player Deaths: " + player.getTimesHit(), new Vector2(30, 75), Color.White);
+            spriteBatch.DrawString(font, "Player 1 Enemies Destroyed: " + player1.getEnemiesDestroyed(), new Vector2(30, 45), Color.White);
+            spriteBatch.DrawString(font, "Player 2 Enemies Destroyed: " + player2.getEnemiesDestroyed(), new Vector2(530, 45), Color.White);
+       
+            spriteBatch.DrawString(font, "Player 1 Deaths: " + player1.getTimesHit(), new Vector2(30, 75), Color.White);
+            spriteBatch.DrawString(font, "Player 2 Deaths: " + player2.getTimesHit(), new Vector2(530, 75), Color.White);        
             spriteBatch.End();
         }
     }
