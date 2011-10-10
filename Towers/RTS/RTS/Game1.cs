@@ -138,7 +138,7 @@ namespace RTS
         public void spawnEnemies(GameTime gameTime)
         {
             enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (enemyTimer > .9f && enemies.Count < 15)
+            if (enemyTimer > .9f && enemies.Count < 0)          /// Set enemy number here
             {
                 int random = rand.Next(100);
                 Enemy spawn = new Enemy();
