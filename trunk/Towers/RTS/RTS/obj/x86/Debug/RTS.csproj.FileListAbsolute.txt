@@ -71,3 +71,20 @@ H:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
 H:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 H:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 H:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Icon.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Projectile.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\RTS.exe
+E:\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\RTS.pdb
+E:\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
+E:\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
