@@ -150,9 +150,12 @@ namespace RTS
                             NetworkSessionState.Lobby)
                             HandleLobbyInput();
                         else
-                        {  
-                            if(signedInGamer.Gamertag == localPlayerTag)
-                                HandleGameplayInput(player, gameTime);  
+                        {
+                            if (signedInGamer.Gamertag == localPlayerTag)
+                            {
+                                this.player = player;
+                                HandleGameplayInput(player, gameTime);
+                            }
                         }
                     }
                     else if (availableSessions != null)
@@ -313,7 +316,11 @@ namespace RTS
         public void drawText()
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Local GamerTag: " + localPlayerTag, new Vector2(30, 45), Color.White);
+            foreach (LocalNetworkGamer gamer in networkSession.LocalGamers)
+            {
+                Player player = gamer.Tag as Player;
+                spriteBatch.DrawString(font, localPlayerTag, new Vector2(player.getPosition().X - localPlayerTag.Length * 4.5f, player.getPosition().Y - player.getTurretLength() - 30), Color.White);
+            }
             //spriteBatch.DrawString(font, "Player 1 Enemies Destroyed: " + player1.getEnemiesDestroyed(), new Vector2(30, 45), Color.White);
             //spriteBatch.DrawString(font, "Player 2 Enemies Destroyed: " + player2.getEnemiesDestroyed(), new Vector2(530, 45), Color.White);
        
@@ -349,16 +356,18 @@ namespace RTS
                 {
 
                 }
+                packetWriter.Write((Int32)1);
                 packetWriter.Write(player.getPosition());
                 packetWriter.Write(player.getMoveRotationAngle());
                 packetWriter.Write(player.getShootRotationAngle());
-              //  packetWriter.Write(player.getProjectiles().Count);
-              //  for (int i = 0; i < player.getProjectiles().Count; i++)
-              //  {
-              //      packetWriter.Write(player.getProjectiles()[i].getPosition());
-              //      packetWriter.Write(player.getProjectiles()[i].getShootRotationAngle());
-             //   }
-               /* packetWriter.Write(player.ship.isActive);
+               /* packetWriter.Write((Int32)player.getProjectiles().Count);
+                for (int i = 0; i < player.getProjectiles().Count; i++)
+                {
+                    packetWriter.Write(player.getProjectiles()[i].getPosition());
+                    packetWriter.Write(player.getProjectiles()[i].getShootRotationAngle());
+                    packetWriter.Write((double)player.getTurretLength());
+                }
+                packetWriter.Write(player.ship.isActive);
                 packetWriter.Write(player.ship.Position);
                 packetWriter.Write(player.ship.Rotation);
                 packetWriter.Write(player.score);
@@ -382,21 +391,35 @@ namespace RTS
                 if (!sender.IsLocal)
                 {
                     Player player = sender.Tag as Player;
-                    player.setPosition(packetReader.ReadVector2());
-                    player.setMoveRotationAngle(packetReader.ReadDouble());
-                    player.setShootRotationAngle(packetReader.ReadDouble());
-                  //  double projectilesCount = packetReader.ReadInt32();
-                  //  int i = 0;
-                   // List<Projectile> projectiles;
-                  /*  for (i = 0; i < projectilesCount; i++)
+                    //Identity Int (Tells what data comes after)
+                    int data = packetReader.ReadInt32();
+                    switch (data)
+                    {
+                        case 0:
+
+                            break;
+                        case 1:
+                            player.setPosition(packetReader.ReadVector2());
+                            player.setMoveRotationAngle(packetReader.ReadDouble());
+                            player.setShootRotationAngle(packetReader.ReadDouble());
+                            break;
+                        default:
+                            break;
+                    }
+                    
+
+                  /*  Int32 projectilesCount = packetReader.ReadInt32();
+                    List<Projectile> projectiles = new List<Projectile>();
+                    for (int i = 0; i < projectilesCount; i++)
                     {
                         Projectile proj = new Projectile();
-                        proj.Initialize(
-                        projectiles.Add(
+                        proj.Initialize(this.Content,this.GraphicsDevice,packetReader.ReadVector2(),(float)packetReader.ReadDouble(),(float)packetReader.ReadDouble(),30f);
+                        proj.LoadContent("Projectile");
+                        projectiles.Add(proj);
                     }
-                        
-                    packetWriter.Write(player.getProjectiles()[i].getPosition());
-                        packetWriter.Write(player.getProjectiles()[i].getShootRotationAngle());*/
+                    player.setProjectiles(projectiles);*/    
+                    //packetWriter.Write(player.getProjectiles()[i].getPosition());
+                    //    packetWriter.Write(player.getProjectiles()[i].getShootRotationAngle());*/
                     
                   /*  player.ship.isActive = packetReader.ReadBoolean();
                     player.ship.Position = packetReader.ReadVector3();

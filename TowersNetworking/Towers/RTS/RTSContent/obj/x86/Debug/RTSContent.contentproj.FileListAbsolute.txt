@@ -5,3 +5,4 @@ C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTSCo
 H:\443-2\443Game2\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\Tower Defense\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyReference.cache
+Z:\443-2\443Game2\TowersNetworking\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyReference.cache

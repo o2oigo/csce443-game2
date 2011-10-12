@@ -112,7 +112,7 @@ namespace RTS
             updateMovement();
            
             //Remove Projectiles
-            removeProjectiles();
+            updateProjectiles();
 
             //Store old states
             oldMousestate = mousestate;
@@ -234,10 +234,12 @@ namespace RTS
             projectileList.Add(projectile);
 
             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
-            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+
+            
         }
 
-        public void removeProjectiles()
+        public void updateProjectiles()
         {
             for (int i = 0; i < projectileList.Count; i++)
             {
@@ -275,6 +277,11 @@ namespace RTS
         public List<Projectile> getProjectiles()
         {
             return projectileList;
+        }
+
+        public void setProjectiles(List<Projectile> projectiles)
+        {
+            this.projectileList = projectiles;
         }
 
         public float getProjectileCount()
