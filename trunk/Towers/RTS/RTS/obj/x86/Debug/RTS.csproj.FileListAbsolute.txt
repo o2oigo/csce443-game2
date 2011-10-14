@@ -54,8 +54,6 @@ C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\b
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\RTS-ClassUpdate\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
-H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Icon.xnb
-H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Projectile.xnb
 H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb
 H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb
 H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb
@@ -114,3 +112,16 @@ C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb
+H:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb

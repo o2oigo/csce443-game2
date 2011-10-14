@@ -24,14 +24,15 @@ namespace RTS
         List<Enemy> enemies;
         List<Player> players;
         float enemyTimer = 0;
+        float enemySpawnTime = 1f;
         Random rand = new Random();
         public ExplosionParticleSystem explosion;
-        public ExplosionParticleSystem explosion2;
+       // public ExplosionParticleSystem explosion2;
         public ExplosionSmokeParticleSystem smoke;
 
-        Dictionary<string, SoundEffect> music;
-        SoundEffect tankSong;
-        SoundEffectInstance songInstance;
+       // Dictionary<string, SoundEffect> music;
+       // SoundEffect tankSong;
+       // SoundEffectInstance songInstance;
 
         SpriteFont font;
 
@@ -82,7 +83,7 @@ namespace RTS
 
             player2 = new Player();
             player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
-            player2.LoadContent("TankPlayer");
+            player2.LoadContent("TankPurple");
 
             enemies = new List<Enemy>(25);
             players = new List<Player>(4);
@@ -94,15 +95,15 @@ namespace RTS
             backgroundTexture = Content.Load<Texture2D>("background");
             font = Content.Load<SpriteFont>("font");
 
-            tankSong = Content.Load<SoundEffect>("2DTankPOM");
-            music = new Dictionary<string, SoundEffect>();
-            music.Add("tankSong", tankSong);
+           // tankSong = Content.Load<SoundEffect>("2DTankPOM");
+            //music = new Dictionary<string, SoundEffect>();
+            //music.Add("tankSong", tankSong);
             //songInstance = new SoundEffectInstance();
-            if (songInstance != null)
-                songInstance.Dispose();
-            songInstance = music["tankSong"].CreateInstance();
-            songInstance.IsLooped = true;
-            songInstance.Play();
+            //if (songInstance != null)
+            //    songInstance.Dispose();
+            //songInstance = music["tankSong"].CreateInstance();
+            //songInstance.IsLooped = true;
+            //songInstance.Play();
 
             //tankSong.Play();
         }
@@ -126,6 +127,11 @@ namespace RTS
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+
+            if (enemies.Count != 0)
+                enemySpawnTime = .15f * enemies.Count;
+            else
+                enemySpawnTime = .1f;
 
             //Creates Enemies
             spawnEnemies(gameTime);
@@ -172,7 +178,7 @@ namespace RTS
         public void spawnEnemies(GameTime gameTime)
         {
             enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (enemyTimer > .5f && enemies.Count < 20)          /// Set enemy number here
+            if (enemyTimer > enemySpawnTime && enemies.Count < 15)          /// Set enemy number here
             {
                 int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
                 int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
@@ -228,6 +234,14 @@ namespace RTS
                             }
                         }
                     }
+                }
+
+                //Loop through all enemies
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    //Get current enemy and create collision box
+                    Enemy currentEnemy = enemies[i];
+                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.getPosition().X, (int)currentEnemy.getPosition().Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
                     //Check if current enemy is hit by any of player's projectiles
                     for (int j = 0; j < player.getProjectiles().Count; j++)
@@ -246,6 +260,14 @@ namespace RTS
                             }
                         }
                     }
+                }
+
+                //Loop through all enemies
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    //Get current enemy and create collision box
+                    Enemy currentEnemy = enemies[i];
+                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.getPosition().X, (int)currentEnemy.getPosition().Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
                     //Check if current enemy is hit by any of player's tower's projectiles
                     for (int k = 0; k < player.getTowers().Count; k++)
@@ -271,6 +293,7 @@ namespace RTS
                 }
             }
         }
+    
 
         //Draw Text method for debugging / displaying
         public void drawText()
