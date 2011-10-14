@@ -60,8 +60,8 @@ namespace RTS
             minNumParticles = 10;
             maxNumParticles = 12;
 #else
-            minNumParticles = 20;
-            maxNumParticles = 25;
+            minNumParticles = 10;
+            maxNumParticles = 12;
 #endif
 
             minRotationSpeed = -MathHelper.PiOver4;

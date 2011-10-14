@@ -30,7 +30,7 @@ namespace RTS
             projectilePosition = new Vector2(pos.X + (float)Math.Cos(shootRotationAngle) * turretLength, pos.Y + (float)Math.Sin(shootRotationAngle) * turretLength);            
             this.contentManager = CM;
             this.graphicsDevice = GD;
-            spriteBatch = new SpriteBatch(graphicsDevice);
+            //spriteBatch = new SpriteBatch(graphicsDevice);
             
         }
 
@@ -47,11 +47,12 @@ namespace RTS
             projectilePosition.Y += (float)(Math.Sin(shootRotationAngle) * speed);
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch SB)
         {
-            spriteBatch.Begin();
+            spriteBatch = SB;
+            //spriteBatch.Begin();
             spriteBatch.Draw(texture, projectilePosition, null, Color.White, (float)shootRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
-            spriteBatch.End();
+           // spriteBatch.End();
         }
 
         public Vector2 getPosition()

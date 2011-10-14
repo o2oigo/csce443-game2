@@ -36,6 +36,10 @@ namespace RTS
         private double speed = 0;
         private int timesHit = 0;
 
+        private bool spawnShield = true;
+        private float shieldTimeLimit = 3f;
+        private float shieldTimer = 0;
+
         private double moveRotationAngle;
         private double shootRotationAngle;    
         private float xComponent = 0;
@@ -46,8 +50,11 @@ namespace RTS
         private Texture2D mouseTexture;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
+        private List<Tower> towerList = new List<Tower>(5);
 
         private int enemiesDestroyed = 0;
+        private int towerEnemiesDestroyed = 0;
+        private int maxTowerCount = 3;
   
         private float circle = MathHelper.Pi * 2;
  
@@ -65,7 +72,7 @@ namespace RTS
         {
             texture = contentManager.Load<Texture2D>(textureName);
             turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
-            mouseTexture = contentManager.Load<Texture2D>("Icon");
+            mouseTexture = contentManager.Load<Texture2D>("CrossHair1");
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
         }
@@ -73,7 +80,7 @@ namespace RTS
         public void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             if (!currentState.IsConnected)
             {
                 spriteBatch.Draw(mouseTexture, mousePos, null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
@@ -82,16 +89,31 @@ namespace RTS
             spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0,turretTexture.Height/2), 1.0f, SpriteEffects.None, 0f);
             foreach (Projectile proj in projectileList)
             {
-                proj.Draw();
+                proj.Draw(SB);
+            }
+            foreach (Tower tower in towerList)
+            {
+                tower.Draw(SB);
             }
 
-            spriteBatch.End();
+           // spriteBatch.End();
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, List<Enemy> enemies)
         {
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
            
+            //Spawn Shield Timer
+            if (spawnShield == true)
+            {
+                shieldTimer += elapsedTime;
+                if (shieldTimer >= shieldTimeLimit)
+                {
+                    spawnShield = false;
+                    shieldTimer = 0;
+                }
+            }
+
             // Get the game pad state.
             currentState = GamePad.GetState(playerIndex);
             
@@ -104,8 +126,11 @@ namespace RTS
             //Update position based on speed and angle
             updateMovement();
            
-            //Remove Projectiles
-            removeProjectiles();
+            //Update Projectiles
+            updateProjectiles();
+
+            //Update Towers
+            updateTowers(gameTime, enemies);
 
             //Store old states
             oldMousestate = mousestate;
@@ -127,8 +152,7 @@ namespace RTS
                 speed = 5;
             else
             {
-                speed *= .85f;
-                speed *= .85f;
+                speed = 0;
             }
 
             //Update shoot angle between player position and mouse position
@@ -143,6 +167,12 @@ namespace RTS
             {
                 createProjectile();
             }
+
+            //Create Tower
+            if (currentState.Triggers.Left == 1 && oldState.Triggers.Left != 1 && towerList.Count < maxTowerCount)
+            {
+                createTower();
+            }
         }
 
         public void updateKeyboard()
@@ -152,7 +182,9 @@ namespace RTS
             mousePos.X = mousestate.X;
             mousePos.Y = mousestate.Y;
 
-            speed = 0;
+            if (!keystate.IsKeyDown(Keys.A) && !keystate.IsKeyDown(Keys.D) && !keystate.IsKeyDown(Keys.W) && !keystate.IsKeyDown(Keys.S))
+                speed = 0;
+
             if (keystate.IsKeyDown(Keys.A))
             {  
                 xComponent = -1;
@@ -174,15 +206,16 @@ namespace RTS
                 yComponent = 1;
                 speed = 5;
             }
-            else
-            {
-                //Deprecate speed
-                speed *= .85f;
-                speed *= .85f;
-            }
+
             if (keystate.IsKeyDown(Keys.Enter))
             {
                 position = new Vector2(100, 100);
+            }
+
+            //Create Tower
+            if (keystate.IsKeyUp(Keys.Space) && oldKeyState.IsKeyDown(Keys.Space) && towerList.Count < maxTowerCount)
+            {
+                createTower();
             }
 
             //Update moveRotationAngle
@@ -223,14 +256,14 @@ namespace RTS
         {
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 30f);
-            projectile.LoadContent("Projectile");
+            projectile.LoadContent("ProjectileBlue");
             projectileList.Add(projectile);
 
             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
-            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+            //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
         }
 
-        public void removeProjectiles()
+        public void updateProjectiles()
         {
             for (int i = 0; i < projectileList.Count; i++)
             {
@@ -242,6 +275,20 @@ namespace RTS
                     projectileList.Remove(proj);
                 }
                 proj.Update();
+            }
+        }
+
+        public void createTower()
+        {
+            Tower tower = new Tower(game, this.position);
+            towerList.Add(tower);
+        }
+
+        public void updateTowers(GameTime gameTime, List<Enemy> enemies)
+        {
+            for (int i = 0; i < towerList.Count; i++)
+            {
+                towerList[i].Update(gameTime, enemies);
             }
         }
 
@@ -263,6 +310,11 @@ namespace RTS
         public Vector2 getPosition()
         {
             return position;
+        }
+
+        public List<Tower> getTowers()
+        {
+            return towerList;
         }
 
         public List<Projectile> getProjectiles()
@@ -300,6 +352,26 @@ namespace RTS
             this.enemiesDestroyed++;
         }
 
+        public int getTowerEnemiesDestroyed()
+        {
+            return towerEnemiesDestroyed;
+        }
+
+        public void towerEnemyDestroyed()
+        {
+            this.towerEnemiesDestroyed++;
+        }
+
+        public bool isShielded()
+        {
+            return spawnShield;
+        }
+
+        public float getShieldTimer()
+        {
+            return shieldTimer;
+        }
+
         //If the player was hit by an enemy or projectile
         public void Hit()
         {
@@ -312,6 +384,9 @@ namespace RTS
                 setPosition(new Vector2(100, graphicsDevice.Viewport.Height - 100));
             if (timesHit % 4 == 3)
                 setPosition(new Vector2(graphicsDevice.Viewport.Width - 100, graphicsDevice.Viewport.Height - 100));
+
+            spawnShield = true;
+            
         }
 
     }

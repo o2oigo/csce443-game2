@@ -60,7 +60,7 @@ namespace RTS
         public void LoadContent(String textureName)
         {
             texture = contentManager.Load<Texture2D>(textureName);
-            turretTexture = contentManager.Load<Texture2D>("Turret");
+            turretTexture = contentManager.Load<Texture2D>("TurretEnemy");
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
             font = contentManager.Load<SpriteFont>("font");
@@ -69,21 +69,19 @@ namespace RTS
         public void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            spriteBatch.Begin();
+           // spriteBatch.Begin();
             spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
             spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
             foreach (Projectile proj in projectileList)
             {
-                proj.Draw();
+                proj.Draw(spriteBatch);
             }
 
-            spriteBatch.End();
+          //  spriteBatch.End();
         }
 
         public virtual void Update(GameTime gameTime, List<Player> players)
         {
-            
-
             //Elapsed Time Calculations
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             shootElapsedTime += elapsedTime;
@@ -133,12 +131,12 @@ namespace RTS
                 //Create new projectiles
                 Projectile projectile = new Projectile();
                 projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 6f);
-                projectile.LoadContent("Projectile");
+                projectile.LoadContent("ProjectileRed");
                 projectileList.Add(projectile);
 
                 //Add explosion to particle system
                 game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
-                game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+               // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
             }
 
             //Update Projectiles
