@@ -172,7 +172,7 @@ namespace RTS
         public void spawnEnemies(GameTime gameTime)
         {
             enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (enemyTimer > .4f && enemies.Count < 20)          /// Set enemy number here
+            if (enemyTimer > .5f && enemies.Count < 20)          /// Set enemy number here
             {
                 int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
                 int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
