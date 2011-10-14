@@ -1,5 +1,3 @@
-Content\Icon.xnb
-Content\Projectile.xnb
 Content\Turret.xnb
 Content\explosion.xnb
 Content\smoke.xnb
@@ -15,5 +13,8 @@ Content\ProjectileBlue.xnb
 Content\ProjectileRed.xnb
 Content\ProjectilePurple.xnb
 Content\background.xnb
-Content\IconBlue.xnb
 Content\CrossHair1.xnb
+Content\2DTankGame.xnb
+Content\2d_Tank_Menu.xnb
+Content\2DTankPOM.xnb
+Content\2d_Tank_Menu.wma
