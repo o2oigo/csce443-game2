@@ -88,3 +88,25 @@ E:\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 E:\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 E:\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\RTS.exe
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\RTS.pdb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb

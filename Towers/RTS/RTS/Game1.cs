@@ -18,9 +18,9 @@ namespace RTS
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D backgroundTexture;
         Player player1;
         Player player2;
-        //Enemy enemy;
         List<Enemy> enemies;
         List<Player> players;
         float enemyTimer = 0;
@@ -36,8 +36,8 @@ namespace RTS
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            this.graphics.PreferredBackBufferWidth = 768*3;
-            this.graphics.PreferredBackBufferWidth = 1024*3;
+            this.graphics.PreferredBackBufferHeight = 1080;
+            this.graphics.PreferredBackBufferWidth = 1920;
             this.graphics.IsFullScreen = true;
 
             explosion = new ExplosionParticleSystem(this, 1);
@@ -80,13 +80,14 @@ namespace RTS
             player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
             player2.LoadContent("TankPlayer");
 
-            enemies = new List<Enemy>(5);
+            enemies = new List<Enemy>(25);
             players = new List<Player>(4);
 
             players.Add(player1);
             players.Add(player2);
 
-           
+
+            backgroundTexture = Content.Load<Texture2D>("background");
             font = Content.Load<SpriteFont>("font");
         }
 
@@ -116,7 +117,7 @@ namespace RTS
             //Update Player
             foreach (Player player in players)
             {
-                player.Update(gameTime);
+                player.Update(gameTime, enemies);
             }
 
             //Update Enemies
@@ -139,20 +140,23 @@ namespace RTS
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
 
-            player1.Draw(spriteBatch);
-            player2.Draw(spriteBatch);
+            spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
             for(int i = 0; i < enemies.Count; i++)
                 enemies[i].Draw(spriteBatch);
+            player1.Draw(spriteBatch);
+            player2.Draw(spriteBatch); 
             drawText();
+
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 
         public void spawnEnemies(GameTime gameTime)
         {
             enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (enemyTimer > .9f && enemies.Count < 25)          /// Set enemy number here
+            if (enemyTimer > .45f && enemies.Count < 20)          /// Set enemy number here
             {
                 int random = rand.Next(100);
                 Enemy spawn = new Enemy();
@@ -165,7 +169,7 @@ namespace RTS
                 if (random % 4 == 3)
                     spawn.Initialize(this, new Vector2(this.GraphicsDevice.Viewport.Width - 300, this.GraphicsDevice.Viewport.Height - 300));
 
-                spawn.LoadContent("Tank");
+                spawn.LoadContent("TankEnemy");
                 enemies.Add(spawn);
                 enemyTimer = 0;
             }
@@ -174,63 +178,85 @@ namespace RTS
         public void detectCollisions()
         {
             //COLLISION DETECTION
-            Rectangle playerRect = new Rectangle((int)player1.getPosition().X, (int)player1.getPosition().Y, player1.getTexture().Width, player1.getTexture().Height);
-            Rectangle player2Rect = new Rectangle((int)player2.getPosition().X, (int)player2.getPosition().Y, player2.getTexture().Width, player2.getTexture().Height);
-
-            //Loop through all enemies
-            for (int i = 0; i < enemies.Count; i++)
+            foreach (Player player in players)
             {
-                //Get current enemy and create collision box
-                Enemy currentEnemy = enemies[i];  
-                Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.getPosition().X, (int)currentEnemy.getPosition().Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
+                Rectangle playerRect = new Rectangle((int)player.getPosition().X, (int)player.getPosition().Y, player.getTexture().Width, player.getTexture().Height);
 
-                //Check if player is hit by any of current enemy's projectiles
-                for (int j = 0; j < currentEnemy.getProjectiles().Count; j++)
+                //Loop through all enemies
+                for (int i = 0; i < enemies.Count; i++)
                 {
-                    Projectile proj = currentEnemy.getProjectiles()[j];
-                    Rectangle enemyProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
-                    if (playerRect.Intersects(enemyProjectileRect))
-                    {
-                        currentEnemy.getProjectiles().Remove(proj);
-                        player1.Hit();
-                    }
-                    if (player2Rect.Intersects(enemyProjectileRect))
-                    {
-                        currentEnemy.getProjectiles().Remove(proj);
-                        player2.Hit();
-                    }
-                }
+                    //Get current enemy and create collision box
+                    Enemy currentEnemy = enemies[i];
+                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.getPosition().X, (int)currentEnemy.getPosition().Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
-                //Check if current enemy is hit by any of player's projectiles
-                for (int j = 0; j < player1.getProjectiles().Count; j++)
-                {
-                    Projectile proj = player1.getProjectiles()[j];
-                    Rectangle playerProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
-                    
-                    if (currentEnemyRect.Intersects(playerProjectileRect))
+                    //Loop through all of current enemies projectiles
+                    for (int j = 0; j < currentEnemy.getProjectiles().Count; j++)
                     {
-                        player1.getProjectiles().Remove(proj);
-                        currentEnemy.Hit();
-                        if (enemies[i].isDead())
+                        Projectile proj = currentEnemy.getProjectiles()[j];
+                        Rectangle enemyProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
+                        
+                        //Check if player is hit by any of current enemy's current projectile
+                        if (playerRect.Intersects(enemyProjectileRect))
                         {
-                            enemies.RemoveAt(i);
-                            player1.enemyDestroyed();
+                            currentEnemy.getProjectiles().Remove(proj);
+                            if(player.isShielded() == false)
+                                player.Hit();
+                        }
+
+                        //Check if player's towers are hit by any of current enemy's current projectile
+                        for (int k = 0; k < player.getTowers().Count; k++)
+                        {
+                            Tower tower = player.getTowers()[k];
+                            Rectangle towerRect = new Rectangle((int)tower.getPosition().X, (int)tower.getPosition().Y, tower.getTexture().Width, tower.getTexture().Height);
+                            if (towerRect.Intersects(enemyProjectileRect))
+                            {
+                                currentEnemy.getProjectiles().Remove(proj);
+                                tower.Hit();
+                                if(player.getTowers().Count != 0 && tower.isDead())
+                                {
+                                    player.getTowers().RemoveAt(k);
+                                }
+                            }
                         }
                     }
-                }
-                for (int j = 0; j < player2.getProjectiles().Count; j++)
-                {
-                    Projectile proj = player2.getProjectiles()[j];
-                    Rectangle player2ProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
 
-                    if (currentEnemyRect.Intersects(player2ProjectileRect))
+                    //Check if current enemy is hit by any of player's projectiles
+                    for (int j = 0; j < player.getProjectiles().Count; j++)
                     {
-                        player2.getProjectiles().Remove(proj);
-                        currentEnemy.Hit();
-                        if (enemies[i].isDead())
+                        Projectile proj = player.getProjectiles()[j];
+                        Rectangle playerProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
+
+                        if (currentEnemyRect.Intersects(playerProjectileRect))
                         {
-                            enemies.RemoveAt(i);
-                            player2.enemyDestroyed();
+                            player.getProjectiles().Remove(proj);
+                            currentEnemy.Hit();
+                            if (enemies.Count != 0 && enemies[i].isDead())
+                            {
+                                enemies.RemoveAt(i);
+                                player.enemyDestroyed();
+                            }
+                        }
+                    }
+
+                    //Check if current enemy is hit by any of player's tower's projectiles
+                    for (int k = 0; k < player.getTowers().Count; k++)
+                    {
+                        Tower tower = player.getTowers()[k];
+                        for (int j = 0; j < tower.getProjectiles().Count; j++)
+                        {
+                            Projectile proj = tower.getProjectiles()[j];
+                            Rectangle towerProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
+
+                            if (currentEnemyRect.Intersects(towerProjectileRect))
+                            {
+                                tower.getProjectiles().Remove(proj);
+                                currentEnemy.Hit();
+                                if (enemies.Count != 0 && enemies[i].isDead())
+                                {
+                                    enemies.RemoveAt(i);
+                                    player.towerEnemyDestroyed();
+                                }
+                            }
                         }
                     }
                 }
@@ -240,13 +266,37 @@ namespace RTS
         //Draw Text method for debugging / displaying
         public void drawText()
         {
-            spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Player 1 Enemies Destroyed: " + player1.getEnemiesDestroyed(), new Vector2(30, 45), Color.White);
-            spriteBatch.DrawString(font, "Player 2 Enemies Destroyed: " + player2.getEnemiesDestroyed(), new Vector2(530, 45), Color.White);
+            //GamePadState gpstate = GamePad.GetState(PlayerIndex.One);
+            //spriteBatch.Begin();
+
+            spriteBatch.DrawString(font, "Player 1", new Vector2(player1.getPosition().X - 8f * 5f, player1.getPosition().Y - player1.getTurretLength() - 30f), Color.MediumBlue);
+            spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.MediumBlue);
+            if(player1.isShielded())
+                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player1.getShieldTimer()), new Vector2(player1.getPosition().X - 9f * 5f, player1.getPosition().Y + player2.getTurretLength() + 10f), Color.MediumBlue);
+            if (player2.isShielded())
+                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.MediumBlue);
+
+            spriteBatch.DrawString(font, "Player 1 Kills      : " + player1.getEnemiesDestroyed(), new Vector2(10, 15), Color.White);
+            spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
+            
+            spriteBatch.DrawString(font, "Player 1 Tower Kills: " + player1.getTowerEnemiesDestroyed(), new Vector2(10, 35), Color.White);
+            spriteBatch.DrawString(font, "Player 2 Tower Kills: " + player2.getTowerEnemiesDestroyed(), new Vector2(510, 35), Color.White);
        
-            spriteBatch.DrawString(font, "Player 1 Deaths: " + player1.getTimesHit(), new Vector2(30, 75), Color.White);
-            spriteBatch.DrawString(font, "Player 2 Deaths: " + player2.getTimesHit(), new Vector2(530, 75), Color.White);        
-            spriteBatch.End();
+            spriteBatch.DrawString(font, "Player 1 Deaths     : " + player1.getTimesHit(), new Vector2(10, 55), Color.White);
+            spriteBatch.DrawString(font, "Player 2 Deaths     : " + player2.getTimesHit(), new Vector2(510, 55), Color.White);
+
+            foreach (Tower tower in player1.getTowers())
+            {
+                spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);
+                spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.Purple);
+            }
+            foreach (Tower tower in player2.getTowers())
+            {
+                spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);
+                spriteBatch.DrawString(font, "P2", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.Purple);
+            }
+            
+           // spriteBatch.End();
         }
     }
 }
