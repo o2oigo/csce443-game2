@@ -29,6 +29,10 @@ namespace RTS
         public ExplosionParticleSystem explosion2;
         public ExplosionSmokeParticleSystem smoke;
 
+        Dictionary<string, SoundEffect> music;
+        SoundEffect tankSong;
+        SoundEffectInstance songInstance;
+
         SpriteFont font;
 
         public Game1()
@@ -44,7 +48,7 @@ namespace RTS
             Components.Add(explosion);
 
             smoke = new ExplosionSmokeParticleSystem(this, 2);
-            Components.Add(smoke);       
+            Components.Add(smoke);  
         }
 
         public SpriteBatch getSpriteBatch()
@@ -89,6 +93,18 @@ namespace RTS
 
             backgroundTexture = Content.Load<Texture2D>("background");
             font = Content.Load<SpriteFont>("font");
+
+            tankSong = Content.Load<SoundEffect>("2DTankPOM");
+            music = new Dictionary<string, SoundEffect>();
+            music.Add("tankSong", tankSong);
+            //songInstance = new SoundEffectInstance();
+            if (songInstance != null)
+                songInstance.Dispose();
+            songInstance = music["tankSong"].CreateInstance();
+            songInstance.IsLooped = true;
+            songInstance.Play();
+
+            //tankSong.Play();
         }
 
         /// <summary>
@@ -156,19 +172,12 @@ namespace RTS
         public void spawnEnemies(GameTime gameTime)
         {
             enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (enemyTimer > .45f && enemies.Count < 20)          /// Set enemy number here
+            if (enemyTimer > .4f && enemies.Count < 20)          /// Set enemy number here
             {
-                int random = rand.Next(100);
-                Enemy spawn = new Enemy();
-                if (random % 4 == 0)
-                    spawn.Initialize(this, new Vector2(300, 300));
-                if (random % 4 == 1)
-                    spawn.Initialize(this, new Vector2(this.GraphicsDevice.Viewport.Width - 300, 300));
-                if (random % 4 == 2)
-                    spawn.Initialize(this, new Vector2(100, this.GraphicsDevice.Viewport.Height - 300));
-                if (random % 4 == 3)
-                    spawn.Initialize(this, new Vector2(this.GraphicsDevice.Viewport.Width - 300, this.GraphicsDevice.Viewport.Height - 300));
-
+                int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
+                int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
+                Enemy spawn = new Enemy();      
+                spawn.Initialize(this, new Vector2(randWidth, randHeight));
                 spawn.LoadContent("TankEnemy");
                 enemies.Add(spawn);
                 enemyTimer = 0;
@@ -270,11 +279,11 @@ namespace RTS
             //spriteBatch.Begin();
 
             spriteBatch.DrawString(font, "Player 1", new Vector2(player1.getPosition().X - 8f * 5f, player1.getPosition().Y - player1.getTurretLength() - 30f), Color.MediumBlue);
-            spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.MediumBlue);
+            spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.Purple);
             if(player1.isShielded())
                 spriteBatch.DrawString(font, "Shield: " + (3 - (int)player1.getShieldTimer()), new Vector2(player1.getPosition().X - 9f * 5f, player1.getPosition().Y + player2.getTurretLength() + 10f), Color.MediumBlue);
             if (player2.isShielded())
-                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.MediumBlue);
+                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.Purple);
 
             spriteBatch.DrawString(font, "Player 1 Kills      : " + player1.getEnemiesDestroyed(), new Vector2(10, 15), Color.White);
             spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
@@ -287,8 +296,8 @@ namespace RTS
 
             foreach (Tower tower in player1.getTowers())
             {
-                spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);
-                spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.Purple);
+                spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.MediumBlue);
+                spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
             }
             foreach (Tower tower in player2.getTowers())
             {

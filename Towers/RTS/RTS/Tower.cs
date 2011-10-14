@@ -27,7 +27,8 @@ namespace RTS
         private float elapsedTime;
 
         private Vector2 position;
-        private Vector2 origin;      
+        private Vector2 origin;
+        private PlayerIndex playerIndex;
         
         private double speed = 0;
         private int timesHit = 0;
@@ -51,8 +52,9 @@ namespace RTS
   
         private float circle = MathHelper.Pi * 2;
 
-        public Tower(Game1 game, Vector2 startPosition)
+        public Tower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition)
         {
+            this.playerIndex = playerIndex;
             this.Initialize(game, startPosition);
             this.LoadContent("Tower1");
         }
@@ -139,7 +141,10 @@ namespace RTS
         {
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, new Vector2(position.X, position.Y - 25), (float)shootRotationAngle, getTurretLength(), 20f);
-            projectile.LoadContent("ProjectilePurple");
+            if(playerIndex == PlayerIndex.One)
+                projectile.LoadContent("ProjectileBlue");
+            else
+                projectile.LoadContent("ProjectilePurple");
             projectileList.Add(projectile);
 
             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength()));

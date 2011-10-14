@@ -256,7 +256,10 @@ namespace RTS
         {
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 30f);
-            projectile.LoadContent("ProjectileBlue");
+            if (playerIndex == PlayerIndex.One)
+                projectile.LoadContent("ProjectileBlue");
+            else
+                projectile.LoadContent("ProjectilePurple");
             projectileList.Add(projectile);
 
             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
@@ -280,7 +283,7 @@ namespace RTS
 
         public void createTower()
         {
-            Tower tower = new Tower(game, this.position);
+            Tower tower = new Tower(game, playerIndex, this.position);
             towerList.Add(tower);
         }
 

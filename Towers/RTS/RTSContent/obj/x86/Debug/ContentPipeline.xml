@@ -145,6 +145,34 @@
       <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb</Output>
       <Time>2011-10-14T01:30:00.8166051-05:00</Time>
     </Item>
+    <Item>
+      <Source>2DTankGame.mp3</Source>
+      <Name>2DTankGame</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb</Output>
+      <Time>2011-10-14T02:19:30.0654364-05:00</Time>
+    </Item>
+    <Item>
+      <Source>2d_Tank_Menu.mp3</Source>
+      <Name>2d_Tank_Menu</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb</Output>
+      <Extra>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma</Extra>
+      <Time>2011-10-14T02:28:05.4649156-05:00</Time>
+    </Item>
+    <Item>
+      <Source>2D_Tank_POM.wav</Source>
+      <Name>2DTankPOM</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb</Output>
+      <Time>2011-10-14T03:02:15.1561512-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
