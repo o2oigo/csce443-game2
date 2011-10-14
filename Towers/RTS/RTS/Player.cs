@@ -54,7 +54,7 @@ namespace RTS
 
         private int enemiesDestroyed = 0;
         private int towerEnemiesDestroyed = 0;
-        private int maxTowerCount = 3;
+        private int maxTowerCount = 2;
   
         private float circle = MathHelper.Pi * 2;
  
@@ -71,7 +71,10 @@ namespace RTS
         public void LoadContent(String textureName)
         {
             texture = contentManager.Load<Texture2D>(textureName);
-            turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
+            if(playerIndex == PlayerIndex.One)
+                turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
+            else
+                turretTexture = contentManager.Load<Texture2D>("TurretPurple");
             mouseTexture = contentManager.Load<Texture2D>("CrossHair1");
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
