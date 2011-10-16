@@ -107,11 +107,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="ExplosionParticleSystem.cs" />
     <Compile Include="ExplosionSmokeParticleSystem.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="NodeList.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="ParticleSystem.cs" />
+    <Compile Include="PathFinder.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +128,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MapData\PathfindingData.csproj">
+      <Project>{952F3B01-B5D9-49C4-841B-653D650B6303}</Project>
+      <Name>PathfindingData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RTSContent\RTSContent.contentproj">
       <Name>RTSContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

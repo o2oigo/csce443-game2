@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS", "RTS\RTS\RTS.csproj", "{6D844525-CDCC-49AD-A9E1-D18897C7140E}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "RTSContent", "RTS\RTSContent\RTSContent.contentproj", "{67288CF9-9032-4A05-8091-85327BBCBAD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTSContent", "RTS\RTSContent\RTSContent.contentproj", "{67288CF9-9032-4A05-8091-85327BBCBAD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathfindingData", "MapData\PathfindingData.csproj", "{952F3B01-B5D9-49C4-841B-653D650B6303}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{6D844525-CDCC-49AD-A9E1-D18897C7140E}.Release|x86.Build.0 = Release|x86
 		{67288CF9-9032-4A05-8091-85327BBCBAD8}.Debug|x86.ActiveCfg = Debug|x86
 		{67288CF9-9032-4A05-8091-85327BBCBAD8}.Release|x86.ActiveCfg = Release|x86
+		{952F3B01-B5D9-49C4-841B-653D650B6303}.Debug|x86.ActiveCfg = Debug|x86
+		{952F3B01-B5D9-49C4-841B-653D650B6303}.Debug|x86.Build.0 = Debug|x86
+		{952F3B01-B5D9-49C4-841B-653D650B6303}.Release|x86.ActiveCfg = Release|x86
+		{952F3B01-B5D9-49C4-841B-653D650B6303}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

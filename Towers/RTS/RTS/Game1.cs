@@ -34,6 +34,14 @@ namespace RTS
        // SoundEffect tankSong;
        // SoundEffectInstance songInstance;
 
+        //PATHFINDING//
+        //Map map;
+        //AI enemy;
+        //PathFinder pathFinder;
+        //private Rectangle gameplayArea;
+        //int Counter = 0;
+        //PATHFINDING//
+
         SpriteFont font;
 
         public Game1()
@@ -49,7 +57,13 @@ namespace RTS
             Components.Add(explosion);
 
             smoke = new ExplosionSmokeParticleSystem(this, 2);
-            Components.Add(smoke);  
+            Components.Add(smoke);
+
+            //PATHFINDING//
+            //map = new Map();
+            //enemy = new AI();
+            //pathFinder = new PathFinder();
+            //PATHFINDING//
         }
 
         public SpriteBatch getSpriteBatch()
@@ -66,6 +80,12 @@ namespace RTS
         protected override void Initialize()
         {
             base.Initialize();
+
+            //gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
+
+            //map.UpdateMapViewport(gameplayArea);
+            //enemy.Initialize(map);
+            //pathFinder.Initialize(map);
         }
 
         /// <summary>
@@ -90,6 +110,11 @@ namespace RTS
 
             players.Add(player1);
             players.Add(player2);
+
+            //PATHFINDING//
+            //map.LoadContent(Content);
+            //enemy.LoadContent(Content);
+            //PATHFINDING//
 
 
             backgroundTexture = Content.Load<Texture2D>("background");
@@ -152,6 +177,33 @@ namespace RTS
 
             //Detect Collisions
             detectCollisions();
+
+            //PATHFINDING//
+            //Counter++;
+            //if (Counter == 10)
+            //{
+            //    pathFinder.IsSearching = !pathFinder.IsSearching;
+            //}
+            //
+            //if (map.MapReload)
+            //{
+            //    map.ReloadMap();
+            //    map.UpdateMapViewport(gameplayArea);
+            //    enemy.Reset();
+            //    pathFinder.Reset();
+            //}
+            //
+            //if (pathFinder.SearchStatus == SearchStatus.PathFound && !enemy.Moving)
+            //{
+            //    foreach (Point point in pathFinder.FinalPath())
+            //    {
+            //        enemy.Waypoints.Enqueue(map.MapToWorld(point, true));
+            //    }
+            //    enemy.Moving = true;
+            //}
+            //pathFinder.Update(gameTime);
+            //enemy.Update(gameTime);
+            //PATHFINDING//
          
             base.Update(gameTime);
         }
@@ -172,6 +224,9 @@ namespace RTS
             drawText();
 
             spriteBatch.End();
+
+           //map.Draw(spriteBatch);
+           //enemy.Draw(spriteBatch);
             base.Draw(gameTime);
         }
 
