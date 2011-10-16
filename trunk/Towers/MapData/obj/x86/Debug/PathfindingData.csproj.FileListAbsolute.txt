@@ -1,0 +1,18 @@
+C:\Users\lastwaltz\Desktop\path\MapData\bin\x86\Debug\MapData.dll
+C:\Users\lastwaltz\Desktop\path\MapData\bin\x86\Debug\MapData.pdb
+C:\Users\lastwaltz\Desktop\path\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\lastwaltz\Desktop\path\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\lastwaltz\Desktop\path\MapData\obj\x86\Debug\MapData.dll
+C:\Users\lastwaltz\Desktop\path\MapData\obj\x86\Debug\MapData.pdb
+C:\Users\lastwaltz\Documents\Visual Studio 2010\Projects\Pfinding\MapData\bin\x86\Debug\MapData.dll
+C:\Users\lastwaltz\Documents\Visual Studio 2010\Projects\Pfinding\MapData\bin\x86\Debug\MapData.pdb
+C:\Users\lastwaltz\Documents\Visual Studio 2010\Projects\Pfinding\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\lastwaltz\Documents\Visual Studio 2010\Projects\Pfinding\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\lastwaltz\Documents\Visual Studio 2010\Projects\Pfinding\MapData\obj\x86\Debug\MapData.dll
+C:\Users\lastwaltz\Documents\Visual Studio 2010\Projects\Pfinding\MapData\obj\x86\Debug\MapData.pdb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\bin\x86\Debug\MapData.dll
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\bin\x86\Debug\MapData.pdb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\obj\x86\Debug\MapData.dll
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\obj\x86\Debug\MapData.pdb
