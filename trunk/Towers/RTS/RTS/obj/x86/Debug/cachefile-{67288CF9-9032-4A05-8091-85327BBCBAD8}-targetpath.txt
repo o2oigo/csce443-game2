@@ -13,10 +13,15 @@ Content\ProjectileRed.xnb
 Content\ProjectilePurple.xnb
 Content\background.xnb
 Content\CrossHair1.xnb
+Content\TankPurple.xnb
+Content\TurretPurple.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb
 Content\2d_Tank_Menu.wma
 Content\2DTankPOM.xnb
-Content\TankPurple.xnb
-Content\TurretPurple.xnb
+Content\Map1.xnb
+Content\Map2.xnb
+Content\Map3.xnb
+Content\Map4.xnb
+Content\Tree2.xnb
