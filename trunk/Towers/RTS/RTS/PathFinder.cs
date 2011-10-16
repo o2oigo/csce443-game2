@@ -103,9 +103,6 @@ namespace RTS
 
         #region Update and Draw
 
-        /// <summary>
-        /// Search Update
-        /// </summary>
         public void Update(GameTime gameTime)
         {
             if (searchStatus == SearchStatus.Searching)
@@ -119,11 +116,6 @@ namespace RTS
             }
         }
 
-        /// <summary>
-        /// This method find the next path node to visit, puts that node on the 
-        /// closed list and adds any nodes adjacent to the visited node to the 
-        /// open list.
-        /// </summary>
         private void DoSearchStep()
         {
             SearchNode newOpenListNode;
