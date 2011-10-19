@@ -20,7 +20,7 @@ namespace RTS
         SpriteBatch spriteBatch;
         Texture2D backgroundTexture;
         Player player1;
-        Player player2;
+       // Player player2;
         List<Enemy> enemies;
         List<Player> players;
         float enemyTimer = 0;
@@ -101,15 +101,15 @@ namespace RTS
             player1.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
             player1.LoadContent("TankPlayer");
 
-            player2 = new Player();
-            player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
-            player2.LoadContent("TankPurple");
+           // player2 = new Player();
+           // player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
+           // player2.LoadContent("TankPurple");
 
             enemies = new List<Enemy>(25);
             players = new List<Player>(4);
 
             players.Add(player1);
-            players.Add(player2);
+          //  players.Add(player2);
 
             //PATHFINDING//
             map.LoadContent(Content);
@@ -197,7 +197,7 @@ namespace RTS
             for (int i = 0; i < enemies.Count; i++)
                 enemies[i].Draw(spriteBatch);
             player1.Draw(spriteBatch);
-            player2.Draw(spriteBatch);
+          //  player2.Draw(spriteBatch);
             drawText();
 
             spriteBatch.End();
@@ -336,32 +336,34 @@ namespace RTS
             //GamePadState gpstate = GamePad.GetState(PlayerIndex.One);
             //spriteBatch.Begin();
 
-            spriteBatch.DrawString(font, "Player 1", new Vector2(player1.getPosition().X - 8f * 5f, player1.getPosition().Y - player1.getTurretLength() - 30f), Color.MediumBlue);
-            spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.Purple);
+          //  spriteBatch.DrawString(font, "Player 1", new Vector2(player1.getPosition().X - 8f * 5f, player1.getPosition().Y - player1.getTurretLength() - 30f), Color.MediumBlue);
+         //   spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.Purple);
             if (player1.isShielded())
-                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player1.getShieldTimer()), new Vector2(player1.getPosition().X - 9f * 5f, player1.getPosition().Y + player2.getTurretLength() + 10f), Color.MediumBlue);
-            if (player2.isShielded())
-                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.Purple);
+                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player1.getShieldTimer()), new Vector2(player1.getPosition().X - 9f * 5f, player1.getPosition().Y + player1.getTurretLength() + 10f), Color.MediumBlue);
+          //  if (player2.isShielded())
+          //      spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.Purple);
 
             spriteBatch.DrawString(font, "Player 1 Kills      : " + player1.getEnemiesDestroyed(), new Vector2(10, 15), Color.White);
-            spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
+        //    spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
 
             spriteBatch.DrawString(font, "Player 1 Tower Kills: " + player1.getTowerEnemiesDestroyed(), new Vector2(10, 35), Color.White);
-            spriteBatch.DrawString(font, "Player 2 Tower Kills: " + player2.getTowerEnemiesDestroyed(), new Vector2(510, 35), Color.White);
+         //   spriteBatch.DrawString(font, "Player 2 Tower Kills: " + player2.getTowerEnemiesDestroyed(), new Vector2(510, 35), Color.White);
 
             spriteBatch.DrawString(font, "Player 1 Deaths     : " + player1.getTimesHit(), new Vector2(10, 55), Color.White);
-            spriteBatch.DrawString(font, "Player 2 Deaths     : " + player2.getTimesHit(), new Vector2(510, 55), Color.White);
+         //   spriteBatch.DrawString(font, "Player 2 Deaths     : " + player2.getTimesHit(), new Vector2(510, 55), Color.White);
 
             foreach (Tower tower in player1.getTowers())
             {
-                spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.MediumBlue);
-                spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
+               // spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.MediumBlue);
+               //d spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
             }
-            foreach (Tower tower in player2.getTowers())
-            {
-                spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);
-                spriteBatch.DrawString(font, "P2", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.Purple);
-            }
+
+          //  spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.White);
+         //   foreach (Tower tower in player2.getTowers())
+         //   {
+         //       spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);
+         //       spriteBatch.DrawString(font, "P2", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.Purple);
+         //   }
 
             // spriteBatch.End();
         }

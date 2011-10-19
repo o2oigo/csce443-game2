@@ -25,3 +25,9 @@ Content\Map1.xnb
 Content\Map2.xnb
 Content\Map3.xnb
 Content\Map4.xnb
+Content\menu1.xnb
+Content\menu2.xnb
+Content\buildTowerMenu.xnb
+Content\buildTowerMenuSelect.xnb
+Content\cancelMenu.xnb
+Content\cancelMenuSelect.xnb
