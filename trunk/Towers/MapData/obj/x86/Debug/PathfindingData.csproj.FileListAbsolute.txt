@@ -16,3 +16,9 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\obj\x86\Debug\ResolveAsse
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\obj\x86\Debug\MapData.dll
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\obj\x86\Debug\MapData.pdb
+E:\GameProj2\Towers\MapData\bin\x86\Debug\MapData.dll
+E:\GameProj2\Towers\MapData\bin\x86\Debug\MapData.pdb
+E:\GameProj2\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\GameProj2\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\GameProj2\Towers\MapData\obj\x86\Debug\MapData.dll
+E:\GameProj2\Towers\MapData\obj\x86\Debug\MapData.pdb

@@ -54,6 +54,12 @@ namespace RTS
         }
         private float scale;
 
+        public float ScaleB
+        {
+            get { return scaleB; }
+        }
+        private float scaleB;
+
         public Point EndTile
         {
             get { return endTile; }
@@ -80,13 +86,13 @@ namespace RTS
             maps = new List<MapData>();
             maps.Add(content.Load<MapData>("map1"));
             maps.Add(content.Load<MapData>("map2"));
-            maps.Add(content.Load<MapData>("map3"));
-            maps.Add(content.Load<MapData>("map4"));
+            //maps.Add(content.Load<MapData>("map3"));
+            //maps.Add(content.Load<MapData>("map4"));
 
             ReloadMap();
 
             mapReload = true;
-            tileSquareCenter = new Vector2(tileSize / 2);  
+            tileSquareCenter = new Vector2(tileSize / 2);
         }
 
         #endregion
@@ -105,7 +111,7 @@ namespace RTS
                         case MapTileType.MapBarrier:
                             spriteBatch.Draw(
                                 barrierTexture, tilePosition, null, Color.White,
-                                0f, Vector2.Zero, scale, SpriteEffects.None, .25f);
+                                0f, Vector2.Zero, scaleB, SpriteEffects.None, .25f);
                             break;
 
                         case MapTileType.MapExit:
@@ -195,6 +201,7 @@ namespace RTS
                 safeViewableArea.Width / (float)numberColumns);
 
             scale = tileSize / (float)tileSize;
+            scaleB = tileSize / (float)barrierTexture.Height;
             tileSquareCenter = new Vector2(tileSize / 2);
         }
 
