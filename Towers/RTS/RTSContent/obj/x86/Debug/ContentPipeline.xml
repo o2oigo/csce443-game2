@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb</Output>
+      <Time>2011-10-18T19:30:37.589881-05:00</Time>
     </Item>
     <Item>
       <Source>explosion.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb</Output>
+      <Time>2011-10-18T19:30:33.13734-05:00</Time>
     </Item>
     <Item>
       <Source>smoke.bmp</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb</Output>
-      <Time>2011-10-18T20:22:00-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb</Output>
+      <Time>2011-10-18T19:30:35.599873-05:00</Time>
     </Item>
     <Item>
       <Source>TankEnemy.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb</Output>
+      <Time>2011-10-18T19:30:36.474996-05:00</Time>
     </Item>
     <Item>
       <Source>TankPlayer.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb</Output>
-      <Time>2011-10-18T20:22:00-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb</Output>
+      <Time>2011-10-18T19:30:36.62085-05:00</Time>
     </Item>
     <Item>
       <Source>TurretEnemy.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb</Output>
-      <Time>2011-10-18T20:22:02-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb</Output>
+      <Time>2011-10-18T19:30:37.730739-05:00</Time>
     </Item>
     <Item>
       <Source>TurretPlayer.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb</Output>
-      <Time>2011-10-18T20:21:50-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb</Output>
+      <Time>2011-10-18T19:30:37.85961-05:00</Time>
     </Item>
     <Item>
       <Source>TankcolouredC.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb</Output>
+      <Time>2011-10-18T19:30:36.324147-05:00</Time>
     </Item>
     <Item>
       <Source>TowerTurret.png</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb</Output>
+      <Time>2011-10-18T19:30:37.311167-05:00</Time>
     </Item>
     <Item>
       <Source>Tower1.png</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb</Output>
+      <Time>2011-10-18T19:30:37.031439-05:00</Time>
     </Item>
     <Item>
       <Source>ProjectileBlue.png</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb</Output>
-      <Time>2011-10-18T20:22:00-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb</Output>
+      <Time>2011-10-18T19:30:34.907572-05:00</Time>
     </Item>
     <Item>
       <Source>ProjectileRed.png</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb</Output>
+      <Time>2011-10-18T19:30:35.185288-05:00</Time>
     </Item>
     <Item>
       <Source>ProjectilePurple.png</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb</Output>
-      <Time>2011-10-18T20:22:02-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb</Output>
+      <Time>2011-10-18T19:30:35.039446-05:00</Time>
     </Item>
     <Item>
       <Source>PHOTO_6270771_40602_13529332_ap.jpg</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2011-10-18T20:22:00-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb</Output>
+      <Time>2011-10-18T19:30:34.484989-05:00</Time>
     </Item>
     <Item>
       <Source>CrossHair1.png</Source>
@@ -133,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb</Output>
-      <Time>2011-10-18T20:22:00-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb</Output>
+      <Time>2011-10-18T19:30:32.659817-05:00</Time>
     </Item>
     <Item>
       <Source>TankPurple.png</Source>
@@ -142,8 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb</Output>
-      <Time>2011-10-18T20:22:02-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb</Output>
+      <Time>2011-10-18T19:30:36.749722-05:00</Time>
     </Item>
     <Item>
       <Source>TurretPurple.png</Source>
@@ -151,8 +151,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb</Output>
+      <Time>2011-10-18T19:30:37.99048-05:00</Time>
     </Item>
     <Item>
       <Source>Tree2.png</Source>
@@ -160,8 +160,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb</Output>
+      <Time>2011-10-18T19:30:37.439032-05:00</Time>
     </Item>
     <Item>
       <Source>buildTowerMenu.png</Source>
@@ -169,8 +169,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb</Output>
-      <Time>2011-10-18T21:55:32-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb</Output>
+      <Time>2011-10-19T09:06:25.256803-05:00</Time>
     </Item>
     <Item>
       <Source>buildTowerMenuSelect.png</Source>
@@ -178,8 +178,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb</Output>
-      <Time>2011-10-18T21:54:08-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb</Output>
+      <Time>2011-10-19T09:06:24.883177-05:00</Time>
     </Item>
     <Item>
       <Source>cancelMenu.png</Source>
@@ -187,8 +187,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb</Output>
-      <Time>2011-10-18T21:55:14-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb</Output>
+      <Time>2011-10-19T09:06:24.982077-05:00</Time>
     </Item>
     <Item>
       <Source>cancelMenuSelect.png</Source>
@@ -196,8 +196,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb</Output>
-      <Time>2011-10-18T21:53:46-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb</Output>
+      <Time>2011-10-19T09:06:25.354704-05:00</Time>
     </Item>
     <Item>
       <Source>firestone.jpg</Source>
@@ -205,8 +205,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb</Output>
-      <Time>2011-10-19T09:17:48-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb</Output>
+      <Time>2011-10-19T09:06:25.609451-05:00</Time>
     </Item>
     <Item>
       <Source>block.png</Source>
@@ -214,8 +214,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb</Output>
-      <Time>2011-10-19T09:17:48-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb</Output>
+      <Time>2011-10-19T09:06:25.161898-05:00</Time>
     </Item>
     <Item>
       <Source>SpriteFont1.spritefont</Source>
@@ -223,8 +223,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2011-10-18T19:30:35.735736-05:00</Time>
     </Item>
     <Item>
       <Source>2DTankGame.mp3</Source>
@@ -232,8 +232,8 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb</Output>
-      <Time>2011-10-18T20:22:02-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb</Output>
+      <Time>2011-10-18T19:30:32.44703-05:00</Time>
     </Item>
     <Item>
       <Source>2d_Tank_Menu.mp3</Source>
@@ -241,9 +241,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb</Output>
-      <Extra>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma</Extra>
-      <Time>2011-10-18T20:22:02-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb</Output>
+      <Extra>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma</Extra>
+      <Time>2011-10-18T19:30:31.082395-05:00</Time>
     </Item>
     <Item>
       <Source>2D_Tank_POM.wav</Source>
@@ -251,8 +251,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb</Output>
+      <Time>2011-10-18T19:30:32.109367-05:00</Time>
     </Item>
     <Item>
       <Source>Map1.xml</Source>
@@ -260,8 +260,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb</Output>
-      <Time>2011-10-19T09:19:50-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb</Output>
+      <Time>2011-10-19T10:17:30.311477-05:00</Time>
     </Item>
     <Item>
       <Source>Map2.xml</Source>
@@ -269,8 +269,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb</Output>
+      <Time>2011-10-18T19:30:33.76571-05:00</Time>
     </Item>
     <Item>
       <Source>Map3.xml</Source>
@@ -278,8 +278,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb</Output>
+      <Time>2011-10-18T19:30:33.921552-05:00</Time>
     </Item>
     <Item>
       <Source>Map4.xml</Source>
@@ -287,8 +287,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb</Output>
-      <Time>2011-10-18T20:21:58-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb</Output>
+      <Time>2011-10-18T19:30:34.04343-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -296,10 +296,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>E:\Game2\Tower Defense\Towers\RTS\RTSContent\</RootDirectory>
-      <LoggerRootDirectory>E:\Game2\Tower Defense\Towers\RTS\RTS\</LoggerRootDirectory>
-      <IntermediateDirectory>E:\Game2\Tower Defense\Towers\RTS\RTSContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Anthony\Towers\RTS\RTSContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Anthony\Towers\RTS\RTS\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Anthony\Towers\RTS\RTSContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -327,8 +327,8 @@
         <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>E:\Game2\Tower Defense\Towers\MapData\bin\x86\Debug\MapData.dll</Key>
-        <Value>2011-10-19T09:17:46-05:00</Value>
+        <Key>C:\Anthony\Towers\MapData\bin\x86\Debug\MapData.dll</Key>
+        <Value>2011-10-19T09:07:10.930084-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>

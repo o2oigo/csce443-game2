@@ -63,7 +63,7 @@ namespace RTS
 
         private int enemiesDestroyed = 0;
         private int towerEnemiesDestroyed = 0;
-        private int maxTowerCount = 2;
+        private int maxTowerCount = 6;
   
         private float circle = MathHelper.Pi * 2;
  
@@ -208,15 +208,34 @@ namespace RTS
             }
 
             //Shoot
-            if (currentState.Triggers.Right >= .5f && oldState.Triggers.Right < .5)
+            if (currentState.IsButtonDown(Buttons.RightShoulder) && oldState.IsButtonUp(Buttons.RightShoulder))
             {
                 createProjectile();
             }
 
-            //Create Tower
-            if (currentState.Triggers.Left == 1 && oldState.Triggers.Left != 1 && towerList.Count < maxTowerCount)
+            //Build Mode
+            if (oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder) && mainBuildMode == false)
             {
-                createTower();
+                buildMode = true;
+                mainBuildMode = true;
+            }
+            else if (mainBuildMode == true && oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder))
+            {
+                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && towerList.Count < maxTowerCount && maxCapacityTower == false)
+                {
+                    buildMode = false;
+                    mainBuildMode = false;
+                    createTower();
+                    if (towerList.Count == maxTowerCount)
+                    {
+                        maxCapacityTower = true;
+                    }
+                }
+                else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
+                {
+                    buildMode = false;
+                    mainBuildMode = false;
+                }
             }
         }
 
@@ -287,12 +306,12 @@ namespace RTS
             }
             if (mainBuildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
             {
-                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && towerList.Count < maxTowerCount + 7 && maxCapacityTower == false)
+                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && towerList.Count < maxTowerCount && maxCapacityTower == false)
                 {
                     buildMode = false;
                     mainBuildMode = false;
                     createTower();
-                    if (towerList.Count == 6)
+                    if (towerList.Count == maxTowerCount)
                     {
                         maxCapacityTower = true;
                     }
@@ -301,9 +320,7 @@ namespace RTS
                 {
                     buildMode = false;
                     mainBuildMode = false;
-                }
-                
-                
+                }    
             }
 
             if (keystate.IsKeyUp(Keys.Escape) && oldKeyState.IsKeyDown(Keys.Escape))
