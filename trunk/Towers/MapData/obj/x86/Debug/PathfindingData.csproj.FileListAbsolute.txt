@@ -46,3 +46,9 @@ C:\Anthony\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Anthony\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Anthony\Towers\MapData\obj\x86\Debug\MapData.dll
 C:\Anthony\Towers\MapData\obj\x86\Debug\MapData.pdb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\bin\x86\Debug\MapData.dll
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\bin\x86\Debug\MapData.pdb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\MapData.dll
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\MapData.pdb
