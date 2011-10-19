@@ -17,7 +17,7 @@ namespace RTS
         MapExit
     }
 
-    class Map
+    public class Map
     {
         #region Fields
 
@@ -80,14 +80,14 @@ namespace RTS
         public void LoadContent(ContentManager content)
         {
 
-            barrierTexture = content.Load<Texture2D>("Tree2");
+            barrierTexture = content.Load<Texture2D>("block");
             endTexture = content.Load<Texture2D>("Tower1");
 
             maps = new List<MapData>();
             maps.Add(content.Load<MapData>("map1"));
             maps.Add(content.Load<MapData>("map2"));
-            //maps.Add(content.Load<MapData>("map3"));
-            //maps.Add(content.Load<MapData>("map4"));
+            maps.Add(content.Load<MapData>("map3"));
+            maps.Add(content.Load<MapData>("map4"));
 
             ReloadMap();
 
@@ -99,8 +99,6 @@ namespace RTS
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-
             for (int i = 0; i < numberRows; i++)
             {
                 for (int j = 0; j < numberColumns; j++)
@@ -125,12 +123,37 @@ namespace RTS
                     }
                 }
             }
-
-            spriteBatch.End();
         }
 
+        #region Useful Game Methods
 
-        #region Methods
+        public int[] WorldToMap(Vector2 coordinate)
+        {
+            int column = ((int)coordinate.X / numberColumns*(int)tileSize) - 1;
+            int row = ((int)coordinate.Y / numberRows*(int)tileSize) - 1;
+
+            int[] array = new int[2] {column, row};
+            return array;
+           // return mapTiles[column, row];
+        }
+
+        public MapTileType TileTypeAt(Vector2 coordinate)
+        {
+            int[] array = WorldToMap(coordinate);
+            return mapTiles[array[0], array[1]];
+        }
+
+        public bool switchTileType(Vector2 coordinate,MapTileType type)
+        {
+            int[] array = WorldToMap(coordinate);
+            //TO ADD: check and return false if invalid
+            mapTiles[array[0],array[1]] = type;
+            return true;
+        }
+
+        #endregion
+
+        #region PathFindingMethods
 
         public Vector2 MapToWorld(int column, int row, bool centered)
         {

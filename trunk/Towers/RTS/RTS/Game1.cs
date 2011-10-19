@@ -23,6 +23,7 @@ namespace RTS
        // Player player2;
         List<Enemy> enemies;
         List<Player> players;
+        List<Stone> stones;
         float enemyTimer = 0;
         float enemySpawnTime = 1f;
         Random rand = new Random();
@@ -35,11 +36,15 @@ namespace RTS
         // SoundEffectInstance songInstance;
 
         //
-        //PATHFINDING//
-        Map map;
-        AI enemy;
+
+
+        private Map map;
+        public Map Map
+        {
+            get { return map; }
+        }
         private Rectangle gameplayArea;
-        //PATHFINDING//
+
 
         SpriteFont font;
 
@@ -50,7 +55,7 @@ namespace RTS
 
             this.graphics.PreferredBackBufferHeight = 1080;
             this.graphics.PreferredBackBufferWidth = 1920;
-            this.graphics.IsFullScreen = true;
+            //this.graphics.IsFullScreen = true;
 
             explosion = new ExplosionParticleSystem(this, 1);
             Components.Add(explosion);
@@ -60,7 +65,6 @@ namespace RTS
 
             //PATHFINDING//
             map = new Map();
-            enemy = new AI();
             //PATHFINDING//
         }
 
@@ -84,7 +88,6 @@ namespace RTS
             map.UpdateMapViewport(gameplayArea);
             map.ReloadMap();
             map.UpdateMapViewport(gameplayArea);
-            enemy.Initialize(map);
             //PATHFINDING//
         }
 
@@ -107,13 +110,13 @@ namespace RTS
 
             enemies = new List<Enemy>(25);
             players = new List<Player>(4);
+            stones = new List<Stone>();
 
             players.Add(player1);
           //  players.Add(player2);
 
             //PATHFINDING//
             map.LoadContent(Content);
-            enemy.LoadContent(Content);
             //PATHFINDING//
 
 
@@ -175,12 +178,19 @@ namespace RTS
                 currentEnemy.Update(gameTime, players[0].getTowers());
             }
 
+            //Update Stone Timer
+            if (stones.Count() > 0)
+            {
+                for (int i = 0; i < stones.Count; i++)
+                {
+                    stones[i].Update(gameTime);
+                    if (!stones[i].isAppear) stones.Remove(stones[i]);
+                }
+            }
+
             //Detect Collisions
             detectCollisions();
 
-            //PATHFINDING//
-            enemy.Update(gameTime);
-            ////PATHFINDING//
 
             //base.Update(gameTime);
         }
@@ -192,20 +202,23 @@ namespace RTS
         protected override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
+                spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
+                //PATHFINDING
+                map.Draw(spriteBatch);
+                //PATHFINDING//
 
-            spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
-            for (int i = 0; i < enemies.Count; i++)
-                enemies[i].Draw(spriteBatch);
-            player1.Draw(spriteBatch);
-          //  player2.Draw(spriteBatch);
-            drawText();
+                for (int i = 0; i < enemies.Count; i++)
+                    enemies[i].Draw(spriteBatch);
+                player1.Draw(spriteBatch);
+                //player2.Draw(spriteBatch);
+                drawText();
 
+                if (stones.Count() > 0)
+                {
+                    foreach (Stone i in stones) i.Draw(spriteBatch);
+                }
             spriteBatch.End();
 
-            //PATHFINDING
-            map.Draw(spriteBatch);
-            enemy.Draw(spriteBatch);
-            //PATHFINDING//
 
             base.Draw(gameTime);
         }
@@ -269,6 +282,16 @@ namespace RTS
                             }
                         }
                     }
+
+                    //Loop through all stones
+                    for (int j = 0; j < stones.Count; j++)
+                    {
+                        Rectangle currentStoneRect = new Rectangle((int)stones[j].Position.X, (int)stones[j].Position.Y, stones[j].Texture.Width, stones[j].Texture.Height);
+                        if (playerRect.Intersects(currentStoneRect))
+                        {
+                            stones.Remove(stones[i]);
+                        }
+                    }
                 }
 
                 //Loop through all enemies
@@ -287,9 +310,16 @@ namespace RTS
                         if (currentEnemyRect.Intersects(playerProjectileRect))
                         {
                             player.getProjectiles().Remove(proj);
-                            currentEnemy.Hit();
+                            currentEnemy.Hit(10.0f);
                             if (enemies.Count != 0 && enemies[i].isDead())
                             {
+                                int randNum = rand.Next(1, 10);
+                                if (randNum < 4)
+                                {
+                                    Stone newStone = new Stone();
+                                    newStone.Initialize(this, enemies[i].Location, randNum);
+                                    stones.Add(newStone);
+                                }
                                 enemies.RemoveAt(i);
                                 player.enemyDestroyed();
                             }
@@ -316,9 +346,16 @@ namespace RTS
                             if (currentEnemyRect.Intersects(towerProjectileRect))
                             {
                                 tower.getProjectiles().Remove(proj);
-                                currentEnemy.Hit();
+                                currentEnemy.Hit(10.0f);
                                 if (enemies.Count != 0 && enemies[i].isDead())
                                 {
+                                    int randNum = rand.Next(1, 10);
+                                    if (randNum < 4)
+                                    {
+                                        Stone newStone = new Stone();
+                                        newStone.Initialize(this, enemies[i].Location, randNum);
+                                        stones.Add(newStone);
+                                    }
                                     enemies.RemoveAt(i);
                                     player.towerEnemyDestroyed();
                                 }

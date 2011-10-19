@@ -13,9 +13,7 @@ namespace RTS
     class Enemy
     {
         Game1 game;
-
         SpriteFont font;
-
         ContentManager contentManager;
         GraphicsDevice graphicsDevice;
         SpriteBatch spriteBatch;
@@ -23,20 +21,20 @@ namespace RTS
         private Texture2D texture;
         private Texture2D turretTexture;
 
-        private Vector2 position;
+        //private Vector2 position;
+        //private int shotsTaken = 0;
+        //private int shotsToDestroy = 2;
+        //private double speed = 1.5;
         private Vector2 origin;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
 
         Random rand = new Random();
 
-        private int shotsTaken = 0;
-        private int shotsToDestroy = 2;
         private float hp = 100;
         private int range;
         private bool dead = false;
-
-        private double speed = 1.5;
+        private float damageAlpha = 1.0f;
 
         private double moveRotationAngle;
         private double shootRotationAngle;
@@ -57,11 +55,10 @@ namespace RTS
             this.game = game;
             contentManager = game.Content;
             graphicsDevice = game.GraphicsDevice;
-            position = startPosition;
 
             waypoints = new NodeList();
             path = new PathFinder();
-            range = 1000;
+            range = 200;
 
             this.map = map;
             path.Initialize(map);
@@ -83,15 +80,12 @@ namespace RTS
         public void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            // spriteBatch.Begin();
             spriteBatch.Draw(texture, location, null, Color.White, (float)moveRotationAngle, origin, map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.Draw(turretTexture, location, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);
             }
-
-            //  spriteBatch.End();
         }
 
         public virtual void Update(GameTime gameTime, List<Tower> towers)//List<Player> players)
@@ -112,16 +106,36 @@ namespace RTS
             ////Create and update projectiles (shoot)
             //updateProjectiles();
 
+            float facingDirection = (float)Math.Atan2(
+            Direction.Y, Direction.X);
+            moveRotationAngle = facingDirection;
+            shootRotationAngle = facingDirection;
+
             foreach (Tower i in towers)
             {
                 //if (Vector2.Distance(this.location, i.getPosition()) < Vector2.Distance(this.location, i.getPosition()))
                 if (boundingCircle(this.location, range, i.getPosition()))
                 {
                     updateMovement(i);
+
+                    if (shootElapsedTime >= shootTimer)
+                    {
+                        shootElapsedTime = 0;
+
+                        //Create new projectiles
+                        Projectile projectile = new Projectile();
+                        projectile.Initialize(contentManager, graphicsDevice, location, (float)projectileRotationAngle, getTurretLength(), 6f);
+                        projectile.LoadContent("ProjectileRed");
+                        projectileList.Add(projectile);
+
+                        //Add explosion to particle system
+                        game.explosion.AddParticles(new Vector2(location.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), location.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+                        // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+                    }
                     break;
                 }
-
             }
+            updateProjectiles();
 
             if (path.SearchStatus == SearchStatus.PathFound && !Moving)
             {
@@ -135,7 +149,6 @@ namespace RTS
 
             if (moving)
             {
-                updateProjectiles();
                 if (waypoints.Count >= 1)
                 {
                     destination = waypoints.Peek();
@@ -190,20 +203,20 @@ namespace RTS
         {
 
             //Shoot every few seconds / Adds projectiles to screen / Adds particle effects
-            if (shootElapsedTime >= shootTimer)
-            {
-                shootElapsedTime = 0;
-
-                //Create new projectiles
-                Projectile projectile = new Projectile();
-                projectile.Initialize(contentManager, graphicsDevice, location, (float)projectileRotationAngle, getTurretLength(), 6f);
-                projectile.LoadContent("ProjectileRed");
-                projectileList.Add(projectile);
-
-                //Add explosion to particle system
-                game.explosion.AddParticles(new Vector2(location.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), location.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
-                // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
-            }
+            //if (shootElapsedTime >= shootTimer)
+            //{
+            //    shootElapsedTime = 0;
+            //
+            //    //Create new projectiles
+            //    //Projectile projectile = new Projectile();
+            //    //projectile.Initialize(contentManager, graphicsDevice, location, (float)projectileRotationAngle, getTurretLength(), 6f);
+            //    //projectile.LoadContent("ProjectileRed");
+            //    //projectileList.Add(projectile);
+            //
+            //    //Add explosion to particle system
+            //    //game.explosion.AddParticles(new Vector2(location.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), location.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+            //    // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+            //}
 
             //Update Projectiles
             foreach (Projectile proj in projectileList)
@@ -247,11 +260,6 @@ namespace RTS
             return projectileList;
         }
 
-        public void setPosition(Vector2 pos)
-        {
-            position = pos;
-        }
-
         public Vector2 getPosition()
         {
             return location;
@@ -277,10 +285,11 @@ namespace RTS
             return playerRotationAngle;
         }
 
-        public void Hit()
+
+        public void Hit(float damage)
         {
-            shotsTaken++;
-            if (shotsTaken >= shotsToDestroy)
+            hp -= damage;
+            if (hp <= 0)
                 dead = true;
         }
 
