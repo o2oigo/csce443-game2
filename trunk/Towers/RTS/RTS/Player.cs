@@ -47,7 +47,15 @@ namespace RTS
 
         private Texture2D texture;
         private Texture2D turretTexture;
+
+        // fredy code for User Interface (tower menu)
         private Texture2D mouseTexture;
+        private Texture2D menu1Texture;
+        private Texture2D menu2Texture;
+        private Texture2D menu3Texture;
+        private Texture2D menu4Texture;
+        private bool buildMode = false;
+        private bool mainBuildMode = false;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
         private List<Tower> towerList = new List<Tower>(5);
@@ -76,6 +84,11 @@ namespace RTS
             else
                 turretTexture = contentManager.Load<Texture2D>("TurretPurple");
             mouseTexture = contentManager.Load<Texture2D>("CrossHair1");
+            menu1Texture = contentManager.Load<Texture2D>("buildTowerMenu");
+            menu2Texture = contentManager.Load<Texture2D>("cancelMenu");
+            menu3Texture = contentManager.Load<Texture2D>("buildTowerMenuSelect");
+            menu4Texture = contentManager.Load<Texture2D>("cancelMenuSelect");
+
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
         }
@@ -97,6 +110,25 @@ namespace RTS
             foreach (Tower tower in towerList)
             {
                 tower.Draw(SB);
+            }
+
+            if (buildMode == true && mainBuildMode == true)
+            {
+                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.93)
+                {
+                    spriteBatch.Draw(menu3Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
+                    spriteBatch.Draw(menu2Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
+                }
+                else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
+                {
+                    spriteBatch.Draw(menu1Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
+                    spriteBatch.Draw(menu4Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
+                }
+                else
+                {
+                    spriteBatch.Draw(menu1Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
+                    spriteBatch.Draw(menu2Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
+                }
             }
 
            // spriteBatch.End();
@@ -185,26 +217,26 @@ namespace RTS
             mousePos.X = mousestate.X;
             mousePos.Y = mousestate.Y;
 
-            if (!keystate.IsKeyDown(Keys.A) && !keystate.IsKeyDown(Keys.D) && !keystate.IsKeyDown(Keys.W) && !keystate.IsKeyDown(Keys.S))
-                speed = 0;
+            //if (!keystate.IsKeyDown(Keys.A) && !keystate.IsKeyDown(Keys.D) && !keystate.IsKeyDown(Keys.W) && !keystate.IsKeyDown(Keys.S))
+            speed = 0;
 
-            if (keystate.IsKeyDown(Keys.A))
-            {  
+            if (keystate.IsKeyDown(Keys.A) && buildMode == false)
+            {
                 xComponent = -1;
                 speed = 5;
 
             }
-            if (keystate.IsKeyDown(Keys.D))
-            {              
+            if (keystate.IsKeyDown(Keys.D) && buildMode == false)
+            {
                 xComponent = 1;
                 speed = 5;
             }
-            if (keystate.IsKeyDown(Keys.W))
-            {             
+            if (keystate.IsKeyDown(Keys.W) && buildMode == false)
+            {
                 yComponent = -1;
                 speed = 5;
             }
-            else if (keystate.IsKeyDown(Keys.S))
+            else if (keystate.IsKeyDown(Keys.S) && buildMode == false)
             {
                 yComponent = 1;
                 speed = 5;
@@ -215,16 +247,12 @@ namespace RTS
                 position = new Vector2(100, 100);
             }
 
-            //Create Tower
-            if (keystate.IsKeyUp(Keys.Space) && oldKeyState.IsKeyDown(Keys.Space) && towerList.Count < maxTowerCount)
-            {
-                createTower();
-            }
+
 
             //Update moveRotationAngle
             moveRotationAngle = Math.Atan2(yComponent, xComponent);
             moveRotationAngle = moveRotationAngle % circle;
-           
+
             //Reset Components
             xComponent = 0;
             yComponent = 0;
@@ -233,9 +261,39 @@ namespace RTS
             shootRotationAngle = Math.Atan2(mousePos.Y - position.Y, mousePos.X - position.X);
 
             //If mouse is clicked and released - Shoot
-            if (oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
+            if (buildMode == false)
             {
-                createProjectile();
+                if (oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
+                {
+                    createProjectile();
+                }
+            }
+
+            //Open Main Build Menu
+            if (keystate.IsKeyUp(Keys.Space) && oldKeyState.IsKeyDown(Keys.Space) && towerList.Count < maxTowerCount + 10)
+            {
+                buildMode = true;
+                mainBuildMode = true;
+            }
+            if (mainBuildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
+            {
+                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76)
+                {
+                    buildMode = false;
+                    mainBuildMode = false;
+                    createTower();
+                }
+                else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
+                {
+                    buildMode = false;
+                    mainBuildMode = false;
+                }
+                
+            }
+
+            if (keystate.IsKeyUp(Keys.Escape) && oldKeyState.IsKeyDown(Keys.Escape))
+            {
+                game.Exit();
             }
         }
 
@@ -390,7 +448,8 @@ namespace RTS
                 setPosition(new Vector2(100, graphicsDevice.Viewport.Height - 100));
             if (timesHit % 4 == 3)
                 setPosition(new Vector2(graphicsDevice.Viewport.Width - 100, graphicsDevice.Viewport.Height - 100));
-
+            buildMode = false;
+            mainBuildMode = false;
             spawnShield = true;
             
         }

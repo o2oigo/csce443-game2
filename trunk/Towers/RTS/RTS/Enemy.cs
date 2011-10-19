@@ -61,7 +61,7 @@ namespace RTS
 
             waypoints = new NodeList();
             path = new PathFinder();
-            range = 100;
+            range = 1000;
 
             this.map = map;
             path.Initialize(map);
