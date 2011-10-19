@@ -56,6 +56,7 @@ namespace RTS
         private Texture2D menu4Texture;
         private bool buildMode = false;
         private bool mainBuildMode = false;
+        private bool maxCapacityTower = false;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
         private List<Tower> towerList = new List<Tower>(5);
@@ -112,6 +113,8 @@ namespace RTS
                 tower.Draw(SB);
             }
 
+            
+
             if (buildMode == true && mainBuildMode == true)
             {
                 if (shootRotationAngle > -2.39 && shootRotationAngle < -0.93)
@@ -131,12 +134,19 @@ namespace RTS
                 }
             }
 
+            
+
            // spriteBatch.End();
         }
 
         public void Update(GameTime gameTime, List<Enemy> enemies)
         {
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (towerList.Count < 6)
+            {
+                maxCapacityTower = false;
+            }
            
             //Spawn Shield Timer
             if (spawnShield == true)
@@ -270,24 +280,29 @@ namespace RTS
             }
 
             //Open Main Build Menu
-            if (keystate.IsKeyUp(Keys.Space) && oldKeyState.IsKeyDown(Keys.Space) && towerList.Count < maxTowerCount + 10)
+            if (keystate.IsKeyUp(Keys.Space) && oldKeyState.IsKeyDown(Keys.Space))
             {
                 buildMode = true;
                 mainBuildMode = true;
             }
             if (mainBuildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
             {
-                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76)
+                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && towerList.Count < maxTowerCount + 7 && maxCapacityTower == false)
                 {
                     buildMode = false;
                     mainBuildMode = false;
                     createTower();
+                    if (towerList.Count == 6)
+                    {
+                        maxCapacityTower = true;
+                    }
                 }
                 else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
                 {
                     buildMode = false;
                     mainBuildMode = false;
                 }
+                
                 
             }
 
@@ -434,6 +449,11 @@ namespace RTS
         public float getShieldTimer()
         {
             return shieldTimer;
+        }
+
+        public bool getMaxTower()
+        {
+            return maxCapacityTower;
         }
 
         //If the player was hit by an enemy or projectile

@@ -230,8 +230,6 @@ F:\Game2\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cac
 F:\Game2\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 F:\Game2\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 F:\Game2\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
-F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\menu1.xnb
-F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\menu2.xnb
 F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
 F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
 F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
@@ -242,3 +240,46 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\can
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb
+F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb
+F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\RTS.exe
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\RTS.pdb
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\MapData.dll
+E:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\MapData.pdb
+E:\Game2\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Game2\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Game2\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
+E:\Game2\Tower Defense\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb

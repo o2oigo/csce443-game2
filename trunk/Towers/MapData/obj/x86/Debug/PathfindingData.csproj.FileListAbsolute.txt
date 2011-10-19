@@ -28,3 +28,9 @@ F:\Game2\Tower Defense\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cac
 F:\Game2\Tower Defense\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 F:\Game2\Tower Defense\Towers\MapData\obj\x86\Debug\MapData.dll
 F:\Game2\Tower Defense\Towers\MapData\obj\x86\Debug\MapData.pdb
+E:\Game2\Tower Defense\Towers\MapData\bin\x86\Debug\MapData.dll
+E:\Game2\Tower Defense\Towers\MapData\bin\x86\Debug\MapData.pdb
+E:\Game2\Tower Defense\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Game2\Tower Defense\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Game2\Tower Defense\Towers\MapData\obj\x86\Debug\MapData.dll
+E:\Game2\Tower Defense\Towers\MapData\obj\x86\Debug\MapData.pdb
