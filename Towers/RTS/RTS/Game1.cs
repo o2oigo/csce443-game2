@@ -27,18 +27,18 @@ namespace RTS
         float enemySpawnTime = 1f;
         Random rand = new Random();
         public ExplosionParticleSystem explosion;
-       // public ExplosionParticleSystem explosion2;
+        // public ExplosionParticleSystem explosion2;
         public ExplosionSmokeParticleSystem smoke;
 
-       // Dictionary<string, SoundEffect> music;
-       // SoundEffect tankSong;
-       // SoundEffectInstance songInstance;
+        // Dictionary<string, SoundEffect> music;
+        // SoundEffect tankSong;
+        // SoundEffectInstance songInstance;
 
         //
         //PATHFINDING//
-        //Map map;
-        //AI enemy;
-        //private Rectangle gameplayArea;
+        Map map;
+        AI enemy;
+        private Rectangle gameplayArea;
         //PATHFINDING//
 
         SpriteFont font;
@@ -59,8 +59,8 @@ namespace RTS
             Components.Add(smoke);
 
             //PATHFINDING//
-            //map = new Map();
-            //enemy = new AI();
+            map = new Map();
+            enemy = new AI();
             //PATHFINDING//
         }
 
@@ -80,11 +80,11 @@ namespace RTS
             base.Initialize();
 
             //PATHFINDING//
-            //gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
-            //map.UpdateMapViewport(gameplayArea);
-            //map.ReloadMap();
-            //map.UpdateMapViewport(gameplayArea);
-            //enemy.Initialize(map);
+            gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
+            map.UpdateMapViewport(gameplayArea);
+            map.ReloadMap();
+            map.UpdateMapViewport(gameplayArea);
+            enemy.Initialize(map);
             //PATHFINDING//
         }
 
@@ -98,7 +98,7 @@ namespace RTS
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             player1 = new Player();
-            player1.Initialize(this, PlayerIndex.One, new Vector2(100,100));
+            player1.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
             player1.LoadContent("TankPlayer");
 
             player2 = new Player();
@@ -112,15 +112,15 @@ namespace RTS
             players.Add(player2);
 
             //PATHFINDING//
-            //map.LoadContent(Content);
-            //enemy.LoadContent(Content);
+            map.LoadContent(Content);
+            enemy.LoadContent(Content);
             //PATHFINDING//
 
 
             backgroundTexture = Content.Load<Texture2D>("background");
             font = Content.Load<SpriteFont>("font");
 
-           // tankSong = Content.Load<SoundEffect>("2DTankPOM");
+            // tankSong = Content.Load<SoundEffect>("2DTankPOM");
             //music = new Dictionary<string, SoundEffect>();
             //music.Add("tankSong", tankSong);
             //songInstance = new SoundEffectInstance();
@@ -160,7 +160,7 @@ namespace RTS
 
             //Creates Enemies
             spawnEnemies(gameTime);
-            
+
             //Update Player
             foreach (Player player in players)
             {
@@ -172,14 +172,14 @@ namespace RTS
             {
                 //Get current enemy and update
                 Enemy currentEnemy = enemies[i];
-                currentEnemy.Update(gameTime, players);
+                currentEnemy.Update(gameTime, players[0].getTowers());
             }
 
             //Detect Collisions
             detectCollisions();
 
             //PATHFINDING//
-            //enemy.Update(gameTime);
+            enemy.Update(gameTime);
             ////PATHFINDING//
 
             //base.Update(gameTime);
@@ -194,17 +194,17 @@ namespace RTS
             spriteBatch.Begin();
 
             spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
-            for(int i = 0; i < enemies.Count; i++)
+            for (int i = 0; i < enemies.Count; i++)
                 enemies[i].Draw(spriteBatch);
             player1.Draw(spriteBatch);
-            player2.Draw(spriteBatch); 
+            player2.Draw(spriteBatch);
             drawText();
 
             spriteBatch.End();
 
             //PATHFINDING
-            //map.Draw(spriteBatch);
-            //enemy.Draw(spriteBatch);
+            map.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
             //PATHFINDING//
 
             base.Draw(gameTime);
@@ -217,8 +217,8 @@ namespace RTS
             {
                 int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
                 int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
-                Enemy spawn = new Enemy();      
-                spawn.Initialize(this, new Vector2(randWidth, randHeight));
+                Enemy spawn = new Enemy();
+                spawn.Initialize(this, new Vector2(randWidth, randHeight), map);
                 spawn.LoadContent("TankEnemy");
                 enemies.Add(spawn);
                 enemyTimer = 0;
@@ -244,12 +244,12 @@ namespace RTS
                     {
                         Projectile proj = currentEnemy.getProjectiles()[j];
                         Rectangle enemyProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
-                        
+
                         //Check if player is hit by any of current enemy's current projectile
                         if (playerRect.Intersects(enemyProjectileRect))
                         {
                             currentEnemy.getProjectiles().Remove(proj);
-                            if(player.isShielded() == false)
+                            if (player.isShielded() == false)
                                 player.Hit();
                         }
 
@@ -262,7 +262,7 @@ namespace RTS
                             {
                                 currentEnemy.getProjectiles().Remove(proj);
                                 tower.Hit();
-                                if(player.getTowers().Count != 0 && tower.isDead())
+                                if (player.getTowers().Count != 0 && tower.isDead())
                                 {
                                     player.getTowers().RemoveAt(k);
                                 }
@@ -328,7 +328,7 @@ namespace RTS
                 }
             }
         }
-    
+
 
         //Draw Text method for debugging / displaying
         public void drawText()
@@ -338,17 +338,17 @@ namespace RTS
 
             spriteBatch.DrawString(font, "Player 1", new Vector2(player1.getPosition().X - 8f * 5f, player1.getPosition().Y - player1.getTurretLength() - 30f), Color.MediumBlue);
             spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.Purple);
-            if(player1.isShielded())
+            if (player1.isShielded())
                 spriteBatch.DrawString(font, "Shield: " + (3 - (int)player1.getShieldTimer()), new Vector2(player1.getPosition().X - 9f * 5f, player1.getPosition().Y + player2.getTurretLength() + 10f), Color.MediumBlue);
             if (player2.isShielded())
                 spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.Purple);
 
             spriteBatch.DrawString(font, "Player 1 Kills      : " + player1.getEnemiesDestroyed(), new Vector2(10, 15), Color.White);
             spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
-            
+
             spriteBatch.DrawString(font, "Player 1 Tower Kills: " + player1.getTowerEnemiesDestroyed(), new Vector2(10, 35), Color.White);
             spriteBatch.DrawString(font, "Player 2 Tower Kills: " + player2.getTowerEnemiesDestroyed(), new Vector2(510, 35), Color.White);
-       
+
             spriteBatch.DrawString(font, "Player 1 Deaths     : " + player1.getTimesHit(), new Vector2(10, 55), Color.White);
             spriteBatch.DrawString(font, "Player 2 Deaths     : " + player2.getTimesHit(), new Vector2(510, 55), Color.White);
 
@@ -362,8 +362,8 @@ namespace RTS
                 spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);
                 spriteBatch.DrawString(font, "P2", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.Purple);
             }
-            
-           // spriteBatch.End();
+
+            // spriteBatch.End();
         }
     }
 }

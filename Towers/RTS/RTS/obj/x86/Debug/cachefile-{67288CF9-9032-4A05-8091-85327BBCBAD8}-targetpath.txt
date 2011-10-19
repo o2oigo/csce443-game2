@@ -15,6 +15,7 @@ Content\background.xnb
 Content\CrossHair1.xnb
 Content\TankPurple.xnb
 Content\TurretPurple.xnb
+Content\Tree2.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb
@@ -24,4 +25,3 @@ Content\Map1.xnb
 Content\Map2.xnb
 Content\Map3.xnb
 Content\Map4.xnb
-Content\Tree2.xnb
