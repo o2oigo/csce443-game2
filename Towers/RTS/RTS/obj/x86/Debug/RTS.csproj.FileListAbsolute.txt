@@ -236,3 +236,9 @@ F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
 F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
 F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
 F:\Game2\Tower Defense\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb

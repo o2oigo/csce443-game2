@@ -216,18 +216,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="menu1.png">
-      <Name>menu1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="menu2.png">
-      <Name>menu2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="buildTowerMenu.png">
       <Name>buildTowerMenu</Name>
       <Importer>TextureImporter</Importer>
@@ -245,6 +233,20 @@
     </Compile>
     <Compile Include="cancelMenuSelect.png">
       <Name>cancelMenuSelect</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="firestone.jpg">
+      <Name>firestone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="block.png">
+      <Name>block</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
