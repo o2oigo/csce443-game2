@@ -55,7 +55,7 @@ namespace RTS
 
             this.graphics.PreferredBackBufferHeight = 1080;
             this.graphics.PreferredBackBufferWidth = 1920;
-            //this.graphics.IsFullScreen = true;
+            this.graphics.IsFullScreen = true;
 
             explosion = new ExplosionParticleSystem(this, 1);
             Components.Add(explosion);
@@ -370,6 +370,7 @@ namespace RTS
         //Draw Text method for debugging / displaying
         public void drawText()
         {
+            int width = this.GraphicsDevice.Viewport.Width;
             //GamePadState gpstate = GamePad.GetState(PlayerIndex.One);
             //spriteBatch.Begin();
 
@@ -380,14 +381,18 @@ namespace RTS
           //  if (player2.isShielded())
           //      spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.Purple);
 
-            spriteBatch.DrawString(font, "Player 1 Kills      : " + player1.getEnemiesDestroyed(), new Vector2(10, 15), Color.White);
+            spriteBatch.DrawString(font, "Player 1 Kills      : " + player1.getEnemiesDestroyed(), new Vector2(width - 400, 15), Color.White);
         //    spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
 
-            spriteBatch.DrawString(font, "Player 1 Tower Kills: " + player1.getTowerEnemiesDestroyed(), new Vector2(10, 35), Color.White);
+            spriteBatch.DrawString(font, "Player 1 Tower Kills: " + player1.getTowerEnemiesDestroyed(), new Vector2(width - 400, 35), Color.White);
          //   spriteBatch.DrawString(font, "Player 2 Tower Kills: " + player2.getTowerEnemiesDestroyed(), new Vector2(510, 35), Color.White);
 
-            spriteBatch.DrawString(font, "Player 1 Deaths     : " + player1.getTimesHit(), new Vector2(10, 55), Color.White);
+            spriteBatch.DrawString(font, "Player 1 Deaths     : " + player1.getTimesHit(), new Vector2(width - 400, 55), Color.White);
          //   spriteBatch.DrawString(font, "Player 2 Deaths     : " + player2.getTimesHit(), new Vector2(510, 55), Color.White);
+            if (player1.getMaxTower() == true)
+            {
+                spriteBatch.DrawString(font, "Tower Limit Reach", new Vector2(500, 35), Color.White);
+            }
 
             foreach (Tower tower in player1.getTowers())
             {
