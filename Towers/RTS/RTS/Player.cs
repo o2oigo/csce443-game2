@@ -26,6 +26,7 @@ namespace RTS
         MouseState oldMousestate;
         GamePadState currentState;
         GamePadState oldState;
+        Map map;
 
         private float elapsedTime;
 
@@ -75,6 +76,7 @@ namespace RTS
             position = startPosition;
             playerIndex = index;
             currentState = GamePad.GetState(playerIndex);
+            map = game.Map;
         }
 
         public void LoadContent(String textureName)
@@ -225,7 +227,10 @@ namespace RTS
                 {
                     buildMode = false;
                     mainBuildMode = false;
-                    createTower();
+                    if (map.TileTypeAt(position) == MapTileType.MapBarrier)
+                    {
+                        createTower();
+                    }
                     if (towerList.Count == maxTowerCount)
                     {
                         maxCapacityTower = true;
@@ -310,7 +315,10 @@ namespace RTS
                 {
                     buildMode = false;
                     mainBuildMode = false;
-                    createTower();
+                    if (map.TileTypeAt(position) == MapTileType.MapBarrier)
+                    {
+                        createTower();
+                    }
                     if (towerList.Count == maxTowerCount)
                     {
                         maxCapacityTower = true;
