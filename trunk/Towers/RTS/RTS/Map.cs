@@ -127,14 +127,34 @@ namespace RTS
 
         #region Useful Game Methods
 
+        public string TileString(Vector2 coordinate)
+        {
+            int[] array = WorldToMap(coordinate);
+            if (mapTiles[array[0], array[1]] == MapTileType.MapBarrier)
+            {
+                return "BARRIER";
+            }
+            else return "EMPTY";
+        }
+
         public int[] WorldToMap(Vector2 coordinate)
         {
-            int column = ((int)coordinate.X / numberColumns*(int)tileSize) - 1;
-            int row = ((int)coordinate.Y / numberRows*(int)tileSize) - 1;
+            int column = (int)(coordinate.X / tileSize);
+            int row = (int)(coordinate.Y / tileSize);
 
-            int[] array = new int[2] {column, row};
-            return array;
-           // return mapTiles[column, row];
+
+            if (InMap(column, row))
+            {
+                int[] array = new int[2] { column, row };
+                return array;
+            }
+            else
+            {
+                int[] array = new int[2] { numberColumns - 1, numberRows - 1 };
+                return array;
+            }
+
+            // return mapTiles[column, row];
         }
 
         public MapTileType TileTypeAt(Vector2 coordinate)
@@ -143,14 +163,13 @@ namespace RTS
             return mapTiles[array[0], array[1]];
         }
 
-        public bool switchTileType(Vector2 coordinate,MapTileType type)
+        public bool switchTileType(Vector2 coordinate, MapTileType type)
         {
             int[] array = WorldToMap(coordinate);
             //TO ADD: check and return false if invalid
-            mapTiles[array[0],array[1]] = type;
+            mapTiles[array[0], array[1]] = type;
             return true;
         }
-
         #endregion
 
         #region PathFindingMethods

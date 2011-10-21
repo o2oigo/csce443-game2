@@ -399,7 +399,7 @@ namespace RTS
                // spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.MediumBlue);
                //d spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
             }
-
+            spriteBatch.DrawString(font, "TILE: " + map.TileString(new Vector2(player1.getPosition().X, player1.getPosition().Y)), new Vector2(500, 100), Color.MediumBlue);
           //  spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.White);
          //   foreach (Tower tower in player2.getTowers())
          //   {
