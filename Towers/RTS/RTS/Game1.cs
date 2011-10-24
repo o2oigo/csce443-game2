@@ -20,7 +20,7 @@ namespace RTS
         SpriteBatch spriteBatch;
         Texture2D backgroundTexture;
         Player player1;
-       // Player player2;
+        // Player player2;
         List<Enemy> enemies;
         List<Player> players;
         List<Stone> stones;
@@ -63,9 +63,7 @@ namespace RTS
             smoke = new ExplosionSmokeParticleSystem(this, 2);
             Components.Add(smoke);
 
-            //PATHFINDING//
             map = new Map();
-            //PATHFINDING//
         }
 
         public SpriteBatch getSpriteBatch()
@@ -104,16 +102,16 @@ namespace RTS
             player1.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
             player1.LoadContent("TankPlayer");
 
-           // player2 = new Player();
-           // player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
-           // player2.LoadContent("TankPurple");
+            // player2 = new Player();
+            // player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
+            // player2.LoadContent("TankPurple");
 
             enemies = new List<Enemy>(25);
             players = new List<Player>(4);
             stones = new List<Stone>();
 
             players.Add(player1);
-          //  players.Add(player2);
+            //  players.Add(player2);
 
             //PATHFINDING//
             map.LoadContent(Content);
@@ -202,21 +200,21 @@ namespace RTS
         protected override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-                spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
-                //PATHFINDING
-                map.Draw(spriteBatch);
-                //PATHFINDING//
+            spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
+            //PATHFINDING
+            map.Draw(spriteBatch);
+            //PATHFINDING//
 
-                for (int i = 0; i < enemies.Count; i++)
-                    enemies[i].Draw(spriteBatch);
-                player1.Draw(spriteBatch);
-                //player2.Draw(spriteBatch);
-                drawText();
+            for (int i = 0; i < enemies.Count; i++)
+                enemies[i].Draw(spriteBatch);
+            player1.Draw(spriteBatch);
+            //player2.Draw(spriteBatch);
+            drawText();
 
-                if (stones.Count() > 0)
-                {
-                    foreach (Stone i in stones) i.Draw(spriteBatch);
-                }
+            if (stones.Count() > 0)
+            {
+                foreach (Stone i in stones) i.Draw(spriteBatch);
+            }
             spriteBatch.End();
 
 
@@ -243,14 +241,14 @@ namespace RTS
             //COLLISION DETECTION
             foreach (Player player in players)
             {
-                Rectangle playerRect = new Rectangle((int)player.getPosition().X, (int)player.getPosition().Y, player.getTexture().Width, player.getTexture().Height);
+                Rectangle playerRect = new Rectangle((int)player.Position.X, (int)player.Position.Y, player.getTexture().Width, player.getTexture().Height);
 
                 //Loop through all enemies
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
-                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.getPosition().X, (int)currentEnemy.getPosition().Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
+                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.Position.X, (int)currentEnemy.Position.Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
                     //Loop through all of current enemies projectiles
                     for (int j = 0; j < currentEnemy.getProjectiles().Count; j++)
@@ -270,7 +268,7 @@ namespace RTS
                         for (int k = 0; k < player.getTowers().Count; k++)
                         {
                             Tower tower = player.getTowers()[k];
-                            Rectangle towerRect = new Rectangle((int)tower.getPosition().X, (int)tower.getPosition().Y, tower.getTexture().Width, tower.getTexture().Height);
+                            Rectangle towerRect = new Rectangle((int)tower.Position.X, (int)tower.Position.Y, tower.getTexture().Width, tower.getTexture().Height);
                             if (towerRect.Intersects(enemyProjectileRect))
                             {
                                 currentEnemy.getProjectiles().Remove(proj);
@@ -299,7 +297,7 @@ namespace RTS
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
-                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.getPosition().X, (int)currentEnemy.getPosition().Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
+                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.Position.X, (int)currentEnemy.Position.Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
                     //Check if current enemy is hit by any of player's projectiles
                     for (int j = 0; j < player.getProjectiles().Count; j++)
@@ -317,9 +315,10 @@ namespace RTS
                                 if (randNum < 4)
                                 {
                                     Stone newStone = new Stone();
-                                    newStone.Initialize(this, enemies[i].Location, randNum);
+                                    newStone.Initialize(this, enemies[i].Position, randNum);
                                     stones.Add(newStone);
                                 }
+                                Sprite.removeList(enemies[i]);
                                 enemies.RemoveAt(i);
                                 player.enemyDestroyed();
                             }
@@ -332,7 +331,7 @@ namespace RTS
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
-                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.getPosition().X, (int)currentEnemy.getPosition().Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
+                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.Position.X, (int)currentEnemy.Position.Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
                     //Check if current enemy is hit by any of player's tower's projectiles
                     for (int k = 0; k < player.getTowers().Count; k++)
@@ -353,9 +352,10 @@ namespace RTS
                                     if (randNum < 4)
                                     {
                                         Stone newStone = new Stone();
-                                        newStone.Initialize(this, enemies[i].Location, randNum);
+                                        newStone.Initialize(this, enemies[i].Position, randNum);
                                         stones.Add(newStone);
                                     }
+                                    Sprite.removeList(enemies[i]);
                                     enemies.RemoveAt(i);
                                     player.towerEnemyDestroyed();
                                 }
@@ -374,21 +374,21 @@ namespace RTS
             //GamePadState gpstate = GamePad.GetState(PlayerIndex.One);
             //spriteBatch.Begin();
 
-          //  spriteBatch.DrawString(font, "Player 1", new Vector2(player1.getPosition().X - 8f * 5f, player1.getPosition().Y - player1.getTurretLength() - 30f), Color.MediumBlue);
-         //   spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.Purple);
+            //  spriteBatch.DrawString(font, "Player 1", new Vector2(player1.getPosition().X - 8f * 5f, player1.getPosition().Y - player1.getTurretLength() - 30f), Color.MediumBlue);
+            //   spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.Purple);
             if (player1.isShielded())
-                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player1.getShieldTimer()), new Vector2(player1.getPosition().X - 9f * 5f, player1.getPosition().Y + player1.getTurretLength() + 10f), Color.MediumBlue);
-          //  if (player2.isShielded())
-          //      spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.Purple);
+                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player1.getShieldTimer()), new Vector2(player1.Position.X - 9f * 5f, player1.Position.Y + player1.getTurretLength() + 10f), Color.MediumBlue);
+            //  if (player2.isShielded())
+            //      spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.Purple);
 
             spriteBatch.DrawString(font, "Player 1 Kills      : " + player1.getEnemiesDestroyed(), new Vector2(width - 400, 15), Color.White);
-        //    spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
+            //    spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
 
             spriteBatch.DrawString(font, "Player 1 Tower Kills: " + player1.getTowerEnemiesDestroyed(), new Vector2(width - 400, 35), Color.White);
-         //   spriteBatch.DrawString(font, "Player 2 Tower Kills: " + player2.getTowerEnemiesDestroyed(), new Vector2(510, 35), Color.White);
+            //   spriteBatch.DrawString(font, "Player 2 Tower Kills: " + player2.getTowerEnemiesDestroyed(), new Vector2(510, 35), Color.White);
 
             spriteBatch.DrawString(font, "Player 1 Deaths     : " + player1.getTimesHit(), new Vector2(width - 400, 55), Color.White);
-         //   spriteBatch.DrawString(font, "Player 2 Deaths     : " + player2.getTimesHit(), new Vector2(510, 55), Color.White);
+            //   spriteBatch.DrawString(font, "Player 2 Deaths     : " + player2.getTimesHit(), new Vector2(510, 55), Color.White);
             if (player1.getMaxTower() == true)
             {
                 spriteBatch.DrawString(font, "Tower Limit Reach", new Vector2(500, 35), Color.White);
@@ -396,16 +396,17 @@ namespace RTS
 
             foreach (Tower tower in player1.getTowers())
             {
-               // spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.MediumBlue);
-               //d spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
+                // spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.MediumBlue);
+                //d spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
             }
-            spriteBatch.DrawString(font, "TILE: " + map.TileString(new Vector2(player1.getPosition().X, player1.getPosition().Y)), new Vector2(500, 100), Color.MediumBlue);
-          //  spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.White);
-         //   foreach (Tower tower in player2.getTowers())
-         //   {
-         //       spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);
-         //       spriteBatch.DrawString(font, "P2", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.Purple);
-         //   }
+            spriteBatch.DrawString(font, "TILE: " + map.TileString(new Vector2(player1.Position.X, player1.Position.Y)), new Vector2(500, 100), Color.MediumBlue);
+            spriteBatch.DrawString(font, "SPRITE COUNT: " + Sprite.objCount(), new Vector2(500, 150), Color.MediumBlue);
+            //  spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.White);
+            //   foreach (Tower tower in player2.getTowers())
+            //   {
+            //       spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);
+            //       spriteBatch.DrawString(font, "P2", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.Purple);
+            //   }
 
             // spriteBatch.End();
         }

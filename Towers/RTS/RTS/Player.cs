@@ -10,15 +10,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RTS
 {
-    class Player
+    class Player : Sprite
     {
-        Game1 game;
+        //Game1 game;
+        //ContentManager contentManager;
+        //GraphicsDevice graphicsDevice;
+        //SpriteBatch spriteBatch;
+        //Map map;
 
         PlayerIndex playerIndex;
-
-        ContentManager contentManager;
-        GraphicsDevice graphicsDevice;
-        SpriteBatch spriteBatch;
 
         KeyboardState keystate;
         KeyboardState oldKeyState;
@@ -26,14 +26,13 @@ namespace RTS
         MouseState oldMousestate;
         GamePadState currentState;
         GamePadState oldState;
-        Map map;
 
         private float elapsedTime;
 
-        private Vector2 position;
+        //private Vector2 position;
         private Vector2 mousePos;
-        private Vector2 origin;      
-        
+        private Vector2 origin;
+
         private double speed = 0;
         private int timesHit = 0;
 
@@ -42,7 +41,7 @@ namespace RTS
         private float shieldTimer = 0;
 
         private double moveRotationAngle;
-        private double shootRotationAngle;    
+        private double shootRotationAngle;
         private float xComponent = 0;
         private float yComponent = 0;
 
@@ -65,9 +64,9 @@ namespace RTS
         private int enemiesDestroyed = 0;
         private int towerEnemiesDestroyed = 0;
         private int maxTowerCount = 6;
-  
+
         private float circle = MathHelper.Pi * 2;
- 
+
         public void Initialize(Game1 game, PlayerIndex index, Vector2 startPosition)
         {
             this.game = game;
@@ -82,7 +81,7 @@ namespace RTS
         public void LoadContent(String textureName)
         {
             texture = contentManager.Load<Texture2D>(textureName);
-            if(playerIndex == PlayerIndex.One)
+            if (playerIndex == PlayerIndex.One)
                 turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
             else
                 turretTexture = contentManager.Load<Texture2D>("TurretPurple");
@@ -96,26 +95,26 @@ namespace RTS
             origin.Y = texture.Height / 2;
         }
 
-        public void Draw(SpriteBatch SB)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch = SB;
+            //spriteBatch = SB;
             //spriteBatch.Begin();
             if (!currentState.IsConnected)
             {
                 spriteBatch.Draw(mouseTexture, mousePos, null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
             }
-            spriteBatch.Draw(texture, position,null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
-            spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0,turretTexture.Height/2), 1.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             foreach (Projectile proj in projectileList)
             {
-                proj.Draw(SB);
+                proj.Draw(spriteBatch);
             }
             foreach (Tower tower in towerList)
             {
-                tower.Draw(SB);
+                tower.Draw(spriteBatch);
             }
 
-            
+
 
             if (buildMode == true && mainBuildMode == true)
             {
@@ -136,9 +135,9 @@ namespace RTS
                 }
             }
 
-            
 
-           // spriteBatch.End();
+
+            // spriteBatch.End();
         }
 
         public void Update(GameTime gameTime, List<Enemy> enemies)
@@ -149,7 +148,7 @@ namespace RTS
             {
                 maxCapacityTower = false;
             }
-           
+
             //Spawn Shield Timer
             if (spawnShield == true)
             {
@@ -163,16 +162,16 @@ namespace RTS
 
             // Get the game pad state.
             currentState = GamePad.GetState(playerIndex);
-            
+
             //Get Input
             if (currentState.IsConnected)//Game Pad
-                updateGamePad();  
+                updateGamePad();
             else //Keyboard and Mouse
-                updateKeyboard();     
+                updateKeyboard();
 
             //Update position based on speed and angle
             updateMovement();
-           
+
             //Update Projectiles
             updateProjectiles();
 
@@ -328,7 +327,7 @@ namespace RTS
                 {
                     buildMode = false;
                     mainBuildMode = false;
-                }    
+                }
             }
 
             if (keystate.IsKeyUp(Keys.Escape) && oldKeyState.IsKeyDown(Keys.Escape))
@@ -341,7 +340,7 @@ namespace RTS
         {
             position.X += (float)(Math.Cos(moveRotationAngle) * speed);
             position.Y += (float)(Math.Sin(moveRotationAngle) * speed);
-            
+
             //Movement boundaries for player (keeps player on screen)
             if (position.X > graphicsDevice.Viewport.Width)
                 position.X = graphicsDevice.Viewport.Width;
@@ -406,15 +405,15 @@ namespace RTS
             return texture;
         }
 
-        public void setPosition(Vector2 pos)
-        {
-            position = pos;
-        }
+        //public void setPosition(Vector2 pos)
+        //{
+        //    position = pos;
+        //}
 
-        public Vector2 getPosition()
-        {
-            return position;
-        }
+        //public Vector2 getPosition()
+        //{
+        //    return position;
+        //}
 
         public List<Tower> getTowers()
         {
@@ -486,17 +485,17 @@ namespace RTS
         {
             timesHit++;
             if (timesHit % 4 == 0)
-                setPosition(new Vector2(100, 100));
+                Position = new Vector2(100, 100);
             if (timesHit % 4 == 1)
-                setPosition(new Vector2(graphicsDevice.Viewport.Width - 100, 100));
+                Position = new Vector2(graphicsDevice.Viewport.Width - 100, 100);
             if (timesHit % 4 == 2)
-                setPosition(new Vector2(100, graphicsDevice.Viewport.Height - 100));
+                Position = new Vector2(100, graphicsDevice.Viewport.Height - 100);
             if (timesHit % 4 == 3)
-                setPosition(new Vector2(graphicsDevice.Viewport.Width - 100, graphicsDevice.Viewport.Height - 100));
+                Position = new Vector2(graphicsDevice.Viewport.Width - 100, graphicsDevice.Viewport.Height - 100);
             buildMode = false;
             mainBuildMode = false;
             spawnShield = true;
-            
+
         }
 
     }

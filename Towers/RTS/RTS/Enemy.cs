@@ -10,29 +10,34 @@ namespace RTS
 {
 
 
-    class Enemy
+    class Enemy : Sprite
     {
-        Game1 game;
+        //Game1 game;
         SpriteFont font;
-        ContentManager contentManager;
-        GraphicsDevice graphicsDevice;
-        SpriteBatch spriteBatch;
-
-        private Texture2D texture;
-        private Texture2D turretTexture;
-
+        //ContentManager contentManager;
+        //GraphicsDevice graphicsDevice;
+        //SpriteBatch spriteBatch;
         //private Vector2 position;
         //private int shotsTaken = 0;
         //private int shotsToDestroy = 2;
         //private double speed = 1.5;
+        //private Map map;
+
+        //different for different enemies
+        protected float hp;
+        protected int range;
+       // protected ElementType strongAgainst;
+        //protected ElementType weakAgainst;
+
+        private Texture2D texture;
+        private Texture2D turretTexture;
+        Random rand = new Random();
+        private PathFinder path;
+
         private Vector2 origin;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
 
-        Random rand = new Random();
-
-        private float hp = 100;
-        private int range;
         private bool dead = false;
         private float damageAlpha = 1.0f;
 
@@ -46,8 +51,6 @@ namespace RTS
         private float shootTimer = 1.6f;
         private float circle = MathHelper.Pi * 2;
 
-        private Map map;
-        private PathFinder path;
         const float atDestinationLimit = 5f;
 
         public void Initialize(Game1 game, Vector2 startPosition, Map map)
@@ -80,8 +83,8 @@ namespace RTS
         public void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            spriteBatch.Draw(texture, location, null, Color.White, (float)moveRotationAngle, origin, map.ScaleB, SpriteEffects.None, 0f);
-            spriteBatch.Draw(turretTexture, location, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);
@@ -113,8 +116,8 @@ namespace RTS
 
             foreach (Tower i in towers)
             {
-                //if (Vector2.Distance(this.location, i.getPosition()) < Vector2.Distance(this.location, i.getPosition()))
-                if (boundingCircle(this.location, range, i.getPosition()))
+                //if (Vector2.Distance(this.position, i.getPosition()) < Vector2.Distance(this.position, i.getPosition()))
+                if (boundingCircle(this.position, range, i.Position))
                 {
                     updateMovement(i);
 
@@ -124,12 +127,12 @@ namespace RTS
 
                         //Create new projectiles
                         Projectile projectile = new Projectile();
-                        projectile.Initialize(contentManager, graphicsDevice, location, (float)projectileRotationAngle, getTurretLength(), 6f);
+                        projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 6f);
                         projectile.LoadContent("ProjectileRed");
                         projectileList.Add(projectile);
 
                         //Add explosion to particle system
-                        game.explosion.AddParticles(new Vector2(location.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), location.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+                        game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
                         // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
                     }
                     break;
@@ -162,10 +165,10 @@ namespace RTS
 
                 if (!AtDestination)
                 {
-                    direction = -(location - destination);
+                    direction = -(position - destination);
 
                     direction.Normalize();
-                    location = location + (Direction *
+                    position = position + (Direction *
                         MoveSpeed * elapsedTime);
                 }
             }
@@ -180,7 +183,7 @@ namespace RTS
         public void updateMovement(Tower tower)
         {
             //Calculate Rotation Angles and Enemy Movement
-            playerRotationAngle = (Math.Atan2(tower.getPosition().Y - location.Y, tower.getPosition().X - location.X) + 2 * circle) % circle;
+            playerRotationAngle = (Math.Atan2(tower.Position.Y - position.Y, tower.Position.X - position.X) + 2 * circle) % circle;
             float difference = WrapAngle((float)playerRotationAngle - (float)moveRotationAngle);
             difference = MathHelper.Clamp(difference, -elapsedTime, elapsedTime);
             moveRotationAngle += difference;
@@ -191,12 +194,12 @@ namespace RTS
             //position.Y += (float)(Math.Sin(moveRotationAngle) * speed);
 
             //Shoot angle
-            shootRotationAngle = Math.Atan2(tower.getPosition().Y - location.Y, tower.getPosition().X - location.X);
+            shootRotationAngle = Math.Atan2(tower.Position.Y - position.Y, tower.Position.X - position.X);
 
             //Adjusted shoot angle with variation for bullet realism
             int xVariation = rand.Next(-100, 100);
             int yVariation = rand.Next(-100, 100);
-            projectileRotationAngle = Math.Atan2(tower.getPosition().Y + yVariation - location.Y, tower.getPosition().X + xVariation - location.X);
+            projectileRotationAngle = Math.Atan2(tower.Position.Y + yVariation - position.Y, tower.Position.X + xVariation - position.X);
         }
 
         public void updateProjectiles()
@@ -209,12 +212,12 @@ namespace RTS
             //
             //    //Create new projectiles
             //    //Projectile projectile = new Projectile();
-            //    //projectile.Initialize(contentManager, graphicsDevice, location, (float)projectileRotationAngle, getTurretLength(), 6f);
+            //    //projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 6f);
             //    //projectile.LoadContent("ProjectileRed");
             //    //projectileList.Add(projectile);
             //
             //    //Add explosion to particle system
-            //    //game.explosion.AddParticles(new Vector2(location.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), location.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+            //    //game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
             //    // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
             //}
 
@@ -260,10 +263,6 @@ namespace RTS
             return projectileList;
         }
 
-        public Vector2 getPosition()
-        {
-            return location;
-        }
 
         public float getProjectileCount()
         {
@@ -334,15 +333,9 @@ namespace RTS
             get { return moveSpeed; }
         }
 
-        private Vector2 location;
-        public Vector2 Location
-        {
-            get { return location; }
-        }
-
         public float DistanceToDestination
         {
-            get { return Vector2.Distance(location, destination); }
+            get { return Vector2.Distance(position, destination); }
         }
 
         public bool AtDestination
@@ -368,8 +361,8 @@ namespace RTS
             direction = Vector2.Zero;
             moving = false;
             Scale = map.Scale;
-            location = map.MapToWorld(map.StartTile, true);
-            destination = location;
+            position = map.MapToWorld(map.StartTile, true);
+            destination = position;
         }
 
         public bool boundingCircle(Vector2 V1, int radius, Vector2 V2)
