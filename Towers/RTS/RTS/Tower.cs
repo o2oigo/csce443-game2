@@ -13,12 +13,14 @@ namespace RTS
     {
         public float amount;
         public int level;
+        public ElementType type;
         public EnemyEffect effect;
 
-        public Damage(float amt, int lvl, EnemyEffect e)
+        public Damage(float amt, int lvl, ElementType t,EnemyEffect e)
         {
             amount = amt;
             level = lvl;
+            type = t;
             effect = e;
         }
     }
@@ -68,7 +70,7 @@ namespace RTS
             position = startPosition;
             currentState = GamePad.GetState(PlayerIndex.One);
             towerRange = Math.Max(graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width);
-            damage = new Damage(10, 1, new EnemyEffectBurn(game,5,1));
+            damage = new Damage(10, 1,ElementType.Fire, new EnemyEffectBurn(game,5,1));
         }
         
         public void LoadContent(String textureName)
