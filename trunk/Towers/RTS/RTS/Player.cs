@@ -95,7 +95,7 @@ namespace RTS
             origin.Y = texture.Height / 2;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             //spriteBatch = SB;
             //spriteBatch.Begin();
