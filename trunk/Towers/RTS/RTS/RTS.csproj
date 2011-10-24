@@ -107,11 +107,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyEffect.cs" />
     <Compile Include="ExplosionParticleSystem.cs" />
     <Compile Include="ExplosionSmokeParticleSystem.cs" />
+    <Compile Include="HiDefEnemy.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="NodeList.cs" />
     <Compile Include="Particle.cs" />

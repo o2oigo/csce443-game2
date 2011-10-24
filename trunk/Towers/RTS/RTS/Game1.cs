@@ -189,6 +189,7 @@ namespace RTS
             //Detect Collisions
             detectCollisions();
 
+            checkDeadEnemies();
 
             //base.Update(gameTime);
         }
@@ -312,19 +313,19 @@ namespace RTS
                         {
                             player.getProjectiles().Remove(proj);
                             currentEnemy.Hit(10.0f);
-                            if (enemies.Count != 0 && enemies[i].isDead())
-                            {
-                                int randNum = rand.Next(1, 10);
-                                if (randNum < 4)
-                                {
-                                    Stone newStone = new Stone();
-                                    newStone.Initialize(this, enemies[i].Position, randNum);
-                                    stones.Add(newStone);
-                                }
-                                Sprite.removeList(enemies[i]);
-                                enemies.RemoveAt(i);
-                                player.enemyDestroyed();
-                            }
+                            //if (enemies.Count != 0 && enemies[i].isDead())
+                            //{
+                            //    int randNum = rand.Next(1, 10);
+                            //    if (randNum < 4)
+                            //    {
+                            //        Stone newStone = new Stone();
+                            //        newStone.Initialize(this, enemies[i].Position, randNum);
+                            //        stones.Add(newStone);
+                            //    }
+                            //    Sprite.removeList(enemies[i]);
+                            //    enemies.RemoveAt(i);
+                            //    player.enemyDestroyed();
+                            //}
                         }
                     }
                 }
@@ -348,20 +349,20 @@ namespace RTS
                             if (currentEnemyRect.Intersects(towerProjectileRect))
                             {
                                 tower.getProjectiles().Remove(proj);
-                                currentEnemy.Hit(10.0f);
-                                if (enemies.Count != 0 && enemies[i].isDead())
-                                {
-                                    int randNum = rand.Next(1, 10);
-                                    if (randNum < 4)
-                                    {
-                                        Stone newStone = new Stone();
-                                        newStone.Initialize(this, enemies[i].Position, randNum);
-                                        stones.Add(newStone);
-                                    }
-                                    Sprite.removeList(enemies[i]);
-                                    enemies.RemoveAt(i);
-                                    player.towerEnemyDestroyed();
-                                }
+                                currentEnemy.Hit(tower.Damage);
+                                //if (enemies.Count != 0 && enemies[i].isDead())
+                                //{
+                                //    int randNum = rand.Next(1, 10);
+                                //    if (randNum < 4)
+                                //    {
+                                //        Stone newStone = new Stone();
+                                //        newStone.Initialize(this, enemies[i].Position, randNum);
+                                //        stones.Add(newStone);
+                                //    }
+                                //    Sprite.removeList(enemies[i]);
+                                //    enemies.RemoveAt(i);
+                                //    player.towerEnemyDestroyed();
+                                //}
                             }
                         }
                     }
@@ -369,7 +370,25 @@ namespace RTS
             }
         }
 
-
+        public void checkDeadEnemies()
+        {
+            for (int i=0; i<enemies.Count(); i++)
+            {
+                if (enemies[i].isDead())
+                {
+                    int randNum = rand.Next(1, 10);
+                    if (randNum < 4)
+                    {
+                        Stone newStone = new Stone();
+                        newStone.Initialize(this, enemies[i].Position, randNum);
+                        stones.Add(newStone);
+                    }
+                    Sprite.removeList(enemies[i]);
+                    enemies.RemoveAt(i);
+                   // player.enemyDestroyed();
+                }
+            }
+        }
         //Draw Text method for debugging / displaying
         public void drawText()
         {

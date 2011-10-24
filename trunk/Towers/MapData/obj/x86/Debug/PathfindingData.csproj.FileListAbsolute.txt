@@ -52,3 +52,9 @@ C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\MapData.dll
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\MapData.pdb
+C:\RTS\Towers\csce443-game2\Towers\MapData\bin\x86\Debug\MapData.dll
+C:\RTS\Towers\csce443-game2\Towers\MapData\bin\x86\Debug\MapData.pdb
+C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\MapData.dll
+C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\MapData.pdb

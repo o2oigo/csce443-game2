@@ -29,7 +29,6 @@ namespace RTS
                 return true;
             else return false;
         }
-
     }
 
     class EnemyEffectBurn : EnemyEffect
