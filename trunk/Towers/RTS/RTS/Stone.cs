@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    public enum StoneType
+    public enum ElementType
     {
         Fire,
         Water,
@@ -26,8 +26,8 @@ namespace RTS
             get { return stoneTexture; }
         }
 
-        private StoneType type;
-        public StoneType Type
+        private ElementType type;
+        public ElementType Type
         {
             get { return type; }
         }
@@ -56,7 +56,7 @@ namespace RTS
             contentManager = game.Content;
             position = startPosition;
             map = game.Map;
-            this.type = (StoneType)Enum.ToObject(typeof(StoneType), type);
+            this.type = (ElementType)Enum.ToObject(typeof(ElementType), type);
             appear = true;
 
             LoadContent();
@@ -72,13 +72,13 @@ namespace RTS
         {
             switch (type)
             {
-                case StoneType.Fire:
+                case ElementType.Fire:
                     stoneTexture = contentManager.Load<Texture2D>("firestone");
                     break;
-                case StoneType.Water:
+                case ElementType.Water:
                     stoneTexture = contentManager.Load<Texture2D>("firestone");
                     break;
-                case StoneType.Heal:
+                case ElementType.Heal:
                     stoneTexture = contentManager.Load<Texture2D>("firestone");
                     break;
                 default:

@@ -8,6 +8,14 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
+    struct Damage
+    {
+        public float amount;
+        public ElementType type;
+        public int level;
+        public EnemyEffect effect;
+    }
+
     class Projectile
     {
         ContentManager contentManager;

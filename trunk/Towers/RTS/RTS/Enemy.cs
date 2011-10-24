@@ -26,6 +26,7 @@ namespace RTS
         //different for different enemies
         protected float hp;
         protected int range;
+        protected EnemyEffect effect = null;
        // protected ElementType strongAgainst;
         //protected ElementType weakAgainst;
 
@@ -108,6 +109,14 @@ namespace RTS
             //
             ////Create and update projectiles (shoot)
             //updateProjectiles();
+
+            if (effect != null)
+            {
+                effect.applyEffects(this);
+                if (!effect.isValid(gameTime)) effect = null;
+
+            }
+
 
             float facingDirection = (float)Math.Atan2(
             Direction.Y, Direction.X);
@@ -292,6 +301,27 @@ namespace RTS
                 dead = true;
         }
 
+        public void Hit(Damage damage)
+        {
+            hp -= damage.amount;
+
+            if (effect != null && damage.effect != null)
+            {
+                effect = damage.effect;
+            }
+
+            if (hp <= 0)
+                dead = true;
+        }
+
+        public void effectDamage(int burnDmg)
+        {
+            hp -= burnDmg;
+            if (hp <= 0)
+                dead = true;
+
+        }
+
         public bool isDead()
         {
             return dead;
@@ -367,10 +397,8 @@ namespace RTS
 
         public bool boundingCircle(Vector2 V1, int radius, Vector2 V2)
         {
-            // Vector2 V1 = new Vector2(x1, y1); // reference point 1
-            //Vector2 V2 = new Vector2(x2, y2); // reference point 2
-            Vector2 Distance = V1 - V2; // get the distance between the two reference points
-            if (Distance.Length() < radius) // if the distance is less than the diameter
+            Vector2 Distance = V1 - V2; 
+            if (Distance.Length() < radius)
                 return true;
 
             return false;
