@@ -8,13 +8,6 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    struct Damage
-    {
-        public float amount;
-        public ElementType type;
-        public int level;
-        public EnemyEffect effect;
-    }
 
     class Projectile
     {
@@ -39,7 +32,6 @@ namespace RTS
             this.contentManager = CM;
             this.graphicsDevice = GD;
             //spriteBatch = new SpriteBatch(graphicsDevice);
-            
         }
 
         public void LoadContent(String textureName)

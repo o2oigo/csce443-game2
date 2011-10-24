@@ -9,28 +9,25 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
+    struct Damage
+    {
+        public float amount;
+        public int level;
+        public EnemyEffect effect;
+
+        public Damage(float amt, int lvl, EnemyEffect e)
+        {
+            amount = amt;
+            level = lvl;
+            effect = e;
+        }
+    }
+
     class Tower : Sprite
     {
-        //Game1 game;
-        //
-        //ContentManager contentManager;
-        //GraphicsDevice graphicsDevice;
-        //SpriteBatch spriteBatch;
-        //KeyboardState keystate;
-        //KeyboardState oldKeyState;
-        //MouseState mousestate;
-        //MouseState oldMousestate;
         GamePadState currentState;
-        //GamePadState oldState;
-        //private double speed = 0;
-        //private int timesHit = 0;
-        //private float xComponent = 0;
-        //private float yComponent = 0;
-        //private float circle = MathHelper.Pi * 2;
 
         private float elapsedTime;
-
-        //private Vector2 position;
         private Vector2 origin;
         private PlayerIndex playerIndex;
 
@@ -50,6 +47,12 @@ namespace RTS
 
         private List<Projectile> projectileList = new List<Projectile>(5);
 
+        private Damage damage;
+        public Damage Damage
+        {
+            get { return damage; }
+        }
+
         public Tower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition)
         {
             this.playerIndex = playerIndex;
@@ -65,10 +68,9 @@ namespace RTS
             position = startPosition;
             currentState = GamePad.GetState(PlayerIndex.One);
             towerRange = Math.Max(graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width);
-
-            //AddList(this);
+            damage = new Damage(10, 1, new EnemyEffectBurn(game,5,1));
         }
-
+        
         public void LoadContent(String textureName)
         {
             texture = contentManager.Load<Texture2D>(textureName);
@@ -77,10 +79,9 @@ namespace RTS
             origin.Y = texture.Height / 2;
         }
 
-        public void Draw(SpriteBatch SB)
+        public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            // spriteBatch.Begin();
             spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
             spriteBatch.Draw(turretTexture, new Vector2(position.X, position.Y - 25), null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
 
@@ -88,8 +89,6 @@ namespace RTS
             {
                 proj.Draw(spriteBatch);
             }
-
-            //spriteBatch.End();
         }
 
         public void Update(GameTime gameTime, List<Enemy> enemies)

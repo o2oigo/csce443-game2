@@ -109,10 +109,10 @@ namespace RTS
             {
                 proj.Draw(spriteBatch);
             }
-            foreach (Tower tower in towerList)
-            {
-                tower.Draw(spriteBatch);
-            }
+            //foreach (Tower tower in towerList)
+            //{
+            //    tower.Draw(spriteBatch);
+            //}
 
 
 
