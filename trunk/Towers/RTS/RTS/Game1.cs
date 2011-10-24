@@ -279,7 +279,9 @@ namespace RTS
                                 tower.Hit();
                                 if (player.getTowers().Count != 0 && tower.isDead())
                                 {
+                                    Sprite.removeList(tower);
                                     player.getTowers().RemoveAt(k);
+
                                 }
                             }
                         }

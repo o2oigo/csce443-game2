@@ -17,6 +17,9 @@ namespace RTS
         //different for different enemies
         protected float hp;
         protected int range;
+        protected ElementType weakAgainst;
+        protected ElementType strongAgainst;
+        protected float dmgOffset = 1.0f;
 
         protected EnemyEffect effect = null;
 
@@ -51,8 +54,13 @@ namespace RTS
 
             waypoints = new NodeList();
             path = new PathFinder();
+
+            //change for diff enemies later
             range = 200;
             hp = 100;
+            weakAgainst = ElementType.Water;
+            strongAgainst = ElementType.Fire;
+
 
             this.map = map;
             path.Initialize(map);
@@ -263,7 +271,21 @@ namespace RTS
 
         public void Hit(Damage damage)
         {
-            hp -= damage.amount;
+
+            if (damage.type == weakAgainst)
+            {
+                dmgOffset = 1.5f;
+            }
+            else if (damage.type == strongAgainst)
+            {
+                dmgOffset = 0.5f;
+            }
+            else
+            {
+                dmgOffset = 1.0f;
+            }
+
+            hp -= damage.amount*dmgOffset;
 
             if (effect == null && damage.effect != null)
             {
@@ -276,7 +298,7 @@ namespace RTS
 
         public void effectDamage(int burnDmg)
         {
-            hp -= burnDmg;
+            hp -= burnDmg*dmgOffset;
             if (hp <= 0)
                 dead = true;
         }
