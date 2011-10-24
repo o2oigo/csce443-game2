@@ -63,6 +63,7 @@ namespace RTS
             waypoints = new NodeList();
             path = new PathFinder();
             range = 200;
+            hp = 100;
 
             this.map = map;
             path.Initialize(map);
@@ -81,7 +82,7 @@ namespace RTS
             font = contentManager.Load<SpriteFont>("font");
         }
 
-        public void Draw(SpriteBatch SB)
+        public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
             spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, map.ScaleB, SpriteEffects.None, 0f);

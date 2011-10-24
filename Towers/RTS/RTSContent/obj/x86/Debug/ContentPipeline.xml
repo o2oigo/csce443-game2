@@ -261,7 +261,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb</Output>
-      <Time>2011-10-24T14:06:55.0971255+08:00</Time>
+      <Time>2011-10-24T15:22:04.2650351+08:00</Time>
     </Item>
     <Item>
       <Source>Map2.xml</Source>
@@ -270,7 +270,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb</Output>
-      <Time>2011-10-24T14:06:55.1791301+08:00</Time>
+      <Time>2011-10-24T15:22:22.9821057+08:00</Time>
     </Item>
     <Item>
       <Source>Map3.xml</Source>
@@ -279,7 +279,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb</Output>
-      <Time>2011-10-24T14:06:55.2561346+08:00</Time>
+      <Time>2011-10-24T15:22:22.9521039+08:00</Time>
     </Item>
     <Item>
       <Source>Map4.xml</Source>
@@ -288,7 +288,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb</Output>
-      <Time>2011-10-24T14:06:55.3711411+08:00</Time>
+      <Time>2011-10-24T15:22:22.9281026+08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -328,7 +328,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\bin\x86\Debug\MapData.dll</Key>
-        <Value>2011-10-24T14:07:47.1931052+08:00</Value>
+        <Value>2011-10-24T15:21:07.9608147+08:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>

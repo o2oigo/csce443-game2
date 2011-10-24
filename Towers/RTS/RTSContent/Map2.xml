@@ -25,5 +25,9 @@
 	  5 7
 	  4 7
   </Barriers>
+    <Trees>
+    </Trees>
+    <Buildings>
+    </Buildings>
   </Asset>
 </XnaContent>

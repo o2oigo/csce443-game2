@@ -25,6 +25,10 @@ namespace PathfindingData
         public Point Start;
         public Point End;
         public List<Point> Barriers;
+        public List<Point> Trees;
+        public List<Point> Buildings;
+
+
 
         public MapData()
         {
@@ -32,13 +36,15 @@ namespace PathfindingData
 
         public MapData(
             int columns, int rows, Point startPosition,
-            Point endPosition, List<Point> barriersList)
+            Point endPosition, List<Point> barriersList, List<Point> treesList, List<Point> buildingList)
         {
             NumberColumns = columns;
             NumberRows = rows;
             Start = startPosition;
             End = endPosition;
             Barriers = barriersList;
+            Trees = treesList;
+            Buildings = buildingList;
         }
     }
 }

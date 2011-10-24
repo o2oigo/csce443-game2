@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    class Sprite
+    abstract class Sprite
     {
         protected Game1 game;
         protected ContentManager contentManager;
@@ -23,7 +23,22 @@ namespace RTS
             set { position = value; }
         }
 
-        public Sprite() { }
+        public Sprite() {
+            addList(this);
+        }
+
+        public static void DrawT(SpriteBatch spriteBatch)
+        {
+            //TODO: sort allObjects
+            for (int i = 0; i < allObjects.Count(); i++)
+            {
+                allObjects[i].Draw(spriteBatch);
+            }
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+        }
 
         public static List<Sprite> allObjects = new List<Sprite>();
 

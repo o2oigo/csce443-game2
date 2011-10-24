@@ -205,9 +205,12 @@ namespace RTS
             map.Draw(spriteBatch);
             //PATHFINDING//
 
-            for (int i = 0; i < enemies.Count; i++)
-                enemies[i].Draw(spriteBatch);
-            player1.Draw(spriteBatch);
+            //for (int i = 0; i < enemies.Count; i++)
+            //    enemies[i].Draw(spriteBatch);
+            //player1.Draw(spriteBatch);
+
+            Sprite.DrawT(spriteBatch);
+
             //player2.Draw(spriteBatch);
             drawText();
 

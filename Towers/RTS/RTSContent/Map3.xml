@@ -6,5 +6,9 @@
   <Start>0 1</Start>
   <End>4 1</End>
   <Barriers />
+    <Trees>
+    </Trees>
+    <Buildings>
+    </Buildings>
   </Asset>
 </XnaContent>
