@@ -37,9 +37,14 @@ namespace RTS
         private float towerRange = 0;
         private float shootElapsedTime = 0;
 
+        SpriteFont font;
         private int shotsTaken = 0;
         private int shotsToDestroy = 4;
         private bool dead = false;
+        private bool playerIsNear = false;
+        private string level = "level 1";
+        private string towerName = "Arrow Tower";
+        private int attackDamage = 25;
 
         private double moveRotationAngle = 0;
         private double shootRotationAngle = 0;
@@ -77,6 +82,7 @@ namespace RTS
         {
             texture = contentManager.Load<Texture2D>(textureName);
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
+            font = contentManager.Load<SpriteFont>("font");
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
         }
@@ -86,7 +92,9 @@ namespace RTS
             spriteBatch = SB;
             spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
             spriteBatch.Draw(turretTexture, new Vector2(position.X, position.Y - 25), null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
-
+            spriteBatch.DrawString(font, towerName, new Vector2(position.X - 50, position.Y - 70), Color.White);
+            spriteBatch.DrawString(font, level, new Vector2(position.X - 40, position.Y - 50), Color.White);
+            
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);
@@ -213,6 +221,50 @@ namespace RTS
         public int getShotsToDestroy()
         {
             return shotsToDestroy;
+        }
+
+        public int getAttackDamage()
+        {
+            return attackDamage;
+        }
+
+        public void setToLvlTwo()
+        {
+
+            shotsToDestroy = 100;
+            attackDamage = 50;
+            level = "level 2";
+
+        }
+
+        public void setPlayerIsNear(bool _playerIsNear)
+        {
+            playerIsNear = _playerIsNear;
+        }
+
+        public bool getPlayerIsNear()
+        {
+            return playerIsNear;
+        }
+
+        public void setTowerName(string _towerName)
+        {
+            towerName = _towerName;
+        }
+
+        public string getTowerName()
+        {
+            return towerName;
+        }
+
+        public void setTowerLvl(string _level)
+        {
+            level = _level;
+        }
+
+        public string getTowerLvl()
+        {
+            return level;
         }
 
     }

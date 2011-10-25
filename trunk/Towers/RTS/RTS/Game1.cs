@@ -247,6 +247,23 @@ namespace RTS
             {
                 Rectangle playerRect = new Rectangle((int)player.Position.X, (int)player.Position.Y, player.getTexture().Width, player.getTexture().Height);
 
+                //Loop through all player's tower
+                for (int k = 0; k < player.getTowers().Count; k++)
+                {
+                    Tower tower = player.getTowers()[k];
+                    Rectangle towerRect = new Rectangle((int)tower.Position.X, (int)tower.Position.Y, tower.getTexture().Width, tower.getTexture().Height);
+
+                    //Check if player stand near a tower
+                    if (towerRect.Intersects(playerRect))
+                    {
+                        tower.setPlayerIsNear(true);
+                    }
+                    else
+                    {
+                        tower.setPlayerIsNear(false);
+                    }
+                }
+
                 //Loop through all enemies
                 for (int i = 0; i < enemies.Count; i++)
                 {
@@ -420,6 +437,8 @@ namespace RTS
 
             foreach (Tower tower in player1.getTowers())
             {
+                if (tower.getPlayerIsNear() == true)
+                    spriteBatch.DrawString(font, "Player near tower", new Vector2(500, 55), Color.White);
                 // spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.MediumBlue);
                 //d spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
             }

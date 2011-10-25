@@ -58,3 +58,9 @@ C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\ResolveAssemblyReferenc
 C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\MapData.dll
 C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\MapData.pdb
+E:\Game2\Tower Defence\Towers\MapData\bin\x86\Debug\MapData.dll
+E:\Game2\Tower Defence\Towers\MapData\bin\x86\Debug\MapData.pdb
+E:\Game2\Tower Defence\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Game2\Tower Defence\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Game2\Tower Defence\Towers\MapData\obj\x86\Debug\MapData.dll
+E:\Game2\Tower Defence\Towers\MapData\obj\x86\Debug\MapData.pdb
