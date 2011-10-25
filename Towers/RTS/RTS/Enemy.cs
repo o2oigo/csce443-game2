@@ -33,6 +33,7 @@ namespace RTS
         private List<Projectile> projectileList = new List<Projectile>(5);
 
         private bool dead = false;
+        private Point startTile; 
 
         private double moveRotationAngle;
         private double shootRotationAngle;
@@ -63,10 +64,13 @@ namespace RTS
 
 
             this.map = map;
+            int randomNum = rand.Next(0, map.StartTile.Count());
+            startTile = map.StartTile[randomNum]; 
+
             path.Initialize(map);
 
             Reset();
-            path.Reset();
+            path.Reset(startTile);
             path.IsSearching = !path.IsSearching;
         }
 
@@ -372,7 +376,7 @@ namespace RTS
             direction = Vector2.Zero;
             moving = false;
             Scale = map.Scale;
-            position = map.MapToWorld(map.StartTile, true);
+            position = map.MapToWorld(startTile, true);
             destination = position;
         }
 
