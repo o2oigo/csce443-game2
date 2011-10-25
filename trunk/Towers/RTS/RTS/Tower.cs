@@ -75,6 +75,7 @@ namespace RTS
             position = startPosition;
             currentState = GamePad.GetState(PlayerIndex.One);
             towerRange = Math.Max(graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width);
+            map = game.Map;
             damage = new Damage(10, 1,ElementType.Fire, new EnemyEffectBurn(game,5,1));
         }
         
@@ -91,7 +92,7 @@ namespace RTS
         {
             spriteBatch = SB;
             spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
-            spriteBatch.Draw(turretTexture, new Vector2(position.X, position.Y - 25), null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(turretTexture, new Vector2(position.X, position.Y - 25), null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, towerName, new Vector2(position.X - 50, position.Y - 70), Color.White);
             spriteBatch.DrawString(font, level, new Vector2(position.X - 40, position.Y - 50), Color.White);
             

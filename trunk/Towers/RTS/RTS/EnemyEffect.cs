@@ -33,7 +33,13 @@ namespace RTS
 
     class EnemyEffectBurn : EnemyEffect
     {
-        protected int burnDmg;
+        protected float burnDmg;
+        protected float offset = 1.0f;
+        public float Offset
+        {
+            get { return offset; }
+            set { offset = value; }
+        }
 
         public EnemyEffectBurn(Game1 game, int duration, int burnDmg)
         {
@@ -44,7 +50,7 @@ namespace RTS
 
         public override void applyEffects(Enemy enemy)
         {
-            enemy.effectDamage(burnDmg);
+            enemy.effectDamage(burnDmg*offset);
         }
         public override void undoEffect(Enemy enemy)
         {
