@@ -56,14 +56,15 @@ namespace RTS
         private Texture2D menu4Texture;
         private bool buildMode = false;
         private bool mainBuildMode = false;
+        private bool upgradeBuildMode = false;
         private bool maxCapacityTower = false;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
-        private List<Tower> towerList = new List<Tower>(5);
+        private List<Tower> towerList = new List<Tower>(100);
 
         private int enemiesDestroyed = 0;
         private int towerEnemiesDestroyed = 0;
-        private int maxTowerCount = 6;
+        private int maxTowerCount = 10;
 
         private float circle = MathHelper.Pi * 2;
 
@@ -114,6 +115,16 @@ namespace RTS
             //    tower.Draw(spriteBatch);
             //}
 
+            upgradeBuildMode = false;
+            foreach (Tower tower in towerList)
+            {
+                //Set upgrade mode if near tower
+                if (tower.getPlayerIsNear() == true)
+                {
+                    upgradeBuildMode = true;
+                }
+                tower.Draw(spriteBatch);
+            }
 
 
             if (buildMode == true && mainBuildMode == true)
@@ -325,6 +336,32 @@ namespace RTS
                 }
                 else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
                 {
+                    buildMode = false;
+                    mainBuildMode = false;
+                }
+
+                else if (shootRotationAngle >= -0.93 && shootRotationAngle <= 0.55)
+                {
+                    for (int i = 0; i < towerList.Count(); i++)
+                    {
+                        if (towerList[i].getPlayerIsNear() == true)
+                            towerList[i].setToLvlTwo();
+
+                    }
+                    buildMode = false;
+                    mainBuildMode = false;
+                }
+
+                else
+                {
+                    for (int i = 0; i < towerList.Count(); i++)
+                    {
+                        if (towerList[i].getPlayerIsNear() == true)
+                        {
+                            Sprite.removeList(towerList[i]);
+                            towerList.RemoveAt(i);
+                        }
+                    }
                     buildMode = false;
                     mainBuildMode = false;
                 }
