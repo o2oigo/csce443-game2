@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <XnaContent>
   <Asset Type="PathfindingData.MapData">
-	  <NumberRows>10</NumberRows>
-	  <NumberColumns>16</NumberColumns>
+	  <NumberRows>30</NumberRows>
+	  <NumberColumns>48</NumberColumns>
   <Start>0 0 7 0 0 8</Start>
   <End>6 8</End>
   <Barriers>
@@ -26,7 +26,7 @@
                            5 8                                                    15 8
   
   0 9  1 9  2 9  3 9  4 9  5 9  6 9  7 9  8 9  9 9  10 9  11 9  12 9  13 9  14 9  15 9
-  
+  47 29
  
   </Barriers>
   <Trees>

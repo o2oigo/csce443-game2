@@ -27,6 +27,8 @@ namespace RTS
         float enemyTimer = 0;
         float enemySpawnTime = 1f;
         Random rand = new Random();
+        SpriteFont font;
+
         public ExplosionParticleSystem explosion;
         // public ExplosionParticleSystem explosion2;
         public ExplosionSmokeParticleSystem smoke;
@@ -35,18 +37,12 @@ namespace RTS
         // SoundEffect tankSong;
         // SoundEffectInstance songInstance;
 
-        //
-
-
         private Map map;
         public Map Map
         {
             get { return map; }
         }
         private Rectangle gameplayArea;
-
-
-        SpriteFont font;
 
         public Game1()
         {
