@@ -58,7 +58,7 @@ namespace RTS
         private Map map;
         // Seconds per search step        
         public float timeStep = 0.1f;
-
+        Random rand = new Random();
 
         #region Properties
 
@@ -149,16 +149,19 @@ namespace RTS
             }
         }
 
-        public void Reset()
+        public void Reset(Point start)
         {
+            //int randomNum = rand.Next(0, map.StartTile.Count());
+
+ 
             searchStatus = SearchStatus.Stopped;
             //totalSearchSteps = 0;
             //Scale = map.Scale;
             openList.Clear();
             closedList.Clear();
             paths.Clear();
-            openList.Add(new SearchNode(map.StartTile,
-                Map.StepDistance(map.StartTile, map.EndTile)
+            openList.Add(new SearchNode(start,
+                Map.StepDistance(start, map.EndTile)
                 , 0));
         }
 

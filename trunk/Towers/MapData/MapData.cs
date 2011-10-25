@@ -22,7 +22,7 @@ namespace PathfindingData
     {
         public int NumberRows;
         public int NumberColumns;
-        public Point Start;
+        public List<Point> Start;
         public Point End;
         public List<Point> Barriers;
         public List<Point> Trees;
@@ -35,7 +35,7 @@ namespace PathfindingData
         }
 
         public MapData(
-            int columns, int rows, Point startPosition,
+            int columns, int rows, List<Point> startPosition,
             Point endPosition, List<Point> barriersList, List<Point> treesList, List<Point> buildingList)
         {
             NumberColumns = columns;

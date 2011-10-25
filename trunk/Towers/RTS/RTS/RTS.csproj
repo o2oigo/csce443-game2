@@ -111,7 +111,6 @@
     <Compile Include="EnemyEffect.cs" />
     <Compile Include="ExplosionParticleSystem.cs" />
     <Compile Include="ExplosionSmokeParticleSystem.cs" />
-    <Compile Include="HiDefEnemy.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="NodeList.cs" />
     <Compile Include="Particle.cs" />

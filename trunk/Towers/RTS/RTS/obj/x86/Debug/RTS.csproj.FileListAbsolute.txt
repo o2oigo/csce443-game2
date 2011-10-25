@@ -381,3 +381,10 @@ C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb
+E:\GameProj2\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
+E:\GameProj2\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
+E:\GameProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
+E:\GameProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
+E:\GameProj2\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb
+E:\GameProj2\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb
+E:\GameProj2\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb

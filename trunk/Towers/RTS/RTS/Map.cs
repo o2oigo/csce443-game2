@@ -42,11 +42,11 @@ namespace RTS
         }
         private float tileSize;
 
-        public Point StartTile
+        public List<Point> StartTile
         {
             get { return startTile; }
         }
-        private Point startTile;
+        private List<Point> startTile;
 
         public float Scale
         {
@@ -267,8 +267,12 @@ namespace RTS
 
             mapTiles = new MapTileType[maps[currentMap].NumberColumns, maps[currentMap].NumberRows];
 
+
             startTile = maps[currentMap].Start;
-            mapTiles[startTile.X, startTile.Y] = MapTileType.MapStart;
+            foreach (Point i in startTile)
+            {
+                mapTiles[i.X, i.Y] = MapTileType.MapStart;
+            }
 
             endTile = maps[currentMap].End;
             mapTiles[endTile.X, endTile.Y] = MapTileType.MapExit;
