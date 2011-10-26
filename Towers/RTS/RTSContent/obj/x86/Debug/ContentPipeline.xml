@@ -279,7 +279,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\RTS\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb</Output>
-      <Time>2011-10-25T23:10:51.1167655-05:00</Time>
+      <Time>2011-10-25T23:12:12.9079438-05:00</Time>
     </Item>
     <Item>
       <Source>Map2.xml</Source>
