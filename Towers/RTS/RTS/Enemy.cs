@@ -144,8 +144,8 @@ namespace RTS
         public void Initialize(Game1 game, Vector2 startPosition, Map map)
         {
             this.game = game;
-            contentManager = game.Content;
-            graphicsDevice = game.GraphicsDevice;
+            this.contentManager = game.Content;
+            this.graphicsDevice = game.GraphicsDevice;
 
             waypoints = new NodeList();
             path = new PathFinder();
@@ -227,7 +227,7 @@ namespace RTS
                         projectileList.Add(projectile);
 
                         //Add explosion to particle system
-                        game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+                        game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
                         // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
                     }
                     break;

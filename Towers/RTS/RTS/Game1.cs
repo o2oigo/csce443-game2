@@ -39,6 +39,7 @@ namespace RTS
         // SoundEffectInstance songInstance;
 
         private Map map;
+        
         public Map Map
         {
             get { return map; }
@@ -53,14 +54,16 @@ namespace RTS
             this.graphics.PreferredBackBufferHeight = 1080;
             this.graphics.PreferredBackBufferWidth = 1920;
             this.graphics.IsFullScreen = true;
+            
+            map = new Map();
 
-            explosion = new ExplosionParticleSystem(this, 1);
+            explosion = new ExplosionParticleSystem(this, 2000);
             Components.Add(explosion);
 
             smoke = new ExplosionSmokeParticleSystem(this, 2);
             Components.Add(smoke);
 
-            map = new Map();
+            
         }
 
         public SpriteBatch getSpriteBatch()
@@ -114,7 +117,6 @@ namespace RTS
             map.LoadContent(Content);
             //PATHFINDING//
 
-
             backgroundTexture = Content.Load<Texture2D>("background");
             font = Content.Load<SpriteFont>("font");
             treeTexture = Content.Load<Texture2D>("tree1");
@@ -151,6 +153,8 @@ namespace RTS
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+
+            explosion.Update(gameTime);
 
             if (enemies.Count != 0)
                 enemySpawnTime = .15f * enemies.Count;
