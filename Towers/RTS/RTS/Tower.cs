@@ -150,7 +150,7 @@ namespace RTS
         public void createProjectile()
         {
             Projectile projectile = new Projectile();
-            projectile.Initialize(contentManager, graphicsDevice, new Vector2(position.X, position.Y - 25), (float)shootRotationAngle, getTurretLength(), 20f);
+            projectile.Initialize(contentManager, graphicsDevice, new Vector2(position.X, position.Y - 25), (float)shootRotationAngle, getTurretLength(), 20f, map);
             if (playerIndex == PlayerIndex.One)
                 projectile.LoadContent("ProjectileBlue");
             else
