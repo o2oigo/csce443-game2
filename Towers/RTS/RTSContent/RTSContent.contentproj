@@ -191,6 +191,7 @@
       <Name>Map1</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="Map2.xml">
       <Name>Map2</Name>
@@ -254,6 +255,20 @@
   <ItemGroup>
     <Compile Include="burn.png">
       <Name>burn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tree1.png">
+      <Name>tree1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tree.png">
+      <Name>tree</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

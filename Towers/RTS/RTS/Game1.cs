@@ -19,6 +19,7 @@ namespace RTS
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D backgroundTexture;
+        Texture2D treeTexture;
         Player player1;
         // Player player2;
         List<Enemy> enemies;
@@ -79,7 +80,7 @@ namespace RTS
 
             //PATHFINDING//
             gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
-            map.UpdateMapViewport(gameplayArea);
+            //map.UpdateMapViewport(gameplayArea);
             map.ReloadMap();
             map.UpdateMapViewport(gameplayArea);
             //PATHFINDING//
@@ -116,6 +117,7 @@ namespace RTS
 
             backgroundTexture = Content.Load<Texture2D>("background");
             font = Content.Load<SpriteFont>("font");
+            treeTexture = Content.Load<Texture2D>("tree1");
 
             // tankSong = Content.Load<SoundEffect>("2DTankPOM");
             //music = new Dictionary<string, SoundEffect>();
@@ -210,11 +212,14 @@ namespace RTS
 
             //player2.Draw(spriteBatch);
             drawText();
+            DrawTrees(spriteBatch);
+
 
             if (stones.Count() > 0)
             {
                 foreach (Stone i in stones) i.Draw(spriteBatch);
             }
+            
             spriteBatch.End();
 
 
@@ -449,5 +454,26 @@ namespace RTS
 
             // spriteBatch.End();
         }
+
+        public void DrawTrees(SpriteBatch spriteBatch)
+        {
+            foreach (Point pt in map.getTrees())
+            {
+
+                Vector2 offset = new Vector2(0, 0);
+                for (int i = 0; i < map.TreeDict[pt].Count; i++)
+                {
+                    Vector2 tilePosition = map.MapToWorld(pt.X, pt.Y, true);
+                    tilePosition.Y -= treeTexture.Height*map.ScaleB;
+                    tilePosition.X -= treeTexture.Width*map.ScaleB / 2;
+                    offset = (map.TreeDict[pt])[i];
+                    tilePosition.X += offset.X;
+                    tilePosition.Y += offset.Y;
+                    spriteBatch.Draw(treeTexture, tilePosition, null, Color.White, 0f, Vector2.Zero, map.ScaleB, SpriteEffects.None, 0f);
+                }
+                // }
+            }
+        }
+
     }
 }

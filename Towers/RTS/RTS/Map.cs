@@ -26,12 +26,21 @@ namespace RTS
         private Texture2D endTexture;
         private Vector2 dotTextureCenter;
         private Texture2D barrierTexture;
+        private Texture2D treeTexture;
 
         private List<MapData> maps;
         private MapTileType[,] mapTiles;
         private int currentMap;
         private int numberColumns;
         private int numberRows;
+
+        private Dictionary<Point, Dictionary<int,Vector2>> treeDict = new Dictionary<Point, Dictionary<int,Vector2>>();
+        public Dictionary<Point, Dictionary<int, Vector2>> TreeDict
+        {
+            get { return treeDict; }
+        }
+
+        Random rand = new Random();
 
         #endregion
         #region Properties
@@ -73,15 +82,20 @@ namespace RTS
         }
         private bool mapReload;
 
+        public List<Point> getTrees()
+        {
+            return maps[currentMap].Trees;
+        }
+
         #endregion
 
         #region Initialization
 
         public void LoadContent(ContentManager content)
         {
-
             barrierTexture = content.Load<Texture2D>("block");
             endTexture = content.Load<Texture2D>("Tower1");
+            treeTexture = content.Load<Texture2D>("tree1");
 
             maps = new List<MapData>();
             maps.Add(content.Load<MapData>("map1"));
@@ -122,6 +136,33 @@ namespace RTS
                             break;
                     }
                 }
+            }
+            //DrawTrees(spriteBatch);
+        }
+
+        public void DrawTrees(SpriteBatch spriteBatch)
+        {
+            foreach (Point pt in maps[currentMap].Barriers)
+            {
+                Vector2 tilePosition = MapToWorld(pt.X, pt.Y, false);
+                //int r = rand.Next(1, 4);
+
+                //for (int i = 0; i < (treeDict[pt]) ; i++)
+                //foreach (KeyValuePair<int,int> dict in treeDict[)
+                //{
+                Vector2 offset = new Vector2(0,0);
+                    //foreach (int i in dict.Values)
+                    for (int i = 0; i < treeDict[pt].Count; i++)
+                    {
+                        offset += (treeDict[pt])[i]; 
+                        tilePosition.X += offset.X;
+                        tilePosition.Y += offset.Y;
+                        spriteBatch.Draw(
+                                    treeTexture, tilePosition, null,
+                                    Color.White, 0f, dotTextureCenter, scale,
+                                    SpriteEffects.None, .25f);
+                    }
+               // }
             }
         }
 
@@ -245,6 +286,22 @@ namespace RTS
             scale = tileSize / (float)tileSize;
             scaleB = tileSize / (float)barrierTexture.Height;
             tileSquareCenter = new Vector2(tileSize / 2);
+
+            
+            foreach (Point pt in maps[currentMap].Barriers)
+            {
+                int r = rand.Next(1, 15);
+                Dictionary<int, Vector2> tmp = new Dictionary<int, Vector2>();
+                for (int i = 0; i < r; i++)
+                {
+                    Vector2 offset;
+                    offset.X = rand.Next((int)(-tileSize/2),(int)(tileSize / 2));
+                    offset.Y = rand.Next((int)(-tileSize / 2), (int)(tileSize / 2));
+                    tmp.Add(i, offset);
+                }
+                treeDict.Add(pt, tmp);
+            }
+
         }
 
         public static int StepDistance(Point pointA, Point pointB)
