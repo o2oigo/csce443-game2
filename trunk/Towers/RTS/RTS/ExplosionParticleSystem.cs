@@ -54,15 +54,8 @@ namespace RTS
             minScale = .05f;
             maxScale = .1f;
 
-            // we need to reduce the number of particles on Windows Phone in order to keep
-            // a good framerate
-#if WINDOWS_PHONE
             minNumParticles = 10;
             maxNumParticles = 12;
-#else
-            minNumParticles = 10;
-            maxNumParticles = 12;
-#endif
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;

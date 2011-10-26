@@ -71,12 +71,12 @@ namespace RTS
         public void Initialize(Game1 game, PlayerIndex index, Vector2 startPosition)
         {
             this.game = game;
-            contentManager = game.Content;
-            graphicsDevice = game.GraphicsDevice;
-            position = startPosition;
-            playerIndex = index;
-            currentState = GamePad.GetState(playerIndex);
-            map = game.Map;
+            this.contentManager = game.Content;
+            this.graphicsDevice = game.GraphicsDevice;
+            this.position = startPosition;
+            this.playerIndex = index;
+            this.currentState = GamePad.GetState(playerIndex);
+            this.map = game.Map;
         }
 
         public void LoadContent(String textureName)
@@ -399,7 +399,7 @@ namespace RTS
                 projectile.LoadContent("ProjectilePurple");
             projectileList.Add(projectile);
 
-            game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
             //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
         }
 
