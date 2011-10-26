@@ -430,3 +430,45 @@ E:\Game2\Tower Defence\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cac
 E:\Game2\Tower Defence\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 E:\Game2\Tower Defence\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 E:\Game2\Tower Defence\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\RTS.exe
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\RTS.pdb
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\MapData.dll
+E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\MapData.pdb
+E:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
+E:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb

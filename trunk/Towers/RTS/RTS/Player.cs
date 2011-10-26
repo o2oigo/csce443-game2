@@ -110,10 +110,10 @@ namespace RTS
             {
                 proj.Draw(spriteBatch);
             }
-            //foreach (Tower tower in towerList)
-            //{
-            //    tower.Draw(spriteBatch);
-            //}
+            foreach (Tower tower in towerList)
+            {
+                tower.Draw(spriteBatch);
+            }
 
             upgradeBuildMode = false;
             foreach (Tower tower in towerList)
@@ -392,7 +392,7 @@ namespace RTS
         public void createProjectile()
         {
             Projectile projectile = new Projectile();
-            projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 30f);
+            projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 30f, map);
             if (playerIndex == PlayerIndex.One)
                 projectile.LoadContent("ProjectileBlue");
             else

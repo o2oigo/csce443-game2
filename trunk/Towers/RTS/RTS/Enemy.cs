@@ -222,7 +222,7 @@ namespace RTS
 
                         //Create new projectiles
                         Projectile projectile = new Projectile();
-                        projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 6f);
+                        projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 6f, map);
                         projectile.LoadContent("ProjectileRed");
                         projectileList.Add(projectile);
 
@@ -251,8 +251,8 @@ namespace RTS
             shootRotationAngle = Math.Atan2(tower.Position.Y - position.Y, tower.Position.X - position.X);
 
             //Adjusted shoot angle with variation for bullet realism
-            int xVariation = rand.Next(-100, 100);
-            int yVariation = rand.Next(-100, 100);
+            int xVariation = 0;//rand.Next(-100, 100);
+            int yVariation = 0;//rand.Next(-100, 100);
             projectileRotationAngle = Math.Atan2(tower.Position.Y + yVariation - position.Y, tower.Position.X + xVariation - position.X);
         }
 

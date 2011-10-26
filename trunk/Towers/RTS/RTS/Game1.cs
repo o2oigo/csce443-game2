@@ -202,11 +202,11 @@ namespace RTS
             map.Draw(spriteBatch);
             //PATHFINDING//
 
-            //for (int i = 0; i < enemies.Count; i++)
-            //    enemies[i].Draw(spriteBatch);
-            //player1.Draw(spriteBatch);
+            for (int i = 0; i < enemies.Count; i++)
+                enemies[i].Draw(spriteBatch);
+            player1.Draw(spriteBatch);
 
-            Sprite.DrawT(spriteBatch);
+           // Sprite.DrawT(spriteBatch);
 
             //player2.Draw(spriteBatch);
             drawText();
@@ -274,12 +274,12 @@ namespace RTS
                         Rectangle enemyProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
 
                         //Check if player is hit by any of current enemy's current projectile
-                        if (playerRect.Intersects(enemyProjectileRect))
+                       /* if (playerRect.Intersects(enemyProjectileRect))
                         {
                             currentEnemy.getProjectiles().Remove(proj);
                             if (player.isShielded() == false)
                                 player.Hit();
-                        }
+                        }*/
 
                         //Check if player's towers are hit by any of current enemy's current projectile
                         for (int k = 0; k < player.getTowers().Count; k++)
