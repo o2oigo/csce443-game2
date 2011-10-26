@@ -308,15 +308,6 @@
       <Output>C:\RTS\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb</Output>
       <Time>2011-10-25T20:34:58.9077785-05:00</Time>
     </Item>
-    <Item>
-      <Source>tree.png</Source>
-      <Name>tree</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\RTS\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\tree.xnb</Output>
-      <Time>2011-10-25T22:16:11.693856-05:00</Time>
-    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

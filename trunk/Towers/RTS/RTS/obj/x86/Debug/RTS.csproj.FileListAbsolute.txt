@@ -473,4 +473,3 @@ C:\RTS\csce443-game2\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\RTS\csce443-game2\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\RTS\csce443-game2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 C:\RTS\csce443-game2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
-C:\RTS\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\tree.xnb
