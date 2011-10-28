@@ -389,6 +389,7 @@ namespace RTS
             hp -= burnDmg*dmgOffset;
             if (hp <= 0)
                 dead = true;
+            game.fire.AddParticles(new Vector2(position.X, position.Y));
         }
         #endregion
 

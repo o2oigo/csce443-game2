@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FireParticleSystem.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyEffect.cs" />
     <Compile Include="ExplosionParticleSystem.cs" />

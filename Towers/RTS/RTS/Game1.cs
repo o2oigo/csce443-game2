@@ -33,6 +33,7 @@ namespace RTS
         public ExplosionParticleSystem explosion;
         // public ExplosionParticleSystem explosion2;
         public ExplosionSmokeParticleSystem smoke;
+        public FireParticleSystem fire;
 
         // Dictionary<string, SoundEffect> music;
         // SoundEffect tankSong;
@@ -62,6 +63,9 @@ namespace RTS
 
             smoke = new ExplosionSmokeParticleSystem(this, 2);
             Components.Add(smoke);
+
+            fire = new FireParticleSystem(this, 20000);
+            Components.Add(fire);
 
             
         }
@@ -155,6 +159,7 @@ namespace RTS
                 this.Exit();
 
             explosion.Update(gameTime);
+            fire.Update(gameTime);
 
             if (enemies.Count != 0)
                 enemySpawnTime = .15f * enemies.Count;
