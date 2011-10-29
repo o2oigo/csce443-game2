@@ -519,3 +519,6 @@ E:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimePr
 E:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 E:\443-2\443Game2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
 E:\443-2\443Game2\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\tree1.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb
