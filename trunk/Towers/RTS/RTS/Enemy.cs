@@ -186,10 +186,6 @@ namespace RTS
             {
                 proj.Draw(spriteBatch);
             }
-            if (effect != null)
-            {
-                spriteBatch.Draw(effect.Effect, position, null, Color.White,0f, Vector2.Zero, map.ScaleB, SpriteEffects.None, .25f);
-            }
         }
 
 
