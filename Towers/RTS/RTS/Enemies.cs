@@ -46,5 +46,24 @@ namespace RTS
         }
     }
 
+    class NormalEnemy : Enemy
+    {
+        public override void Initialize(Game1 game, Vector2 startPosition, Map map)
+        {
+            base.Initialize(game, startPosition, map);
+
+            range = 200;
+            hp = 100;
+            weakAgainst = ElementType.Water;
+            strongAgainst = ElementType.Fire;
+            moveSpeed = 100.0f;
+        }
+
+        public virtual void LoadContent()
+        {
+            base.LoadContent("TankPurple");
+        }
+    }
+
 
 }
