@@ -112,8 +112,8 @@ namespace RTS
             get { return destination; }
         }
 
-        const float moveSpeed = 100f;
-        public static float MoveSpeed
+        protected float moveSpeed = 100f;
+        public float MoveSpeed
         {
             get { return moveSpeed; }
         }
@@ -141,7 +141,7 @@ namespace RTS
         }
         #endregion
 
-        public void Initialize(Game1 game, Vector2 startPosition, Map map)
+        public virtual void Initialize(Game1 game, Vector2 startPosition, Map map)
         {
             this.game = game;
             this.contentManager = game.Content;
@@ -168,13 +168,13 @@ namespace RTS
             path.IsSearching = !path.IsSearching;
         }
 
-        public void LoadContent(String textureName)
+        public virtual void LoadContent(String textureName)
         {
             texture = contentManager.Load<Texture2D>(textureName);
             turretTexture = contentManager.Load<Texture2D>("TurretEnemy");
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
-            font = contentManager.Load<SpriteFont>("font");
+            //font = contentManager.Load<SpriteFont>("font");
         }
 
         public override void Draw(SpriteBatch SB)

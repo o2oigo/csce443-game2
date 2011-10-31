@@ -86,10 +86,11 @@ namespace RTS
             base.Initialize();
 
             //PATHFINDING//
-            gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
+            Rectangle test = new Rectangle(0,0,this.GraphicsDevice.Viewport.Width, this.GraphicsDevice.Viewport.Height);
+            //gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
             //map.UpdateMapViewport(gameplayArea);
             map.ReloadMap();
-            map.UpdateMapViewport(gameplayArea);
+            map.UpdateMapViewport(test);
             //PATHFINDING//
         }
 
@@ -242,9 +243,9 @@ namespace RTS
             {
                 int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
                 int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
-                Enemy spawn = new Enemy();
+                FastEnemy spawn = new FastEnemy();
                 spawn.Initialize(this, new Vector2(randWidth, randHeight), map);
-                spawn.LoadContent("TankEnemy");
+                spawn.LoadContent();
                 enemies.Add(spawn);
                 enemyTimer = 0;
             }
