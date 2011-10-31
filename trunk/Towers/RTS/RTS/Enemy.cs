@@ -151,10 +151,10 @@ namespace RTS
             path = new PathFinder();
 
             //change for diff enemies later
-            range = 200;
-            hp = 100;
-            weakAgainst = ElementType.Water;
-            strongAgainst = ElementType.Fire;
+           //range = 200;
+           //hp = 100;
+           //weakAgainst = ElementType.Water;
+           //strongAgainst = ElementType.Fire;
 
 
             this.map = map;

@@ -34,7 +34,7 @@ namespace RTS
             base.Initialize(game, startPosition, map);
 
             range = 200;
-            hp = 300;
+            hp = 100;
             weakAgainst = ElementType.Water;
             strongAgainst = ElementType.Fire;
             moveSpeed = 200.0f;

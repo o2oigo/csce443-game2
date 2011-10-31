@@ -212,6 +212,7 @@ namespace RTS
             spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
             //PATHFINDING
             map.Draw(spriteBatch);
+            DrawTrees(spriteBatch);
             //PATHFINDING//
 
             for (int i = 0; i < enemies.Count; i++)
@@ -222,7 +223,6 @@ namespace RTS
 
             //player2.Draw(spriteBatch);
             drawText();
-            DrawTrees(spriteBatch);
 
 
             if (stones.Count() > 0)
