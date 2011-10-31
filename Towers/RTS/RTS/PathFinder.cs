@@ -57,7 +57,7 @@ namespace RTS
         // The map we're searching
         private Map map;
         // Seconds per search step        
-        public float timeStep = 0.1f;
+        public float timeStep = 0.001f;
         Random rand = new Random();
 
         #region Properties

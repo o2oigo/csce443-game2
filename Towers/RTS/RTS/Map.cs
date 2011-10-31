@@ -120,11 +120,11 @@ namespace RTS
                     Vector2 tilePosition = MapToWorld(j, i, false);
                     switch (mapTiles[j, i])
                     {
-                        case MapTileType.MapBarrier:
-                            spriteBatch.Draw(
-                                barrierTexture, tilePosition, null, Color.White,
-                                0f, Vector2.Zero, scaleB, SpriteEffects.None, .25f);
-                            break;
+                        //case MapTileType.MapBarrier:
+                        //    spriteBatch.Draw(
+                        //        barrierTexture, tilePosition, null, Color.White,
+                        //        0f, Vector2.Zero, scaleB, SpriteEffects.None, .25f);
+                        //    break;
 
                         case MapTileType.MapExit:
                             spriteBatch.Draw(
@@ -138,32 +138,6 @@ namespace RTS
                 }
             }
             //DrawTrees(spriteBatch);
-        }
-
-        public void DrawTrees(SpriteBatch spriteBatch)
-        {
-            foreach (Point pt in maps[currentMap].Barriers)
-            {
-                Vector2 tilePosition = MapToWorld(pt.X, pt.Y, false);
-                //int r = rand.Next(1, 4);
-
-                //for (int i = 0; i < (treeDict[pt]) ; i++)
-                //foreach (KeyValuePair<int,int> dict in treeDict[)
-                //{
-                Vector2 offset = new Vector2(0,0);
-                    //foreach (int i in dict.Values)
-                    for (int i = 0; i < treeDict[pt].Count; i++)
-                    {
-                        offset += (treeDict[pt])[i]; 
-                        tilePosition.X += offset.X;
-                        tilePosition.Y += offset.Y;
-                        spriteBatch.Draw(
-                                    treeTexture, tilePosition, null,
-                                    Color.White, 0f, dotTextureCenter, scale,
-                                    SpriteEffects.None, .25f);
-                    }
-               // }
-            }
         }
 
         #region Useful Game Methods
@@ -288,7 +262,7 @@ namespace RTS
             tileSquareCenter = new Vector2(tileSize / 2);
 
             
-            foreach (Point pt in maps[currentMap].Barriers)
+            foreach (Point pt in maps[currentMap].Trees)
             {
                 int r = rand.Next(1, 15);
                 Dictionary<int, Vector2> tmp = new Dictionary<int, Vector2>();
