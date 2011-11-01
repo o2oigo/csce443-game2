@@ -433,3 +433,10 @@ E:\Game2\Tower Defence\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cac
 E:\Game2\Tower Defence\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 E:\Game2\Tower Defence\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 E:\Game2\Tower Defence\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cancel.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmall.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmall.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmall.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmall.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmall.xnb
