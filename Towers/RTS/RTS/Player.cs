@@ -55,6 +55,8 @@ namespace RTS
         private Texture2D menu2Texture;
         private Texture2D menu3Texture;
         private Texture2D menu4Texture;
+        private Texture2D buildTexture;
+        private Texture2D cancelTexture;
         private bool buildMode = false;
         private bool mainBuildMode = false;
         private bool upgradeBuildMode = false;
@@ -103,6 +105,8 @@ namespace RTS
             menu2Texture = contentManager.Load<Texture2D>("cancelMenu");
             menu3Texture = contentManager.Load<Texture2D>("buildTowerMenuSelect");
             menu4Texture = contentManager.Load<Texture2D>("cancelMenuSelect");
+            buildTexture = contentManager.Load<Texture2D>("buildSmall");
+            cancelTexture = contentManager.Load<Texture2D>("cancelSmall");
             font = contentManager.Load<SpriteFont>("font");
 
             origin.X = texture.Width / 2;
@@ -154,8 +158,8 @@ namespace RTS
             {
                 if (shootRotationAngle > -2.39 && shootRotationAngle < -0.93)
                 {
-                    spriteBatch.Draw(menu3Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
-                    spriteBatch.Draw(menu2Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
+                    spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                 }
                 else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
                 {
