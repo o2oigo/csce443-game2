@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 namespace RTS
 {
 
-    class Enemy : Sprite
+    public class Enemy : Sprite
     {
         SpriteFont font;
 
@@ -141,7 +141,7 @@ namespace RTS
         }
         #endregion
 
-        public virtual void Initialize(Game1 game, Vector2 startPosition, Map map)
+        public virtual void Initialize(Game1 game)
         {
             this.game = game;
             this.contentManager = game.Content;
@@ -157,7 +157,7 @@ namespace RTS
            //strongAgainst = ElementType.Fire;
 
 
-            this.map = map;
+            this.map = game.Map;
             int randomNum = rand.Next(0, map.StartTile.Count());
             startTile = map.StartTile[randomNum]; 
 

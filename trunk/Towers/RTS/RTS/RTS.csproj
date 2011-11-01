@@ -128,6 +128,7 @@
     <Compile Include="Stone.cs" />
     <Compile Include="Tower.cs" />
     <Compile Include="UserInterface.cs" />
+    <Compile Include="Wave.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

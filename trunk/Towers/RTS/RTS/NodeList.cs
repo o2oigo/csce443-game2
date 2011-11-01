@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    class NodeList : Queue<Vector2>
+    public class NodeList : Queue<Vector2>
     {
         //private Vector2 nodeCenter;
 

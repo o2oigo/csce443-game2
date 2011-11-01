@@ -16,7 +16,7 @@ namespace RTS
         Normal,
     }
 
-    class Stone
+    public class Stone
     {
         private Map map;
         Game1 game;

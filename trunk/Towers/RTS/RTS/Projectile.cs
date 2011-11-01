@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 namespace RTS
 {
 
-    class Projectile
+    public class Projectile
     {
         ContentManager contentManager;
         GraphicsDevice graphicsDevice;

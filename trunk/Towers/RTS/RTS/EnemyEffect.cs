@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace RTS
 {
-    abstract class EnemyEffect
+    public abstract class EnemyEffect
     {
         protected int created = 0;
         protected int duration;
@@ -29,7 +29,7 @@ namespace RTS
         }
     }
 
-    class EnemyEffectBurn : EnemyEffect
+    public class EnemyEffectBurn : EnemyEffect
     {
         protected float burnDmg;
         protected float offset = 1.0f;
