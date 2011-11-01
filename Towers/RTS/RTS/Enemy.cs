@@ -201,10 +201,16 @@ namespace RTS
                 if (!effect.isValid(gameTime)) effect = null;
             }
 
-            float facingDirection = (float)Math.Atan2(
-            Direction.Y, Direction.X);
+            float facingDirection = (float)Math.Atan2(Direction.Y, Direction.X);
             moveRotationAngle = facingDirection;
             shootRotationAngle = facingDirection;
+
+            doPathfinding(gameTime);
+
+        }
+
+        public void Attack(List<Tower> towers)
+        {
 
             foreach (Tower i in towers)
             {
@@ -228,10 +234,8 @@ namespace RTS
                     }
                     break;
                 }
+                updateProjectiles();
             }
-            updateProjectiles();
-            doPathfinding(gameTime);
-
         }
 
         public void updateMovement(Tower tower)

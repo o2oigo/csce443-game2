@@ -159,6 +159,14 @@ namespace RTS
             {
                 return "DIRT";
             }
+            else if (mapTiles[array[0], array[1]] == MapTileType.MapExit)
+            {
+                return "BASE";
+            }
+            else if (mapTiles[array[0], array[1]] == MapTileType.MapStart)
+            {
+                return "START";
+            }
             else return "EMPTY";
         }
 
