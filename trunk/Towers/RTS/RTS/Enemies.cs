@@ -65,5 +65,31 @@ namespace RTS
         }
     }
 
+    public class AttackingEnemy : Enemy
+    {
+        public override void Initialize(Game1 game)
+        {
+            base.Initialize(game);
+
+            range = 200;
+            hp = 100;
+            weakAgainst = ElementType.Water;
+            strongAgainst = ElementType.Fire;
+            moveSpeed = 100.0f;
+        }
+
+        public virtual void LoadContent()
+        {
+            base.LoadContent("TankPurple");
+        }
+
+        public override void Update(GameTime gameTime, List<Tower> towers)
+        {
+            base.Update(gameTime, towers);
+            Attack(towers);
+        }
+    }
+
+
 
 }
