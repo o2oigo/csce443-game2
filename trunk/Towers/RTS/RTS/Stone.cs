@@ -13,6 +13,7 @@ namespace RTS
         Fire,
         Water,
         Heal,
+        Normal,
     }
 
     class Stone
@@ -38,7 +39,7 @@ namespace RTS
             get { return position; }
         }
 
-        private int timeOut = 100;
+        private int timeOut = 1000;
         public int TimeOut
         {
             get { return timeOut; }
@@ -90,6 +91,18 @@ namespace RTS
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(stoneTexture, position, null, Color.White, 0, new Vector2(0, stoneTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
+        }
+
+        public int getTypeNumber()
+        {
+            if (type == ElementType.Fire)
+                return 1;
+            else if (type == ElementType.Water)
+                return 2;
+            else if (type == ElementType.Heal)
+                return 3;
+            else
+                return 2;
         }
     }
 }

@@ -260,6 +260,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ssPlaceHolder.png">
+      <Name>ssPlaceHolder</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="tree1.png">
       <Name>tree1</Name>
       <Importer>TextureImporter</Importer>

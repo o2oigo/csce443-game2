@@ -19,7 +19,11 @@ namespace RTS
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D backgroundTexture;
+
+        UserInterface userInterface;
+
         Texture2D treeTexture;
+
         Player player1;
         // Player player2;
         List<Enemy> enemies;
@@ -33,7 +37,11 @@ namespace RTS
         public ExplosionParticleSystem explosion;
         // public ExplosionParticleSystem explosion2;
         public ExplosionSmokeParticleSystem smoke;
+
+        int live = 10;
+
         public FireParticleSystem fire;
+
 
         // Dictionary<string, SoundEffect> music;
         // SoundEffect tankSong;
@@ -84,6 +92,7 @@ namespace RTS
         protected override void Initialize()
         {
             base.Initialize();
+           
 
             //PATHFINDING//
             Rectangle test = new Rectangle(0,0,this.GraphicsDevice.Viewport.Width, this.GraphicsDevice.Viewport.Height);
@@ -92,6 +101,7 @@ namespace RTS
             map.ReloadMap();
             map.UpdateMapViewport(test);
             //PATHFINDING//
+
         }
 
         /// <summary>
@@ -103,6 +113,13 @@ namespace RTS
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            enemies = new List<Enemy>(25);
+            players = new List<Player>(4);
+            stones = new List<Stone>();
+
+            userInterface = new UserInterface();
+            userInterface.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
+            userInterface.LoadContent();
             player1 = new Player();
             player1.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
             player1.LoadContent("TankPlayer");
@@ -111,9 +128,6 @@ namespace RTS
             // player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
             // player2.LoadContent("TankPurple");
 
-            enemies = new List<Enemy>(25);
-            players = new List<Player>(4);
-            stones = new List<Stone>();
 
             players.Add(player1);
             //  players.Add(player2);
@@ -159,45 +173,64 @@ namespace RTS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            explosion.Update(gameTime);
-            fire.Update(gameTime);
 
-            if (enemies.Count != 0)
-                enemySpawnTime = .15f * enemies.Count;
-            else
-                enemySpawnTime = .1f;
-
-            //Creates Enemies
-            spawnEnemies(gameTime);
-
-            //Update Player
-            foreach (Player player in players)
+            
+            if (userInterface.getRestartGameStatus() == true)
             {
-                player.Update(gameTime, enemies);
+                restartGame();
+                userInterface.setRestartGameStatus(false);
+                
             }
+            userInterface.Update();
 
-            //Update Enemies
-            for (int i = 0; i < enemies.Count; i++)
+            if (userInterface.getShowGameScreen() == true)
             {
-                //Get current enemy and update
-                Enemy currentEnemy = enemies[i];
-                currentEnemy.Update(gameTime, players[0].getTowers());
-            }
+                
+                if (enemies.Count != 0)
+                    enemySpawnTime = .15f * enemies.Count;
+                else
+                    enemySpawnTime = 0.1f;
 
-            //Update Stone Timer
-            if (stones.Count() > 0)
-            {
-                for (int i = 0; i < stones.Count; i++)
+                //Creates Enemies
+                spawnEnemies(gameTime);
+
+                //Update Player
+                foreach (Player player in players)
                 {
-                    stones[i].Update(gameTime);
-                    if (!stones[i].isAppear) stones.Remove(stones[i]);
+                    player.Update(gameTime, enemies);
                 }
+
+                //Update Enemies
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    //Get current enemy and update
+                    Enemy currentEnemy = enemies[i];
+                    currentEnemy.Update(gameTime, players[0].getTowers());
+                }
+
+                //Update Stone Timer
+                if (stones.Count() > 0)
+                {
+                    for (int i = 0; i < stones.Count; i++)
+                    {
+                        stones[i].Update(gameTime);
+                        if (!stones[i].isAppear) stones.Remove(stones[i]);
+                    }
+                }
+
+                //Detect Collisions
+                detectCollisions();
+
+                checkDeadEnemies();
+
             }
 
-            //Detect Collisions
-            detectCollisions();
+            if (live < 1)
+            {
+                userInterface.setShowGameoverScreen(true);
+                live = 10;
+            }
 
-            checkDeadEnemies();
 
             //base.Update(gameTime);
         }
@@ -209,27 +242,42 @@ namespace RTS
         protected override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
-            //PATHFINDING
-            map.Draw(spriteBatch);
-            DrawTrees(spriteBatch);
-            //PATHFINDING//
-
-            for (int i = 0; i < enemies.Count; i++)
-                enemies[i].Draw(spriteBatch);
-            player1.Draw(spriteBatch);
-
-           // Sprite.DrawT(spriteBatch);
-
-            //player2.Draw(spriteBatch);
-            drawText();
-
-
-            if (stones.Count() > 0)
+           
+            if (userInterface.getShowGameScreen() == true || userInterface.getShowPauseScreen() == true)
             {
-                foreach (Stone i in stones) i.Draw(spriteBatch);
+                spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
+                //PATHFINDING
+                map.Draw(spriteBatch);
+                DrawTrees(spriteBatch);
+                //PATHFINDING//
+                for (int i = 0; i < enemies.Count; i++)
+                    enemies[i].Draw(spriteBatch);
+                player1.Draw(spriteBatch);
+
+                // Sprite.DrawT(spriteBatch);
+
+
+                //player2.Draw(spriteBatch);
+                drawText();
+  
+                spriteBatch.DrawString(font, "Lives: " + live, new Vector2(500, this.GraphicsDevice.Viewport.Height - 50), Color.White);
+
+                if (stones.Count() > 0)
+                {
+                    foreach (Stone i in stones) i.Draw(spriteBatch);
+                }
+
             }
-            
+
+            if (userInterface.booltest == false)
+            {
+                spriteBatch.DrawString(font, "booltest", new Vector2(700, 800), Color.Tomato);
+            }
+
+
+            userInterface.Draw(spriteBatch);
+
+         
             spriteBatch.End();
 
 
@@ -239,7 +287,7 @@ namespace RTS
         public void spawnEnemies(GameTime gameTime)
         {
             enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (enemyTimer > enemySpawnTime && enemies.Count < 15)          /// Set enemy number here
+            if (enemyTimer > enemySpawnTime /*&& enemies.Count < 15*/)          /// Set enemy number here
             {
                 int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
                 int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
@@ -282,6 +330,14 @@ namespace RTS
                     Enemy currentEnemy = enemies[i];
                     Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.Position.X, (int)currentEnemy.Position.Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
+                    //Ckeck if current enemy and exit point                   
+                    if (map.TileTypeAt(currentEnemy.Position) == MapTileType.MapExit)
+                    {
+                        live--;
+                        Sprite.removeList(enemies[i]);
+                        enemies.RemoveAt(i);
+                    }
+
                     //Loop through all of current enemies projectiles
                     for (int j = 0; j < currentEnemy.getProjectiles().Count; j++)
                     {
@@ -321,7 +377,8 @@ namespace RTS
                         Rectangle currentStoneRect = new Rectangle((int)stones[j].Position.X, (int)stones[j].Position.Y, stones[j].Texture.Width, stones[j].Texture.Height);
                         if (playerRect.Intersects(currentStoneRect))
                         {
-                            stones.Remove(stones[i]);
+                            player.addStoneToInventory(stones[j]);
+                            stones.Remove(stones[j]);
                         }
                     }
                 }
@@ -406,8 +463,8 @@ namespace RTS
             {
                 if (enemies[i].isDead())
                 {
-                    int randNum = rand.Next(1, 10);
-                    if (randNum < 4)
+                    int randNum = rand.Next(0, 10);
+                    if (randNum < 3)
                     {
                         Stone newStone = new Stone();
                         newStone.Initialize(this, enemies[i].Position, randNum);
@@ -415,6 +472,7 @@ namespace RTS
                     }
                     Sprite.removeList(enemies[i]);
                     enemies.RemoveAt(i);
+                    player1.addMoney(3);
                    // player.enemyDestroyed();
                 }
             }
@@ -429,7 +487,7 @@ namespace RTS
             //  spriteBatch.DrawString(font, "Player 1", new Vector2(player1.getPosition().X - 8f * 5f, player1.getPosition().Y - player1.getTurretLength() - 30f), Color.MediumBlue);
             //   spriteBatch.DrawString(font, "Player 2", new Vector2(player2.getPosition().X - 8f * 5f, player2.getPosition().Y - player2.getTurretLength() - 30f), Color.Purple);
             if (player1.isShielded())
-                spriteBatch.DrawString(font, "Shield: " + (3 - (int)player1.getShieldTimer()), new Vector2(player1.Position.X - 9f * 5f, player1.Position.Y + player1.getTurretLength() + 10f), Color.MediumBlue);
+                spriteBatch.DrawString(font, "Shield: " + ((int)player1.getShieldTimeLimit() - (int)player1.getShieldTimer()), new Vector2(player1.Position.X - 9f * 5f, player1.Position.Y + player1.getTurretLength() + 10f), Color.MediumBlue);
             //  if (player2.isShielded())
             //      spriteBatch.DrawString(font, "Shield: " + (3 - (int)player2.getShieldTimer()), new Vector2(player2.getPosition().X - 9f * 5f, player2.getPosition().Y + player2.getTurretLength() + 10f), Color.Purple);
 
@@ -465,6 +523,41 @@ namespace RTS
             // spriteBatch.End();
         }
 
+      
+        public void restartGame()
+        {
+
+            for (int i = enemies.Count - 1; i >= 0; i--)
+            {
+                Enemy currentEnemy = enemies[i];
+                                 
+               
+                Sprite.removeList(enemies[i]);
+                enemies.RemoveAt(i);
+            }
+            
+            
+            for (int k = 0; k < player1.getTowers().Count; k++)
+            {
+                Tower tower = player1.getTowers()[k];
+                Sprite.removeList(tower);
+                player1.getTowers().RemoveAt(k);
+
+            }
+
+            player1.restartGameLevel1();
+            //enemies.Clear();
+            stones.Clear();
+            
+
+            this.ResetElapsedTime();
+
+            enemyTimer = 0;
+            enemySpawnTime = 1f;
+            live = 10;
+        }
+
+
         public void DrawTrees(SpriteBatch spriteBatch)
         {
             foreach (Point pt in map.getTrees())
@@ -481,7 +574,6 @@ namespace RTS
                     tilePosition.Y += offset.Y;
                     spriteBatch.Draw(treeTexture, tilePosition, null, Color.White, 0f, Vector2.Zero, map.ScaleB, SpriteEffects.None, 0f);
                 }
-                // }
             }
         }
 

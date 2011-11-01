@@ -39,7 +39,8 @@ namespace RTS
 
         SpriteFont font;
         private int shotsTaken = 0;
-        private int shotsToDestroy = 4;
+        private int shotsToDestroy = 100;
+        private int hp;
         private bool dead = false;
         private bool playerIsNear = false;
         private string level = "level 1";
@@ -75,8 +76,12 @@ namespace RTS
             position = startPosition;
             currentState = GamePad.GetState(PlayerIndex.One);
             towerRange = Math.Max(graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width);
-            map = game.Map;
-            damage = new Damage(10, 1,ElementType.Fire, new EnemyEffectBurn(game,5,1));
+
+            //damage = new Damage(10, 1,ElementType.Normal, new EnemyEffectBurn(game,5,1));
+            damage = new Damage(25, 1, ElementType.Normal, null);
+
+            //map = game.Map;
+            //damage = new Damage(10, 1,ElementType.Fire, new EnemyEffectBurn(game,5,1));
         }
         
         public void LoadContent(String textureName)
@@ -95,6 +100,7 @@ namespace RTS
             spriteBatch.Draw(turretTexture, new Vector2(position.X, position.Y - 25), null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, towerName, new Vector2(position.X - 50, position.Y - 70), Color.White);
             spriteBatch.DrawString(font, level, new Vector2(position.X - 40, position.Y - 50), Color.White);
+            spriteBatch.DrawString(font, "HP: " + hp, new Vector2(position.X - 40, position.Y + 30), Color.White);
             
             foreach (Projectile proj in projectileList)
             {
@@ -107,7 +113,7 @@ namespace RTS
             //Elapsed Time Calculations
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             shootElapsedTime += elapsedTime;
-
+            hp = shotsToDestroy - shotsTaken;
             updateTurret(enemies);
             updateProjectiles();
         }
@@ -232,8 +238,9 @@ namespace RTS
         public void setToLvlTwo()
         {
 
-            shotsToDestroy = 100;
-            attackDamage = 50;
+            shotsToDestroy = 150;
+            damage.amount = 50;
+            damage.type = ElementType.Water;
             level = "level 2";
 
         }
@@ -266,6 +273,11 @@ namespace RTS
         public string getTowerLvl()
         {
             return level;
+        }
+
+        public void setToFireTower()
+        {
+            
         }
 
     }
