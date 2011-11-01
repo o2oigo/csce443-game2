@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    struct Damage
+    public struct Damage
     {
         public float amount;
         public int level;
@@ -25,7 +25,7 @@ namespace RTS
         }
     }
 
-    class Tower : Sprite
+    public class Tower : Sprite
     {
         GamePadState currentState;
 

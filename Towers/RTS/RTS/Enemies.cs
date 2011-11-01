@@ -8,11 +8,11 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    class HPEnemy : Enemy
+    public class HPEnemy : Enemy
     {
-        public override void Initialize(Game1 game, Vector2 startPosition, Map map)
+        public override void Initialize(Game1 game)
         {
-            base.Initialize(game, startPosition, map);
+            base.Initialize(game);
 
             range = 200;
             hp = 300;
@@ -27,11 +27,11 @@ namespace RTS
         }
     }
 
-    class FastEnemy : Enemy
+    public class FastEnemy : Enemy
     {
-        public override void Initialize(Game1 game, Vector2 startPosition, Map map)
+        public override void Initialize(Game1 game)
         {
-            base.Initialize(game, startPosition, map);
+            base.Initialize(game);
 
             range = 200;
             hp = 100;
@@ -46,11 +46,11 @@ namespace RTS
         }
     }
 
-    class NormalEnemy : Enemy
+    public class NormalEnemy : Enemy
     {
-        public override void Initialize(Game1 game, Vector2 startPosition, Map map)
+        public override void Initialize(Game1 game)
         {
-            base.Initialize(game, startPosition, map);
+            base.Initialize(game);
 
             range = 200;
             hp = 100;

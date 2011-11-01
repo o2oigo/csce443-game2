@@ -25,8 +25,15 @@ namespace RTS
         Texture2D treeTexture;
 
         Player player1;
+        Wave wave;
         // Player player2;
-        List<Enemy> enemies;
+
+        private List<Enemy> enemies;
+        public List<Enemy> Enemies
+        {
+            get { return enemies; }
+        }
+
         List<Player> players;
         List<Stone> stones;
         float enemyTimer = 0;
@@ -60,8 +67,8 @@ namespace RTS
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            this.graphics.PreferredBackBufferHeight = 1080;
-            this.graphics.PreferredBackBufferWidth = 1920;
+            this.graphics.PreferredBackBufferHeight = 1280;
+            this.graphics.PreferredBackBufferWidth = 1024;
             this.graphics.IsFullScreen = true;
             
             map = new Map();
@@ -101,7 +108,7 @@ namespace RTS
             map.ReloadMap();
             map.UpdateMapViewport(test);
             //PATHFINDING//
-
+            wave = new Wave(this);
         }
 
         /// <summary>
@@ -136,7 +143,7 @@ namespace RTS
             map.LoadContent(Content);
             //PATHFINDING//
 
-            backgroundTexture = Content.Load<Texture2D>("background");
+            backgroundTexture = Content.Load<Texture2D>("levelOne");
             font = Content.Load<SpriteFont>("font");
             treeTexture = Content.Load<Texture2D>("tree1");
 
@@ -192,7 +199,8 @@ namespace RTS
                     enemySpawnTime = 0.1f;
 
                 //Creates Enemies
-                spawnEnemies(gameTime);
+                //spawnEnemies(gameTime);
+                wave.Update(gameTime);
 
                 //Update Player
                 foreach (Player player in players)
@@ -284,20 +292,20 @@ namespace RTS
             base.Draw(gameTime);
         }
 
-        public void spawnEnemies(GameTime gameTime)
-        {
-            enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (enemyTimer > enemySpawnTime /*&& enemies.Count < 15*/)          /// Set enemy number here
-            {
-                int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
-                int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
-                FastEnemy spawn = new FastEnemy();
-                spawn.Initialize(this, new Vector2(randWidth, randHeight), map);
-                spawn.LoadContent();
-                enemies.Add(spawn);
-                enemyTimer = 0;
-            }
-        }
+        //public void spawnEnemies(GameTime gameTime)
+        //{
+        //    enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        //    if (enemyTimer > enemySpawnTime /*&& enemies.Count < 15*/)          /// Set enemy number here
+        //    {
+        //        int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
+        //        int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
+        //        FastEnemy spawn = new FastEnemy();
+        //        spawn.Initialize(this, new Vector2(randWidth, randHeight), map);
+        //        spawn.LoadContent();
+        //        enemies.Add(spawn);
+        //        enemyTimer = 0;
+        //    }
+        //}
 
         public void detectCollisions()
         {
@@ -530,12 +538,9 @@ namespace RTS
             for (int i = enemies.Count - 1; i >= 0; i--)
             {
                 Enemy currentEnemy = enemies[i];
-                                 
-               
                 Sprite.removeList(enemies[i]);
                 enemies.RemoveAt(i);
             }
-            
             
             for (int k = 0; k < player1.getTowers().Count; k++)
             {
@@ -548,7 +553,7 @@ namespace RTS
             player1.restartGameLevel1();
             //enemies.Clear();
             stones.Clear();
-            
+            wave = new Wave(this);
 
             this.ResetElapsedTime();
 

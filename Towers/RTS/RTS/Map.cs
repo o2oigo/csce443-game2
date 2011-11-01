@@ -12,7 +12,9 @@ namespace RTS
     public enum MapTileType
     {
         MapEmpty,
-        MapBarrier,
+        MapDirt,
+        MapGrass,
+        MapTree,
         MapStart,
         MapExit
     }
@@ -145,9 +147,17 @@ namespace RTS
         public string TileString(Vector2 coordinate)
         {
             int[] array = WorldToMap(coordinate);
-            if (mapTiles[array[0], array[1]] == MapTileType.MapBarrier)
+            if (mapTiles[array[0], array[1]] == MapTileType.MapGrass)
             {
-                return "BARRIER";
+                return "GRASS";
+            }
+            else if (mapTiles[array[0], array[1]] == MapTileType.MapTree)
+            {
+                return "TREE";
+            }
+            else if (mapTiles[array[0], array[1]] == MapTileType.MapDirt)
+            {
+                return "DIRT";
             }
             else return "EMPTY";
         }
@@ -237,7 +247,7 @@ namespace RTS
 
         private bool IsOpen(int column, int row)
         {
-            return InMap(column, row) && mapTiles[column, row] != MapTileType.MapBarrier;
+            return InMap(column, row) && (mapTiles[column, row] == MapTileType.MapDirt || mapTiles[column, row] == MapTileType.MapStart || mapTiles[column, row] == MapTileType.MapExit);
         }
 
         public IEnumerable<Point> OpenMapTiles(Point mapLoc)
@@ -257,8 +267,8 @@ namespace RTS
             tileSize = Math.Min(safeViewableArea.Height / (float)numberRows,
                 safeViewableArea.Width / (float)numberColumns);
 
-            scale = tileSize / (float)tileSize;
-            scaleB = tileSize / (float)barrierTexture.Height;
+            scaleB = tileSize / (float)tileSize;
+            //scaleB = tileSize / (float)barrierTexture.Height;
             tileSquareCenter = new Vector2(tileSize / 2);
 
             
@@ -311,12 +321,26 @@ namespace RTS
             int x = 0;
             int y = 0;
 
-            for (int i = 0; i < maps[currentMap].Barriers.Count; i++)
+            for (int i = 0; i < maps[currentMap].Grass.Count; i++)
             {
-                x = maps[currentMap].Barriers[i].X;
-                y = maps[currentMap].Barriers[i].Y;
+                x = maps[currentMap].Grass[i].X;
+                y = maps[currentMap].Grass[i].Y;
 
-                mapTiles[x, y] = MapTileType.MapBarrier;
+                mapTiles[x, y] = MapTileType.MapGrass;
+            }
+            for (int i = 0; i < maps[currentMap].Dirt.Count; i++)
+            {
+                x = maps[currentMap].Dirt[i].X;
+                y = maps[currentMap].Dirt[i].Y;
+
+                mapTiles[x, y] = MapTileType.MapDirt;
+            }
+            for (int i = 0; i < maps[currentMap].Trees.Count; i++)
+            {
+                x = maps[currentMap].Trees[i].X;
+                y = maps[currentMap].Trees[i].Y;
+
+                mapTiles[x, y] = MapTileType.MapTree;
             }
 
             mapReload = false;

@@ -24,7 +24,8 @@ namespace PathfindingData
         public int NumberColumns;
         public List<Point> Start;
         public Point End;
-        public List<Point> Barriers;
+        public List<Point> Grass;
+        public List<Point> Dirt;
         public List<Point> Trees;
         public List<Point> Buildings;
 
@@ -36,14 +37,16 @@ namespace PathfindingData
 
         public MapData(
             int columns, int rows, List<Point> startPosition,
-            Point endPosition, List<Point> barriersList, List<Point> treesList, List<Point> buildingList)
+            Point endPosition, List<Point> grassList,List<Point> dirtList, List<Point> treeList, List<Point> buildingList)
         {
             NumberColumns = columns;
             NumberRows = rows;
             Start = startPosition;
             End = endPosition;
-            Barriers = barriersList;
-            Trees = treesList;
+            Grass = grassList;
+            Dirt = dirtList;
+            //Barriers = barriersList;
+            Trees = treeList;
             Buildings = buildingList;
         }
     }

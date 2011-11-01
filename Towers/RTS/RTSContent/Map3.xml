@@ -5,7 +5,10 @@
   <NumberColumns>5</NumberColumns>
   <Start>0 1</Start>
   <End>4 1</End>
-  <Barriers />
+    <Grass>
+    </Grass>
+    <Dirt>
+    </Dirt>
     <Trees>
     </Trees>
     <Buildings>

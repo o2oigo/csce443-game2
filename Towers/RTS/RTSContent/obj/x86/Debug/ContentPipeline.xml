@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb</Output>
-      <Time>2011-10-29T13:52:30.4725066+08:00</Time>
+      <Time>2011-11-01T12:38:45.9779531+08:00</Time>
     </Item>
     <Item>
       <Source>explosion.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb</Output>
-      <Time>2011-10-29T13:52:30.2754953+08:00</Time>
+      <Time>2011-11-01T12:38:45.7569404+08:00</Time>
     </Item>
     <Item>
       <Source>smoke.bmp</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb</Output>
-      <Time>2011-10-29T13:52:31.5965709+08:00</Time>
+      <Time>2011-11-01T12:38:46.8850049+08:00</Time>
     </Item>
     <Item>
       <Source>TankEnemy.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb</Output>
-      <Time>2011-10-29T13:52:30.6395161+08:00</Time>
+      <Time>2011-11-01T12:38:46.2729699+08:00</Time>
     </Item>
     <Item>
       <Source>TankPlayer.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb</Output>
-      <Time>2011-10-29T13:52:31.6295728+08:00</Time>
+      <Time>2011-11-01T12:38:46.920007+08:00</Time>
     </Item>
     <Item>
       <Source>TurretEnemy.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb</Output>
-      <Time>2011-10-29T13:52:31.8995882+08:00</Time>
+      <Time>2011-11-01T12:38:47.3920339+08:00</Time>
     </Item>
     <Item>
       <Source>TurretPlayer.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb</Output>
-      <Time>2011-10-29T13:52:29.5474537+08:00</Time>
+      <Time>2011-11-01T12:38:45.1999086+08:00</Time>
     </Item>
     <Item>
       <Source>TankcolouredC.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb</Output>
-      <Time>2011-10-29T13:52:30.6975194+08:00</Time>
+      <Time>2011-11-01T12:38:46.3529745+08:00</Time>
     </Item>
     <Item>
       <Source>TowerTurret.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb</Output>
-      <Time>2011-10-29T13:52:30.8515283+08:00</Time>
+      <Time>2011-11-01T12:38:46.7169953+08:00</Time>
     </Item>
     <Item>
       <Source>Tower1.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb</Output>
-      <Time>2011-10-29T13:52:30.445505+08:00</Time>
+      <Time>2011-11-01T12:38:45.8779473+08:00</Time>
     </Item>
     <Item>
       <Source>ProjectileBlue.png</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb</Output>
-      <Time>2011-10-29T13:52:31.3065543+08:00</Time>
+      <Time>2011-11-01T12:38:46.7869993+08:00</Time>
     </Item>
     <Item>
       <Source>ProjectileRed.png</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb</Output>
-      <Time>2011-10-29T13:52:30.5915134+08:00</Time>
+      <Time>2011-11-01T12:38:46.2249672+08:00</Time>
     </Item>
     <Item>
       <Source>ProjectilePurple.png</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb</Output>
-      <Time>2011-10-29T13:52:32.7156349+08:00</Time>
+      <Time>2011-11-01T12:38:47.8640609+08:00</Time>
     </Item>
     <Item>
       <Source>PHOTO_6270771_40602_13529332_ap.jpg</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2011-10-29T13:52:31.3585573+08:00</Time>
+      <Time>2011-11-01T12:38:46.8450027+08:00</Time>
     </Item>
     <Item>
       <Source>CrossHair1.png</Source>
@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb</Output>
-      <Time>2011-10-29T13:52:31.7345788+08:00</Time>
+      <Time>2011-11-01T12:38:47.0150124+08:00</Time>
     </Item>
     <Item>
       <Source>TankPurple.png</Source>
@@ -143,7 +143,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb</Output>
-      <Time>2011-10-29T13:52:32.0635976+08:00</Time>
+      <Time>2011-11-01T12:38:47.4750387+08:00</Time>
     </Item>
     <Item>
       <Source>TurretPurple.png</Source>
@@ -152,7 +152,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb</Output>
-      <Time>2011-10-29T13:52:30.148488+08:00</Time>
+      <Time>2011-11-01T12:38:45.6839363+08:00</Time>
     </Item>
     <Item>
       <Source>Tree2.png</Source>
@@ -161,7 +161,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb</Output>
-      <Time>2011-10-29T13:52:30.3975023+08:00</Time>
+      <Time>2011-11-01T12:38:45.8489457+08:00</Time>
     </Item>
     <Item>
       <Source>buildTowerMenu.png</Source>
@@ -170,7 +170,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb</Output>
-      <Time>2011-10-29T13:52:30.8105259+08:00</Time>
+      <Time>2011-11-01T12:38:46.5619865+08:00</Time>
     </Item>
     <Item>
       <Source>buildTowerMenuSelect.png</Source>
@@ -179,7 +179,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb</Output>
-      <Time>2011-10-29T13:52:29.6524597+08:00</Time>
+      <Time>2011-11-01T12:38:45.3169153+08:00</Time>
     </Item>
     <Item>
       <Source>cancelMenu.png</Source>
@@ -188,7 +188,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb</Output>
-      <Time>2011-10-29T13:52:29.7844672+08:00</Time>
+      <Time>2011-11-01T12:38:45.4889251+08:00</Time>
     </Item>
     <Item>
       <Source>cancelMenuSelect.png</Source>
@@ -197,7 +197,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb</Output>
-      <Time>2011-10-29T13:52:31.6845759+08:00</Time>
+      <Time>2011-11-01T12:38:46.9650095+08:00</Time>
     </Item>
     <Item>
       <Source>firestone.jpg</Source>
@@ -206,7 +206,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb</Output>
-      <Time>2011-10-29T13:52:32.8266412+08:00</Time>
+      <Time>2011-11-01T12:38:48.1470771+08:00</Time>
     </Item>
     <Item>
       <Source>block.png</Source>
@@ -215,7 +215,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb</Output>
-      <Time>2011-10-29T13:52:30.5415105+08:00</Time>
+      <Time>2011-11-01T12:38:46.1359621+08:00</Time>
     </Item>
     <Item>
       <Source>burn.png</Source>
@@ -224,7 +224,16 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb</Output>
-      <Time>2011-10-29T13:52:31.022538+08:00</Time>
+      <Time>2011-11-01T12:38:46.7669982+08:00</Time>
+    </Item>
+    <Item>
+      <Source>ssPlaceHolder.png</Source>
+      <Name>ssPlaceHolder</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\ssPlaceHolder.xnb</Output>
+      <Time>2011-11-01T12:38:48.0300704+08:00</Time>
     </Item>
     <Item>
       <Source>tree1.png</Source>
@@ -233,7 +242,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\tree1.xnb</Output>
-      <Time>2011-10-29T13:52:31.7685807+08:00</Time>
+      <Time>2011-11-01T12:38:47.1690212+08:00</Time>
     </Item>
     <Item>
       <Source>fireParticle.jpg</Source>
@@ -242,7 +251,70 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb</Output>
-      <Time>2011-10-29T13:52:30.829527+08:00</Time>
+      <Time>2011-11-01T12:38:46.6609921+08:00</Time>
+    </Item>
+    <Item>
+      <Source>build.png</Source>
+      <Name>build</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb</Output>
+      <Time>2011-11-01T12:38:46.3739757+08:00</Time>
+    </Item>
+    <Item>
+      <Source>cancel.png</Source>
+      <Name>cancel</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancel.xnb</Output>
+      <Time>2011-11-01T12:38:45.9969542+08:00</Time>
+    </Item>
+    <Item>
+      <Source>buildSmall.png</Source>
+      <Name>buildSmall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmall.xnb</Output>
+      <Time>2011-11-01T12:38:48.058072+08:00</Time>
+    </Item>
+    <Item>
+      <Source>cancelSmall.png</Source>
+      <Name>cancelSmall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmall.xnb</Output>
+      <Time>2011-11-01T12:38:47.1330191+08:00</Time>
+    </Item>
+    <Item>
+      <Source>enhanceSmall.png</Source>
+      <Name>enhanceSmall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmall.xnb</Output>
+      <Time>2011-11-01T12:38:46.1539631+08:00</Time>
+    </Item>
+    <Item>
+      <Source>sellSmall.png</Source>
+      <Name>sellSmall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmall.xnb</Output>
+      <Time>2011-11-01T12:38:46.0959598+08:00</Time>
+    </Item>
+    <Item>
+      <Source>upgradeSmall.png</Source>
+      <Name>upgradeSmall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmall.xnb</Output>
+      <Time>2011-11-01T12:38:47.2890281+08:00</Time>
     </Item>
     <Item>
       <Source>SpriteFont1.spritefont</Source>
@@ -251,7 +323,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2011-10-29T13:52:30.5095087+08:00</Time>
+      <Time>2011-11-01T12:38:46.0729585+08:00</Time>
     </Item>
     <Item>
       <Source>2DTankGame.mp3</Source>
@@ -260,7 +332,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb</Output>
-      <Time>2011-10-29T13:52:32.6766326+08:00</Time>
+      <Time>2011-11-01T12:38:47.8250587+08:00</Time>
     </Item>
     <Item>
       <Source>2d_Tank_Menu.mp3</Source>
@@ -270,7 +342,7 @@
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb</Output>
       <Extra>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma</Extra>
-      <Time>2011-10-29T13:52:31.8455851+08:00</Time>
+      <Time>2011-11-01T12:38:47.3630323+08:00</Time>
     </Item>
     <Item>
       <Source>2D_Tank_POM.wav</Source>
@@ -279,7 +351,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb</Output>
-      <Time>2011-10-29T13:52:29.7374645+08:00</Time>
+      <Time>2011-11-01T12:38:45.4279216+08:00</Time>
     </Item>
     <Item>
       <Source>Map1.xml</Source>
@@ -288,7 +360,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb</Output>
-      <Time>2011-10-31T15:13:19.9833908+08:00</Time>
+      <Time>2011-11-01T13:28:03.0500879+08:00</Time>
     </Item>
     <Item>
       <Source>Map2.xml</Source>
@@ -297,7 +369,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb</Output>
-      <Time>2011-10-29T13:52:29.8534712+08:00</Time>
+      <Time>2011-11-01T13:28:03.0110857+08:00</Time>
     </Item>
     <Item>
       <Source>Map3.xml</Source>
@@ -306,7 +378,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb</Output>
-      <Time>2011-10-29T13:52:30.1234866+08:00</Time>
+      <Time>2011-11-01T13:28:02.9790839+08:00</Time>
     </Item>
     <Item>
       <Source>Map4.xml</Source>
@@ -315,7 +387,16 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb</Output>
-      <Time>2011-10-29T13:52:30.2134918+08:00</Time>
+      <Time>2011-11-01T13:28:02.9620829+08:00</Time>
+    </Item>
+    <Item>
+      <Source>levelOne.jpg</Source>
+      <Name>levelOne</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\levelOne.xnb</Output>
+      <Time>2011-11-01T13:34:36.1005691+08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -355,7 +436,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\MapData\bin\x86\Debug\MapData.dll</Key>
-        <Value>2011-10-29T13:53:29.5298845+08:00</Value>
+        <Value>2011-11-01T13:28:03.3741065+08:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>

@@ -277,7 +277,7 @@ namespace RTS
                 {
                     buildMode = false;
                     mainBuildMode = false;
-                    if (map.TileTypeAt(position) == MapTileType.MapBarrier)
+                    if (map.TileTypeAt(position) == MapTileType.MapGrass)
                     {
                         createTower();
                     }
@@ -415,7 +415,7 @@ namespace RTS
                 {
                     buildMode = false;
                     mainBuildMode = false;
-                    if (map.TileTypeAt(position) == MapTileType.MapBarrier)
+                    if (map.TileTypeAt(position) == MapTileType.MapGrass)
                     {
                         if (money > 15)
                         {

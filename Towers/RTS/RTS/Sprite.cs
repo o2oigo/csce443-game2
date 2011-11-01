@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    abstract class Sprite
+    public abstract class Sprite
     {
         protected Game1 game;
         protected ContentManager contentManager;
