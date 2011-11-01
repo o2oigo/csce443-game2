@@ -37,7 +37,7 @@ namespace RTS
         private int timesHit = 0;
 
         private bool spawnShield = true;
-        private float shieldTimeLimit = 3f;
+        private float shieldTimeLimit = 100f;
         private float shieldTimer = 0;
 
         private double moveRotationAngle;
@@ -49,6 +49,7 @@ namespace RTS
         private Texture2D turretTexture;
 
         // fredy code for User Interface (tower menu)
+        private bool boolForTest = false;
         private Texture2D mouseTexture;
         private Texture2D menu1Texture;
         private Texture2D menu2Texture;
@@ -58,9 +59,20 @@ namespace RTS
         private bool mainBuildMode = false;
         private bool upgradeBuildMode = false;
         private bool maxCapacityTower = false;
+        SpriteFont font;
+        private int fireStoneInInventory = 0;
+        private int waterStoneInInventory = 0;
+        private int healStoneInInventory = 0;
+        private int money = 35;
+        private float timeForResources = 0;
+        private Vector2 uiPosition1;
+        private Vector2 uiPosition2;
+        private Vector2 uiPosition3;
+        private Vector2 uiPosition4;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
-        private List<Tower> towerList = new List<Tower>(100);
+        private List<Tower> towerList = new List<Tower>(20);
+        private List<Stone> stoneList = new List<Stone>(20);
 
         private int enemiesDestroyed = 0;
         private int towerEnemiesDestroyed = 0;
@@ -85,12 +97,13 @@ namespace RTS
             if (playerIndex == PlayerIndex.One)
                 turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
             else
-                turretTexture = contentManager.Load<Texture2D>("TurretPurple");
+            turretTexture = contentManager.Load<Texture2D>("TurretPurple");
             mouseTexture = contentManager.Load<Texture2D>("CrossHair1");
             menu1Texture = contentManager.Load<Texture2D>("buildTowerMenu");
             menu2Texture = contentManager.Load<Texture2D>("cancelMenu");
             menu3Texture = contentManager.Load<Texture2D>("buildTowerMenuSelect");
             menu4Texture = contentManager.Load<Texture2D>("cancelMenuSelect");
+            font = contentManager.Load<SpriteFont>("font");
 
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
@@ -98,6 +111,11 @@ namespace RTS
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            uiPosition1 = new Vector2 (80, game.GraphicsDevice.Viewport.Height - 50);
+            uiPosition2 = new Vector2(250, game.GraphicsDevice.Viewport.Height - 70);
+            uiPosition3 = new Vector2(500, game.GraphicsDevice.Viewport.Height - 70);
+            uiPosition4 = new Vector2(700, game.GraphicsDevice.Viewport.Height - 70);
+
             //spriteBatch = SB;
             //spriteBatch.Begin();
             if (!currentState.IsConnected)
@@ -115,14 +133,19 @@ namespace RTS
                 tower.Draw(spriteBatch);
             }
 
+
+            if (boolForTest == false)
+            {
+                spriteBatch.DrawString(font, "test", new Vector2(position.X - 50, position.Y + 80), Color.White);
+            }
+            spriteBatch.DrawString(font, fireStoneInInventory + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.White);
+            spriteBatch.DrawString(font, waterStoneInInventory + " Water Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.White);
+            spriteBatch.DrawString(font, healStoneInInventory + " Heal Stone", uiPosition2, Color.White);
+            spriteBatch.DrawString(font, "Resources: " + money, uiPosition1, Color.White);
+
             upgradeBuildMode = false;
             foreach (Tower tower in towerList)
             {
-                //Set upgrade mode if near tower
-                if (tower.getPlayerIsNear() == true)
-                {
-                    upgradeBuildMode = true;
-                }
                 tower.Draw(spriteBatch);
             }
 
@@ -145,6 +168,7 @@ namespace RTS
                     spriteBatch.Draw(menu2Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
                 }
             }
+
 
 
 
@@ -171,6 +195,15 @@ namespace RTS
                 }
             }
 
+            foreach (Tower tower in towerList)
+            {
+                //Set upgrade mode if near tower
+                if (tower.getPlayerIsNear() == true)
+                {
+                    upgradeBuildMode = true;
+                }
+            }
+
             // Get the game pad state.
             currentState = GamePad.GetState(playerIndex);
 
@@ -188,6 +221,9 @@ namespace RTS
 
             //Update Towers
             updateTowers(gameTime, enemies);
+
+            //Update Inventory
+            updateInventory();
 
             //Store old states
             oldMousestate = mousestate;
@@ -291,6 +327,56 @@ namespace RTS
                 position = new Vector2(100, 100);
             }
 
+            if (keystate.IsKeyDown(Keys.NumPad1))
+            {
+                Stone fStone = new Stone();
+                fStone.Initialize(game,position,0);
+                addStoneToInventory(fStone);
+            }
+            
+            if (keystate.IsKeyDown(Keys.NumPad2))
+            {
+                Stone wStone = new Stone();
+                wStone.Initialize(game, position, 1);
+                addStoneToInventory(wStone);
+            }
+            
+            if (keystate.IsKeyDown(Keys.NumPad3))
+            {
+                Stone hStone = new Stone();
+                hStone.Initialize(game, position, 2);
+                addStoneToInventory(hStone);
+            }
+
+            if (keystate.IsKeyDown(Keys.NumPad7))
+            {
+                removeStoneFromInventory(0);
+            }
+
+            if (keystate.IsKeyDown(Keys.NumPad8))
+            {
+                removeStoneFromInventory(1);
+            }
+
+            if (keystate.IsKeyDown(Keys.NumPad9))
+            {
+                removeStoneFromInventory(2);
+            }
+
+            if (keystate.IsKeyDown(Keys.NumPad4))
+            {
+                addMoney(10);
+            }
+
+            if (keystate.IsKeyDown(Keys.NumPad5))
+            {
+                removeMoney(50);
+            }
+
+            if (keystate.IsKeyDown(Keys.NumPad6))
+            {
+                removeMoney(10);
+            }
 
 
             //Update moveRotationAngle
@@ -327,7 +413,11 @@ namespace RTS
                     mainBuildMode = false;
                     if (map.TileTypeAt(position) == MapTileType.MapBarrier)
                     {
-                        createTower();
+                        if (money > 15)
+                        {
+                            removeMoney(15);
+                            createTower();
+                        }
                     }
                     if (towerList.Count == maxTowerCount)
                     {
@@ -345,7 +435,13 @@ namespace RTS
                     for (int i = 0; i < towerList.Count(); i++)
                     {
                         if (towerList[i].getPlayerIsNear() == true)
-                            towerList[i].setToLvlTwo();
+                        {
+                            if (money > 10)
+                            {
+                                removeMoney(10);
+                                towerList[i].setToLvlTwo();
+                            }
+                        }
 
                     }
                     buildMode = false;
@@ -367,7 +463,7 @@ namespace RTS
                 }
             }
 
-            if (keystate.IsKeyUp(Keys.Escape) && oldKeyState.IsKeyDown(Keys.Escape))
+            if (keystate.IsKeyUp(Keys.Delete) && oldKeyState.IsKeyDown(Keys.Delete))
             {
                 game.Exit();
             }
@@ -424,12 +520,75 @@ namespace RTS
             towerList.Add(tower);
         }
 
+
         public void updateTowers(GameTime gameTime, List<Enemy> enemies)
         {
             for (int i = 0; i < towerList.Count; i++)
             {
                 towerList[i].Update(gameTime, enemies);
             }
+        }
+
+        // checking how many stone in the player inventory
+        public void updateInventory()
+        {
+            fireStoneInInventory = 0;
+            waterStoneInInventory = 0;
+            healStoneInInventory = 0;
+
+            for (int i = 0; i < stoneList.Count; i++)
+            {
+                Stone _stone = stoneList[i];
+                if (_stone.Type == ElementType.Fire)
+                {
+                    fireStoneInInventory++;
+                }
+                else if (_stone.Type == ElementType.Water)
+                {
+                    waterStoneInInventory++;
+                }
+                else if (_stone.Type == ElementType.Heal)
+                {
+                    healStoneInInventory++;
+                }
+                
+            }
+        }
+
+        public void addStoneToInventory(Stone st)
+        {
+            //Stone stone = new Stone();
+            //stone.Initialize(game, this.position, _stoneType);
+            stoneList.Add(st);
+        }
+
+        public void removeStoneFromInventory(int _stoneType)
+        {
+            Stone removedStone = new Stone();
+            removedStone.Initialize(game, this.position, _stoneType);
+            if (stoneList.Count > 0)
+            {
+                for (int i = 0; i < stoneList.Count; i++)
+                {
+                    Stone _stone = stoneList[i];
+                    if (_stone.Type == removedStone.Type)
+                    {
+                        stoneList.Remove(_stone);
+                        break;
+                    }
+
+                }
+            }
+        }
+
+        public void addMoney(int _money)
+        {
+            money += _money;
+        }
+
+        public void removeMoney(int _money)
+        {
+            money -= _money;
         }
 
         public float getTurretLength()
@@ -512,6 +671,11 @@ namespace RTS
             return shieldTimer;
         }
 
+        public float getShieldTimeLimit()
+        {
+            return shieldTimeLimit;
+        }
+
         public bool getMaxTower()
         {
             return maxCapacityTower;
@@ -534,6 +698,41 @@ namespace RTS
             spawnShield = true;
 
         }
+
+
+        public void restartGameLevel1()
+        {
+            position = new Vector2(100, 100);
+            speed = 0;
+            timesHit = 0;
+
+            spawnShield = true;
+            shieldTimeLimit = 100f;
+            shieldTimer = 0;
+            xComponent = 0;
+            yComponent = 0;
+
+            boolForTest = false;
+            buildMode = false;
+            mainBuildMode = false;
+            upgradeBuildMode = false;
+            maxCapacityTower = false;
+            
+            fireStoneInInventory = 0;
+            waterStoneInInventory = 0;
+            healStoneInInventory = 0;
+            money = 35;
+            timeForResources = 0;
+            
+            projectileList.Clear();
+            towerList.Clear();
+            stoneList.Clear();
+
+            enemiesDestroyed = 0;
+            towerEnemiesDestroyed = 0;
+        }
+
+       
 
     }
 }
