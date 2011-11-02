@@ -149,7 +149,7 @@ namespace RTS
             userInterface.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
             userInterface.LoadContent();
             player1 = new Player();
-            player1.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
+            player1.Initialize(this, PlayerIndex.One, new Vector2(300, 400));
             player1.LoadContent("wizard");
 
             // player2 = new Player();
@@ -499,7 +499,7 @@ namespace RTS
             {
                 if (enemies[i].isDead())
                 {
-                    int randNum = rand.Next(0, 10);
+                    int randNum = rand.Next(0, 15);
                     if (randNum < 3)
                     {
                         Stone newStone = new Stone();

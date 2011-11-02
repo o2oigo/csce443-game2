@@ -239,13 +239,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="firestone.jpg">
-      <Name>firestone</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="block.png">
       <Name>block</Name>
       <Importer>TextureImporter</Importer>
@@ -429,75 +422,42 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="wizard.png">
-      <Name>wizard</Name>
+    <Compile Include="elfBack.1.png">
+      <Name>elfBack.1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="wizardTurret.png">
-      <Name>wizardTurret</Name>
+    <Compile Include="elfFront1.png">
+      <Name>elfFront1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="elfLeft.1.png">
+      <Name>elfLeft.1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="elfRight.1.png">
+      <Name>elfRight.1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cannon1.png">
-      <Name>cannon1</Name>
+    <Compile Include="lightningstone.png">
+      <Name>lightningstone</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="cannon10.png">
-      <Name>cannon10</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fireStone.png">
+      <Name>fireStone</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="cannon11.png">
-      <Name>cannon11</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon12.png">
-      <Name>cannon12</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon2.png">
-      <Name>cannon2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon3.png">
-      <Name>cannon3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon4.png">
-      <Name>cannon4</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon5.png">
-      <Name>cannon5</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon6.png">
-      <Name>cannon6</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon7.png">
-      <Name>cannon7</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon8.png">
-      <Name>cannon8</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cannon9.png">
-      <Name>cannon9</Name>
+    <Compile Include="healingStone.png">
+      <Name>healingStone</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
