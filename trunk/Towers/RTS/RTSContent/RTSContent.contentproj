@@ -401,8 +401,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="LightningProjectile.png">
       <Name>LightningProjectile</Name>
       <Importer>TextureImporter</Importer>
@@ -410,35 +408,29 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="muffinMonster.png">
-      <Name>muffinMonster</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="puddingMonster.png">
-      <Name>puddingMonster</Name>
+    <Compile Include="fireTowerSmall.png">
+      <Name>fireTowerSmall</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="elfBack.1.png">
-      <Name>elfBack.1</Name>
+    <Compile Include="gameoverNew.jpg">
+      <Name>gameoverNew</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="elfFront1.png">
-      <Name>elfFront1</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GUI_Game_Icons.jpg">
+      <Name>GUI_Game_Icons</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="elfLeft.1.png">
-      <Name>elfLeft.1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="elfRight.1.png">
-      <Name>elfRight.1</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fireStone.png">
+      <Name>fireStone</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -451,13 +443,52 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="fireStone.png">
-      <Name>fireStone</Name>
+    <Compile Include="muffinMonster.png">
+      <Name>muffinMonster</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="projectil.png">
+      <Name>projectil</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Projectile.png">
+      <Name>Projectile</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="puddingMonster.png">
+      <Name>puddingMonster</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EffectSprite_PreSlash.jpg">
+      <Name>EffectSprite_PreSlash</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="healingStone.png">
       <Name>healingStone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Icon.png">
+      <Name>Icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TowerOriginal.png">
+      <Name>TowerOriginal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="vegeta_projectile.png">
+      <Name>vegeta_projectile</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -520,6 +551,36 @@
     </Compile>
     <Compile Include="cannon9.png">
       <Name>cannon9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="elfBack.1.png">
+      <Name>elfBack.1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="elfFront1.png">
+      <Name>elfFront1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="elfLeft.1.png">
+      <Name>elfLeft.1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="elfRight.1.png">
+      <Name>elfRight.1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="wizard.png">
+      <Name>wizard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="wizardTurret.png">
+      <Name>wizardTurret</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

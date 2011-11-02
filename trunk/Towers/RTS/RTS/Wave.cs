@@ -213,11 +213,16 @@ namespace RTS
                 if (WaveDictionary[currentWave].Count() == 0) waveFinished = true;
                 timer = 0f;
             }
-            if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer > 20000)
+            if (currentWave == 6 && waveFinished && game.Enemies.Count() == 0)
+            {
+                levelFinished = true;
+            }
+            if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer > 9000)
             {
                 nextWave();
                 timer = 0f;
             }
+            
         }
     }
 }
