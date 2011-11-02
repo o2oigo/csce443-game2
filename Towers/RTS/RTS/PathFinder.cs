@@ -99,22 +99,18 @@ namespace RTS
             paths = new Dictionary<Point, Point>();
             map = mazeMap;
         }
+
+        public void SearchPath()
+        {
+
+            while (searchStatus == SearchStatus.Searching)
+            {
+                DoSearchStep();
+            }
+        }
         #endregion
 
         #region Update and Draw
-
-        public void Update(GameTime gameTime)
-        {
-            if (searchStatus == SearchStatus.Searching)
-            {
-                timeSinceLastSearchStep += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (timeSinceLastSearchStep >= timeStep)
-                {
-                    DoSearchStep();
-                    timeSinceLastSearchStep = 0f;
-                }
-            }
-        }
 
         private void DoSearchStep()
         {
@@ -153,7 +149,6 @@ namespace RTS
         {
             //int randomNum = rand.Next(0, map.StartTile.Count());
 
- 
             searchStatus = SearchStatus.Stopped;
             //totalSearchSteps = 0;
             //Scale = map.Scale;

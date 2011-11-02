@@ -166,6 +166,7 @@ namespace RTS
             Reset();
             path.Reset(startTile);
             path.IsSearching = !path.IsSearching;
+            path.SearchPath();
         }
 
         public virtual void LoadContent(String textureName)
@@ -299,7 +300,7 @@ namespace RTS
                 }
                 Moving = true;
             }
-            path.Update(gameTime);
+            //path.Update(gameTime);
 
             if (moving)
             {
