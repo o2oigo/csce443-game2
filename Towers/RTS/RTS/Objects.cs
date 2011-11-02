@@ -90,13 +90,17 @@ namespace RTS
             this.game = game;
             position = pos;
             origin = pos;
+            origin.X += 20;
+            origin.Y += 40;
         }
 
         public void LoadContent()
         {
             houseTexture = game.Content.Load<Texture2D>("house");
-            position.X -= houseTexture.Width / 2;
-            position.Y -= houseTexture.Height / 2;
+            position.X -= (houseTexture.Width / 2) ;
+            position.Y -= (houseTexture.Height / 2) ;
+            position.X += 20;
+            position.Y += 40;
         }
 
         public void Draw(SpriteBatch spriteBatch)
