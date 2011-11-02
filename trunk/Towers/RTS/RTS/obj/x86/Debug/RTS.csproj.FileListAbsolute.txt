@@ -542,3 +542,12 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\tre
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\treeG.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\treeH.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\house.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeA.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeB.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeC.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeD.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeE.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeF.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeG.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeH.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\house.xnb

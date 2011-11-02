@@ -39,14 +39,6 @@ Content\lightningTowerSmall.xnb
 Content\quit.xnb
 Content\start.xnb
 Content\startMenuBackground.xnb
-Content\font.xnb
-Content\2DTankGame.xnb
-Content\2d_Tank_Menu.xnb
-Content\2DTankPOM.xnb
-Content\Map1.xnb
-Content\Map2.xnb
-Content\Map3.xnb
-Content\Map4.xnb
 Content\treeA.xnb
 Content\treeB.xnb
 Content\treeC.xnb
@@ -56,4 +48,12 @@ Content\treeF.xnb
 Content\treeG.xnb
 Content\treeH.xnb
 Content\house.xnb
+Content\font.xnb
+Content\2DTankGame.xnb
+Content\2d_Tank_Menu.xnb
+Content\2DTankPOM.xnb
+Content\Map1.xnb
+Content\Map2.xnb
+Content\Map3.xnb
+Content\Map4.xnb
 Content\2d_Tank_Menu.wma

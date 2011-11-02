@@ -83,7 +83,7 @@ namespace RTS
         // initialize is called by ParticleSystem to set up the particle, and prepares
         // the particle for use.
         public void Initialize(Vector2 position, Vector2 velocity, Vector2 acceleration,
-            float lifetime, float scale, float rotationSpeed)
+            float lifetime, float scale, float rotationSpeed, float rotation)
         {
             // set the values to the requested values
             this.Position = position;
@@ -98,7 +98,26 @@ namespace RTS
             this.TimeSinceStart = 0.0f;
 
             // set rotation to some random value between 0 and 360 degrees.
-            this.Rotation = ParticleSystem.RandomBetween(0, MathHelper.TwoPi);
+            if (rotationSpeed == 0)
+                setRotation(rotation);
+            else
+                setRotation(0);
+            
+        }
+
+        public void setRotation(float rotation)
+        {
+            if(rotation != 0)
+                this.Rotation = rotation; 
+            else 
+                this.Rotation = ParticleSystem.RandomBetween(0, MathHelper.TwoPi);
+        }
+
+        public void setValues(Vector2 velocity, Vector2 acceleration)
+        {
+            
+            this.Velocity = velocity;
+            this.Acceleration = acceleration;
         }
 
         // update is called by the ParticleSystem on every frame. This is where the

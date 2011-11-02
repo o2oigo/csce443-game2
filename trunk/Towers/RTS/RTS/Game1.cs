@@ -60,6 +60,7 @@ namespace RTS
         int live = 10;
 
         public FireParticleSystem fire;
+        public LightningParticleSystem lightning;
 
 
         // Dictionary<string, SoundEffect> music;
@@ -93,6 +94,9 @@ namespace RTS
 
             fire = new FireParticleSystem(this, 20000);
             Components.Add(fire);
+
+            lightning = new LightningParticleSystem(this, 10);
+            Components.Add(lightning);
 
             
         }
@@ -199,6 +203,7 @@ namespace RTS
 
             explosion.Update(gameTime);
             fire.Update(gameTime);
+            lightning.Update(gameTime);
             
             if (userInterface.getRestartGameStatus() == true)
             {

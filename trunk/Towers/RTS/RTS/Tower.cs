@@ -31,7 +31,8 @@ namespace RTS
 
         private float elapsedTime;
         private Vector2 origin;
-        private PlayerIndex playerIndex;
+        protected PlayerIndex playerIndex;
+        protected Enemy shootAt;
 
         private float shootTimer = .8f;
         private float towerRange = 400;
@@ -48,12 +49,12 @@ namespace RTS
         private int attackDamage = 25;
 
         private double moveRotationAngle = 0;
-        private double shootRotationAngle = 0;
+        protected double shootRotationAngle = 0;
 
         private Texture2D texture;
         private Texture2D turretTexture;
 
-        private List<Projectile> projectileList = new List<Projectile>(5);
+        protected List<Projectile> projectileList = new List<Projectile>(5);
 
         private Damage damage;
         public Damage Damage
@@ -130,7 +131,7 @@ namespace RTS
 
         public void updateTurret(List<Enemy> enemies)
         {
-            Enemy shootAt = null;
+            shootAt = null;
             if (enemies.Count != 0)
             {
                // shootAt = enemies[0];
@@ -156,7 +157,7 @@ namespace RTS
             }
         }
 
-        public void createProjectile()
+        public virtual void createProjectile()
         {
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, new Vector2(position.X, position.Y - 25), (float)shootRotationAngle, getTurretLength(), 20f, map);
