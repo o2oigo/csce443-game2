@@ -80,7 +80,7 @@ namespace RTS
             //damage = new Damage(10, 1,ElementType.Normal, new EnemyEffectBurn(game,5,1));
             damage = new Damage(25, 1, ElementType.Normal, null);
 
-            //map = game.Map;
+            map = game.Map;
             //damage = new Damage(10, 1,ElementType.Fire, new EnemyEffectBurn(game,5,1));
         }
         
