@@ -551,3 +551,5 @@ C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeF.xnb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeG.xnb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeH.xnb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\house.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningParticle.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\LightningProjectile.xnb

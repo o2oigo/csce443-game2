@@ -39,6 +39,7 @@ namespace RTS
         private double playerRotationAngle;
         private double projectileRotationAngle;
 
+        private float effectTimer;
         private float elapsedTime;
         private float shootElapsedTime;
         private float shootTimer = 1.6f;
@@ -194,13 +195,19 @@ namespace RTS
         public virtual void Update(GameTime gameTime, List<Tower> towers)//List<Player> players)
         {
             ////Elapsed Time Calculations
+            effectTimer += (float)gameTime.ElapsedGameTime.Milliseconds;
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             shootElapsedTime += elapsedTime;
 
             if (effect != null)
             {
-                effect.applyEffects(this);
-                if (!effect.isValid(gameTime)) effect = null;
+                game.fire.AddParticles(new Vector2(position.X, position.Y));
+                if (effectTimer > 100)
+                {
+                    effect.applyEffects(this);
+                    if (!effect.isValid(gameTime)) effect = null;
+                    effectTimer = 0f;
+                }
             }
 
             float facingDirection = (float)Math.Atan2(Direction.Y, Direction.X);
@@ -391,7 +398,7 @@ namespace RTS
             hp -= burnDmg*dmgOffset;
             if (hp <= 0)
                 dead = true;
-            game.fire.AddParticles(new Vector2(position.X, position.Y));
+            
         }
         #endregion
 
