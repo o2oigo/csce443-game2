@@ -24,7 +24,7 @@ namespace RTS
 
 
 
-        bool skipToGame = false;               // [][][] set this to true to disable all non game screen that I add [][][]
+        bool skipToGame = true;               // [][][] set this to true to disable all non game screen that I add [][][]
         bool showTitleScreen = false;
         bool showGameScreen = false;
         bool showPauseScreen = false;

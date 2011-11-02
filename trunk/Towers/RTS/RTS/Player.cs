@@ -57,6 +57,15 @@ namespace RTS
         private Texture2D menu4Texture;
         private Texture2D buildTexture;
         private Texture2D cancelTexture;
+        private Texture2D upgradeTexture;
+        private Texture2D sellTexture;
+        private Texture2D enhanceTexture;
+        private Texture2D canonTowerBuildTexture;
+        private Texture2D ligthningTowerBuildTexture;
+        private Texture2D backgroundTexture;
+        private Texture2D startMenuTexture;
+        private Texture2D quitMenuTexture;
+
         private bool buildMode = false;
         private bool mainBuildMode = false;
         private bool upgradeBuildMode = false;
@@ -107,6 +116,9 @@ namespace RTS
             menu4Texture = contentManager.Load<Texture2D>("cancelMenuSelect");
             buildTexture = contentManager.Load<Texture2D>("buildSmall");
             cancelTexture = contentManager.Load<Texture2D>("cancelSmall");
+            upgradeTexture = contentManager.Load<Texture2D>("upgradeSmall");
+            enhanceTexture = contentManager.Load<Texture2D>("enhanceSmall");
+            sellTexture = contentManager.Load<Texture2D>("sellSmall");
             font = contentManager.Load<SpriteFont>("font");
 
             origin.X = texture.Width / 2;
@@ -147,15 +159,17 @@ namespace RTS
             spriteBatch.DrawString(font, healStoneInInventory + " Heal Stone", uiPosition2, Color.White);
             spriteBatch.DrawString(font, "Resources: " + money, uiPosition1, Color.White);
 
-            upgradeBuildMode = false;
+            
             foreach (Tower tower in towerList)
             {
                 tower.Draw(spriteBatch);
             }
 
 
-            if (buildMode == true && mainBuildMode == true)
+            if (buildMode == true && mainBuildMode == true && upgradeBuildMode == false)
             {
+
+                /*
                 if (shootRotationAngle > -2.39 && shootRotationAngle < -0.93)
                 {
                     spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
@@ -171,6 +185,19 @@ namespace RTS
                     spriteBatch.Draw(menu1Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
                     spriteBatch.Draw(menu2Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
                 }
+                 */
+
+                spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+
+            }
+
+            if (upgradeBuildMode == true && buildMode == true)
+            {
+                spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+                spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
+                spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
             }
 
 
@@ -205,7 +232,15 @@ namespace RTS
                 if (tower.getPlayerIsNear() == true)
                 {
                     upgradeBuildMode = true;
+                    mainBuildMode = false;
                 }
+                else
+                {
+                    mainBuildMode = true;
+                    upgradeBuildMode = false;
+                }
+
+
             }
 
             // Get the game pad state.
@@ -409,24 +444,48 @@ namespace RTS
                 buildMode = true;
                 mainBuildMode = true;
             }
-            if (mainBuildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
+            if (buildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
             {
-                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && towerList.Count < maxTowerCount && maxCapacityTower == false)
+                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && buildMode == true && towerList.Count < maxTowerCount && maxCapacityTower == false)
                 {
-                    buildMode = false;
-                    mainBuildMode = false;
-                    if (map.TileTypeAt(position) == MapTileType.MapGrass)
+                    
+                    if (mainBuildMode == true)
                     {
-                        if (money > 15)
+                        if (map.TileTypeAt(position) == MapTileType.MapGrass)
                         {
-                            removeMoney(15);
-                            createTower();
+                            if (money >= 15)
+                            {
+                                removeMoney(15);
+                                createTower();
+                                buildMode = false;
+                                mainBuildMode = false;
+                            }
+                        }
+                        if (towerList.Count == maxTowerCount)
+                        {
+                            maxCapacityTower = true;
                         }
                     }
-                    if (towerList.Count == maxTowerCount)
+                    else if (upgradeBuildMode == true)
                     {
-                        maxCapacityTower = true;
+                        for (int i = 0; i < towerList.Count(); i++)
+                        {
+                            if (towerList[i].getPlayerIsNear() == true)
+                            {
+                                if (money >= 10)
+                                {
+                                    removeMoney(10);
+
+                                    towerList[i].setToLvlTwo();
+                                    buildMode = false;
+                                    upgradeBuildMode = false;
+                                }
+                            }
+
+                        }
                     }
+
+                    
                 }
                 else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
                 {
@@ -434,16 +493,17 @@ namespace RTS
                     mainBuildMode = false;
                 }
 
-                else if (shootRotationAngle >= -0.93 && shootRotationAngle <= 0.55)
+                else if (shootRotationAngle >= -0.93 && shootRotationAngle <= 0.55 && upgradeBuildMode == true)
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
                         if (towerList[i].getPlayerIsNear() == true)
                         {
-                            if (money > 10)
+                            if (fireStoneInInventory >= 1)
                             {
-                                removeMoney(10);
-                                towerList[i].setToLvlTwo();
+                                removeStoneFromInventory(0);
+
+                                towerList[i].setToFireTower();
                             }
                         }
 
@@ -452,14 +512,25 @@ namespace RTS
                     mainBuildMode = false;
                 }
 
-                else
+                else if (shootRotationAngle >= -3.14 && shootRotationAngle <= -2.38 || shootRotationAngle >= 2.59 && shootRotationAngle <= 3.14)
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
                         if (towerList[i].getPlayerIsNear() == true)
                         {
-                            Sprite.removeList(towerList[i]);
-                            towerList.RemoveAt(i);
+                            if (towerList[i].getTowerLvl() == "level 1")
+                            {
+                                addMoney(5);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                            }
+                            else if (towerList[i].getTowerLvl() == "level 2")
+                            {
+                                addMoney(10);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                            }
+                            
                         }
                     }
                     buildMode = false;
