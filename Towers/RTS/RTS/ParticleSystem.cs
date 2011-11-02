@@ -51,12 +51,12 @@ namespace RTS
         
         // the array of particles used by this system. these are reused, so that calling
         // AddParticles will not cause any allocations.
-        Particle[] particles;
+        protected Particle[] particles;
 
         // the queue of free particles keeps track of particles that are not curently
         // being used by an effect. when a new effect is requested, particles are taken
         // from this queue. when particles are finished they are put onto this queue.
-        Queue<Particle> freeParticles;
+        protected Queue<Particle> freeParticles;
         /// <summary>
         /// returns the number of particles that are available for a new effect.
         /// </summary>
@@ -255,7 +255,7 @@ namespace RTS
         {
             // first, call PickRandomDirection to figure out which way the particle
             // will be moving. velocity and acceleration's values will come from this.
-            Vector2 direction = PickRandomDirection();
+            Vector2 direction = PickDirection();
 
             // pick some random values for our particle
             float velocity = 
@@ -273,7 +273,7 @@ namespace RTS
             // and make sure it is marked as active.
             p.Initialize(
                 where, velocity * direction, acceleration * direction,
-                lifetime, scale, rotationSpeed);
+                lifetime, scale, rotationSpeed, 0);
         }
 
         /// <summary>
@@ -281,10 +281,11 @@ namespace RTS
         /// particles will move. The default implementation is a random vector in a
         /// circular pattern.
         /// </summary>
-        protected virtual Vector2 PickRandomDirection()
+        protected virtual Vector2 PickDirection()
         {
             float angle = RandomBetween(0, MathHelper.TwoPi);
             return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
+            //return new Vector2(0, 0);
         }
 
         /// <summary>

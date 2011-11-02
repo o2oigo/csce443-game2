@@ -113,6 +113,8 @@
     <Compile Include="EnemyEffect.cs" />
     <Compile Include="ExplosionParticleSystem.cs" />
     <Compile Include="ExplosionSmokeParticleSystem.cs" />
+    <Compile Include="LightningParticleSystem.cs" />
+    <Compile Include="LightningTower.cs" />
     <Compile Include="MainUI.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="NodeList.cs" />
