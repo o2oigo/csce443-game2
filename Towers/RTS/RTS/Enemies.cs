@@ -18,12 +18,12 @@ namespace RTS
             hp = 300;
             weakAgainst = ElementType.Fire;
             strongAgainst = ElementType.Water;
-
+            moveSpeed = 50.0f;
         }
 
         public virtual void LoadContent()
         {
-            base.LoadContent("TankEnemy");
+            base.LoadContent("muffinMonster");
         }
     }
 
@@ -37,12 +37,12 @@ namespace RTS
             hp = 100;
             weakAgainst = ElementType.Water;
             strongAgainst = ElementType.Fire;
-            moveSpeed = 200.0f;
+            moveSpeed = 100.0f;
         }
 
         public virtual void LoadContent()
         {
-            base.LoadContent("TankPurple");
+            base.LoadContent("muffinMonster");
         }
     }
 
@@ -56,12 +56,12 @@ namespace RTS
             hp = 100;
             weakAgainst = ElementType.Water;
             strongAgainst = ElementType.Fire;
-            moveSpeed = 100.0f;
+            moveSpeed = 50.0f;
         }
 
         public virtual void LoadContent()
         {
-            base.LoadContent("TankPurple");
+            base.LoadContent("puddingMonster");
         }
     }
 
@@ -75,12 +75,12 @@ namespace RTS
             hp = 100;
             weakAgainst = ElementType.Water;
             strongAgainst = ElementType.Fire;
-            moveSpeed = 100.0f;
+            moveSpeed = 50.0f;
         }
 
         public virtual void LoadContent()
         {
-            base.LoadContent("TankPurple");
+            base.LoadContent("puddingMonster");
         }
 
         public override void Update(GameTime gameTime, List<Tower> towers)

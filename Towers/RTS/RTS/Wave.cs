@@ -44,10 +44,10 @@ namespace RTS
                 Queue<Enemy> enemyQueue = new Queue<Enemy>();
                 if (i == 1)
                 {
-                    NormalEnemy normal1 = new NormalEnemy();
+                    AttackingEnemy normal1 = new AttackingEnemy();
                     normal1.Initialize(game);
                     normal1.LoadContent();
-                    NormalEnemy normal2 = new NormalEnemy();
+                    AttackingEnemy normal2 = new AttackingEnemy();
                     normal2.Initialize(game);
                     normal2.LoadContent();
 

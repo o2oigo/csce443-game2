@@ -39,10 +39,10 @@ namespace RTS
         private double playerRotationAngle;
         private double projectileRotationAngle;
 
-        private float effectTimer;
         private float elapsedTime;
+        private float effectTimer;
         private float shootElapsedTime;
-        private float shootTimer = 1.6f;
+        private float shootTimer = 1.0f;
         private float circle = MathHelper.Pi * 2;
 
         const float atDestinationLimit = 5f;
@@ -182,8 +182,8 @@ namespace RTS
         public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle,origin, map.ScaleB, SpriteEffects.None, 0f);
-            spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, null, Color.White, 0f,origin, map.ScaleB, SpriteEffects.None, 0f);
+            //spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, "HP: " + hp, new Vector2(position.X - 40, position.Y + 30), Color.Black);
             foreach (Projectile proj in projectileList)
             {
@@ -197,9 +197,10 @@ namespace RTS
             ////Elapsed Time Calculations
             effectTimer += (float)gameTime.ElapsedGameTime.Milliseconds;
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            effectTimer += (float)gameTime.ElapsedGameTime.Milliseconds;
             shootElapsedTime += elapsedTime;
 
-            if (effect != null)
+            if (effect != null && effectTimer>100)
             {
                 game.fire.AddParticles(new Vector2(position.X, position.Y));
                 if (effectTimer > 100)
@@ -233,7 +234,7 @@ namespace RTS
 
                         //Create new projectiles
                         Projectile projectile = new Projectile();
-                        projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 6f, map);
+                        projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 3f, map);
                         projectile.LoadContent("ProjectileRed");
                         projectileList.Add(projectile);
 
@@ -243,8 +244,8 @@ namespace RTS
                     }
                     break;
                 }
-                updateProjectiles();
             }
+            updateProjectiles();
         }
 
         public void updateMovement(Tower tower)
