@@ -114,6 +114,7 @@ namespace RTS
            
 
             //PATHFINDING//
+            //Rectangle test = new Rectangle(0, 0, this.graphics.PreferredBackBufferHeight, this.graphics.PreferredBackBufferWidth);
             //Rectangle test = new Rectangle(0,0,this.GraphicsDevice.Viewport.Width, this.GraphicsDevice.Viewport.Height);
             gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
             //map.UpdateMapViewport(gameplayArea);
