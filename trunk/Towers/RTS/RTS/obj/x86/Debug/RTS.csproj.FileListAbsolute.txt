@@ -557,3 +557,5 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\muffinMonster.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\puddingMonster.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\muffinMonster.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\puddingMonster.xnb

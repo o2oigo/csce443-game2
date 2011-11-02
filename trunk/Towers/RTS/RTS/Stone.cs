@@ -74,16 +74,16 @@ namespace RTS
             switch (type)
             {
                 case ElementType.Fire:
-                    stoneTexture = contentManager.Load<Texture2D>("firestone");
+                    stoneTexture = contentManager.Load<Texture2D>("fireStone");
                     break;
                 case ElementType.Water:
-                    stoneTexture = contentManager.Load<Texture2D>("firestone");
+                    stoneTexture = contentManager.Load<Texture2D>("lightningStone");
                     break;
                 case ElementType.Heal:
-                    stoneTexture = contentManager.Load<Texture2D>("firestone");
+                    stoneTexture = contentManager.Load<Texture2D>("healingStone");
                     break;
                 default:
-                    stoneTexture = contentManager.Load<Texture2D>("firestone");
+                    stoneTexture = contentManager.Load<Texture2D>("fireStone");
                     break;
             }
         }
