@@ -71,7 +71,7 @@ namespace RTS
         {
             base.Initialize(game);
 
-            range = 200;
+            range = 400;
             hp = 100;
             weakAgainst = ElementType.Water;
             strongAgainst = ElementType.Fire;

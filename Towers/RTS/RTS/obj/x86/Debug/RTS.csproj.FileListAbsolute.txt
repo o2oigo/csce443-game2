@@ -470,64 +470,6 @@ E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerSmall.
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\quit.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\start.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\startMenuBackground.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ssPlaceHolder.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\tree1.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancel.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmall.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmall.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmall.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmall.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmall.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\levelOne.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannonTowerSmall.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerSmall.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\quit.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\start.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\startMenuBackground.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\RTS.exe
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\RTS.pdb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\MapData.dll
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\MapData.pdb
-C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
-C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\cannonTowerSmall.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerSmall.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\quit.xnb
@@ -542,15 +484,6 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\tre
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\treeG.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\treeH.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\house.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeA.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeB.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeC.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeD.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeE.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeF.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeG.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeH.xnb
-C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\house.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\treeA.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\treeB.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\treeC.xnb
@@ -593,3 +526,162 @@ E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.1.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.1.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\wizard.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\wizardTurret.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ssPlaceHolder.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\tree1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancel.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmall.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmall.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmall.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmall.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmall.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\levelOne.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannonTowerSmall.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerSmall.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\quit.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\start.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\startMenuBackground.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeA.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeB.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeC.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeD.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeE.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeF.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeG.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\treeH.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\house.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningParticle.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\LightningProjectile.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\fireTowerSmall.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\gameoverNew.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\GUI_Game_Icons.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\fireStone.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningstone.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\muffinMonster.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\projectil.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Projectile.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\puddingMonster.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\EffectSprite_PreSlash.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\healingStone.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Icon.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TowerOriginal.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\vegeta_projectile.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon10.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon11.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon12.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon2.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon3.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon4.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon5.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon6.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon7.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon8.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon9.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\wizard.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\wizardTurret.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\RTS.exe
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\RTS.pdb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\MapData.dll
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\MapData.pdb
+C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
+C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\ssPlaceHolder.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\tree1.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cancel.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmall.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmall.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmall.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmall.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmall.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\levelOne.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannonTowerSmall.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerSmall.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\quit.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\start.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\startMenuBackground.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\treeA.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\treeB.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\treeC.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\treeD.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\treeE.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\treeF.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\treeG.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\treeH.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\house.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\lightningParticle.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\LightningProjectile.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\fireTowerSmall.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\gameoverNew.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\GUI_Game_Icons.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\lightningstone.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\muffinMonster.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\projectil.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\Projectile.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\puddingMonster.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\EffectSprite_PreSlash.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\healingStone.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\Icon.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\TowerOriginal.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\vegeta_projectile.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon1.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon10.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon11.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon12.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon2.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon3.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon4.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon5.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon6.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon7.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon8.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\cannon9.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.1.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront1.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.1.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.1.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\wizard.xnb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\wizardTurret.xnb
