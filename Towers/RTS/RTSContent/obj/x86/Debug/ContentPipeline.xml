@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb</Output>
-      <Time>2011-11-01T19:56:17.5366055-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Turret.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>explosion.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb</Output>
-      <Time>2011-11-01T19:56:17.4816024-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\explosion.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>smoke.bmp</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb</Output>
-      <Time>2011-11-01T19:56:17.7786193-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\smoke.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>TankEnemy.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb</Output>
-      <Time>2011-11-01T19:56:17.6236105-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankEnemy.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>TankPlayer.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb</Output>
-      <Time>2011-11-01T19:56:17.7946203-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankPlayer.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>TurretEnemy.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb</Output>
-      <Time>2011-11-01T19:56:17.8436231-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretEnemy.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>TurretPlayer.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb</Output>
-      <Time>2011-11-01T19:56:17.2615898-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPlayer.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>TankcolouredC.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb</Output>
-      <Time>2011-11-01T19:56:17.6356112-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tank.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>TowerTurret.png</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb</Output>
-      <Time>2011-11-01T19:56:17.720616-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>Tower1.png</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb</Output>
-      <Time>2011-11-01T19:56:17.5296051-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tower1.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>ProjectileBlue.png</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb</Output>
-      <Time>2011-11-01T19:56:17.7326167-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileBlue.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>ProjectileRed.png</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb</Output>
-      <Time>2011-11-01T19:56:17.6176101-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>ProjectilePurple.png</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb</Output>
-      <Time>2011-11-01T19:56:17.9346283-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>PHOTO_6270771_40602_13529332_ap.jpg</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2011-11-01T19:56:17.7656186-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\background.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>CrossHair1.png</Source>
@@ -133,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb</Output>
-      <Time>2011-11-01T19:56:17.8016207-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>TankPurple.png</Source>
@@ -142,8 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb</Output>
-      <Time>2011-11-01T19:56:17.860624-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TankPurple.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>TurretPurple.png</Source>
@@ -151,8 +151,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb</Output>
-      <Time>2011-11-01T19:56:17.4636013-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>Tree2.png</Source>
@@ -160,8 +160,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb</Output>
-      <Time>2011-11-01T19:56:17.5226047-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Tree2.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>buildTowerMenu.png</Source>
@@ -169,8 +169,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb</Output>
-      <Time>2011-11-01T19:56:17.7126156-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>buildTowerMenuSelect.png</Source>
@@ -178,8 +178,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb</Output>
-      <Time>2011-11-01T19:56:17.3575953-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>cancelMenu.png</Source>
@@ -187,8 +187,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb</Output>
-      <Time>2011-11-01T19:56:17.4375998-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>cancelMenuSelect.png</Source>
@@ -196,8 +196,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb</Output>
-      <Time>2011-11-01T19:56:17.7866198-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>firestone.jpg</Source>
@@ -205,8 +205,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb</Output>
-      <Time>2011-11-01T19:56:17.9516292-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\firestone.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>block.png</Source>
@@ -214,8 +214,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb</Output>
-      <Time>2011-11-01T19:56:17.6106097-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\block.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>burn.png</Source>
@@ -223,8 +223,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb</Output>
-      <Time>2011-11-01T19:56:17.7266164-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\burn.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>ssPlaceHolder.png</Source>
@@ -232,8 +232,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\ssPlaceHolder.xnb</Output>
-      <Time>2011-11-01T19:56:17.9266278-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\ssPlaceHolder.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>tree1.png</Source>
@@ -241,8 +241,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\tree1.xnb</Output>
-      <Time>2011-11-01T19:56:17.8156215-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\tree1.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>fireParticle.jpg</Source>
@@ -250,8 +250,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb</Output>
-      <Time>2011-11-01T19:56:17.6926144-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>build.png</Source>
@@ -259,8 +259,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb</Output>
-      <Time>2011-11-01T19:56:17.6416115-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>cancel.png</Source>
@@ -268,8 +268,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\cancel.xnb</Output>
-      <Time>2011-11-01T19:56:17.5436059-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancel.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>buildSmall.png</Source>
@@ -277,8 +277,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmall.xnb</Output>
-      <Time>2011-11-01T19:56:17.9436288-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmall.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>cancelSmall.png</Source>
@@ -286,8 +286,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmall.xnb</Output>
-      <Time>2011-11-01T19:56:17.8096211-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmall.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>enhanceSmall.png</Source>
@@ -295,8 +295,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmall.xnb</Output>
-      <Time>2011-11-01T19:56:17.5856083-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmall.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>sellSmall.png</Source>
@@ -304,8 +304,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmall.xnb</Output>
-      <Time>2011-11-01T19:56:17.5786079-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmall.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>upgradeSmall.png</Source>
@@ -313,8 +313,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmall.xnb</Output>
-      <Time>2011-11-01T19:56:17.824622-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmall.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>levelOne.jpg</Source>
@@ -322,8 +322,53 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\levelOne.xnb</Output>
-      <Time>2011-11-01T19:56:17.702615-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\levelOne.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
+    </Item>
+    <Item>
+      <Source>cannonTowerSmall.png</Source>
+      <Name>cannonTowerSmall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannonTowerSmall.xnb</Output>
+      <Time>2011-11-01T23:46:10.9790835-05:00</Time>
+    </Item>
+    <Item>
+      <Source>lightningTowerSmall.png</Source>
+      <Name>lightningTowerSmall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerSmall.xnb</Output>
+      <Time>2011-11-01T23:46:10.9790835-05:00</Time>
+    </Item>
+    <Item>
+      <Source>quit.png</Source>
+      <Name>quit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\quit.xnb</Output>
+      <Time>2011-11-01T23:46:10.9790835-05:00</Time>
+    </Item>
+    <Item>
+      <Source>start.png</Source>
+      <Name>start</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\start.xnb</Output>
+      <Time>2011-11-01T23:46:10.9634834-05:00</Time>
+    </Item>
+    <Item>
+      <Source>startMenuBackground.jpg</Source>
+      <Name>startMenuBackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\startMenuBackground.xnb</Output>
+      <Time>2011-11-01T23:46:10.9790835-05:00</Time>
     </Item>
     <Item>
       <Source>SpriteFont1.spritefont</Source>
@@ -331,8 +376,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2011-11-01T19:56:17.5686073-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>2DTankGame.mp3</Source>
@@ -340,8 +385,8 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb</Output>
-      <Time>2011-11-01T19:56:17.8846254-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankGame.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>2d_Tank_Menu.mp3</Source>
@@ -349,9 +394,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb</Output>
-      <Extra>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma</Extra>
-      <Time>2011-11-01T19:56:17.8346225-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.xnb</Output>
+      <Extra>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2d_Tank_Menu.wma</Extra>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>2D_Tank_POM.wav</Source>
@@ -359,8 +404,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb</Output>
-      <Time>2011-11-01T19:56:17.4185987-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\2DTankPOM.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>Map1.xml</Source>
@@ -368,8 +413,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb</Output>
-      <Time>2011-11-01T19:56:17.4245991-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map1.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>Map2.xml</Source>
@@ -377,8 +422,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb</Output>
-      <Time>2011-11-01T19:56:17.4436002-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map2.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>Map3.xml</Source>
@@ -386,8 +431,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb</Output>
-      <Time>2011-11-01T19:56:17.4526007-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map3.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <Item>
       <Source>Map4.xml</Source>
@@ -395,8 +440,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb</Output>
-      <Time>2011-11-01T19:56:17.4696017-05:00</Time>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb</Output>
+      <Time>2011-11-01T22:27:14-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -404,43 +449,43 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTSContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTSContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTS\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Anthony\Towers\RTS\RTSContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Anthony\Towers\RTS\RTS\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Anthony\Towers\RTS\RTSContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-22T23:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-22T23:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-22T23:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-22T23:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-22T23:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-22T23:41:18-05:00</Value>
+        <Value>2010-08-23T12:41:18-05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\MapData\bin\x86\Debug\MapData.dll</Key>
-        <Value>2011-11-01T20:18:53.8161803-05:00</Value>
+        <Key>C:\Anthony\Towers\MapData\bin\x86\Debug\MapData.dll</Key>
+        <Value>2011-11-01T23:46:55.3807714-05:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-09-01T03:11:23.568495-05:00</Value>
+        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2011-08-28T17:18:01.3950621-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
