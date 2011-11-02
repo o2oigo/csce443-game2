@@ -175,7 +175,7 @@ namespace RTS
             turretTexture = contentManager.Load<Texture2D>("TurretEnemy");
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
-            //font = contentManager.Load<SpriteFont>("font");
+            font = contentManager.Load<SpriteFont>("font");
         }
 
         public override void Draw(SpriteBatch SB)
@@ -183,6 +183,7 @@ namespace RTS
             spriteBatch = SB;
             spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle,origin, map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(font, "HP: " + hp, new Vector2(position.X - 40, position.Y + 30), Color.Black);
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);

@@ -155,7 +155,7 @@ namespace RTS
                 spriteBatch.DrawString(font, "test", new Vector2(position.X - 50, position.Y + 80), Color.White);
             }
             spriteBatch.DrawString(font, fireStoneInInventory + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.White);
-            spriteBatch.DrawString(font, waterStoneInInventory + " Water Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.White);
+            spriteBatch.DrawString(font, waterStoneInInventory + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.White);
             spriteBatch.DrawString(font, healStoneInInventory + " Heal Stone", uiPosition2, Color.White);
             spriteBatch.DrawString(font, "Resources: " + money, uiPosition1, Color.White);
 
@@ -166,7 +166,7 @@ namespace RTS
             }
 
 
-            if (buildMode == true && mainBuildMode == true && upgradeBuildMode == false)
+            if (buildMode == true && mainBuildMode == true)
             {
 
                 /*
@@ -233,8 +233,9 @@ namespace RTS
                 {
                     upgradeBuildMode = true;
                     mainBuildMode = false;
+                    break;
                 }
-                else
+                else 
                 {
                     mainBuildMode = true;
                     upgradeBuildMode = false;
