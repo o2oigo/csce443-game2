@@ -14,3 +14,4 @@ C:\RTS\Towers\csce443-game2\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyR
 C:\RTS\csce443-game2\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\443-2\443Game2\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\Game2\Tower Defence\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\lastwaltz\Desktop\GameDevTemp\Towers\RTS\RTSContent\obj\x86\Debug\ResolveAssemblyReference.cache

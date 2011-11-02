@@ -102,11 +102,11 @@ namespace RTS
            
 
             //PATHFINDING//
-            Rectangle test = new Rectangle(0,0,this.GraphicsDevice.Viewport.Width, this.GraphicsDevice.Viewport.Height);
-            //gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
+            //Rectangle test = new Rectangle(0,0,this.GraphicsDevice.Viewport.Width, this.GraphicsDevice.Viewport.Height);
+            gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
             //map.UpdateMapViewport(gameplayArea);
             map.ReloadMap();
-            map.UpdateMapViewport(test);
+            map.UpdateMapViewport(gameplayArea);
             //PATHFINDING//
             wave = new Wave(this);
         }
@@ -180,7 +180,8 @@ namespace RTS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-
+            explosion.Update(gameTime);
+            fire.Update(gameTime);
             
             if (userInterface.getRestartGameStatus() == true)
             {
@@ -253,7 +254,7 @@ namespace RTS
            
             if (userInterface.getShowGameScreen() == true || userInterface.getShowPauseScreen() == true)
             {
-                spriteBatch.Draw(backgroundTexture, new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(backgroundTexture, gameplayArea, Color.White);
                 //PATHFINDING
                 map.Draw(spriteBatch);
                 DrawTrees(spriteBatch);
@@ -378,17 +379,6 @@ namespace RTS
                             }
                         }
                     }
-
-                    //Loop through all stones
-                    for (int j = 0; j < stones.Count; j++)
-                    {
-                        Rectangle currentStoneRect = new Rectangle((int)stones[j].Position.X, (int)stones[j].Position.Y, stones[j].Texture.Width, stones[j].Texture.Height);
-                        if (playerRect.Intersects(currentStoneRect))
-                        {
-                            player.addStoneToInventory(stones[j]);
-                            stones.Remove(stones[j]);
-                        }
-                    }
                 }
 
                 //Loop through all enemies
@@ -460,6 +450,16 @@ namespace RTS
                                 //}
                             }
                         }
+                    }
+                }
+                //Loop through all stones
+                for (int j = 0; j < stones.Count; j++)
+                {
+                    Rectangle currentStoneRect = new Rectangle((int)stones[j].Position.X, (int)stones[j].Position.Y, stones[j].Texture.Width, stones[j].Texture.Height);
+                    if (playerRect.Intersects(currentStoneRect))
+                    {
+                        player.addStoneToInventory(stones[j]);
+                        stones.Remove(stones[j]);
                     }
                 }
             }
