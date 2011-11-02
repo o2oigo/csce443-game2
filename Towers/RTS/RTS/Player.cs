@@ -106,7 +106,7 @@ namespace RTS
         {
             texture = contentManager.Load<Texture2D>(textureName);
             if (playerIndex == PlayerIndex.One)
-                turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
+                turretTexture = contentManager.Load<Texture2D>("wizardTurret");
             else
             turretTexture = contentManager.Load<Texture2D>("TurretPurple");
             mouseTexture = contentManager.Load<Texture2D>("CrossHair1");
@@ -138,8 +138,17 @@ namespace RTS
             {
                 spriteBatch.Draw(mouseTexture, mousePos, null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
             }
-            spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, map.ScaleB, SpriteEffects.None, 0f);
-            spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
+            if (shootRotationAngle < -Math.PI / 2 || shootRotationAngle > Math.PI / 2)
+            {
+                spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.FlipVertically, 0f);
+                spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.FlipHorizontally, 0f);
+            }
+            else
+            {
+                spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);   
+            }
+            
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);

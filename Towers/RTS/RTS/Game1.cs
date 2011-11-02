@@ -82,7 +82,7 @@ namespace RTS
 
             this.graphics.PreferredBackBufferHeight = 1024;
             this.graphics.PreferredBackBufferWidth = 1280;
-            this.graphics.IsFullScreen = true;
+            //this.graphics.IsFullScreen = true;
             
             map = new Map();
 
@@ -150,7 +150,7 @@ namespace RTS
             userInterface.LoadContent();
             player1 = new Player();
             player1.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
-            player1.LoadContent("TankPlayer");
+            player1.LoadContent("wizard");
 
             // player2 = new Player();
             // player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
