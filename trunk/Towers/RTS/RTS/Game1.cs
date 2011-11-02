@@ -359,6 +359,7 @@ namespace RTS
                 }
 
                 //Loop through all enemies
+                Rectangle houseRect = new Rectangle((int)house.Origin.X - (house.Texture.Width / 2), (int)house.Origin.Y, house.Texture.Width , house.Texture.Height/2);
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     //Get current enemy and create collision box
@@ -366,7 +367,8 @@ namespace RTS
                     Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.Position.X, (int)currentEnemy.Position.Y, currentEnemy.getTexture().Width, currentEnemy.getTexture().Height);
 
                     //Ckeck if current enemy and exit point                   
-                    if (map.TileTypeAt(currentEnemy.Position) == MapTileType.MapExit)
+                    //if (map.TileTypeAt(currentEnemy.Position) == MapTileType.MapExit)
+                    if (currentEnemyRect.Intersects(houseRect))
                     {
                         live--;
                         Sprite.removeList(enemies[i]);
