@@ -116,6 +116,7 @@
     <Compile Include="MainUI.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="NodeList.cs" />
+    <Compile Include="Objects.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="ParticleSystem.cs" />
     <Compile Include="PathFinder.cs" />

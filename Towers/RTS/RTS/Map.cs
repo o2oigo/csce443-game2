@@ -89,6 +89,11 @@ namespace RTS
             return maps[currentMap].Trees;
         }
 
+        public Vector2 getBaseCoordinate()
+        {
+            return MapToWorld(maps[currentMap].End, true);
+        }
+
         #endregion
 
         #region Initialization
@@ -113,34 +118,34 @@ namespace RTS
 
         #endregion
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            for (int i = 0; i < numberRows; i++)
-            {
-                for (int j = 0; j < numberColumns; j++)
-                {
-                    Vector2 tilePosition = MapToWorld(j, i, false);
-                    switch (mapTiles[j, i])
-                    {
-                        //case MapTileType.MapBarrier:
-                        //    spriteBatch.Draw(
-                        //        barrierTexture, tilePosition, null, Color.White,
-                        //        0f, Vector2.Zero, scaleB, SpriteEffects.None, .25f);
-                        //    break;
-
-                        case MapTileType.MapExit:
-                            spriteBatch.Draw(
-                                endTexture, tilePosition + tileSquareCenter, null,
-                                Color.White, 0f, dotTextureCenter, scale,
-                                SpriteEffects.None, .25f);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-            //DrawTrees(spriteBatch);
-        }
+        //public void Draw(SpriteBatch spriteBatch)
+        //{
+        //    for (int i = 0; i < numberRows; i++)
+        //    {
+        //        for (int j = 0; j < numberColumns; j++)
+        //        {
+        //            Vector2 tilePosition = MapToWorld(j, i, false);
+        //            switch (mapTiles[j, i])
+        //            {
+        //                //case MapTileType.MapBarrier:
+        //                //    spriteBatch.Draw(
+        //                //        barrierTexture, tilePosition, null, Color.White,
+        //                //        0f, Vector2.Zero, scaleB, SpriteEffects.None, .25f);
+        //                //    break;
+        //
+        //                case MapTileType.MapExit:
+        //                    spriteBatch.Draw(
+        //                        endTexture, tilePosition + tileSquareCenter, null,
+        //                        Color.White, 0f, dotTextureCenter, scale,
+        //                        SpriteEffects.None, .25f);
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //    //DrawTrees(spriteBatch);
+        //}
 
         #region Useful Game Methods
 

@@ -547,18 +547,45 @@ namespace RTS
 
         public void updateMovement()
         {
-            position.X += (float)(Math.Cos(moveRotationAngle) * speed);
-            position.Y += (float)(Math.Sin(moveRotationAngle) * speed);
 
-            //Movement boundaries for player (keeps player on screen)
-            if (position.X > graphicsDevice.Viewport.Width)
-                position.X = graphicsDevice.Viewport.Width;
-            else if (position.X < 0)
-                position.X = 0;
-            if (position.Y > graphicsDevice.Viewport.Height)
-                position.Y = graphicsDevice.Viewport.Height;
-            else if (position.Y < 0)
-                position.Y = 0;
+            Vector2 tmpPos;
+            tmpPos.X = position.X + (float)(Math.Cos(moveRotationAngle) * speed);
+            tmpPos.Y = position.Y + (float)(Math.Sin(moveRotationAngle) * speed);
+            Rectangle player = new Rectangle((int)tmpPos.X, (int)tmpPos.Y, getTexture().Width, getTexture().Height);
+            bool collision = false;
+
+            foreach (Tree t in game.Trees)
+            {
+                Rectangle treeRect = new Rectangle((int)t.Origin.X, (int)t.Origin.Y, t.Texture.Width / 3, t.Texture.Height / 3);
+                if (treeRect.Intersects(player))
+                {
+                    collision = true;
+                    break;
+                }
+            }
+
+            Rectangle houseRect = new Rectangle((int)game.House.Origin.X - (game.House.Texture.Width / 2) + 30, (int)game.House.Origin.Y - 40, game.House.Texture.Width - 30, game.House.Texture.Height / 5);
+            if (houseRect.Intersects(player))
+            {
+                collision = true;
+            }
+
+
+            if (!collision)
+            {
+                position.X += (float)(Math.Cos(moveRotationAngle) * speed);
+                position.Y += (float)(Math.Sin(moveRotationAngle) * speed);
+
+                //Movement boundaries for player (keeps player on screen)
+                if (position.X > graphicsDevice.Viewport.Width)
+                    position.X = graphicsDevice.Viewport.Width;
+                else if (position.X < 0)
+                    position.X = 0;
+                if (position.Y > graphicsDevice.Viewport.Height)
+                    position.Y = graphicsDevice.Viewport.Height;
+                else if (position.Y < 0)
+                    position.Y = 0;
+            }
         }
 
         public void createProjectile()

@@ -36,6 +36,18 @@ namespace RTS
 
         List<Player> players;
         List<Stone> stones;
+        private List<Tree> trees;
+        public List<Tree> Trees
+        {
+            get { return trees; }
+        }
+        private House house;
+        public House House
+        {
+            get { return house; }
+        }
+
+
         float enemyTimer = 0;
         float enemySpawnTime = 1f;
         Random rand = new Random();
@@ -67,8 +79,8 @@ namespace RTS
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            this.graphics.PreferredBackBufferHeight = 1280;
-            this.graphics.PreferredBackBufferWidth = 1024;
+            this.graphics.PreferredBackBufferHeight = 1024;
+            this.graphics.PreferredBackBufferWidth = 1280;
             this.graphics.IsFullScreen = true;
             
             map = new Map();
@@ -108,7 +120,10 @@ namespace RTS
             map.ReloadMap();
             map.UpdateMapViewport(gameplayArea);
             //PATHFINDING//
+            CreateTrees();
             wave = new Wave(this);
+            house = new House(this, map.getBaseCoordinate());
+            house.LoadContent();
         }
 
         /// <summary>
@@ -123,6 +138,7 @@ namespace RTS
             enemies = new List<Enemy>(25);
             players = new List<Player>(4);
             stones = new List<Stone>();
+            trees = new List<Tree>();
 
             userInterface = new UserInterface();
             userInterface.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
@@ -256,15 +272,19 @@ namespace RTS
             {
                 spriteBatch.Draw(backgroundTexture, gameplayArea, Color.White);
                 //PATHFINDING
-                map.Draw(spriteBatch);
-                DrawTrees(spriteBatch);
+                //map.Draw(spriteBatch);
+                //DrawTrees(spriteBatch);
                 //PATHFINDING//
                 for (int i = 0; i < enemies.Count; i++)
                     enemies[i].Draw(spriteBatch);
                 player1.Draw(spriteBatch);
 
                 // Sprite.DrawT(spriteBatch);
-
+                foreach (Tree t in trees)
+                {
+                    t.Draw(spriteBatch);
+                }
+                house.Draw(spriteBatch);
 
                 //player2.Draw(spriteBatch);
                 drawText();
@@ -563,22 +583,36 @@ namespace RTS
         }
 
 
-        public void DrawTrees(SpriteBatch spriteBatch)
+        //public void DrawTrees(SpriteBatch spriteBatch)
+        //{
+        //    foreach (Point pt in map.getTrees())
+        //    {
+        //
+        //        Vector2 offset = new Vector2(0, 0);
+        //        for (int i = 0; i < map.TreeDict[pt].Count; i++)
+        //        {
+        //            Vector2 tilePosition = map.MapToWorld(pt.X, pt.Y, true);
+        //            tilePosition.Y -= treeTexture.Height*map.ScaleB;
+        //            tilePosition.X -= treeTexture.Width*map.ScaleB / 2;
+        //            offset = (map.TreeDict[pt])[i];
+        //            tilePosition.X += offset.X;
+        //            tilePosition.Y += offset.Y;
+        //            spriteBatch.Draw(treeTexture, tilePosition, null, Color.White, 0f, Vector2.Zero, map.ScaleB, SpriteEffects.None, 0f);
+        //        }
+        //    }
+        //}
+
+        public void CreateTrees()
         {
             foreach (Point pt in map.getTrees())
             {
-
-                Vector2 offset = new Vector2(0, 0);
-                for (int i = 0; i < map.TreeDict[pt].Count; i++)
-                {
-                    Vector2 tilePosition = map.MapToWorld(pt.X, pt.Y, true);
-                    tilePosition.Y -= treeTexture.Height*map.ScaleB;
-                    tilePosition.X -= treeTexture.Width*map.ScaleB / 2;
-                    offset = (map.TreeDict[pt])[i];
-                    tilePosition.X += offset.X;
-                    tilePosition.Y += offset.Y;
-                    spriteBatch.Draw(treeTexture, tilePosition, null, Color.White, 0f, Vector2.Zero, map.ScaleB, SpriteEffects.None, 0f);
-                }
+                Vector2 tilePosition = map.MapToWorld(pt.X, pt.Y, true);
+                trees.Add(new Tree(this, tilePosition));
+            }
+            foreach (Tree t in trees)
+            {
+                int i = rand.Next(8);
+                t.LoadContent(i);
             }
         }
 
