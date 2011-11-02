@@ -40,12 +40,6 @@ H:\443-2\443Game2\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
 H:\443-2\443Game2\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 H:\443-2\443Game2\Towers\MapData\obj\x86\Debug\MapData.dll
 H:\443-2\443Game2\Towers\MapData\obj\x86\Debug\MapData.pdb
-C:\Anthony\Towers\MapData\bin\x86\Debug\MapData.dll
-C:\Anthony\Towers\MapData\bin\x86\Debug\MapData.pdb
-C:\Anthony\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Anthony\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Anthony\Towers\MapData\obj\x86\Debug\MapData.dll
-C:\Anthony\Towers\MapData\obj\x86\Debug\MapData.pdb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\bin\x86\Debug\MapData.dll
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\bin\x86\Debug\MapData.pdb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
@@ -88,3 +82,9 @@ G:\Game2\Tower Defence\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cac
 G:\Game2\Tower Defence\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 G:\Game2\Tower Defence\Towers\MapData\obj\x86\Debug\MapData.dll
 G:\Game2\Tower Defence\Towers\MapData\obj\x86\Debug\MapData.pdb
+C:\Anthony\Towers\MapData\bin\x86\Debug\MapData.dll
+C:\Anthony\Towers\MapData\bin\x86\Debug\MapData.pdb
+C:\Anthony\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Anthony\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Anthony\Towers\MapData\obj\x86\Debug\MapData.dll
+C:\Anthony\Towers\MapData\obj\x86\Debug\MapData.pdb

@@ -181,7 +181,7 @@ namespace RTS
         public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle,origin, map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             foreach (Projectile proj in projectileList)
             {

@@ -34,7 +34,7 @@ namespace RTS
         private PlayerIndex playerIndex;
 
         private float shootTimer = .8f;
-        private float towerRange = 0;
+        private float towerRange = 400;
         private float shootElapsedTime = 0;
 
         SpriteFont font;
@@ -75,7 +75,7 @@ namespace RTS
             graphicsDevice = game.GraphicsDevice;
             position = startPosition;
             currentState = GamePad.GetState(PlayerIndex.One);
-            towerRange = Math.Max(graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width);
+            //towerRange = 50;
 
             //damage = new Damage(10, 1,ElementType.Normal, new EnemyEffectBurn(game,5,1));
             damage = new Damage(25, 1, ElementType.Normal, null);
@@ -130,25 +130,28 @@ namespace RTS
 
         public void updateTurret(List<Enemy> enemies)
         {
-            Enemy shootAt;
+            Enemy shootAt = null;
             if (enemies.Count != 0)
             {
-                shootAt = enemies[0];
+               // shootAt = enemies[0];
                 foreach (Enemy enemy in enemies)
                 {
-                    if (Vector2.Distance(position, enemy.Position) < Vector2.Distance(position, shootAt.Position))
+                    if (Vector2.Distance(position, enemy.Position) <= towerRange)
                     {
                         shootAt = enemy;
+                        break;
                     }
                 }
 
-                shootRotationAngle = Math.Atan2(shootAt.Position.Y - position.Y, shootAt.Position.X - position.X);
-
                 //Shoot
-                if (shootElapsedTime > shootTimer)
+                if (shootAt != null)
                 {
-                    this.createProjectile();
-                    shootElapsedTime = 0;
+                    shootRotationAngle = Math.Atan2(shootAt.Position.Y - position.Y, shootAt.Position.X - position.X);
+                    if (shootElapsedTime > shootTimer)
+                    {
+                        this.createProjectile();
+                        shootElapsedTime = 0;
+                    }
                 }
             }
         }
