@@ -65,8 +65,8 @@ namespace RTS
         private Texture2D upgradeTexture;
         private Texture2D sellTexture;
         private Texture2D enhanceTexture;
-        private Texture2D canonTowerBuildTexture;
-        private Texture2D ligthningTowerBuildTexture;
+        private Texture2D fireTowerBuildTexture;
+        private Texture2D lightningTowerBuildTexture;
         private Texture2D backgroundTexture;
         private Texture2D startMenuTexture;
         private Texture2D quitMenuTexture;
@@ -74,11 +74,12 @@ namespace RTS
         private bool buildMode = false;
         private bool mainBuildMode = false;
         private bool upgradeBuildMode = false;
+        private bool upgradeSubBuildMode = false;
         private bool maxCapacityTower = false;
         SpriteFont font;
-        private int fireStoneInInventory = 0;
-        private int waterStoneInInventory = 0;
-        private int healStoneInInventory = 0;
+        private int fireStoneInInventory = 1;
+        private int waterStoneInInventory = 1;
+        private int healStoneInInventory = 1;
         private int money = 35;
         private float timeForResources = 0;
         private Vector2 uiPosition1;
@@ -129,6 +130,8 @@ namespace RTS
             upgradeTexture = contentManager.Load<Texture2D>("upgradeSmall");
             enhanceTexture = contentManager.Load<Texture2D>("enhanceSmall");
             sellTexture = contentManager.Load<Texture2D>("sellSmall");
+            lightningTowerBuildTexture = contentManager.Load<Texture2D>("lightningTowerSmall");
+            fireTowerBuildTexture = contentManager.Load<Texture2D>("fireTowerSmall");
             font = contentManager.Load<SpriteFont>("font");
 
             origin.X = texture.Width / 2;
@@ -181,14 +184,14 @@ namespace RTS
             }
 
 
-            if (boolForTest == false)
+            if (boolForTest == true)
             {
                 spriteBatch.DrawString(font, "test", new Vector2(position.X - 50, position.Y + 80), Color.White);
             }
-            spriteBatch.DrawString(font, fireStoneInInventory + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.White);
-            spriteBatch.DrawString(font, waterStoneInInventory + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.White);
-            spriteBatch.DrawString(font, healStoneInInventory + " Heal Stone", uiPosition2, Color.White);
-            spriteBatch.DrawString(font, "Resources: " + money, uiPosition1, Color.White);
+            spriteBatch.DrawString(font, fireStoneInInventory + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
+            spriteBatch.DrawString(font, waterStoneInInventory + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
+            spriteBatch.DrawString(font, healStoneInInventory + " Heal Stone", uiPosition2, Color.Black);
+            spriteBatch.DrawString(font, "Resources: " + money, uiPosition1, Color.Black);
 
             
             foreach (Tower tower in towerList)
@@ -223,13 +226,26 @@ namespace RTS
 
             }
 
-            if (upgradeBuildMode == true && buildMode == true)
+            if (upgradeBuildMode == true && buildMode == true && (shootRotationAngle >= -0.93 && shootRotationAngle <= (float)Math.Sqrt(2) / 2f))
+            {
+                spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+                spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
+                spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                spriteBatch.Draw(fireTowerBuildTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
+                spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
+
+            }
+
+            if (upgradeBuildMode == true && buildMode == true && (shootRotationAngle < -0.93 || shootRotationAngle > (float)Math.Sqrt(2) / 2f))
             {
                 spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                 spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                 spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
                 spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
             }
+
+            
 
 
 
@@ -296,6 +312,8 @@ namespace RTS
             //Update Inventory
             updateInventory();
 
+            
+
             //Store old states
             oldMousestate = mousestate;
             oldKeyState = keystate;
@@ -333,32 +351,145 @@ namespace RTS
             }
 
             //Build Mode
-            if (oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder) && mainBuildMode == false)
+            if (oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder) && buildMode == false)
             {
                 buildMode = true;
                 mainBuildMode = true;
             }
-            else if (mainBuildMode == true && oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder))
+            else if (buildMode == true && oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder))
             {
-                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && towerList.Count < maxTowerCount && maxCapacityTower == false)
+                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && buildMode == true && towerList.Count < maxTowerCount && maxCapacityTower == false)
                 {
-                    buildMode = false;
-                    mainBuildMode = false;
-                    if (map.TileTypeAt(position) == MapTileType.MapGrass)
+                    if (mainBuildMode == true)
                     {
-                        createTower();
+                        if (map.TileTypeAt(position) == MapTileType.MapGrass)
+                        {
+                            if (money > 15)
+                            {
+                                removeMoney(15);
+                                createTower();
+                                buildMode = false;
+                                mainBuildMode = false;
+                            }
+                        }
+                        if (towerList.Count == maxTowerCount)
+                        {
+                            maxCapacityTower = true;
+                        }
                     }
-                    if (towerList.Count == maxTowerCount)
+                    else if (upgradeBuildMode == true)
                     {
-                        maxCapacityTower = true;
+                        for (int i = 0; i < towerList.Count(); i++)
+                        {
+                            if (towerList[i].getPlayerIsNear() == true)
+                            {
+                                if (money >= 10)
+                                {
+                                    removeMoney(10);
+
+                                    towerList[i].setToLvlTwo();
+                                    buildMode = false;
+                                    upgradeBuildMode = false;
+                                }
+                            }
+
+                        }
                     }
                 }
-                else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
+                else if (shootRotationAngle > (float)Math.Sqrt(2) / 2f && shootRotationAngle < 2.59)
                 {
                     buildMode = false;
                     mainBuildMode = false;
+                    upgradeBuildMode = false;
+                }
+                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.Sqrt(2)/2f && upgradeBuildMode == true )
+                {
+                
+                    for (int i = 0; i < towerList.Count(); i++)
+                    {
+                        if (towerList[i].getPlayerIsNear() == true)
+                        {
+                            if (fireStoneInInventory >= 1)
+                            {
+                                removeStoneFromInventory(0);
+                                towerList[i].setToFireTower();
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
+                        }
+
+                    }
+                }
+
+                else if (shootRotationAngle >= -0.93 && shootRotationAngle < 0 && upgradeBuildMode == true)
+                {
+
+                    for (int i = 0; i < towerList.Count(); i++)
+                    {
+                        if (towerList[i].getPlayerIsNear() == true)
+                        {
+                            if (waterStoneInInventory >= 1)
+                            {
+                                removeStoneFromInventory(1);
+                                createLightningTower();
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
+                        }
+
+                    }
+                }
+
+                else if (shootRotationAngle >= -3.24 && shootRotationAngle <= -2.38 || shootRotationAngle >= 2.59 && shootRotationAngle <= 3.24)
+                {
+                    for (int i = 0; i < towerList.Count(); i++)
+                    {
+                        if (towerList[i].getPlayerIsNear() == true)
+                        {
+                            if (towerList[i].getTowerLvl() == "level 1")
+                            {
+                                addMoney(5);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
+                            else if (towerList[i].getTowerLvl() == "level 2")
+                            {
+                                addMoney(10);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
+
+                        }
+                    }
                 }
             }
+            if (currentState.IsButtonDown(Buttons.RightShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.RightTrigger) && currentState.IsButtonDown(Buttons.LeftTrigger) && currentState.IsButtonDown(Buttons.X))
+            {
+                money = 9999;
+                Stone fStone = new Stone();
+                fStone.Initialize(game,position,0);
+                addStoneToInventory(fStone);
+                Stone wStone = new Stone();
+                wStone.Initialize(game, position, 1);
+                addStoneToInventory(wStone);
+                Stone hStone = new Stone();
+                hStone.Initialize(game, position, 2);
+                addStoneToInventory(hStone);
+
+            }
+
+            
+            
         }
 
         public void updateKeyboard()
@@ -651,6 +782,12 @@ namespace RTS
         public void createTower()
         {
             Tower tower = new Tower(game, playerIndex, this.position);
+            towerList.Add(tower);
+        }
+
+        public void createLightningTower()
+        {
+            LightningTower tower = new LightningTower(game, playerIndex, this.position);
             towerList.Add(tower);
         }
 

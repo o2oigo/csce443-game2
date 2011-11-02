@@ -45,7 +45,7 @@ namespace RTS
         private bool dead = false;
         private bool playerIsNear = false;
         private string level = "level 1";
-        private string towerName = "Arrow Tower";
+        protected string towerName = "Arrow Tower";
         private int attackDamage = 25;
 
         private double moveRotationAngle = 0;
@@ -328,7 +328,7 @@ namespace RTS
         public void setToFireTower()
         {
             damage.type = ElementType.Fire;
-            damage.effect = new EnemyEffectBurn(game, 5, 1);
+            damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
             towerName = "Fire Tower";
         }
 

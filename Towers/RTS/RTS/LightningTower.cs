@@ -14,6 +14,7 @@ namespace RTS
             : base(game, playerIndex, startPosition)
         {
             lightningTexture = game.Content.Load<Texture2D>("LightningParticle");
+            towerName = "Lightning Tower";
         }
  
         public override void createProjectile()

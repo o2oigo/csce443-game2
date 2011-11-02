@@ -39,7 +39,7 @@ namespace RTS
             set { offset = value; }
         }
 
-        public EnemyEffectBurn(Game1 game, int duration, int burnDmg)
+        public EnemyEffectBurn(Game1 game, int duration, float burnDmg)
         {
             this.duration = duration;
             this.burnDmg = burnDmg;
