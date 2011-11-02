@@ -559,3 +559,17 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\muf
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\puddingMonster.xnb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\muffinMonster.xnb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\puddingMonster.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\wizard.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\wizardTurret.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon1.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon10.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon11.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon12.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon2.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon3.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon4.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon5.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon6.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon7.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon8.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\cannon9.xnb

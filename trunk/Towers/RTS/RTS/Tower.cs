@@ -51,7 +51,19 @@ namespace RTS
         private double moveRotationAngle = 0;
         protected double shootRotationAngle = 0;
 
-        private Texture2D texture;
+        //private Texture2D texture;
+        private Texture2D cannon1Texture;
+        private Texture2D cannon2Texture;
+        private Texture2D cannon3Texture;
+        private Texture2D cannon4Texture;
+        private Texture2D cannon5Texture;
+        private Texture2D cannon6Texture;
+        private Texture2D cannon7Texture;
+        private Texture2D cannon8Texture;
+        private Texture2D cannon9Texture;
+        private Texture2D cannon10Texture;
+        private Texture2D cannon11Texture;
+        private Texture2D cannon12Texture;
         private Texture2D turretTexture;
 
         protected List<Projectile> projectileList = new List<Projectile>(5);
@@ -66,7 +78,7 @@ namespace RTS
         {
             this.playerIndex = playerIndex;
             this.Initialize(game, startPosition);
-            this.LoadContent("Tower1");
+            this.LoadContent();
         }
 
         public void Initialize(Game1 game, Vector2 startPosition)
@@ -85,20 +97,54 @@ namespace RTS
             //damage = new Damage(10, 1,ElementType.Fire, new EnemyEffectBurn(game,5,1));
         }
         
-        public void LoadContent(String textureName)
+        public void LoadContent()
         {
-            texture = contentManager.Load<Texture2D>(textureName);
+            cannon1Texture = contentManager.Load<Texture2D>("cannon1");
+            cannon2Texture = contentManager.Load<Texture2D>("cannon2");
+            cannon3Texture = contentManager.Load<Texture2D>("cannon3");
+            cannon4Texture = contentManager.Load<Texture2D>("cannon4");
+            cannon5Texture = contentManager.Load<Texture2D>("cannon5");
+            cannon6Texture = contentManager.Load<Texture2D>("cannon6");
+            cannon7Texture = contentManager.Load<Texture2D>("cannon7");
+            cannon8Texture = contentManager.Load<Texture2D>("cannon8");
+            cannon9Texture = contentManager.Load<Texture2D>("cannon9");
+            cannon10Texture = contentManager.Load<Texture2D>("cannon10");
+            cannon11Texture = contentManager.Load<Texture2D>("cannon11");
+            cannon12Texture = contentManager.Load<Texture2D>("cannon12");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
-            origin.X = texture.Width / 2;
-            origin.Y = texture.Height / 2;
+            origin.X = cannon1Texture.Width / 2;
+            origin.Y = cannon1Texture.Height / 2;
         }
 
         public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            spriteBatch.Draw(texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
-            spriteBatch.Draw(turretTexture, new Vector2(position.X, position.Y - 25), null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
+            if (shootRotationAngle <= -3.5*Math.PI / 6 && shootRotationAngle > -4.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon1Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= -4.5 * Math.PI / 6 && shootRotationAngle > -5.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon2Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= -5.5 * Math.PI / 6 || shootRotationAngle > 5.5* Math.PI / 6)
+                spriteBatch.Draw(cannon3Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= 5.5*Math.PI / 6 && shootRotationAngle > 4.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon4Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= 4.5 * Math.PI / 6 && shootRotationAngle > 3.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon5Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= 3.5 * Math.PI / 6 && shootRotationAngle > 2.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon6Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= 2.5 * Math.PI / 6 && shootRotationAngle > 1.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon7Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= 1.5 * Math.PI / 6 && shootRotationAngle > .5 * Math.PI / 6)
+                spriteBatch.Draw(cannon8Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= .5 * Math.PI / 6 && shootRotationAngle > -.5)
+                spriteBatch.Draw(cannon9Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= -.5 && shootRotationAngle > -1.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon10Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= -1.5 * Math.PI / 6 && shootRotationAngle > -2.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon11Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            else if (shootRotationAngle <= -2.5 * Math.PI / 6 && shootRotationAngle > -3.5 * Math.PI / 6)
+                spriteBatch.Draw(cannon12Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
+            //spriteBatch.Draw(turretTexture, new Vector2(position.X, position.Y - 25), null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, towerName, new Vector2(position.X - 50, position.Y - 70), Color.Black);
             spriteBatch.DrawString(font, level, new Vector2(position.X - 40, position.Y - 50), Color.Black);
             spriteBatch.DrawString(font, "HP: " + hp, new Vector2(position.X - 40, position.Y + 30), Color.Black);
@@ -191,9 +237,9 @@ namespace RTS
             return turretTexture.Width;
         }
 
-        public Texture2D getTexture()
+        public Texture2D getTexture() // MIGHT CAUSE PROBLEMS
         {
-            return texture;
+            return cannon1Texture;
         }
 
         public List<Projectile> getProjectiles()
