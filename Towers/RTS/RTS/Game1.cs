@@ -278,7 +278,7 @@ namespace RTS
 
             }
 
-            if (userInterface.booltest == false)
+            if (userInterface.booltest == true)
             {
                 spriteBatch.DrawString(font, "booltest", new Vector2(700, 800), Color.Tomato);
             }
@@ -521,7 +521,7 @@ namespace RTS
             }
             spriteBatch.DrawString(font, "TILE: " + map.TileString(new Vector2(player1.Position.X, player1.Position.Y)), new Vector2(500, 100), Color.MediumBlue);
             spriteBatch.DrawString(font, "SPRITE COUNT: " + Sprite.objCount(), new Vector2(500, 150), Color.MediumBlue);
-            //  spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.White);
+              spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.Black);
             //   foreach (Tower tower in player2.getTowers())
             //   {
             //       spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);

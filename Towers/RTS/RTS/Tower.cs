@@ -277,7 +277,9 @@ namespace RTS
 
         public void setToFireTower()
         {
-            
+            damage.type = ElementType.Fire;
+            damage.effect = new EnemyEffectBurn(game, 5, 1);
+            towerName = "Fire Tower";
         }
 
     }
