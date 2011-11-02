@@ -24,12 +24,12 @@ namespace RTS
 
 
 
-        bool skipToGame = true;               // [][][] set this to true to disable all non game screen that I add [][][]
-        bool showTitleScreen = false;
-        bool showGameScreen = false;
-        bool showPauseScreen = false;
-        bool showGameOverScreen = false;
-        bool restartGame = false;
+        private bool skipToGame = false;               // [][][] set this to true to disable all non game screen that I add [][][]
+        private bool showTitleScreen = false;
+        private bool showGameScreen = false;
+        private bool showPauseScreen = false;
+        private bool showGameOverScreen = false;
+        private bool restartGame = false;
         
 
         KeyboardState keystate;
@@ -49,6 +49,7 @@ namespace RTS
         private Texture2D menu3Texture;
         private Texture2D menu4Texture;
         private Texture2D startScreenBackground;
+        private Texture2D startMenuTexture;
 
         public void Initialize(Game1 game, PlayerIndex index, Vector2 startPosition)
         {
@@ -70,7 +71,8 @@ namespace RTS
 
         public void LoadContent()
         {
-            startScreenBackground = contentManager.Load<Texture2D>("ssPlaceHolder");
+            startScreenBackground = contentManager.Load<Texture2D>("startMenuBackground");
+            startMenuTexture = contentManager.Load<Texture2D>("start");
             font = contentManager.Load<SpriteFont>("font");
         }
 
@@ -80,7 +82,7 @@ namespace RTS
             if (showTitleScreen == true)
             {
                 spriteBatch.Draw(startScreenBackground, new Vector2(0, 0), Color.White);
-                spriteBatch.DrawString(font, "Press F4 to start the game", new Vector2(500, 250), Color.Tomato);
+                spriteBatch.Draw(startMenuTexture, new Vector2(400, 650), Color.White);
             }
 
             if (showGameScreen == false && showPauseScreen == true)
@@ -189,7 +191,7 @@ namespace RTS
 
         private void updateKeyboardForTitleScreen()
         {
-            if (keystate.IsKeyDown(Keys.F4))
+            if (keystate.IsKeyDown(Keys.Enter))
             {
                 showGameScreen = true;
                 showTitleScreen = false;
