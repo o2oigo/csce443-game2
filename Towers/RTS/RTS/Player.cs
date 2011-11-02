@@ -47,6 +47,11 @@ namespace RTS
 
         private Texture2D texture;
         private Texture2D turretTexture;
+        private Texture2D textureFront;
+        private Texture2D textureRight;
+        private Texture2D textureBack;
+        private Texture2D textureLeft;
+
 
         // fredy code for User Interface (tower menu)
         private bool boolForTest = false;
@@ -104,9 +109,14 @@ namespace RTS
 
         public void LoadContent(String textureName)
         {
-            texture = contentManager.Load<Texture2D>(textureName);
+            texture = contentManager.Load<Texture2D>("elfFront1");
+            textureFront = contentManager.Load<Texture2D>("elfFront1");
+            textureBack = contentManager.Load<Texture2D>("elfBack.1");
+            textureLeft = contentManager.Load<Texture2D>("elfLeft.1");
+            textureRight = contentManager.Load<Texture2D>("elfRight.1");
+
             if (playerIndex == PlayerIndex.One)
-                turretTexture = contentManager.Load<Texture2D>("wizardTurret");
+                turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
             else
             turretTexture = contentManager.Load<Texture2D>("TurretPurple");
             mouseTexture = contentManager.Load<Texture2D>("CrossHair1");
@@ -138,17 +148,29 @@ namespace RTS
             {
                 spriteBatch.Draw(mouseTexture, mousePos, null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
             }
-            if (shootRotationAngle < -Math.PI / 2 || shootRotationAngle > Math.PI / 2)
+
+            if (Math.Abs(moveRotationAngle) >= 0 && Math.Abs(moveRotationAngle) < Math.PI / 2)
             {
-                spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.FlipVertically, 0f);
-                spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.FlipHorizontally, 0f);
+                texture = textureRight;
+                //spriteBatch.Draw(textureRight, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
             }
-            else
+            else if (Math.Abs(moveRotationAngle) > Math.PI / 2 && Math.Abs(moveRotationAngle) <= Math.PI)
             {
-                spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
-                spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);   
+                texture = textureLeft;
+                //spriteBatch.Draw(textureLeft, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
             }
-            
+            else if (moveRotationAngle == -Math.PI / 2)
+            {
+                texture = textureBack;
+                //spriteBatch.Draw(textureBack, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+            }
+            else if (moveRotationAngle == Math.PI / 2)
+            {
+                texture = textureFront;
+                //spriteBatch.Draw(textureFront, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+            }
+                spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+                //spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);
@@ -373,7 +395,7 @@ namespace RTS
 
             if (keystate.IsKeyDown(Keys.Enter))
             {
-                position = new Vector2(100, 100);
+                position = new Vector2(350, 400);
             }
 
             if (keystate.IsKeyDown(Keys.NumPad1))
@@ -560,7 +582,7 @@ namespace RTS
             Vector2 tmpPos;
             tmpPos.X = position.X + (float)(Math.Cos(moveRotationAngle) * speed);
             tmpPos.Y = position.Y + (float)(Math.Sin(moveRotationAngle) * speed);
-            Rectangle player = new Rectangle((int)tmpPos.X, (int)tmpPos.Y, getTexture().Width, getTexture().Height);
+            Rectangle player = new Rectangle((int)tmpPos.X-5, (int)tmpPos.Y, getTexture().Width, getTexture().Height);
             bool collision = false;
 
             foreach (Tree t in game.Trees)
@@ -573,7 +595,7 @@ namespace RTS
                 }
             }
 
-            Rectangle houseRect = new Rectangle((int)game.House.Origin.X - (game.House.Texture.Width / 2) + 30, (int)game.House.Origin.Y - 40, game.House.Texture.Width - 30, game.House.Texture.Height / 5);
+            Rectangle houseRect = new Rectangle((int)game.House.Origin.X - (game.House.Texture.Width / 2) + 30, (int)game.House.Origin.Y - 40, game.House.Texture.Width - 30, game.House.Texture.Height / 4);
             if (houseRect.Intersects(player))
             {
                 collision = true;
@@ -814,7 +836,7 @@ namespace RTS
 
         public void restartGameLevel1()
         {
-            position = new Vector2(100, 100);
+            position = new Vector2(300, 400);
             speed = 0;
             timesHit = 0;
 
