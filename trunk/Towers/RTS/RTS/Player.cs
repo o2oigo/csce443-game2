@@ -184,10 +184,7 @@ namespace RTS
             }
 
 
-            if (boolForTest == true)
-            {
-                spriteBatch.DrawString(font, "test", new Vector2(position.X - 50, position.Y + 80), Color.White);
-            }
+    
             spriteBatch.DrawString(font, fireStoneInInventory + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
             spriteBatch.DrawString(font, waterStoneInInventory + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
             spriteBatch.DrawString(font, healStoneInInventory + " Heal Stone", uiPosition2, Color.Black);
@@ -355,10 +352,16 @@ namespace RTS
             {
                 buildMode = true;
                 mainBuildMode = true;
+                upgradeBuildMode = false;
             }
             else if (buildMode == true && oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder))
             {
-                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && buildMode == true && towerList.Count < maxTowerCount && maxCapacityTower == false)
+                if (upgradeBuildMode == false)
+                    mainBuildMode = true;
+                else
+                    mainBuildMode = false;
+
+                if (shootRotationAngle > -3*(float)Math.PI / 4 && shootRotationAngle <= -(float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
                 {
                     if (mainBuildMode == true)
                     {
@@ -396,13 +399,13 @@ namespace RTS
                         }
                     }
                 }
-                else if (shootRotationAngle > (float)Math.Sqrt(2) / 2f && shootRotationAngle < 2.59)
+                else if (shootRotationAngle > (float)Math.PI / 4 && shootRotationAngle <= 3 * (float)Math.PI / 4)
                 {
                     buildMode = false;
                     mainBuildMode = false;
                     upgradeBuildMode = false;
                 }
-                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.Sqrt(2)/2f && upgradeBuildMode == true )
+                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.PI / 4 && upgradeBuildMode == true )
                 {
                 
                     for (int i = 0; i < towerList.Count(); i++)
@@ -422,7 +425,7 @@ namespace RTS
                     }
                 }
 
-                else if (shootRotationAngle >= -0.93 && shootRotationAngle < 0 && upgradeBuildMode == true)
+                else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= 0 && upgradeBuildMode == true)
                 {
 
                     for (int i = 0; i < towerList.Count(); i++)
@@ -432,7 +435,11 @@ namespace RTS
                             if (waterStoneInInventory >= 1)
                             {
                                 removeStoneFromInventory(1);
-                                createLightningTower();
+                                int level = towerList[i].getLevel();
+                                bool isFire = false;
+                                if (towerList[i].damage.type == ElementType.Fire)
+                                    isFire = true;
+                                createLightningTower(towerList[i].Position,level,isFire);
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
                                 buildMode = false;
@@ -444,7 +451,7 @@ namespace RTS
                     }
                 }
 
-                else if (shootRotationAngle >= -3.24 && shootRotationAngle <= -2.38 || shootRotationAngle >= 2.59 && shootRotationAngle <= 3.24)
+                else if ((shootRotationAngle <= -3*Math.PI / 4 && shootRotationAngle >= -Math.PI) || (shootRotationAngle <= Math.PI && shootRotationAngle > 3*Math.PI / 4))
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
@@ -785,9 +792,9 @@ namespace RTS
             towerList.Add(tower);
         }
 
-        public void createLightningTower()
+        public void createLightningTower(Vector2 oldPosition, int level, bool isFire)
         {
-            LightningTower tower = new LightningTower(game, playerIndex, this.position);
+            LightningTower tower = new LightningTower(game, playerIndex, oldPosition, level, isFire);
             towerList.Add(tower);
         }
 

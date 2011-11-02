@@ -35,14 +35,14 @@ namespace RTS
 
         // a reference to the main game; we'll keep this around because it exposes a
         // content manager and a sprite batch for us to use.
-        private Game1 game;
+        protected Game1 game;
 
         // the texture this particle system will use.
-        private Texture2D texture;
+        protected Texture2D texture;
 
         // the origin when we're drawing textures. this will be the middle of the
         // texture.
-        private Vector2 origin;
+        protected Vector2 origin;
 
         // this number represents the maximum number of effects this particle system
         // will be expected to draw at one time. this is set in the constructor and is

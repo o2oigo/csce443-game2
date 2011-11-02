@@ -10,11 +10,20 @@ namespace RTS
     class LightningTower : Tower
     {
         Texture2D lightningTexture;
-        public LightningTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition) 
+        public LightningTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
             : base(game, playerIndex, startPosition)
         {
             lightningTexture = game.Content.Load<Texture2D>("LightningParticle");
             towerName = "Lightning Tower";
+            this.ilevel = level;
+            if (isFire)
+            {
+                damage.type = ElementType.Fire;
+                damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
+            }
+            if (level == 2)
+                setToLvlTwo();
+            
         }
  
         public override void createProjectile()

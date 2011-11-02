@@ -286,8 +286,14 @@ namespace RTS
                 //map.Draw(spriteBatch);
                 //DrawTrees(spriteBatch);
                 //PATHFINDING//
+                
+
+                foreach (Tower tower in player1.getTowers())
+                    tower.Draw(spriteBatch);
+
                 for (int i = 0; i < enemies.Count; i++)
                     enemies[i].Draw(spriteBatch);
+
                 player1.Draw(spriteBatch);
 
                 // Sprite.DrawT(spriteBatch);
@@ -296,6 +302,7 @@ namespace RTS
                     t.Draw(spriteBatch);
                 }
                 house.Draw(spriteBatch);
+                
 
                 //player2.Draw(spriteBatch);
                 drawText();
@@ -309,17 +316,9 @@ namespace RTS
 
             }
 
-            if (userInterface.booltest == true)
-            {
-                spriteBatch.DrawString(font, "booltest", new Vector2(700, 800), Color.Tomato);
-            }
-
-
             userInterface.Draw(spriteBatch);
-
          
             spriteBatch.End();
-
 
             base.Draw(gameTime);
         }
@@ -542,7 +541,7 @@ namespace RTS
             ////   spriteBatch.DrawString(font, "Player 2 Deaths     : " + player2.getTimesHit(), new Vector2(510, 55), Color.White);
             if (player1.getMaxTower() == true)
             {
-                spriteBatch.DrawString(font, "Tower Limit Reach", new Vector2(500, 35), Color.Black);
+                spriteBatch.DrawString(font, "Tower Limit Reached", new Vector2(500, 35), Color.Black);
             }
 
             //foreach (Tower tower in player1.getTowers())
@@ -553,8 +552,8 @@ namespace RTS
             //    //d spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
             //}
             //spriteBatch.DrawString(font, "TILE: " + map.TileString(new Vector2(player1.Position.X, player1.Position.Y)), new Vector2(500, 100), Color.MediumBlue);
-            spriteBatch.DrawString(font, "SPRITE COUNT: " + Sprite.objCount(), new Vector2(500, 150), Color.MediumBlue);
-              spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.Black);
+            //spriteBatch.DrawString(font, "SPRITE COUNT: " + Sprite.objCount(), new Vector2(500, 150), Color.MediumBlue);
+             // spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.Black);
             //   foreach (Tower tower in player2.getTowers())
             //   {
             //       spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);

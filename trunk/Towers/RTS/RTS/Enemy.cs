@@ -184,7 +184,7 @@ namespace RTS
             spriteBatch = SB;
             spriteBatch.Draw(texture, position, null, Color.White, 0f,origin, map.ScaleB, SpriteEffects.None, 0f);
             //spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
-            spriteBatch.DrawString(font, "HP: " + hp, new Vector2(position.X - 40, position.Y + 30), Color.Black);
+            spriteBatch.DrawString(font, "HP: " + (int)hp, new Vector2(position.X - 40, position.Y + 40), Color.Black);
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);

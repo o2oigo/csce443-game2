@@ -232,7 +232,7 @@ namespace RTS
 
                 if (showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, "Next Wave ", uiPosition1, Color.White);
+                    spriteBatch.DrawString(font, "Next Wave ", uiPosition1, Color.Black);
                 }
             }
 

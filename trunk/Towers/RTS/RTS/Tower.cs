@@ -45,6 +45,7 @@ namespace RTS
         private bool dead = false;
         private bool playerIsNear = false;
         private string level = "level 1";
+        protected int ilevel = 1;
         protected string towerName = "Arrow Tower";
         private int attackDamage = 25;
 
@@ -68,7 +69,7 @@ namespace RTS
 
         protected List<Projectile> projectileList = new List<Projectile>(5);
 
-        private Damage damage;
+        public Damage damage;
         public Damage Damage
         {
             get { return damage; }
@@ -145,9 +146,9 @@ namespace RTS
             else if (shootRotationAngle <= -2.5 * Math.PI / 6 && shootRotationAngle > -3.5 * Math.PI / 6)
                 spriteBatch.Draw(cannon12Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
             //spriteBatch.Draw(turretTexture, new Vector2(position.X, position.Y - 25), null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
-            spriteBatch.DrawString(font, towerName, new Vector2(position.X - 50, position.Y - 70), Color.Black);
-            spriteBatch.DrawString(font, level, new Vector2(position.X - 40, position.Y - 50), Color.Black);
-            spriteBatch.DrawString(font, "HP: " + hp, new Vector2(position.X - 40, position.Y + 30), Color.Black);
+           // spriteBatch.DrawString(font, towerName, new Vector2(position.X - 50, position.Y - 70), Color.Black);
+            //spriteBatch.DrawString(font, level, new Vector2(position.X - 40, position.Y - 50), Color.Black);
+            spriteBatch.DrawString(font, getTowerLvl() + ", \nHP: " + hp, new Vector2(position.X - 120, position.Y + 30), Color.Black);
             
             foreach (Projectile proj in projectileList)
             {
@@ -290,8 +291,9 @@ namespace RTS
 
             shotsToDestroy = 150;
             damage.amount = 20;
-            damage.type = ElementType.Normal;
+            //damage.type = ElementType.Normal;
             level = "level 2";
+            ilevel = 2;
 
         }
 
@@ -325,6 +327,10 @@ namespace RTS
             return level;
         }
 
+        public int getLevel()
+        {
+            return ilevel;
+        }
         public void setToFireTower()
         {
             damage.type = ElementType.Fire;
