@@ -9,8 +9,42 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RTS
 {
-    class SpriteAnimation : SpriteManager
+    public struct SpriteSheet
     {
+        public Texture2D texture;
+        public int frames;
+        public int width;
+        public int height;
+        public Rectangle size;
+        public Rectangle[] rectangles;
+
+        public SpriteSheet(Texture2D txt, int col)
+        {
+            texture = txt;
+            frames = col;
+            width = texture.Width / col;
+            height = texture.Height;
+            size = new Rectangle(0, 0, width, height);
+
+            rectangles = new Rectangle[frames];
+            for (int i = 0; i < frames; i++)
+            {
+                rectangles[i] = new Rectangle(i * width, 0, width, height);
+            }
+        }
+    }
+
+    class SpriteAnimation
+    {
+        private String currentSprite;
+        public String CurrentSprite
+        {
+            get { return currentSprite; }
+            set { currentSprite = value; }
+        }
+
+        private int FrameIndex = 0;
+
         private float timeElapsed;
         public bool IsLooping = false;
 
@@ -20,14 +54,21 @@ namespace RTS
             set { timeToUpdate = (1f / value); }
         }
 
-        public SpriteAnimation(Texture2D Texture, int frames, int rows, bool isLoop)
-            : base(Texture, frames, rows)
+        public SpriteSheet currentSpriteSheet()
         {
+            return textureMap[currentSprite];
+        }
+
+        private Dictionary<String, SpriteSheet> textureMap;
+
+        public SpriteAnimation(Dictionary<String, SpriteSheet> txtMap, bool isLoop)
+        {
+            textureMap = txtMap;
             IsLooping = isLoop;
             FramesPerSecond = 20;
         }
 
-        public virtual void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             timeElapsed += (float)
                 gameTime.ElapsedGameTime.TotalSeconds;
@@ -36,7 +77,7 @@ namespace RTS
             {
                 timeElapsed -= timeToUpdate;
 
-                if (FrameIndex < FrameNum - 1)
+                if (FrameIndex < currentSpriteSheet().frames - 1)
                     FrameIndex++;
                 else if (IsLooping)
                     FrameIndex = 0;
