@@ -16,6 +16,8 @@ namespace RTS
         protected SpriteBatch spriteBatch;
         protected Map map;
 
+        protected SpriteAnimation animation;
+
         protected Vector2 position;
         public Vector2 Position
         {
