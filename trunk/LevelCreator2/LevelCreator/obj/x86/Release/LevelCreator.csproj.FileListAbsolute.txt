@@ -7,3 +7,14 @@ H:\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\LevelCrea
 H:\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\LevelCreator\LevelCreator\obj\x86\Release\GenerateResource.write.1.tlog
 H:\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\LevelCreator\LevelCreator\obj\x86\Release\LevelCreator.exe
 H:\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\LevelCreator\LevelCreator\obj\x86\Release\LevelCreator.pdb
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\LevelCreator.exe
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\LevelCreator.pdb
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\bin\Release\LevelCreator.exe
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\bin\Release\LevelCreator.pdb
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\ResolveAssemblyReference.cache
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\LevelCreator.MapEditor.resources
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\LevelCreator.Properties.Resources.resources
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\GenerateResource.read.1.tlog
+\\filer\o2oigo\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\GenerateResource.write.1.tlog
+H:\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\LevelCreator.exe
+H:\ms_windows\cpsc_redirected\My Documents\Visual Studio 2010\Projects\CSCE 443 - Project 2\LevelCreator2\LevelCreator\obj\x86\Release\LevelCreator.pdb
