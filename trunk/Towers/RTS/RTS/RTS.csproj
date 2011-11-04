@@ -117,6 +117,7 @@
     <Compile Include="LightningTower.cs" />
     <Compile Include="MainUI.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Missile.cs" />
     <Compile Include="NodeList.cs" />
     <Compile Include="Objects.cs" />
     <Compile Include="Particle.cs" />

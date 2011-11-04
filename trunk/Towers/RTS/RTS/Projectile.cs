@@ -14,24 +14,26 @@ namespace RTS
         ContentManager contentManager;
         GraphicsDevice graphicsDevice;
 
-        SpriteBatch spriteBatch;
+        protected SpriteBatch spriteBatch;
 
-        Vector2 origin;
-        Vector2 projectilePosition;
+        protected Vector2 origin;
+        protected Vector2 projectilePosition;
+        protected Vector2 originalPosition;
 
-        Map map;
+        protected Map map;
 
         float speed;
-        double shootRotationAngle = 0;
+        protected double shootRotationAngle = 0;
 
-        Texture2D texture;
+        protected Texture2D texture;
 
         public void Initialize(ContentManager CM, GraphicsDevice GD, Vector2 pos, float angle, float turretLength, float flightSpeed, Map map)
         {
             this.map = map;
             this.shootRotationAngle = angle;
             this.speed = flightSpeed;
-            projectilePosition = new Vector2(pos.X + (float)Math.Cos(shootRotationAngle) * turretLength * map.ScaleB, pos.Y + (float)Math.Sin(shootRotationAngle) * turretLength * map.ScaleB);            
+            projectilePosition = new Vector2(pos.X + (float)Math.Cos(shootRotationAngle) * turretLength * map.ScaleB, pos.Y + (float)Math.Sin(shootRotationAngle) * turretLength * map.ScaleB);
+            this.originalPosition = projectilePosition;
             this.contentManager = CM;
             this.graphicsDevice = GD;
             //spriteBatch = new SpriteBatch(graphicsDevice);
@@ -44,7 +46,7 @@ namespace RTS
             origin.Y = texture.Height / 2;
         }
         
-        public void Update()
+        public virtual void Update()
         {   
             projectilePosition.X += (float)(Math.Cos(shootRotationAngle) * speed);
             projectilePosition.Y += (float)(Math.Sin(shootRotationAngle) * speed);

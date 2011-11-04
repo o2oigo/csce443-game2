@@ -88,6 +88,7 @@ namespace RTS
         private Vector2 uiPosition4;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
+        private List<Missile> missileList = new List<Missile>(5);
         private List<Tower> towerList = new List<Tower>(20);
         private List<Stone> stoneList = new List<Stone>(20);
 
@@ -178,6 +179,12 @@ namespace RTS
             {
                 proj.Draw(spriteBatch);
             }
+
+            foreach (Missile mis in missileList)
+            {
+                mis.Draw(spriteBatch);
+            }
+
             foreach (Tower tower in towerList)
             {
                 tower.Draw(spriteBatch);
@@ -606,6 +613,11 @@ namespace RTS
                 {
                     createProjectile();
                 }
+
+                if (oldMousestate.RightButton == ButtonState.Pressed && mousestate.RightButton == ButtonState.Released)
+                {
+                    createMissile();
+                }
             }
 
             //Open Main Build Menu
@@ -771,6 +783,16 @@ namespace RTS
             //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
         }
 
+        public void createMissile()
+        {
+            Missile missile = new Missile();
+            missile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 30f, map);
+            missile.LoadContent("ProjectileBlue");
+            missileList.Add(missile);
+            game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
+            //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+        }
+
         public void updateProjectiles()
         {
             for (int i = 0; i < projectileList.Count; i++)
@@ -783,6 +805,18 @@ namespace RTS
                     projectileList.Remove(proj);
                 }
                 proj.Update();
+            }
+
+            for (int i = 0; i < missileList.Count; i++)
+            {
+                //Remove Projectile if it goes off-screen
+                Missile mis = missileList[i];
+                if (mis.getPosition().X > graphicsDevice.Viewport.Width || mis.getPosition().X < 0
+                    || mis.getPosition().Y > graphicsDevice.Viewport.Height || mis.getPosition().Y < 0)
+                {
+                    projectileList.Remove(mis);
+                }
+                mis.Update();
             }
         }
 
