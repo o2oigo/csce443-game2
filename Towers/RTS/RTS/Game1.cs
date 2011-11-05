@@ -343,7 +343,7 @@ namespace RTS
             //COLLISION DETECTION
             foreach (Player player in players)
             {
-                Rectangle playerRect = new Rectangle((int)player.Position.X, (int)player.Position.Y, player.getTexture().Width, player.getTexture().Height);
+                Rectangle playerRect = new Rectangle((int)player.Position.X, (int)player.Position.Y, player.Size.Width, player.Size.Height);
 
                 //Loop through all player's tower
                 for (int k = 0; k < player.getTowers().Count; k++)
