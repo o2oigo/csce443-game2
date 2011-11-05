@@ -129,6 +129,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="SpriteAnimation.cs" />
     <Compile Include="Stone.cs" />
     <Compile Include="Tower.cs" />
     <Compile Include="UserInterface.cs" />

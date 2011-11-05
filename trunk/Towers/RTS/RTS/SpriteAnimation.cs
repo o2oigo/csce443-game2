@@ -34,7 +34,7 @@ namespace RTS
         }
     }
 
-    class SpriteAnimation
+    public class SpriteAnimation
     {
         private String currentSprite;
         public String CurrentSprite
@@ -43,7 +43,11 @@ namespace RTS
             set { currentSprite = value; }
         }
 
-        private int FrameIndex = 0;
+        private int frameIndex = 0;
+        public int FrameIndex
+        {
+            get { return frameIndex; }
+        }
 
         private float timeElapsed;
         public bool IsLooping = false;
@@ -77,10 +81,10 @@ namespace RTS
             {
                 timeElapsed -= timeToUpdate;
 
-                if (FrameIndex < currentSpriteSheet().frames - 1)
-                    FrameIndex++;
+                if (frameIndex < currentSpriteSheet().frames - 1)
+                    frameIndex++;
                 else if (IsLooping)
-                    FrameIndex = 0;
+                    frameIndex = 0;
             }
         }
     }

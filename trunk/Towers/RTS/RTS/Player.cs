@@ -111,16 +111,25 @@ namespace RTS
 
         public void LoadContent(String textureName)
         {
-            texture = contentManager.Load<Texture2D>("elfFront1");
-            textureFront = contentManager.Load<Texture2D>("elfFront1");
-            textureBack = contentManager.Load<Texture2D>("elfBack.1");
-            textureLeft = contentManager.Load<Texture2D>("elfLeft.1");
-            textureRight = contentManager.Load<Texture2D>("elfRight.1");
+           // texture = contentManager.Load<Texture2D>("elfFront1");
+            Texture2D tFront = contentManager.Load<Texture2D>("elfFront");
+            Texture2D tBack = contentManager.Load<Texture2D>("elfBack");
+            Texture2D tRight = contentManager.Load<Texture2D>("elfRight");
+            Dictionary<String, SpriteSheet> txtMap = new Dictionary<string, SpriteSheet>();
+            txtMap["front"] = new SpriteSheet(tFront, 16);
+            txtMap["back"] = new SpriteSheet(tBack, 16);
+            txtMap["right"] = new SpriteSheet(tRight, 16);
+
+            animation = new SpriteAnimation(txtMap, true);
+            animation.CurrentSprite = "front";
+            //
+
 
             if (playerIndex == PlayerIndex.One)
                 turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
             else
-            turretTexture = contentManager.Load<Texture2D>("TurretPurple");
+                turretTexture = contentManager.Load<Texture2D>("TurretPurple");
+
             mouseTexture = contentManager.Load<Texture2D>("CrossHair1");
             menu1Texture = contentManager.Load<Texture2D>("buildTowerMenu");
             menu2Texture = contentManager.Load<Texture2D>("cancelMenu");
@@ -135,19 +144,17 @@ namespace RTS
             fireTowerBuildTexture = contentManager.Load<Texture2D>("fireTowerSmall");
             font = contentManager.Load<SpriteFont>("font");
 
-            origin.X = texture.Width / 2;
-            origin.Y = texture.Height / 2;
+            //origin.X = texture.Width / 2;
+            //origin.Y = texture.Height / 2;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            uiPosition1 = new Vector2 (80, game.GraphicsDevice.Viewport.Height - 50);
+            uiPosition1 = new Vector2(80, game.GraphicsDevice.Viewport.Height - 50);
             uiPosition2 = new Vector2(250, game.GraphicsDevice.Viewport.Height - 70);
             uiPosition3 = new Vector2(500, game.GraphicsDevice.Viewport.Height - 70);
             uiPosition4 = new Vector2(700, game.GraphicsDevice.Viewport.Height - 70);
 
-            //spriteBatch = SB;
-            //spriteBatch.Begin();
             if (!currentState.IsConnected)
             {
                 spriteBatch.Draw(mouseTexture, mousePos, null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
@@ -155,26 +162,21 @@ namespace RTS
 
             if (Math.Abs(moveRotationAngle) >= 0 && Math.Abs(moveRotationAngle) < Math.PI / 2)
             {
-                texture = textureRight;
-                //spriteBatch.Draw(textureRight, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+                animation.CurrentSprite = "right";
             }
             else if (Math.Abs(moveRotationAngle) > Math.PI / 2 && Math.Abs(moveRotationAngle) <= Math.PI)
             {
-                texture = textureLeft;
-                //spriteBatch.Draw(textureLeft, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+
             }
             else if (moveRotationAngle == -Math.PI / 2)
             {
-                texture = textureBack;
-                //spriteBatch.Draw(textureBack, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+                animation.CurrentSprite = "back";
             }
             else if (moveRotationAngle == Math.PI / 2)
             {
-                texture = textureFront;
-                //spriteBatch.Draw(textureFront, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+                animation.CurrentSprite = "front";
             }
-                spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
-                //spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White);
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);
@@ -190,44 +192,20 @@ namespace RTS
                 tower.Draw(spriteBatch);
             }
 
-
-    
             spriteBatch.DrawString(font, fireStoneInInventory + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
             spriteBatch.DrawString(font, waterStoneInInventory + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
             spriteBatch.DrawString(font, healStoneInInventory + " Heal Stone", uiPosition2, Color.Black);
             spriteBatch.DrawString(font, "Resources: " + money, uiPosition1, Color.Black);
 
-            
             foreach (Tower tower in towerList)
             {
                 tower.Draw(spriteBatch);
             }
 
-
             if (buildMode == true && mainBuildMode == true)
             {
-
-                /*
-                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.93)
-                {
-                    spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
-                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
-                }
-                else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
-                {
-                    spriteBatch.Draw(menu1Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
-                    spriteBatch.Draw(menu4Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
-                }
-                else
-                {
-                    spriteBatch.Draw(menu1Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
-                    spriteBatch.Draw(menu2Texture, new Vector2(position.X - 152, position.Y - 130), Color.White);
-                }
-                 */
-
                 spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                 spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
-
             }
 
             if (upgradeBuildMode == true && buildMode == true && (shootRotationAngle >= -0.93 && shootRotationAngle <= (float)Math.Sqrt(2) / 2f))
@@ -249,12 +227,6 @@ namespace RTS
                 spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
             }
 
-            
-
-
-
-
-            // spriteBatch.End();
         }
 
         public void Update(GameTime gameTime, List<Enemy> enemies)
@@ -286,7 +258,7 @@ namespace RTS
                     mainBuildMode = false;
                     break;
                 }
-                else 
+                else
                 {
                     mainBuildMode = true;
                     upgradeBuildMode = false;
@@ -306,6 +278,7 @@ namespace RTS
 
             //Update position based on speed and angle
             updateMovement();
+            animation.Update(gameTime);
 
             //Update Projectiles
             updateProjectiles();
@@ -316,7 +289,7 @@ namespace RTS
             //Update Inventory
             updateInventory();
 
-            
+
 
             //Store old states
             oldMousestate = mousestate;
@@ -368,7 +341,7 @@ namespace RTS
                 else
                     mainBuildMode = false;
 
-                if (shootRotationAngle > -3*(float)Math.PI / 4 && shootRotationAngle <= -(float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
+                if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= -(float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
                 {
                     if (mainBuildMode == true)
                     {
@@ -412,9 +385,9 @@ namespace RTS
                     mainBuildMode = false;
                     upgradeBuildMode = false;
                 }
-                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.PI / 4 && upgradeBuildMode == true )
+                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.PI / 4 && upgradeBuildMode == true)
                 {
-                
+
                     for (int i = 0; i < towerList.Count(); i++)
                     {
                         if (towerList[i].getPlayerIsNear() == true)
@@ -446,7 +419,7 @@ namespace RTS
                                 bool isFire = false;
                                 if (towerList[i].damage.type == ElementType.Fire)
                                     isFire = true;
-                                createLightningTower(towerList[i].Position,level,isFire);
+                                createLightningTower(towerList[i].Position, level, isFire);
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
                                 buildMode = false;
@@ -458,7 +431,7 @@ namespace RTS
                     }
                 }
 
-                else if ((shootRotationAngle <= -3*Math.PI / 4 && shootRotationAngle >= -Math.PI) || (shootRotationAngle <= Math.PI && shootRotationAngle > 3*Math.PI / 4))
+                else if ((shootRotationAngle <= -3 * Math.PI / 4 && shootRotationAngle >= -Math.PI) || (shootRotationAngle <= Math.PI && shootRotationAngle > 3 * Math.PI / 4))
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
@@ -491,7 +464,7 @@ namespace RTS
             {
                 money = 9999;
                 Stone fStone = new Stone();
-                fStone.Initialize(game,position,0);
+                fStone.Initialize(game, position, 0);
                 addStoneToInventory(fStone);
                 Stone wStone = new Stone();
                 wStone.Initialize(game, position, 1);
@@ -502,8 +475,8 @@ namespace RTS
 
             }
 
-            
-            
+
+
         }
 
         public void updateKeyboard()
@@ -546,17 +519,17 @@ namespace RTS
             if (keystate.IsKeyDown(Keys.NumPad1))
             {
                 Stone fStone = new Stone();
-                fStone.Initialize(game,position,0);
+                fStone.Initialize(game, position, 0);
                 addStoneToInventory(fStone);
             }
-            
+
             if (keystate.IsKeyDown(Keys.NumPad2))
             {
                 Stone wStone = new Stone();
                 wStone.Initialize(game, position, 1);
                 addStoneToInventory(wStone);
             }
-            
+
             if (keystate.IsKeyDown(Keys.NumPad3))
             {
                 Stone hStone = new Stone();
@@ -630,7 +603,7 @@ namespace RTS
             {
                 if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && buildMode == true && towerList.Count < maxTowerCount && maxCapacityTower == false)
                 {
-                    
+
                     if (mainBuildMode == true)
                     {
                         if (map.TileTypeAt(position) == MapTileType.MapGrass)
@@ -667,7 +640,7 @@ namespace RTS
                         }
                     }
 
-                    
+
                 }
                 else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
                 {
@@ -712,7 +685,7 @@ namespace RTS
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
                             }
-                            
+
                         }
                     }
                     buildMode = false;
@@ -732,7 +705,7 @@ namespace RTS
             Vector2 tmpPos;
             tmpPos.X = position.X + (float)(Math.Cos(moveRotationAngle) * speed);
             tmpPos.Y = position.Y + (float)(Math.Sin(moveRotationAngle) * speed);
-            Rectangle player = new Rectangle((int)tmpPos.X-5, (int)tmpPos.Y, getTexture().Width, getTexture().Height);
+            Rectangle player = new Rectangle((int)tmpPos.X - 5, (int)tmpPos.Y, animation.currentSpriteSheet().size.Width, animation.currentSpriteSheet().size.Height);
             bool collision = false;
 
             foreach (Tree t in game.Trees)
@@ -779,7 +752,7 @@ namespace RTS
                 projectile.LoadContent("ProjectilePurple");
             projectileList.Add(projectile);
 
-             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
+            game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
             //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
         }
 
@@ -863,7 +836,7 @@ namespace RTS
                 {
                     healStoneInInventory++;
                 }
-                
+
             }
         }
 
@@ -908,20 +881,7 @@ namespace RTS
             return turretTexture.Width;
         }
 
-        public Texture2D getTexture()
-        {
-            return texture;
-        }
 
-        //public void setPosition(Vector2 pos)
-        //{
-        //    position = pos;
-        //}
-
-        //public Vector2 getPosition()
-        //{
-        //    return position;
-        //}
 
         public List<Tower> getTowers()
         {
@@ -951,6 +911,11 @@ namespace RTS
         public int getTimesHit()
         {
             return timesHit;
+        }
+
+        public Rectangle Size
+        {
+            get { return animation.currentSpriteSheet().size; }
         }
 
         public int getEnemiesDestroyed()
@@ -1029,13 +994,13 @@ namespace RTS
             mainBuildMode = false;
             upgradeBuildMode = false;
             maxCapacityTower = false;
-            
+
             fireStoneInInventory = 0;
             waterStoneInInventory = 0;
             healStoneInInventory = 0;
             money = 35;
             timeForResources = 0;
-            
+
             projectileList.Clear();
             towerList.Clear();
             stoneList.Clear();
@@ -1044,7 +1009,7 @@ namespace RTS
             towerEnemiesDestroyed = 0;
         }
 
-       
+
 
     }
 }
