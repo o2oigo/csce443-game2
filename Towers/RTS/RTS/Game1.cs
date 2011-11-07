@@ -166,7 +166,6 @@ namespace RTS
 
             backgroundTexture = Content.Load<Texture2D>("levelOne");
             font = Content.Load<SpriteFont>("font");
-            treeTexture = Content.Load<Texture2D>("tree1");
 
             // tankSong = Content.Load<SoundEffect>("2DTankPOM");
             //music = new Dictionary<string, SoundEffect>();

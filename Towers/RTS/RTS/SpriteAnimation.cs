@@ -50,7 +50,14 @@ namespace RTS
         }
 
         private float timeElapsed;
+
         public bool IsLooping = false;
+        public bool Loop
+        {
+            get { return IsLooping; }
+            set { IsLooping = value;}
+        }
+
 
         private float timeToUpdate = 0.05f;
         public int FramesPerSecond
@@ -69,7 +76,7 @@ namespace RTS
         {
             textureMap = txtMap;
             IsLooping = isLoop;
-            FramesPerSecond = 20;
+            FramesPerSecond = 30;
         }
 
         public void Update(GameTime gameTime)
@@ -81,10 +88,13 @@ namespace RTS
             {
                 timeElapsed -= timeToUpdate;
 
-                if (frameIndex < currentSpriteSheet().frames - 1)
-                    frameIndex++;
-                else if (IsLooping)
-                    frameIndex = 0;
+                if (IsLooping)
+                {
+                    if (frameIndex < currentSpriteSheet().frames - 1)
+                        frameIndex++;
+                    else if (IsLooping)
+                        frameIndex = 0;
+                }
             }
         }
     }
