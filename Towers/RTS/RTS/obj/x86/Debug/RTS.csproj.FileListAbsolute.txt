@@ -821,3 +821,6 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\wiz
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront.xnb
+C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.xnb

@@ -52,7 +52,7 @@ namespace RTS
             projectilePosition.Y += (float)(Math.Sin(shootRotationAngle) * speed);
         }
 
-        public void Draw(SpriteBatch SB)
+        public virtual void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
             //spriteBatch.Begin();
