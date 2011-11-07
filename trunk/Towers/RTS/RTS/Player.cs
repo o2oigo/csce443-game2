@@ -12,12 +12,6 @@ namespace RTS
 {
     class Player : Sprite
     {
-        //Game1 game;
-        //ContentManager contentManager;
-        //GraphicsDevice graphicsDevice;
-        //SpriteBatch spriteBatch;
-        //Map map;
-
         PlayerIndex playerIndex;
 
         KeyboardState keystate;
@@ -29,9 +23,7 @@ namespace RTS
 
         private float elapsedTime;
 
-        //private Vector2 position;
         private Vector2 mousePos;
-        private Vector2 origin;
 
         private double speed = 0;
         private int timesHit = 0;
@@ -45,12 +37,9 @@ namespace RTS
         private float xComponent = 0;
         private float yComponent = 0;
 
-        private Texture2D texture;
         private Texture2D turretTexture;
-        private Texture2D textureFront;
-        private Texture2D textureRight;
-        private Texture2D textureBack;
-        private Texture2D textureLeft;
+        bool isMove;
+        SpriteEffects isFlipped = SpriteEffects.None;
 
 
         // fredy code for User Interface (tower menu)
@@ -67,14 +56,14 @@ namespace RTS
         private Texture2D enhanceTexture;
         private Texture2D fireTowerBuildTexture;
         private Texture2D lightningTowerBuildTexture;
-        private Texture2D backgroundTexture;
-        private Texture2D startMenuTexture;
-        private Texture2D quitMenuTexture;
+        //private Texture2D backgroundTexture;
+        //private Texture2D startMenuTexture;
+        //private Texture2D quitMenuTexture;
 
         private bool buildMode = false;
         private bool mainBuildMode = false;
         private bool upgradeBuildMode = false;
-        private bool upgradeSubBuildMode = false;
+        //private bool upgradeSubBuildMode = false;
         private bool maxCapacityTower = false;
         SpriteFont font;
         private int fireStoneInInventory = 1;
@@ -115,10 +104,12 @@ namespace RTS
             Texture2D tFront = contentManager.Load<Texture2D>("elfFront");
             Texture2D tBack = contentManager.Load<Texture2D>("elfBack");
             Texture2D tRight = contentManager.Load<Texture2D>("elfRight");
+            Texture2D tLeft = contentManager.Load<Texture2D>("elfLeft");
             Dictionary<String, SpriteSheet> txtMap = new Dictionary<string, SpriteSheet>();
             txtMap["front"] = new SpriteSheet(tFront, 16);
             txtMap["back"] = new SpriteSheet(tBack, 16);
             txtMap["right"] = new SpriteSheet(tRight, 16);
+            txtMap["left"] = new SpriteSheet(tLeft, 16);
 
             animation = new SpriteAnimation(txtMap, true);
             animation.CurrentSprite = "front";
@@ -159,24 +150,32 @@ namespace RTS
             {
                 spriteBatch.Draw(mouseTexture, mousePos, null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
             }
+            if (!isMove) { animation.Loop = false; }
+            else
+            {
+                isFlipped = SpriteEffects.None;
+                animation.Loop = true; 
+                if (Math.Abs(moveRotationAngle) >= 0 && Math.Abs(moveRotationAngle) < Math.PI / 2)
+                {
+                    animation.CurrentSprite = "left";
+                    isFlipped = SpriteEffects.FlipHorizontally;
+                }
+                else if (Math.Abs(moveRotationAngle) > Math.PI / 2 && Math.Abs(moveRotationAngle) <= Math.PI)
+                {
+                    animation.CurrentSprite = "left";
 
-            if (Math.Abs(moveRotationAngle) >= 0 && Math.Abs(moveRotationAngle) < Math.PI / 2)
-            {
-                animation.CurrentSprite = "right";
+                }
+                else if (moveRotationAngle == -Math.PI / 2)
+                {
+                    animation.CurrentSprite = "back";
+                }
+                else if (moveRotationAngle == Math.PI / 2)
+                {
+                    animation.CurrentSprite = "front";
+                }
             }
-            else if (Math.Abs(moveRotationAngle) > Math.PI / 2 && Math.Abs(moveRotationAngle) <= Math.PI)
-            {
-
-            }
-            else if (moveRotationAngle == -Math.PI / 2)
-            {
-                animation.CurrentSprite = "back";
-            }
-            else if (moveRotationAngle == Math.PI / 2)
-            {
-                animation.CurrentSprite = "front";
-            }
-            spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White);
+            spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White, 0f, Vector2.Zero, 1.0f, isFlipped, 0f);
+            
             foreach (Projectile proj in projectileList)
             {
                 proj.Draw(spriteBatch);
@@ -489,26 +488,30 @@ namespace RTS
             //if (!keystate.IsKeyDown(Keys.A) && !keystate.IsKeyDown(Keys.D) && !keystate.IsKeyDown(Keys.W) && !keystate.IsKeyDown(Keys.S))
             speed = 0;
 
+            isMove = false;
             if (keystate.IsKeyDown(Keys.A) && buildMode == false)
             {
                 xComponent = -1;
                 speed = 5;
-
+                isMove = true;
             }
             if (keystate.IsKeyDown(Keys.D) && buildMode == false)
             {
                 xComponent = 1;
                 speed = 5;
+                isMove = true;
             }
             if (keystate.IsKeyDown(Keys.W) && buildMode == false)
             {
                 yComponent = -1;
                 speed = 5;
+                isMove = true;
             }
             else if (keystate.IsKeyDown(Keys.S) && buildMode == false)
             {
                 yComponent = 1;
                 speed = 5;
+                isMove = true;
             }
 
             if (keystate.IsKeyDown(Keys.Enter))
@@ -566,6 +569,7 @@ namespace RTS
             {
                 removeMoney(10);
             }
+
 
 
             //Update moveRotationAngle

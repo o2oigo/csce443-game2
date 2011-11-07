@@ -100,9 +100,7 @@ namespace RTS
 
         public void LoadContent(ContentManager content)
         {
-            barrierTexture = content.Load<Texture2D>("block");
             endTexture = content.Load<Texture2D>("Tower1");
-            treeTexture = content.Load<Texture2D>("tree1");
 
             maps = new List<MapData>();
             maps.Add(content.Load<MapData>("map1"));
