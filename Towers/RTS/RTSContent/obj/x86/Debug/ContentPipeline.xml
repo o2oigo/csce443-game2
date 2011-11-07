@@ -848,6 +848,24 @@
       <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Map4.xnb</Output>
       <Time>2011-11-07T09:08:33.9444502-06:00</Time>
     </Item>
+    <Item>
+      <Source>lightningTowerNew.png</Source>
+      <Name>lightningTower</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTower.xnb</Output>
+      <Time>2011-11-07T10:20:53.2180954-06:00</Time>
+    </Item>
+    <Item>
+      <Source>lightningTowerUpgrade.png</Source>
+      <Name>lightningTowerUpgrade</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerUpgrade.xnb</Output>
+      <Time>2011-11-07T10:21:00.5189422-06:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
