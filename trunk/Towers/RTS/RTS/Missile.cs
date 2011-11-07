@@ -42,7 +42,7 @@ namespace RTS
             spriteBatch = SB;
            // missileAngle = Math.Atan2();
            // missileAngle = missileAngle % circle;
-            spriteBatch.Draw(texture, projectilePosition, null, Color.White, , origin, map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, projectilePosition, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
         }
     }
 }
