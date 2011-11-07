@@ -30,7 +30,7 @@ namespace RTS
         GamePadState currentState;
 
         private float elapsedTime;
-        private Vector2 origin;
+        protected Vector2 origin;
         protected PlayerIndex playerIndex;
         protected Enemy shootAt;
 
@@ -38,18 +38,18 @@ namespace RTS
         private float towerRange = 400;
         private float shootElapsedTime = 0;
 
-        SpriteFont font;
+        protected SpriteFont font;
         private int shotsTaken = 0;
         private int shotsToDestroy = 100;
-        private int hp;
+        protected int hp;
         private bool dead = false;
         private bool playerIsNear = false;
-        private string level = "level 1";
+        protected string level = "level 1";
         protected int ilevel = 1;
         protected string towerName = "Arrow Tower";
-        private int attackDamage = 25;
+        protected int attackDamage = 25;
 
-        private double moveRotationAngle = 0;
+        protected double moveRotationAngle = 0;
         protected double shootRotationAngle = 0;
 
         //private Texture2D texture;
@@ -65,7 +65,7 @@ namespace RTS
         private Texture2D cannon10Texture;
         private Texture2D cannon11Texture;
         private Texture2D cannon12Texture;
-        private Texture2D turretTexture;
+        protected Texture2D turretTexture;
 
         protected List<Projectile> projectileList = new List<Projectile>(5);
 
@@ -98,7 +98,7 @@ namespace RTS
             //damage = new Damage(10, 1,ElementType.Fire, new EnemyEffectBurn(game,5,1));
         }
         
-        public void LoadContent()
+        public virtual void LoadContent()
         {
             cannon1Texture = contentManager.Load<Texture2D>("cannon1");
             cannon2Texture = contentManager.Load<Texture2D>("cannon2");
@@ -238,7 +238,7 @@ namespace RTS
             return turretTexture.Width;
         }
 
-        public Texture2D getTexture() // MIGHT CAUSE PROBLEMS
+        public virtual Texture2D getTexture() // MIGHT CAUSE PROBLEMS
         {
             return cannon1Texture;
         }
@@ -286,7 +286,7 @@ namespace RTS
             return attackDamage;
         }
 
-        public void setToLvlTwo()
+        public virtual void setToLvlTwo()
         {
 
             shotsToDestroy = 150;
