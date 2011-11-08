@@ -826,3 +826,6 @@ C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront.xnb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.xnb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTower.xnb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerUpgrade.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTower.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerUpgrade.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.xnb
