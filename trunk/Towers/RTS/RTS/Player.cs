@@ -24,6 +24,7 @@ namespace RTS
         private float elapsedTime;
 
         private Vector2 mousePos;
+        private Vector2 origin;
 
         private double speed = 0;
         private int timesHit = 0;
@@ -135,8 +136,8 @@ namespace RTS
             fireTowerBuildTexture = contentManager.Load<Texture2D>("fireTowerSmall");
             font = contentManager.Load<SpriteFont>("font");
 
-            //origin.X = texture.Width / 2;
-            //origin.Y = texture.Height / 2;
+            origin.X = Size.Width / 2;
+            origin.Y = Size.Height / 2;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -174,7 +175,7 @@ namespace RTS
                     animation.CurrentSprite = "front";
                 }
             }
-            spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White, 0f, Vector2.Zero, 1.0f, isFlipped, 0f);
+            spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White, 0f, origin, 1.0f, isFlipped, 0f);
             
             foreach (Projectile proj in projectileList)
             {
