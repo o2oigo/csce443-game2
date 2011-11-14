@@ -11,10 +11,24 @@ namespace RTS
     {
         float time = 0;
         float missileAngle = 0;
-        public override void Update()
-        {       
-            projectilePosition = GetPoint(time, originalPosition, new Vector2(originalPosition.X - 300, originalPosition.Y), new Vector2(originalPosition.X - 300, originalPosition.Y - 1000), new Vector2(originalPosition.X - 600, originalPosition.Y));
-            time += .01f;
+        Enemy target;
+
+        public Missile(Enemy target)
+        {
+            this.target = target;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (target != null)
+            {
+                Vector2 point = GetPoint(time, originalPosition, new Vector2(originalPosition.X, originalPosition.Y - 600), target.getPosition(), target.getPosition());
+                missileAngle = (float)Math.Atan2(point.Y - projectilePosition.Y, point.X - projectilePosition.X);
+                missileAngle = missileAngle % (MathHelper.Pi * 2);
+                projectilePosition = point;
+            }
+            time += elapsedTime * 1.2f;
         }
 
         private Vector2 GetPoint(float t, Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3)
@@ -40,9 +54,17 @@ namespace RTS
         public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-           // missileAngle = Math.Atan2();
-           // missileAngle = missileAngle % circle;
-            spriteBatch.Draw(texture, projectilePosition, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, projectilePosition, null, Color.White, missileAngle, origin, 1f, SpriteEffects.None, 0f);
+        }
+
+        public Enemy getTarget()
+        {
+            return target;
+        }
+
+        public float getMissileAngle()
+        {
+            return missileAngle;
         }
     }
 }

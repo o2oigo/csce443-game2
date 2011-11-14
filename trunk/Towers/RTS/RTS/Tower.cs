@@ -34,20 +34,20 @@ namespace RTS
         protected PlayerIndex playerIndex;
         protected Enemy shootAt;
 
-        private float shootTimer = .8f;
-        private float towerRange = 400;
+        protected float shootTimer = .8f;
+        protected float towerRange = 400;
         private float shootElapsedTime = 0;
 
         protected SpriteFont font;
         private int shotsTaken = 0;
-        private int shotsToDestroy = 100;
+        protected int shotsToDestroy = 100;
         protected int hp;
         private bool dead = false;
         private bool playerIsNear = false;
         protected string level = "level 1";
         protected int ilevel = 1;
         protected string towerName = "Arrow Tower";
-        protected int attackDamage = 25;
+       // protected int attackDamage = 25;
 
         protected double moveRotationAngle = 0;
         protected double shootRotationAngle = 0;
@@ -69,7 +69,7 @@ namespace RTS
 
         protected List<Projectile> projectileList = new List<Projectile>(5);
 
-        public Damage damage;
+        public Damage damage = new Damage(10, 1, ElementType.Normal, null);
         public Damage Damage
         {
             get { return damage; }
@@ -92,7 +92,7 @@ namespace RTS
             //towerRange = 50;
 
             //damage = new Damage(10, 1,ElementType.Normal, new EnemyEffectBurn(game,5,1));
-            damage = new Damage(10, 1, ElementType.Normal, null);
+            //damage = new Damage(10, 1, ElementType.Normal, null);
 
             map = game.Map;
             //damage = new Damage(10, 1,ElementType.Fire, new EnemyEffectBurn(game,5,1));
@@ -163,7 +163,7 @@ namespace RTS
             shootElapsedTime += elapsedTime;
             hp = shotsToDestroy - shotsTaken;
             updateTurret(enemies);
-            updateProjectiles();
+            updateProjectiles(gameTime);
         }
 
         public void updateGamePad()
@@ -176,7 +176,7 @@ namespace RTS
 
         }
 
-        public void updateTurret(List<Enemy> enemies)
+        public virtual void updateTurret(List<Enemy> enemies)
         {
             shootAt = null;
             if (enemies.Count != 0)
@@ -197,17 +197,17 @@ namespace RTS
                     shootRotationAngle = Math.Atan2(shootAt.Position.Y - position.Y, shootAt.Position.X - position.X);
                     if (shootElapsedTime > shootTimer)
                     {
-                        this.createProjectile();
+                        this.createProjectile(shootAt);
                         shootElapsedTime = 0;
                     }
                 }
             }
         }
 
-        public virtual void createProjectile()
+        public virtual void createProjectile(Enemy shootAt)
         {
             Projectile projectile = new Projectile();
-            projectile.Initialize(contentManager, graphicsDevice, new Vector2(position.X, position.Y - 25), (float)shootRotationAngle, getTurretLength(), 20f, map);
+            projectile.Initialize(contentManager, graphicsDevice, new Vector2(position.X, position.Y - 25), (float)shootRotationAngle, getTurretLength(), 2000f, map);
             if (playerIndex == PlayerIndex.One)
                 projectile.LoadContent("ProjectileBlue");
             else
@@ -218,7 +218,7 @@ namespace RTS
             // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
         }
 
-        public void updateProjectiles()
+        public virtual void updateProjectiles(GameTime gameTime)
         {
             for (int i = 0; i < projectileList.Count; i++)
             {
@@ -229,7 +229,9 @@ namespace RTS
                 {
                     projectileList.Remove(proj);
                 }
-                proj.Update();
+                proj.Update(gameTime);
+               // game.fireTower.setDirection(proj.getMissileAngle() + (float)Math.PI);
+               // game.fireTower.AddParticles(proj.getPosition());
             }
         }
 
@@ -281,10 +283,10 @@ namespace RTS
             return shotsToDestroy;
         }
 
-        public int getAttackDamage()
-        {
-            return attackDamage;
-        }
+       // public int getAttackDamage()
+       // {
+      //      return attackDamage;
+      //  }
 
         public virtual void setToLvlTwo()
         {

@@ -94,3 +94,9 @@ C:\dafwww\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\dafwww\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\dafwww\Towers\MapData\obj\x86\Debug\MapData.dll
 C:\dafwww\Towers\MapData\obj\x86\Debug\MapData.pdb
+C:\Anthony\Towers\Towers\MapData\bin\x86\Debug\MapData.dll
+C:\Anthony\Towers\Towers\MapData\bin\x86\Debug\MapData.pdb
+C:\Anthony\Towers\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Anthony\Towers\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Anthony\Towers\Towers\MapData\obj\x86\Debug\MapData.dll
+C:\Anthony\Towers\Towers\MapData\obj\x86\Debug\MapData.pdb

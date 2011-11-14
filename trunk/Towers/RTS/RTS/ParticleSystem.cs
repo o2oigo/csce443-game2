@@ -48,7 +48,7 @@ namespace RTS
         // will be expected to draw at one time. this is set in the constructor and is
         // used to calculate how many particles we will need.
         private int howManyEffects;
-        
+
         // the array of particles used by this system. these are reused, so that calling
         // AddParticles will not cause any allocations.
         protected Particle[] particles;
@@ -60,6 +60,15 @@ namespace RTS
         /// <summary>
         /// returns the number of particles that are available for a new effect.
         /// </summary>
+        /// 
+
+        protected float rotation;
+        //Angle of the sprite used in particles 
+
+        protected Vector2 direction;
+        //Direction particles will travel
+
+
         public int FreeParticleCount
         {
             get { return freeParticles.Count; }
@@ -80,7 +89,7 @@ namespace RTS
         /// </summary>
         protected int minNumParticles;
         protected int maxNumParticles;
-       
+
         /// <summary>
         /// this controls the texture that the particle system uses. It will be used as
         /// an argument to ContentManager.Load.
@@ -138,10 +147,10 @@ namespace RTS
         /// different effects can use different blend states. fire and explosions work
         /// well with additive blending, for example.
         /// </summary>
-		protected BlendState blendState;
+        protected BlendState blendState;
 
         #endregion
-        
+
         /// <summary>
         /// Constructs a new ParticleSystem.
         /// </summary>
@@ -155,7 +164,7 @@ namespace RTS
         /// Update and Draw functions.</remarks>
         protected ParticleSystem(Game1 game, int howManyEffects)
             : base(game)
-        {            
+        {
             this.game = game;
             this.howManyEffects = howManyEffects;
         }
@@ -169,7 +178,7 @@ namespace RTS
         public override void Initialize()
         {
             InitializeConstants();
-            
+
             // calculate the total number of particles we will ever need, using the
             // max number of effects and the max number of particles per effect.
             // once these particles are allocated, they will be reused, so that
@@ -181,6 +190,7 @@ namespace RTS
                 particles[i] = new Particle();
                 freeParticles.Enqueue(particles[i]);
             }
+            rotation = 0;
             base.Initialize();
         }
 
@@ -237,7 +247,7 @@ namespace RTS
             {
                 // grab a particle from the freeParticles queue, and Initialize it.
                 Particle p = freeParticles.Dequeue();
-                InitializeParticle(p, where);               
+                InitializeParticle(p, where);
             }
         }
 
@@ -255,10 +265,9 @@ namespace RTS
         {
             // first, call PickRandomDirection to figure out which way the particle
             // will be moving. velocity and acceleration's values will come from this.
-            Vector2 direction = PickDirection();
 
             // pick some random values for our particle
-            float velocity = 
+            float velocity =
                 RandomBetween(minInitialSpeed, maxInitialSpeed);
             float acceleration =
                 RandomBetween(minAcceleration, maxAcceleration);
@@ -271,20 +280,25 @@ namespace RTS
 
             // then initialize it with those random values. initialize will save those,
             // and make sure it is marked as active.
+
+            // p.Acceleration = -p.Velocity / p.Lifetime;
+
             p.Initialize(
                 where, velocity * direction, acceleration * direction,
-                lifetime, scale, rotationSpeed, 0);
+                lifetime, scale, rotationSpeed, rotation);
         }
+
+
 
         /// <summary>
         /// PickRandomDirection is used by InitializeParticles to decide which direction
         /// particles will move. The default implementation is a random vector in a
         /// circular pattern.
         /// </summary>
-        protected virtual Vector2 PickDirection()
+        public void PickRandomDirection()
         {
             float angle = RandomBetween(0, MathHelper.TwoPi);
-            return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
+            direction = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
             //return new Vector2(0, 0);
         }
 
@@ -301,7 +315,7 @@ namespace RTS
             // go through all of the particles...
             foreach (Particle p in particles)
             {
-                
+
                 if (p.Active)
                 {
                     // ... and if they're active, update them.
@@ -312,7 +326,7 @@ namespace RTS
                     {
                         freeParticles.Enqueue(p);
                     }
-                }   
+                }
             }
 
             base.Update(gameTime);
@@ -326,8 +340,8 @@ namespace RTS
         {
             // tell sprite batch to begin, using the spriteBlendMode specified in
             // initializeConstants
-			game.getSpriteBatch().Begin(SpriteSortMode.Deferred, blendState);
-            
+            game.getSpriteBatch().Begin(SpriteSortMode.Deferred, blendState);
+
             foreach (Particle p in particles)
             {
                 // skip inactive particles
@@ -351,7 +365,7 @@ namespace RTS
                 // since we want the maximum alpha to be 1, not .25, we'll scale the 
                 // entire equation by 4.
                 float alpha = 4 * normalizedLifetime * (1 - normalizedLifetime);
-				Color color = Color.White * alpha;
+                Color color = Color.White * alpha;
 
                 // make particles grow as they age. they'll start at 75% of their size,
                 // and increase to 100% once they're finished.
@@ -373,6 +387,37 @@ namespace RTS
         public static float RandomBetween(float min, float max)
         {
             return min + (float)random.NextDouble() * (max - min);
+        }
+
+        //Sets the rotation of the sprite used for each particle (EX: used in lightning effect to rotate a lightning bolt)
+        public void setRotation(float shootRotationAngle)
+        {
+            this.rotation = shootRotationAngle;
+        }
+
+        //Manually sets the scale of the sprite used for each particle
+        public void setScale(float scaleMin, float scaleMax)
+        {
+            minScale = scaleMin;
+            maxScale = scaleMax;
+        }
+
+        public void setSpeed(float speedMin, float speedMax)
+        {
+            minInitialSpeed = speedMin;
+            maxInitialSpeed = speedMax;
+        }
+
+
+        public void setLifetime(float minLifetime, float maxLifetime)
+        {
+            this.minLifetime = minLifetime;
+            this.maxLifetime = maxLifetime;
+        }
+        //Sets the direction that the particles move
+        public virtual void setDirection(float angle)
+        {
+            this.direction = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
         }
     }
 }

@@ -81,6 +81,8 @@ namespace RTS
         private List<Tower> towerList = new List<Tower>(20);
         private List<Stone> stoneList = new List<Stone>(20);
 
+        private List<Enemy> enemyList = new List<Enemy>(30);
+
         private int enemiesDestroyed = 0;
         private int towerEnemiesDestroyed = 0;
         private int maxTowerCount = 10;
@@ -229,6 +231,7 @@ namespace RTS
         public void Update(GameTime gameTime, List<Enemy> enemies)
         {
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            enemyList = enemies;
 
             if (towerList.Count < 6)
             {
@@ -278,7 +281,7 @@ namespace RTS
             animation.Update(gameTime);
 
             //Update Projectiles
-            updateProjectiles();
+            updateProjectiles(gameTime);
 
             //Update Towers
             updateTowers(gameTime, enemies);
@@ -392,7 +395,14 @@ namespace RTS
                             if (fireStoneInInventory >= 1)
                             {
                                 removeStoneFromInventory(0);
-                                towerList[i].setToFireTower();
+                                //towerList[i].setToFireTower();
+                                int level = towerList[i].getLevel();
+                                bool isFire = false;
+                                if (towerList[i].damage.type == ElementType.Fire)
+                                    isFire = true;
+                                createMissileTower(towerList[i].Position, level, isFire);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
                                 buildMode = false;
                                 mainBuildMode = false;
                                 upgradeBuildMode = false;
@@ -601,16 +611,20 @@ namespace RTS
                 buildMode = true;
                 mainBuildMode = true;
             }
-            if (buildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
+            else if (buildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
             {
-                if (shootRotationAngle > -2.39 && shootRotationAngle < -0.76 && buildMode == true && towerList.Count < maxTowerCount && maxCapacityTower == false)
-                {
+                if (upgradeBuildMode == false)
+                    mainBuildMode = true;
+                else
+                    mainBuildMode = false;
 
+                if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= -(float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
+                {
                     if (mainBuildMode == true)
                     {
                         if (map.TileTypeAt(position) == MapTileType.MapGrass)
                         {
-                            if (money >= 15)
+                            if (money > 15)
                             {
                                 removeMoney(15);
                                 createTower();
@@ -641,17 +655,16 @@ namespace RTS
 
                         }
                     }
-
-
                 }
-                else if (shootRotationAngle > 0.55 && shootRotationAngle < 2.59)
+                else if (shootRotationAngle > (float)Math.PI / 4 && shootRotationAngle <= 3 * (float)Math.PI / 4)
                 {
                     buildMode = false;
                     mainBuildMode = false;
+                    upgradeBuildMode = false;
                 }
-
-                else if (shootRotationAngle >= -0.93 && shootRotationAngle <= 0.55 && upgradeBuildMode == true)
+                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.PI / 4 && upgradeBuildMode == true)
                 {
+
                     for (int i = 0; i < towerList.Count(); i++)
                     {
                         if (towerList[i].getPlayerIsNear() == true)
@@ -659,17 +672,50 @@ namespace RTS
                             if (fireStoneInInventory >= 1)
                             {
                                 removeStoneFromInventory(0);
-
-                                towerList[i].setToFireTower();
+                                //towerList[i].setToFireTower();
+                                int level = towerList[i].getLevel();
+                                bool isFire = false;
+                                if (towerList[i].damage.type == ElementType.Fire)
+                                    isFire = true;
+                                createFlameTower(towerList[i].Position, level, isFire);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
                             }
                         }
 
                     }
-                    buildMode = false;
-                    mainBuildMode = false;
                 }
 
-                else if (shootRotationAngle >= -3.14 && shootRotationAngle <= -2.38 || shootRotationAngle >= 2.59 && shootRotationAngle <= 3.14)
+                else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= 0 && upgradeBuildMode == true)
+                {
+
+                    for (int i = 0; i < towerList.Count(); i++)
+                    {
+                        if (towerList[i].getPlayerIsNear() == true)
+                        {
+                            if (waterStoneInInventory >= 1)
+                            {
+                                removeStoneFromInventory(1);
+                                int level = towerList[i].getLevel();
+                                bool isFire = false;
+                                if (towerList[i].damage.type == ElementType.Fire)
+                                    isFire = true;
+                                createLightningTower(towerList[i].Position, level, isFire);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
+                        }
+
+                    }
+                }
+
+                else if ((shootRotationAngle <= -3 * Math.PI / 4 && shootRotationAngle >= -Math.PI) || (shootRotationAngle <= Math.PI && shootRotationAngle > 3 * Math.PI / 4))
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
@@ -680,18 +726,22 @@ namespace RTS
                                 addMoney(5);
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
                             }
                             else if (towerList[i].getTowerLvl() == "level 2")
                             {
                                 addMoney(10);
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
                             }
 
                         }
                     }
-                    buildMode = false;
-                    mainBuildMode = false;
                 }
             }
 
@@ -747,7 +797,7 @@ namespace RTS
         public void createProjectile()
         {
             Projectile projectile = new Projectile();
-            projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 30f, map);
+            projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 2000f, map);
             if (playerIndex == PlayerIndex.One)
                 projectile.LoadContent("ProjectileBlue");
             else
@@ -760,15 +810,19 @@ namespace RTS
 
         public void createMissile()
         {
-            Missile missile = new Missile();
-            missile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 30f, map);
-            missile.LoadContent("ProjectileBlue");
-            missileList.Add(missile);
-            game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
-            //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+            if (enemyList.Count != 0)
+            {
+                Enemy target = enemyList[0];
+                Missile missile = new Missile(target);
+                missile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 30f, map);
+                missile.LoadContent("ProjectileBlue");
+                missileList.Add(missile);
+                game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
+                //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+            }
         }
 
-        public void updateProjectiles()
+        public void updateProjectiles(GameTime gameTime)
         {
             for (int i = 0; i < projectileList.Count; i++)
             {
@@ -779,7 +833,7 @@ namespace RTS
                 {
                     projectileList.Remove(proj);
                 }
-                proj.Update();
+                proj.Update(gameTime);
             }
 
             for (int i = 0; i < missileList.Count; i++)
@@ -791,7 +845,7 @@ namespace RTS
                 {
                     projectileList.Remove(mis);
                 }
-                mis.Update();
+                mis.Update(gameTime);
             }
         }
 
@@ -807,6 +861,17 @@ namespace RTS
             towerList.Add(tower);
         }
 
+        public void createFlameTower(Vector2 oldPosition, int level, bool isFire)
+        {
+            FlameTower tower = new FlameTower(game, playerIndex, oldPosition, level, isFire);
+            towerList.Add(tower);
+        }
+
+        public void createMissileTower(Vector2 oldPosition, int level, bool isFire)
+        {
+            MissileTower tower = new MissileTower(game, playerIndex, oldPosition, level, isFire);
+            towerList.Add(tower);
+        }
 
         public void updateTowers(GameTime gameTime, List<Enemy> enemies)
         {
