@@ -11,7 +11,7 @@ namespace RTS
 
     public class Enemy : Sprite
     {
-        SpriteFont font;
+        protected SpriteFont font;
 
         //different for different enemies
         protected float hp;
@@ -27,12 +27,13 @@ namespace RTS
         Random rand = new Random();
         private PathFinder path;
 
-        private Vector2 origin;
+        protected Vector2 origin;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
 
         private bool dead = false;
-        private Point startTile; 
+        private Point startTile;
+        private SpriteEffects isFlipped;
 
         private double moveRotationAngle;
         private double shootRotationAngle;
@@ -151,13 +152,6 @@ namespace RTS
             waypoints = new NodeList();
             path = new PathFinder();
 
-            //change for diff enemies later
-           //range = 200;
-           //hp = 100;
-           //weakAgainst = ElementType.Water;
-           //strongAgainst = ElementType.Fire;
-
-
             this.map = game.Map;
             int randomNum = rand.Next(0, map.StartTile.Count());
             startTile = map.StartTile[randomNum]; 
@@ -198,7 +192,8 @@ namespace RTS
         public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            spriteBatch.Draw(texture, position, null, Color.White, 0f,origin, map.ScaleB, SpriteEffects.None, 0f);
+            //spriteBatch.Draw(animation.currentSpriteSheet().texture, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
+            spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White, 0f, origin, 1.0f, isFlipped, 0f);
             //spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, "HP: " + (int)hp, new Vector2(position.X - 40, position.Y + 40), Color.Black);
             foreach (Projectile proj in projectileList)
@@ -233,11 +228,12 @@ namespace RTS
 
             doPathfinding(gameTime);
 
+            updateAnimation();
+            animation.Update(gameTime);
         }
 
         public void Attack(List<Tower> towers)
         {
-
             foreach (Tower i in towers)
             {
                 if (boundingCircle(this.position, range, i.Position))
@@ -277,8 +273,8 @@ namespace RTS
             shootRotationAngle = Math.Atan2(tower.Position.Y - position.Y, tower.Position.X - position.X);
 
             //Adjusted shoot angle with variation for bullet realism
-            int xVariation = 0;//rand.Next(-100, 100);
-            int yVariation = 0;//rand.Next(-100, 100);
+            int xVariation = 0;     //rand.Next(-100, 100);
+            int yVariation = 0;     //rand.Next(-100, 100);
             projectileRotationAngle = Math.Atan2(tower.Position.Y + yVariation - position.Y, tower.Position.X + xVariation - position.X);
         }
 
@@ -334,7 +330,6 @@ namespace RTS
                     destination = waypoints.Peek();
                 }
 
-
                 if (AtDestination && waypoints.Count >= 1)
                 {
                     waypoints.Dequeue();
@@ -348,6 +343,54 @@ namespace RTS
                     position = position + (Direction *
                         MoveSpeed * elapsedTime);
                 }
+            }
+        }
+
+        public void updateAnimation()
+        {
+            isFlipped = SpriteEffects.None;
+
+            double dir = Math.Atan2(direction.Y, direction.X);
+            dir = dir % circle;
+
+            if (direction.X < 0 && direction.Y ==0)
+            //if (Math.Abs(dir) > Math.PI / 2 && Math.Abs(dir) <= Math.PI)
+            {
+                animation.CurrentSprite = "left";
+            }
+            //else if (direction.X < 0 && direction.Y > 0)
+            //{
+            //    animation.CurrentSprite = "rightUp";
+            //    isFlipped = SpriteEffects.FlipHorizontally;
+            //}
+            //else if (direction.X < 0 && direction.Y < 0)
+            //{
+            //    animation.CurrentSprite = "rightDown";
+            //    isFlipped = SpriteEffects.FlipHorizontally;
+            //}
+            //else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI / 2)
+            else if (direction.X > 0 && direction.Y == 0)
+            {
+                animation.CurrentSprite = "left";
+                isFlipped = SpriteEffects.FlipHorizontally;
+            }
+            //else if (direction.X > 0 && direction.Y > 0)
+            //{
+            //    animation.CurrentSprite = "rightUp";
+            //}
+            //else if (direction.X > 0 && direction.Y < 0)
+            //{
+            //    animation.CurrentSprite = "rightDown";
+            //}
+            else if (direction.X == 0 && direction.Y > 0)
+            //else if (dir == Math.PI / 2)
+            {
+                animation.CurrentSprite = "front";
+            }
+            //else if (dir == -Math.PI / 2)
+            else if (direction.X == 0 && direction.Y < 0)
+            {
+                animation.CurrentSprite = "back";
             }
         }
 
@@ -427,6 +470,5 @@ namespace RTS
             return false;
         }
 
-        
     }
 }

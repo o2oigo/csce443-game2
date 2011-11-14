@@ -61,7 +61,25 @@ namespace RTS
 
         public virtual void LoadContent()
         {
-            base.LoadContent("puddingMonster");
+            // animation
+            Texture2D tFront = contentManager.Load<Texture2D>("elfFront");
+            Texture2D tBack = contentManager.Load<Texture2D>("elfBack");
+            Texture2D tRight = contentManager.Load<Texture2D>("elfRight");
+            Texture2D tLeft = contentManager.Load<Texture2D>("elfLeft");
+            Dictionary<String, SpriteSheet> txtMap = new Dictionary<string, SpriteSheet>();
+            txtMap["front"] = new SpriteSheet(tFront, 16);
+            txtMap["back"] = new SpriteSheet(tBack, 16);
+            txtMap["right"] = new SpriteSheet(tRight, 16);
+            txtMap["left"] = new SpriteSheet(tLeft, 16);
+
+            animation = new SpriteAnimation(txtMap, true);
+            animation.CurrentSprite = "front";
+            //
+
+            origin.X = Size.Width / 2;
+            origin.Y = Size.Height / 2;
+
+            font = contentManager.Load<SpriteFont>("font");
         }
     }
 
@@ -80,7 +98,7 @@ namespace RTS
 
         public virtual void LoadContent()
         {
-            base.LoadContent("puddingMonster");
+            base.LoadContent("muffinMonster");
         }
 
         public override void Update(GameTime gameTime, List<Tower> towers)

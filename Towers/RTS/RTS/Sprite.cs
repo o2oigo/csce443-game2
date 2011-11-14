@@ -59,5 +59,10 @@ namespace RTS
             return allObjects.Count();
         }
 
+        public Rectangle Size
+        {
+            get { return animation.currentSpriteSheet().size; }
+        }
+
     }
 }
