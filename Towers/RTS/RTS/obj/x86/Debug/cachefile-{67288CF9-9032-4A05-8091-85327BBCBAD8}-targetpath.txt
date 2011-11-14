@@ -86,6 +86,7 @@ Content\elfFront.xnb
 Content\elfRight.xnb
 Content\lightningTower.xnb
 Content\lightningTowerUpgrade.xnb
+Content\elfLeft.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb
@@ -95,4 +96,3 @@ Content\Map1.xnb
 Content\Map2.xnb
 Content\Map3.xnb
 Content\Map4.xnb
-Content\elfLeft.xnb

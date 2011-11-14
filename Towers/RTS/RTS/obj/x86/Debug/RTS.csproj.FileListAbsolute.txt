@@ -829,3 +829,9 @@ C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerUpgrade.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTower.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerUpgrade.xnb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTower.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerUpgrade.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.xnb
