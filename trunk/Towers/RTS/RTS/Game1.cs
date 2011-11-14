@@ -21,6 +21,7 @@ namespace RTS
         Texture2D backgroundTexture;
 
         UserInterface userInterface;
+        Camera camera;
 
         Texture2D treeTexture;
 
@@ -129,6 +130,7 @@ namespace RTS
             wave = new Wave(this);
             house = new House(this, map.getBaseCoordinate());
             house.LoadContent();
+           
         }
 
         /// <summary>
@@ -166,6 +168,9 @@ namespace RTS
 
             backgroundTexture = Content.Load<Texture2D>("levelOne");
             font = Content.Load<SpriteFont>("font");
+
+            camera = new Camera(GraphicsDevice.Viewport);
+            camera.Initialize(this, PlayerIndex.One, new Vector2(100, 100), players);
 
             // tankSong = Content.Load<SoundEffect>("2DTankPOM");
             //music = new Dictionary<string, SoundEffect>();
@@ -215,7 +220,7 @@ namespace RTS
 
             if (userInterface.getShowGameScreen() == true)
             {
-                
+                camera.Update(gameTime);
                 if (enemies.Count != 0)
                     enemySpawnTime = .15f * enemies.Count;
                 else
@@ -276,7 +281,7 @@ namespace RTS
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, camera.ViewMatrix);
            
             if (userInterface.getShowGameScreen() == true || userInterface.getShowPauseScreen() == true)
             {
@@ -316,8 +321,10 @@ namespace RTS
             }
 
             userInterface.Draw(spriteBatch);
+            
          
             spriteBatch.End();
+
 
             base.Draw(gameTime);
         }
@@ -591,6 +598,23 @@ namespace RTS
             enemyTimer = 0;
             enemySpawnTime = 1f;
             live = 10;
+
+            camera.ResetCamera();
+        }
+
+        private void ResetCamera()
+        {
+            camera.Zoom = 1f;
+            camera.Position = Vector2.Zero;
+        }
+
+        private static Rectangle CalculateFrameRectangle(int width, int height, int columns, int rows, int frame)
+        {
+            int tileWidth = width / columns;
+            int tileHeight = height / rows;
+            int x = frame % columns;
+            int y = frame / columns;
+            return new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
         }
 
 
