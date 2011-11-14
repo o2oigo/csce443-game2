@@ -61,6 +61,7 @@ namespace RTS
         int live = 10;
 
         public FireParticleSystem fire;
+        public FireParticleSystem fireTower;
         public LightningParticleSystem lightning;
 
 
@@ -93,8 +94,12 @@ namespace RTS
             smoke = new ExplosionSmokeParticleSystem(this, 2);
             Components.Add(smoke);
 
-            fire = new FireParticleSystem(this, 20000);
+            fire = new FireParticleSystem(this, 1000, "fireParticle");
             Components.Add(fire);
+
+            fireTower = new FireParticleSystem(this, 1000, "fireParticle");
+            fireTower.setSpeed(500, 600);
+            Components.Add(fireTower);
 
             lightning = new LightningParticleSystem(this, 10);
             Components.Add(lightning);
@@ -209,6 +214,7 @@ namespace RTS
             fire.Update(gameTime);
             userInterface.setWavesNumber(wave.CurrentWave);
             lightning.Update(gameTime);
+            fireTower.Update(gameTime);
             
             if (userInterface.getRestartGameStatus() == true)
             {

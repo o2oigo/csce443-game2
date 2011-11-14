@@ -24,7 +24,7 @@ namespace RTS
     /// </summary>
     public class LightningParticleSystem : ParticleSystem
     {
-        float rotation;
+        //float rotation;
         public LightningParticleSystem(Game1 game, int howManyEffects)
             : base(game, howManyEffects)
         {
@@ -71,7 +71,7 @@ namespace RTS
         {
             // first, call PickRandomDirection to figure out which way the particle
             // will be moving. velocity and acceleration's values will come from this.
-            Vector2 direction = PickDirection();
+            //Vector2 direction = PickRandomDirection();
 
             // pick some random values for our particle
             float velocity = 
@@ -94,17 +94,6 @@ namespace RTS
 
             p.Acceleration = -p.Velocity / p.Lifetime;
         }
-
-            public void setRotation(float shootRotationAngle)
-            {
-                this.rotation = shootRotationAngle;
-            }
-
-            public void setScale(float scale)
-            {
-                minScale = scale;
-                maxScale = scale;
-            }
 
             public override void Draw(GameTime gameTime)
             {

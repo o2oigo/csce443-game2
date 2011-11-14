@@ -213,6 +213,7 @@ namespace RTS
 
             if (effect != null && effectTimer>100)
             {
+                game.fire.setDirection((float)(-Math.PI/2));
                 game.fire.AddParticles(new Vector2(position.X, position.Y));
                 if (effectTimer > 100)
                 {
@@ -232,7 +233,7 @@ namespace RTS
             animation.Update(gameTime);
         }
 
-        public void Attack(List<Tower> towers)
+        public void Attack(List<Tower> towers, GameTime gameTime)
         {
             foreach (Tower i in towers)
             {
@@ -246,7 +247,7 @@ namespace RTS
 
                         //Create new projectiles
                         Projectile projectile = new Projectile();
-                        projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 3f, map);
+                        projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 1200f, map);
                         projectile.LoadContent("ProjectileRed");
                         projectileList.Add(projectile);
 
@@ -257,7 +258,7 @@ namespace RTS
                     break;
                 }
             }
-            updateProjectiles();
+            updateProjectiles(gameTime);
         }
 
         public void updateMovement(Tower tower)
@@ -278,12 +279,12 @@ namespace RTS
             projectileRotationAngle = Math.Atan2(tower.Position.Y + yVariation - position.Y, tower.Position.X + xVariation - position.X);
         }
 
-        public void updateProjectiles()
+        public void updateProjectiles(GameTime gameTime)
         {
             //Update Projectiles
             foreach (Projectile proj in projectileList)
             {
-                proj.Update();
+                proj.Update(gameTime);
             }
 
             //Remove Projectile if it goes off-screen

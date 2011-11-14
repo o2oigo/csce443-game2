@@ -19,10 +19,12 @@ namespace RTS
         protected Vector2 origin;
         protected Vector2 projectilePosition;
         protected Vector2 originalPosition;
+        private float elapsedTime;
 
         protected Map map;
 
         float speed;
+        float distanceTraveled = 0;
         protected double shootRotationAngle = 0;
 
         protected Texture2D texture;
@@ -45,11 +47,13 @@ namespace RTS
             origin.X = texture.Width / 2;
             origin.Y = texture.Height / 2;
         }
-        
-        public virtual void Update()
-        {   
-            projectilePosition.X += (float)(Math.Cos(shootRotationAngle) * speed);
-            projectilePosition.Y += (float)(Math.Sin(shootRotationAngle) * speed);
+
+        public virtual void Update(GameTime gameTime)
+        {
+            elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 add = new Vector2((float)(Math.Cos(shootRotationAngle) * speed * elapsedTime), (float)(Math.Sin(shootRotationAngle) * speed * elapsedTime));
+            projectilePosition += add;
+            distanceTraveled += (float)Math.Sqrt(Math.Pow(add.X, 2) + Math.Pow(add.Y, 2));
         }
 
         public virtual void Draw(SpriteBatch SB)
@@ -65,9 +69,19 @@ namespace RTS
             return projectilePosition;
         }
 
+        public Vector2 getOrigin()
+        {
+            return origin;
+        }
+
         public Texture2D getTexture()
         {
             return texture;
+        }
+
+        public float getDistanceTraveled()
+        {
+            return distanceTraveled;
         }
     }
 }

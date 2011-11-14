@@ -64,5 +64,10 @@ namespace RTS
             get { return animation.currentSpriteSheet().size; }
         }
 
+        public Vector2 getPosition()
+        {
+            return position;
+        }
+
     }
 }

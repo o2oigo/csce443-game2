@@ -24,9 +24,15 @@ namespace RTS
     /// </summary>
     public class FireParticleSystem : ParticleSystem
     {
-        public FireParticleSystem(Game1 game, int howManyEffects)
+        String textureName;
+        // Game1 game;
+        PlayerIndex playerIndex;
+        public FireParticleSystem(Game1 game, int howManyEffects, String textureName)
             : base(game, howManyEffects)
         {
+            // this.game = game;
+            this.textureName = textureName;
+            this.direction = new Vector2(0, 0);
         }
 
         /// <summary>
@@ -35,12 +41,13 @@ namespace RTS
         /// </summary>
         protected override void InitializeConstants()
         {
-            textureFilename = "fireParticle";
+
+            textureFilename = textureName;
 
             // high initial speed with lots of variance.  make the values closer
             // together to have more consistently circular explosions.
-            minInitialSpeed = 35;
-            maxInitialSpeed = 45;
+            minInitialSpeed = 200;
+            maxInitialSpeed = 300;
 
             // doesn't matter what these values are set to, acceleration is tweaked in
             // the override of InitializeParticle.
@@ -48,40 +55,28 @@ namespace RTS
             maxAcceleration = 0;
 
             // explosions should be relatively short lived
-            minLifetime = .2f;
-            maxLifetime = .3f;
+            minLifetime = .3f;
+            maxLifetime = .4f;
 
             minScale = .15f;
             maxScale = .25f;
 
-            minNumParticles = 2;
-            maxNumParticles = 4;
+            minNumParticles = 5;
+            maxNumParticles = 7;
 
-            minRotationSpeed = -MathHelper.PiOver4;
-            maxRotationSpeed = MathHelper.PiOver4;
+            minRotationSpeed =  -MathHelper.PiOver4;
+            maxRotationSpeed =   MathHelper.PiOver4;
 
             // additive blending is very good at creating fiery effects.
-			blendState = BlendState.Additive;
+            blendState = BlendState.Additive;
 
             DrawOrder = AdditiveDrawOrder;
         }
 
-        protected override void InitializeParticle(Particle p, Vector2 where)
+        //Sets the direction that the particles move
+        public override void setDirection(float angle)
         {
-            base.InitializeParticle(p, where);
-            
-            // The base works fine except for acceleration. Explosions move outwards,
-            // then slow down and stop because of air resistance. Let's change
-            // acceleration so that when the particle is at max lifetime, the velocity
-            // will be zero.
-
-            // We'll use the equation vt = v0 + (a0 * t). (If you're not familar with
-            // this, it's one of the basic kinematics equations for constant
-            // acceleration, and basically says:
-            // velocity at time t = initial velocity + acceleration * t)
-            // We'll solve the equation for a0, using t = p.Lifetime and vt = 0.
-            p.Acceleration.X = -p.Velocity.X / p.Lifetime;
-            p.Acceleration.Y = -Math.Abs(p.Velocity.Y * 20 / p.Lifetime);
+            this.direction = new Vector2((float)Math.Cos(angle) + RandomBetween(-.1f, .1f), (float)Math.Sin(angle) + RandomBetween(-.1f, .1f));
         }
     }
 }

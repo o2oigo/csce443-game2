@@ -56,7 +56,7 @@ namespace RTS
             base.setToLvlTwo();
         }
  
-        public override void createProjectile()
+        public override void createProjectile(Enemy target)
         {
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, shootAt.Position, (float)shootRotationAngle, getTurretLength(), 10f, map);
@@ -66,7 +66,7 @@ namespace RTS
             //game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
 
             float scale = Vector2.Distance(shootAt.Position, position) / lightningTexture.Width;
-            game.lightning.setScale(scale);
+            game.lightning.setScale(scale, scale);
             game.lightning.setRotation((float)shootRotationAngle);   
             game.lightning.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * lightningTexture.Width / 2 * scale + (float)Math.Cos(shootRotationAngle) * (getTurretLength()) * map.ScaleB, position.Y - 15 + (float)Math.Sin(shootRotationAngle) * lightningTexture.Width / 2 * scale + (float)Math.Sin(shootRotationAngle) * (getTurretLength()) * map.ScaleB));
         }

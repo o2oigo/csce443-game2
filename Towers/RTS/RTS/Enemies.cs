@@ -104,7 +104,7 @@ namespace RTS
         public override void Update(GameTime gameTime, List<Tower> towers)
         {
             base.Update(gameTime, towers);
-            Attack(towers);
+            Attack(towers, gameTime);
         }
     }
 
