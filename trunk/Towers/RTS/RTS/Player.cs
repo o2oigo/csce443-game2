@@ -42,7 +42,6 @@ namespace RTS
         bool isMove;
         SpriteEffects isFlipped = SpriteEffects.None;
 
-
         // fredy code for User Interface (tower menu)
         private bool boolForTest = false;
         private Texture2D mouseTexture;
@@ -116,7 +115,6 @@ namespace RTS
             animation.CurrentSprite = "front";
             //
 
-
             if (playerIndex == PlayerIndex.One)
                 turretTexture = contentManager.Load<Texture2D>("TurretPlayer");
             else
@@ -164,7 +162,6 @@ namespace RTS
                 else if (Math.Abs(moveRotationAngle) > Math.PI / 2 && Math.Abs(moveRotationAngle) <= Math.PI)
                 {
                     animation.CurrentSprite = "left";
-
                 }
                 else if (moveRotationAngle == -Math.PI / 2)
                 {
@@ -916,11 +913,6 @@ namespace RTS
         public int getTimesHit()
         {
             return timesHit;
-        }
-
-        public Rectangle Size
-        {
-            get { return animation.currentSpriteSheet().size; }
         }
 
         public int getEnemiesDestroyed()
