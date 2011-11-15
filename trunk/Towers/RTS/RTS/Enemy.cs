@@ -164,9 +164,9 @@ namespace RTS
             path.SearchPath();
         }
 
-        public virtual void LoadContent(String textureName)
+        public virtual void LoadContent()
         {
-            texture = contentManager.Load<Texture2D>(textureName);
+            //texture = contentManager.Load<Texture2D>(textureName);
             turretTexture = contentManager.Load<Texture2D>("TurretEnemy");
 
             // animation
@@ -184,8 +184,8 @@ namespace RTS
             //animation.CurrentSprite = "front";
             //
 
-            origin.X = texture.Width / 2;
-            origin.Y = texture.Height / 2;
+            origin.X = Size.Width / 2;
+            origin.Y = Size.Height / 2;
             font = contentManager.Load<SpriteFont>("font");
         }
 
