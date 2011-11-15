@@ -1050,3 +1050,6 @@ C:\Anthony\Towers\Towers\RTS\RTS\bin\x86\Debug\RTS.pdb
 C:\Anthony\Towers\Towers\RTS\RTS\bin\x86\Debug\MapData.dll
 C:\Anthony\Towers\Towers\RTS\RTS\bin\x86\Debug\MapData.pdb
 C:\Anthony\Towers\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileFireEmpty.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileFireEmptyDebug.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\missile.xnb
