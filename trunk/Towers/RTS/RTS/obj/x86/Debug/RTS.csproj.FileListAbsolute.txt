@@ -1074,3 +1074,34 @@ C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\stRight.xnb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\stBack.xnb
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\bin\x86\Debug\Content\stLeft.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileFireEmpty.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileFireEmptyDebug.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\missile.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\flameTowerNew.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\missileTowerNew.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\stFront.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\stRight.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\stBack.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\stLeft.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\arrowTowerMenuInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\arrowTowerMenuSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmallInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\buildSmallSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmallInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cancelSmallSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\connonTowerSmallInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\connonTowerSmallSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmallInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\enhanceSmallSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\flameTowerMenuInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\flameTowerMenuSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerSmallInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerSmallSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\missileTowerMenuInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\missileTowerMenuSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmallInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\sellSmallSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmallInactive.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\upgradeSmallSelected.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\arrowTowerMenu.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\flameTowerMenu.xnb
