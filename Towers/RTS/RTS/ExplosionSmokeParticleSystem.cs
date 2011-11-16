@@ -52,21 +52,18 @@ namespace RTS
 
             // explosion smoke lasts for longer than the explosion itself, but not
             // as long as the plumes do.
-            minLifetime = .1f;
-            maxLifetime = .2f;
+            minLifetime = .25f;
+            maxLifetime = .35f;
 
-            minScale = .02f;
-            maxScale = .04f;
+            minScale = .13f;
+            maxScale = .23f;
 
             // we need to reduce the number of particles on Windows Phone in order to keep
             // a good framerate
-#if WINDOWS_PHONE
+
             minNumParticles = 5;
-            maxNumParticles = 10;
-#else
-            minNumParticles = 10;
-            maxNumParticles = 20;
-#endif
+            maxNumParticles = 6;
+
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;

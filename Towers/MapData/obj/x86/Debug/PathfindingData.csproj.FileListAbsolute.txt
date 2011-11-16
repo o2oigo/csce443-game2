@@ -34,12 +34,6 @@ H:\443-2\443Game2\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
 H:\443-2\443Game2\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 H:\443-2\443Game2\Towers\MapData\obj\x86\Debug\MapData.dll
 H:\443-2\443Game2\Towers\MapData\obj\x86\Debug\MapData.pdb
-C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\bin\x86\Debug\MapData.dll
-C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\bin\x86\Debug\MapData.pdb
-C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\MapData.dll
-C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\MapData.pdb
 C:\RTS\Towers\csce443-game2\Towers\MapData\bin\x86\Debug\MapData.dll
 C:\RTS\Towers\csce443-game2\Towers\MapData\bin\x86\Debug\MapData.pdb
 C:\RTS\Towers\csce443-game2\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
@@ -100,3 +94,9 @@ C:\Anthony\Towers\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Anthony\Towers\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Anthony\Towers\Towers\MapData\obj\x86\Debug\MapData.dll
 C:\Anthony\Towers\Towers\MapData\obj\x86\Debug\MapData.pdb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\bin\x86\Debug\MapData.dll
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\bin\x86\Debug\MapData.pdb
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\MapData.dll
+C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\MapData\obj\x86\Debug\MapData.pdb

@@ -34,8 +34,8 @@ namespace RTS
 
         public override void  LoadContent()
         {
-            flameTowerTexture = contentManager.Load<Texture2D>("lightningTower");
-            flameTowerUpgradeTexture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
+            flameTowerTexture = contentManager.Load<Texture2D>("flameTowerNew");
+            flameTowerUpgradeTexture = contentManager.Load<Texture2D>("flameTowerNew");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = flameTowerTexture.Width / 2;
@@ -75,7 +75,7 @@ namespace RTS
             game.fireTower.setDirection((float)shootRotationAngle);
             game.fireTower.setSpeed(500, 600);
             if(this.ilevel == 1)
-                game.fireTower.setScale(.15f, .2f);
+                game.fireTower.setScale(.2f, .25f);
             else
                 game.fireTower.setScale(.3f, .4f);
             game.fireTower.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));

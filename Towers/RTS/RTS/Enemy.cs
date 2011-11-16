@@ -253,7 +253,7 @@ namespace RTS
 
                         //Add explosion to particle system
                         game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
-                        // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+                        game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
                     }
                     break;
                 }
@@ -469,6 +469,11 @@ namespace RTS
             if (Distance.Length() < radius)
                 return true;
             return false;
+        }
+
+        public Vector2 getOrigin()
+        {
+            return origin;
         }
 
     }

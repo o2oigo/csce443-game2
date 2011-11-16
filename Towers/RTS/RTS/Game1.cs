@@ -84,14 +84,14 @@ namespace RTS
 
             this.graphics.PreferredBackBufferHeight = 1024;
             this.graphics.PreferredBackBufferWidth = 1280;
-            //this.graphics.IsFullScreen = true;
+            this.graphics.IsFullScreen = true;
             
             map = new Map();
 
             explosion = new ExplosionParticleSystem(this, 2000);
             Components.Add(explosion);
 
-            smoke = new ExplosionSmokeParticleSystem(this, 2);
+            smoke = new ExplosionSmokeParticleSystem(this, 100);
             Components.Add(smoke);
 
             fire = new FireParticleSystem(this, 1000, "fireParticle");
@@ -211,6 +211,7 @@ namespace RTS
                 this.Exit();
 
             explosion.Update(gameTime);
+            smoke.Update(gameTime);
             fire.Update(gameTime);
             userInterface.setWavesNumber(wave.CurrentWave);
             lightning.Update(gameTime);
@@ -355,13 +356,13 @@ namespace RTS
             //COLLISION DETECTION
             foreach (Player player in players)
             {
-                Rectangle playerRect = new Rectangle((int)player.Position.X, (int)player.Position.Y, player.Size.Width, player.Size.Height);
+                Rectangle playerRect = new Rectangle((int)(player.Position.X - player.getOrigin().X), (int)(player.Position.Y - player.getOrigin().Y), player.Size.Width, player.Size.Height);
 
                 //Loop through all player's tower
                 for (int k = 0; k < player.getTowers().Count; k++)
                 {
                     Tower tower = player.getTowers()[k];
-                    Rectangle towerRect = new Rectangle((int)tower.Position.X, (int)tower.Position.Y, tower.getTexture().Width, tower.getTexture().Height);
+                    Rectangle towerRect = new Rectangle((int)(tower.Position.X - tower.getOrigin().X), (int)(tower.Position.Y - tower.getOrigin().Y), tower.getTexture().Width, tower.getTexture().Height);
 
                     //Check if player stand near a tower
                     if (towerRect.Intersects(playerRect))
@@ -380,7 +381,7 @@ namespace RTS
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
-                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.Position.X, (int)currentEnemy.Position.Y, currentEnemy.Size.Width, currentEnemy.Size.Height);
+                    Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.getPosition().X - currentEnemy.getOrigin().X), (int)(currentEnemy.getPosition().Y - currentEnemy.getOrigin().Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
 
                     //Ckeck if current enemy and exit point                   
                     //if (map.TileTypeAt(currentEnemy.Position) == MapTileType.MapExit)
@@ -395,7 +396,7 @@ namespace RTS
                     for (int j = 0; j < currentEnemy.getProjectiles().Count; j++)
                     {
                         Projectile proj = currentEnemy.getProjectiles()[j];
-                        Rectangle enemyProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
+                        Rectangle enemyProjectileRect = new Rectangle((int)(proj.getPosition().X - proj.getOrigin().X), (int)(proj.getPosition().Y - proj.getOrigin().Y), proj.getTexture().Width, proj.getTexture().Height);
 
                         //Check if player is hit by any of current enemy's current projectile
                        /* if (playerRect.Intersects(enemyProjectileRect))
@@ -409,7 +410,7 @@ namespace RTS
                         for (int k = 0; k < player.getTowers().Count; k++)
                         {
                             Tower tower = player.getTowers()[k];
-                            Rectangle towerRect = new Rectangle((int)tower.Position.X, (int)tower.Position.Y, tower.getTexture().Width, tower.getTexture().Height);
+                            Rectangle towerRect = new Rectangle((int)(tower.Position.X - tower.getOrigin().X), (int)(tower.Position.Y - tower.getOrigin().Y), tower.getTexture().Width, tower.getTexture().Height);
                             if (towerRect.Intersects(enemyProjectileRect))
                             {
                                 currentEnemy.getProjectiles().Remove(proj);
@@ -430,16 +431,17 @@ namespace RTS
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
-                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.Position.X, (int)currentEnemy.Position.Y, currentEnemy.Size.Width, currentEnemy.Size.Height);
+                    Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.getPosition().X - currentEnemy.getOrigin().X), (int)(currentEnemy.getPosition().Y - currentEnemy.getOrigin().Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
+
 
                     //Check if current enemy is hit by any of player's projectiles
                     for (int j = 0; j < player.getProjectiles().Count; j++)
                     {
                         Projectile proj = player.getProjectiles()[j];
-                        Rectangle playerProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
+                        Rectangle playerProjectileRect = new Rectangle((int)(proj.getPosition().X - proj.getOrigin().X), (int)(proj.getPosition().Y - proj.getOrigin().Y), proj.getTexture().Width, proj.getTexture().Height);
 
                         if (currentEnemyRect.Intersects(playerProjectileRect))
-                        {
+                        {            
                             player.getProjectiles().Remove(proj);
                             currentEnemy.Hit(1.0f);
                             //if (enemies.Count != 0 && enemies[i].isDead())
@@ -464,7 +466,8 @@ namespace RTS
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
-                    Rectangle currentEnemyRect = new Rectangle((int)currentEnemy.Position.X, (int)currentEnemy.Position.Y, currentEnemy.Size.Width, currentEnemy.Size.Height);
+                    Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.getPosition().X - currentEnemy.getOrigin().X), (int)(currentEnemy.getPosition().Y - currentEnemy.getOrigin().Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
+
 
                     //Check if current enemy is hit by any of player's tower's projectiles
                     for (int k = 0; k < player.getTowers().Count; k++)
@@ -473,10 +476,15 @@ namespace RTS
                         for (int j = 0; j < tower.getProjectiles().Count; j++)
                         {
                             Projectile proj = tower.getProjectiles()[j];
-                            Rectangle towerProjectileRect = new Rectangle((int)proj.getPosition().X, (int)proj.getPosition().Y, proj.getTexture().Width, proj.getTexture().Height);
+                            Rectangle towerProjectileRect = new Rectangle((int)(proj.getPosition().X - proj.getOrigin().X), (int)(proj.getPosition().Y - proj.getOrigin().Y), proj.getTexture().Width, proj.getTexture().Height);
 
                             if (currentEnemyRect.Intersects(towerProjectileRect))
                             {
+                                if (tower.damage.type != ElementType.Fire)
+                                {
+                                    explosion.AddParticles(enemies[i].getPosition());
+                                    smoke.AddParticles(enemies[i].getPosition());
+                                }
                                 tower.getProjectiles().Remove(proj);
                                 currentEnemy.Hit(tower.Damage);
                                 //if (enemies.Count != 0 && enemies[i].isDead())
@@ -523,6 +531,8 @@ namespace RTS
                         stones.Add(newStone);
                     }
                     Sprite.removeList(enemies[i]);
+                    explosion.AddParticles(enemies[i].Position);
+                    smoke.AddParticles(enemies[i].Position);
                     enemies.RemoveAt(i);
                     player1.addMoney(3);
                    // player.enemyDestroyed();

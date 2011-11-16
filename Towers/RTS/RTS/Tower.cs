@@ -208,14 +208,11 @@ namespace RTS
         {
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, new Vector2(position.X, position.Y - 25), (float)shootRotationAngle, getTurretLength(), 2000f, map);
-            if (playerIndex == PlayerIndex.One)
-                projectile.LoadContent("ProjectileBlue");
-            else
-                projectile.LoadContent("ProjectilePurple");
+            projectile.LoadContent("Projectile");
             projectileList.Add(projectile);
 
             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
-            // game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
         }
 
         public virtual void updateProjectiles(GameTime gameTime)
@@ -233,6 +230,11 @@ namespace RTS
                // game.fireTower.setDirection(proj.getMissileAngle() + (float)Math.PI);
                // game.fireTower.AddParticles(proj.getPosition());
             }
+        }
+
+        public Vector2 getOrigin()
+        {
+            return origin;
         }
 
         public float getTurretLength()
