@@ -18,19 +18,25 @@ namespace LevelCreator
 {
     public partial class MapEditor : Form
     {
-        public enum SelectedTile { TreeTile, DirtTile, GrassTile, StartTile, EndTile };
-        private bool bMouseIsDown;
-        private bool bPaintTiles;
+        public enum SelectedTile { TreeTile, DirtTile, GrassTile, StartTile, EndTile, BarrierTile };
+        public enum SelectedTool { PaintTile, FillTiles };
 
-        SelectedTile drawTile;
+        SelectedTile selectedTileType;
+        SelectedTool selectedTool;
 
-        Bitmap UncroppedBackgroundImage;
+        Bitmap UnmodifiedBackgroundImage;
+        Bitmap ModifiedBackgroundImage;
+
+        private double dScaledTileWidth;
+        private double dScaledTileHeight;
+
         private int nButtonSideLength;
         private int nTileSize;
         private int resolutionY;
         private int resolutionX;
         private int HeightInTiles;
         private int WidthInTiles;
+        private bool bMouseIsDown;
 
         // Directory information
         private string sDirectoryName;
@@ -40,492 +46,160 @@ namespace LevelCreator
         // Current XnaContent
         XnaContent currentContent;
 
-
         public MapEditor()
         {
             InitializeComponent();
-            progressBar1.Visible = false;
-
-            bPaintTiles = false;
             bMouseIsDown = false;
-            UncroppedBackgroundImage = new Bitmap("H:\\ms_windows\\cpsc_redirected\\My Documents\\Visual Studio 2010\\Projects\\CSCE 443 - Project 2\\LevelCreator2\\LevelCreator\\exampleLevel.bmp", true);
-            resolutionY = UncroppedBackgroundImage.Height;
-            resolutionX = UncroppedBackgroundImage.Width;
+            selectedTool = SelectedTool.PaintTile;
+            save_ToolStripMenuItem.Enabled = false;
+            saveAsToolStripMenuItem.Enabled = false;
+            tileSize_ComboBox1.Enabled = false;
+            checkToolStripButtons();
             InitializeTileSizes();
-            InitializeEditorTileSize();
-        }
-
-        private void InitializeEditorTileSize()
-        {
-            // Set Editor's tile size equal to Game's tile size initially
-            nButtonSideLength = Convert.ToInt32(comboBox1.SelectedItem);
-            toolStripMenuItem2.Checked = true;
         }
 
         private void InitializeTileSizes()
         {
-            comboBox1.Items.Add("16");
-            comboBox1.Items.Add("32");
-            comboBox1.Items.Add("64");
+            tileSize_ComboBox1.Items.Add("16");
+            tileSize_ComboBox1.Items.Add("32");
+            tileSize_ComboBox1.Items.Add("64");
 
             // Sets default
-            comboBox1.SelectedIndex = 1;    // Sets default tile size to 32x32 pixels
+            tileSize_ComboBox1.SelectedIndex = 0;    // Sets default tile size to 32x32 pixels
         }
-
 
         private void LoadMap()
-        {   
-            MapOfTiles = new Tile[HeightInTiles, WidthInTiles];
+        {
+            MapOfTiles = new Tile[WidthInTiles, HeightInTiles];
 
-            progressBar1.Visible = true;
-            progressBar1.Minimum = 1;
-            progressBar1.Maximum = HeightInTiles * WidthInTiles;
-            progressBar1.Value = 1;
-            progressBar1.Step = 1;
-
-            panel1.SuspendLayout();
-            for (int i = 0; i < HeightInTiles; i++)
+            for (int i = 0; i < WidthInTiles; i++)
             {
-                for (int j = 0; j < WidthInTiles; j++)
+                for (int j = 0; j < HeightInTiles; j++)
                 {
-                    //WorkerThread oWorkerThreads = new WorkerThread(i,j);
-                    //Thread oThread = new Thread(new ThreadStart(oWorkerThreads.Thread_GenerateLineOfTiles));
-
                     MapOfTiles[i, j] = new Tile(i, j, SelectedTile.GrassTile);
-                    MapOfTiles[i, j].BackColor = System.Drawing.SystemColors.Control;
-                    MapOfTiles[i, j].FlatAppearance.BorderColor = System.Drawing.Color.Black;
-                    MapOfTiles[i, j].FlatAppearance.BorderSize = 0;
-                    MapOfTiles[i, j].BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-                    MapOfTiles[i, j].Location = new System.Drawing.Point((j * nButtonSideLength), (i * nButtonSideLength));
-                    MapOfTiles[i, j].Name = "button" + i + j;
-                    MapOfTiles[i, j].Size = new System.Drawing.Size(nButtonSideLength, nButtonSideLength);
-                    MapOfTiles[i, j].UseVisualStyleBackColor = false;
-                    MapOfTiles[i, j].Click += new System.EventHandler(this.tile_button_Click);
-                    MapOfTiles[i, j].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    MapOfTiles[i, j].ForeColor = Color.DarkGray;
-
-                    Rectangle rect = new Rectangle(j*nTileSize, i*nTileSize, nTileSize, nTileSize);
-                    Bitmap temp = UncroppedBackgroundImage.Clone(rect, UncroppedBackgroundImage.PixelFormat);
-                    MapOfTiles[i, j].BackgroundImage = temp;
-                    panel1.Controls.Add(MapOfTiles[i, j]);
-                    progressBar1.PerformStep();
                 }
             }
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-
-            //LoadTileBackgrounds();
-            LoadTileFile();
-            progressBar1.Visible = false;
         }
 
-        //public class ImageCopier
-        //{
-        //    Rectangle rect;
-        //    Bitmap background;
-        //    Tile[,] MapOfTiles;
-        //    int i;
-        //    int j;
 
-        //    public ImageCopier(Bitmap bgimage, Rectangle r, Tile[,] t, int a, int b)
-        //    {
-        //        background = bgimage;
-        //        rect = r;
-        //        MapOfTiles = t;
-        //        i = a;
-        //        j = b;
-        //    }
-        //    public void CopyImage()
-        //    {
-        //        rect.X = j * rect.Width;
-        //        rect.Y = i * rect.Height;
-
-        //        MapOfTiles[i, j].BackgroundImage = background.Clone(rect, background.PixelFormat);
-        //    }
-        //};
-
-        //private void LoadTileBackgrounds()
-        //{
-        //    Rectangle rect = new Rectangle(0, 0, nTileSize, nTileSize);
-        //    progressBar1.Value = 1; // Reset progress bar
-
-        //    ImageCopier [] imageCopiers = new ImageCopier[10];
-        //    Thread[] WorkerThreads = new Thread[10];
-        //    Bitmap[] backgroundCopies = new Bitmap[10];
-
-        //    int maxThreads = 1;
-
-        //    //while (!oThread.IsAlive);       // Wait for thread to come alive before continuing
-
-        //    for (int i = 0; i < HeightInTiles; i++)
-        //    {
-        //        for (int j = 0; j < WidthInTiles; j++)
-        //        {
-        //            // Assign next section of image to tiles
-        //            if (imageCopiers[0] == null)
-        //            {
-        //                imageCopiers[0] = new ImageCopier(UncroppedBackgroundImage, new Rectangle(rect.X, rect.Y, rect.Width, rect.Height), MapOfTiles, i, j);
-        //            }
-        //            WorkerThreads[0] = new Thread(new ThreadStart(imageCopiers[0].CopyImage));
-        //            WorkerThreads[0].Start();
-        //            WorkerThreads[0].Join();
-        //            progressBar1.PerformStep();
-
-        //            //MapOfTiles[i, j].BackgroundImage = UncroppedBackgroundImage.Clone(rect, UncroppedBackgroundImage.PixelFormat);
-
-                    
-
-        //        }
-        //    }
-        //}
-
-        private void LoadTileFile()
+        // Tile selection
+        private void tree_ToolStripButton1_Click(object sender, EventArgs e)
         {
-            string path = sPathToLevelFiles + "_" + comboBox1.SelectedText + ".lvl";
-            XnaContent content;
-            XmlSerializer serializer = new XmlSerializer(typeof(XnaContent));
-
-            StreamReader reader = new StreamReader(path);
-            content = (XnaContent)serializer.Deserialize(reader);
-            currentContent = content;
-
-                    
-
-            string temp = "";
-            int number = -1;
-            int x = -1;
-            int y = -1;
-            
-            // Load in Grass Tiles
-            for (int i = 0; i < currentContent.Asset.Grass.Length; i++)
-            {
-                // Parse XML for numbers
-                if (currentContent.Asset.Grass[i] != ' ')
-                {
-                    temp += currentContent.Asset.Grass[i];
-                }
-                else
-                {
-                    // Convert string to number
-                    number = System.Convert.ToInt32(temp);
-                    temp = "";
-
-                    // Assign number to x OR y tile coordinate
-                    if (x < 0)
-                    {
-                        x = number;
-                    }
-                    else if (y < 0)
-                    {
-                        y = number;
-                    }
-
-                    if ((x >= 0) && (y >= 0))
-                    {
-                        // Assign tile
-                        Bitmap shadedTile = (Bitmap)this.MapOfTiles[y, x].BackgroundImage;
-
-                        // Shade the tile
-                        for (int j = 0; j < shadedTile.Height; j++)
-                        {
-                            for (int k = 0; k < shadedTile.Width; k++)
-                            {
-                                if((j+k)%2 == 0) shadedTile.SetPixel(j, k, Color.LightGreen);
-                            }
-                        }
-                        this.MapOfTiles[y, x].BackgroundImage = shadedTile;
-                        this.MapOfTiles[y, x].TileType = SelectedTile.GrassTile;
-
-                        // Reset coordinates
-                        x = -1;
-                        y = -1;
-                    }
-                }
-            }
-
-
-            // Load in Dirt Files
-            for (int i = 0; i < currentContent.Asset.Dirt.Length; i++)
-            {
-                // Parse XML for numbers
-                if (currentContent.Asset.Dirt[i] != ' ')
-                {
-                    temp += currentContent.Asset.Dirt[i];
-                }
-                else
-                {
-                    // Convert string to number
-                    number = System.Convert.ToInt32(temp);
-                    temp = "";
-
-                    // Assign number to x OR y tile coordinate
-                    if (x < 0)
-                    {
-                        x = number;
-                    }
-                    else if (y < 0)
-                    {
-                        y = number;
-                    }
-
-                    if ((x >= 0) && (y >= 0))
-                    {
-                        // Assign tile
-                        Bitmap shadedTile = (Bitmap)this.MapOfTiles[y, x].BackgroundImage;
-
-                        // Shade the tile
-                        for (int j = 0; j < shadedTile.Height; j++)
-                        {
-                            for (int k = 0; k < shadedTile.Width; k++)
-                            {
-                                if ((j + k) % 2 == 0) shadedTile.SetPixel(j, k, Color.LightSalmon);
-                            }
-                        }
-                        this.MapOfTiles[y, x].BackgroundImage = shadedTile;
-                        this.MapOfTiles[y, x].TileType = SelectedTile.DirtTile;
-
-                        // Reset coordinates
-                        x = -1;
-                        y = -1;
-                    }
-                }
-            }
-
-            // Load in Tree Tiles
-            for (int i = 0; i < currentContent.Asset.Tree.Length; i++)
-            {
-                // Parse XML for numbers
-                if (currentContent.Asset.Tree[i] != ' ')
-                {
-                    temp += currentContent.Asset.Tree[i];
-                }
-                else
-                {
-                    // Convert string to number
-                    number = System.Convert.ToInt32(temp);
-                    temp = "";
-
-                    // Assign number to x OR y tile coordinate
-                    if (x < 0)
-                    {
-                        x = number;
-                    }
-                    else if (y < 0)
-                    {
-                        y = number;
-                    }
-
-                    if ((x >= 0) && (y >= 0))
-                    {
-                        // Assign tile
-                        Bitmap shadedTile = (Bitmap)this.MapOfTiles[y, x].BackgroundImage;
-
-                        // Shade the tile
-                        for (int j = 0; j < shadedTile.Height; j++)
-                        {
-                            for (int k = 0; k < shadedTile.Width; k++)
-                            {
-                                if ((j + k) % 2 == 0) shadedTile.SetPixel(j, k, Color.DarkGreen);
-                            }
-                        }
-                        this.MapOfTiles[y, x].BackgroundImage = shadedTile;
-                        this.MapOfTiles[y, x].TileType = SelectedTile.TreeTile;
-
-                        // Reset coordinates
-                        x = -1;
-                        y = -1;
-                    }
-                }
-            }
-
-
-            // Load in Start Point Tiles
-            for (int i = 0; i < currentContent.Asset.Start.Length; i++)
-            {
-                // Parse XML for numbers
-                if (currentContent.Asset.Start[i] != ' ')
-                {
-                    temp += currentContent.Asset.Start[i];
-                }
-                else
-                {
-                    // Convert string to number
-                    number = System.Convert.ToInt32(temp);
-                    temp = "";
-
-                    // Assign number to x OR y tile coordinate
-                    if (x < 0)
-                    {
-                        x = number;
-                    }
-                    else if (y < 0)
-                    {
-                        y = number;
-                    }
-
-                    if ((x >= 0) && (y >= 0))
-                    {
-                        // Assign tile
-                        this.MapOfTiles[y, x].BackgroundImage = ((System.Drawing.Image)(Properties.Resources.greenLightIcon));
-                        this.MapOfTiles[y, x].TileType = SelectedTile.StartTile;
-
-                        // Reset coordinates
-                        x = -1;
-                        y = -1;
-                    }
-                }
-            }
-
-            // Load End Point
-            for (int i = 0; i < currentContent.Asset.End.Length; i++)
-            {
-                // Parse XML for numbers
-                if (currentContent.Asset.End[i] != ' ')
-                {
-                    temp += currentContent.Asset.End[i];
-                }
-                else
-                {
-                    // Convert string to number
-                    number = System.Convert.ToInt32(temp);
-                    temp = "";
-
-                    // Assign number to x OR y tile coordinate
-                    if (x < 0)
-                    {
-                        x = number;
-                    }
-                    else if (y < 0)
-                    {
-                        y = number;
-                    }
-
-                    if ((x >= 0) && (y >= 0))
-                    {
-                        // Assign tile
-                        this.MapOfTiles[y, x].BackgroundImage = ((System.Drawing.Image)(Properties.Resources.redLightIcon));
-                        this.MapOfTiles[y, x].TileType = SelectedTile.EndTile;
-
-                        // Reset coordinates
-                        x = -1;
-                        y = -1;
-                    }
-                }
-            }
-
-            reader.Close();
-            this.Refresh();
+            selectedTileType = SelectedTile.TreeTile;
+            checkToolStripButtons();
         }
 
-        private void tile_button_Click(object sender, EventArgs e)
+        private void dirt_ToolStripButton2_Click(object sender, EventArgs e)
         {
-            Tile caller = sender as Tile;
-            Bitmap shadedTile = (Bitmap)caller.BackgroundImage;
-
-            switch (drawTile)
-            {
-                case SelectedTile.TreeTile:
-                    for (int i = 0; i < shadedTile.Height; i++)
-                    {
-                        for (int j = 0; j < shadedTile.Width; j++)
-                        {
-                            if((i+j)%2 == 0) shadedTile.SetPixel(i, j, Color.DarkGreen);
-                        }
-                    }
-                    caller.BackgroundImage = shadedTile;
-                    caller.TileType = SelectedTile.TreeTile;
-                    break;
-                case SelectedTile.DirtTile:
-                    for (int i = 0; i < shadedTile.Height; i++)
-                    {
-                        for (int j = 0; j < shadedTile.Width; j++)
-                        {
-                            if((i+j)%2 == 0) shadedTile.SetPixel(i, j, Color.LightSalmon);
-                        }
-                    }
-                    caller.BackgroundImage = shadedTile;
-                    caller.TileType = SelectedTile.DirtTile;
-                    break;
-                case SelectedTile.GrassTile:
-                    for (int i = 0; i < shadedTile.Height; i++)
-                    {
-                        for (int j = 0; j < shadedTile.Width; j++)
-                        {
-                            if((i+j)%2 == 0) shadedTile.SetPixel(i, j, Color.LightGreen);
-                        }
-                    }
-                    caller.BackgroundImage = shadedTile;
-                    caller.TileType = SelectedTile.GrassTile;
-                    break;
-                case SelectedTile.StartTile:
-                    caller.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.greenLightIcon));
-                    caller.TileType = SelectedTile.StartTile;
-                    break;
-                case SelectedTile.EndTile:
-                    caller.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.redLightIcon));
-                    caller.TileType = SelectedTile.EndTile;
-                    break;
-                default:
-                    caller.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.grassIcon));
-                    caller.TileType = SelectedTile.GrassTile;
-                    break;
-            }
+            selectedTileType = SelectedTile.DirtTile;
+            checkToolStripButtons();
         }
 
-        private void MapEditor_Scroll(object sender, ScrollEventArgs e)
+        private void grass_ToolStripButton3_Click(object sender, EventArgs e)
         {
-
+            selectedTileType = SelectedTile.GrassTile;
+            checkToolStripButtons();
         }
 
-        private void toolStripLabel1_Click(object sender, EventArgs e)
+        private void start_ToolStripButton4_Click(object sender, EventArgs e)
         {
-
+            selectedTileType = SelectedTile.StartTile;
+            checkToolStripButtons();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void end_ToolStripButton5_Click(object sender, EventArgs e)
         {
-
+            selectedTileType = SelectedTile.EndTile;
+            checkToolStripButtons();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void barrier_ToolStripButton6_Click(object sender, EventArgs e)
         {
-            drawTile = SelectedTile.TreeTile;
-            toolStripButton1.Checked = true;
+            selectedTileType = SelectedTile.BarrierTile;
+            checkToolStripButtons();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+
+        // Tool selection
+        private void paintTile_toolStripButton8_Click(object sender, EventArgs e)
         {
-            drawTile = SelectedTile.DirtTile;
-            toolStripButton2.Checked = true;
+            selectedTool = SelectedTool.PaintTile;
+            checkToolStripButtons();
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void fillTiles_toolStripButton7_Click(object sender, EventArgs e)
         {
-            drawTile = SelectedTile.GrassTile;
-            toolStripButton3.Checked = true;
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            drawTile = SelectedTile.StartTile;
-            toolStripButton4.Checked = true;
-        }
-
-        private void toolStripButton5_Click(object sender, EventArgs e)
-        {
-            drawTile = SelectedTile.EndTile;
-            toolStripButton5.Checked = true;
+            selectedTool = SelectedTool.FillTiles;
+            checkToolStripButtons();
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            toolStripButton1.Checked = false;
-            toolStripButton2.Checked = false;
-            toolStripButton3.Checked = false;
-            toolStripButton4.Checked = false;
-            toolStripButton5.Checked = false;
+            tree_ToolStripButton1.Checked = false;
+            dirt_ToolStripButton2.Checked = false;
+            grass_ToolStripButton3.Checked = false;
+            start_ToolStripButton4.Checked = false;
+            end_ToolStripButton5.Checked = false;
+            barrier_ToolStripButton6.Checked = false;
+            fillTiles_toolStripButton7.Checked = false;
+            paintTile_toolStripButton8.Checked = false;
         }
 
+        private void checkToolStripButtons()
+        {
+            switch (selectedTileType)
+            {
+                case SelectedTile.TreeTile:
+                    tree_ToolStripButton1.Checked = true;
+                    break;
+                case SelectedTile.DirtTile:
+                    dirt_ToolStripButton2.Checked = true;
+                    break;
+                case SelectedTile.GrassTile:
+                    grass_ToolStripButton3.Checked = true;
+                    break;
+                case SelectedTile.StartTile:
+                    start_ToolStripButton4.Checked = true;
+                    break;
+                case SelectedTile.EndTile:
+                    end_ToolStripButton5.Checked = true;
+                    break;
+                case SelectedTile.BarrierTile:
+                    barrier_ToolStripButton6.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (selectedTool)
+            {
+                case SelectedTool.FillTiles:
+                    fillTiles_toolStripButton7.Checked = true;
+                    break;
+                case SelectedTool.PaintTile:
+                    paintTile_toolStripButton8.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        // Tile size selection
+        private void tileSize_ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Object selectedTileSize = tileSize_ComboBox1.SelectedItem;
+            nTileSize = Convert.ToInt32(selectedTileSize.ToString());
+            nButtonSideLength = nTileSize;
+
+            WidthInTiles = resolutionX / nTileSize;
+            HeightInTiles = resolutionY / nTileSize;
+
+            if (MapOfTiles != null)
+            {
+                LoadMap();
+            }
+        }
 
 
         // This is the class that will be serialized.
@@ -540,183 +214,242 @@ namespace LevelCreator
                 public string Grass;
                 public string Dirt;
                 public string Tree;
+                public string Barrier;
             }
 
             public AssetContainer Asset = new AssetContainer();
         }
 
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void MapEditor_Resize(object sender, EventArgs e)
         {
-            if (sPathToLevelFiles != null)
+            pictureBox1.Width = this.Width - 40;
+            pictureBox1.Height = this.Height - 100;
+            dScaledTileWidth = (double)pictureBox1.Width / WidthInTiles;
+            dScaledTileHeight = (double)pictureBox1.Height / HeightInTiles;
+        }
+
+
+        // Click and drag feature implemented here
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            bMouseIsDown = true;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            bMouseIsDown = false;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (bMouseIsDown)
             {
-                //saveFileDialog1.Filter = "Level File|*.lvl";
-                //saveFileDialog1.Title = "Save the Level File";
-                //saveFileDialog1.ShowDialog();
+                // Determine which tile was clicked
+                int nRow = (int)(e.Y / dScaledTileHeight);
+                int nColumn = (int)(e.X / dScaledTileWidth);
 
-                XmlSerializer serializer = new XmlSerializer(typeof(XnaContent));
-                XnaContent content = new XnaContent();
-
-                content.Asset.NumberRows = HeightInTiles.ToString();
-                content.Asset.NumberColumns = WidthInTiles.ToString();
-                content.Asset.Start = "";
-                content.Asset.End = "";
-                content.Asset.Grass = "";
-                content.Asset.Dirt = "";
-                content.Asset.Tree = "";
-
-                // Write the level file
-                for (int i = 0; i < HeightInTiles; i++)
+                // Paint that tile and set tile type
+                if ((0 <= nColumn) && (nColumn < WidthInTiles) && (0 <= nRow) &&(nRow < HeightInTiles))
                 {
-                    for (int j = 0; j < WidthInTiles; j++)
+                    if (MapOfTiles[nColumn, nRow].TileType != selectedTileType)
                     {
-
-                        switch (this.MapOfTiles[i, j].TileType)
+                        switch (selectedTool)
                         {
-                            case SelectedTile.TreeTile:
-                                content.Asset.Tree += j.ToString() + ' ' + i.ToString() + ' ';
+                            case SelectedTool.PaintTile:
+                                PaintTile(nColumn, nRow);
                                 break;
-                            case SelectedTile.DirtTile:
-                                content.Asset.Dirt += j.ToString() + ' ' + i.ToString() + ' ';
-                                break;
-                            case SelectedTile.GrassTile:
-                                content.Asset.Grass += j.ToString() + ' ' + i.ToString() + ' ';
-                                break;
-                            case SelectedTile.StartTile:
-                                content.Asset.Start += j.ToString() + ' ' + i.ToString() + ' ';
-                                break;
-                            case SelectedTile.EndTile:
-                                content.Asset.End += j.ToString() + ' ' + i.ToString() + ' ';
+                            case SelectedTool.FillTiles:
+                                FillTiles(nColumn, nRow);
                                 break;
                             default:
                                 break;
                         }
+
+                        pictureBox1.Refresh();
                     }
                 }
-
-                //            string filename = "thisisthefilerighthere.xml";
-
-                // Create an XmlTextWriter using a FileStream.
-                Stream stream = new FileStream(sPathToLevelFiles + "_" + comboBox1.SelectedItem + ".lvl", FileMode.Create);
-                XmlWriter writer = new XmlTextWriter(stream, Encoding.Unicode);
-
-                // Serialize using the XmlTextWriter.
-                serializer.Serialize(writer, content);
-                writer.Close();
-            }
-            else
-            {
-                MessageBox.Show("No path defined yet. Need to implement this feature.");
-            }
-            
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Object selectedTileSize = comboBox1.SelectedItem;
-            nTileSize = Convert.ToInt32(selectedTileSize.ToString());
-            nButtonSideLength = nTileSize;
-
-            if (MapOfTiles != null)
-            {
-                RemovePreviousTiles();
-            }
-            
-            WidthInTiles = resolutionX / nTileSize;
-            HeightInTiles = resolutionY / nTileSize;
-            
-            if (MapOfTiles != null)
-            {
-                LoadMap();
             }
         }
 
-        private void RemovePreviousTiles()
+
+        // Perform tool function on click
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < HeightInTiles; i++)
+
+            // Check that a level has been loaded
+            if (MapOfTiles != null)
             {
-                for (int j = 0; j < WidthInTiles; j++)
+                // Determine which tile was clicked
+                int nRow = (int)(e.Y / dScaledTileHeight);
+                int nColumn = (int)(e.X / dScaledTileWidth);
+
+                // Paint that tile and set tile type
+                if (MapOfTiles[nColumn, nRow].TileType != selectedTileType)
                 {
-                    this.Controls.Remove(MapOfTiles[i, j]);
+                    switch (selectedTool)
+                    {
+                        case SelectedTool.PaintTile:
+                            PaintTile(nColumn, nRow);
+                            break;
+                        case SelectedTool.FillTiles:
+                            FillTiles(nColumn, nRow);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    pictureBox1.Refresh();
                 }
             }
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private void PaintTile(int x, int y)
         {
-            toolStripMenuItem2.Checked = true;
+            Point tilePosition = new Point(x * nTileSize, y * nTileSize);
 
-            // Zoom 100% selected
-            nButtonSideLength = nTileSize;
-            if (MapOfTiles != null)
+            switch (selectedTileType)
             {
-                RemovePreviousTiles();
+                case SelectedTile.TreeTile:
+                    for (int i = 0; i < nTileSize; i++)
+                    {
+                        for (int j = 0; j < nTileSize; j++)
+                        {
+                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.DarkOliveGreen);
+                        }
+                    }
+                    MapOfTiles[x, y].TileType = SelectedTile.TreeTile;
+                    break;
+                case SelectedTile.DirtTile:
+                    for (int i = 0; i < nTileSize; i++)
+                    {
+                        for (int j = 0; j < nTileSize; j++)
+                        {
+                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.BurlyWood);
+                        }
+                    }
+                    MapOfTiles[x, y].TileType = SelectedTile.DirtTile;
+                    break;
+                case SelectedTile.GrassTile:
+                    for (int i = 0; i < nTileSize; i++)
+                    {
+                        for (int j = 0; j < nTileSize; j++)
+                        {
+                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.LightGreen);
+                        }
+                    }
+                    MapOfTiles[x, y].TileType = SelectedTile.GrassTile;
+                    break;
+                case SelectedTile.StartTile:
+                    for (int i = 0; i < nTileSize; i++)
+                    {
+                        for (int j = 0; j < nTileSize; j++)
+                        {
+                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.DarkGreen);
+                        }
+                    }
+                    MapOfTiles[x, y].TileType = SelectedTile.StartTile;
+                    break;
+                case SelectedTile.EndTile:
+                    for (int i = 0; i < nTileSize; i++)
+                    {
+                        for (int j = 0; j < nTileSize; j++)
+                        {
+                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.Red);
+                        }
+                    }
+                    MapOfTiles[x, y].TileType = SelectedTile.EndTile;
+                    break;
+                case SelectedTile.BarrierTile:
+                    for (int i = 0; i < nTileSize; i++)
+                    {
+                        for (int j = 0; j < nTileSize; j++)
+                        {
+                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.DarkRed);
+                        }
+                    }
+                    MapOfTiles[x, y].TileType = SelectedTile.BarrierTile;
+                    break;
+                default:
+                    break;
             }
-            LoadMap();
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void FillTiles(int x, int y)
         {
-            toolStripMenuItem3.Checked = true;
+            SelectedTile previousTileType = MapOfTiles[x, y].TileType;
+            PaintTile(x, y);
+            int tempX = x;
+            int tempY = y;
 
-            // Zoom 75% selected
-            nButtonSideLength = (int)(nTileSize * 0.75);
-            if (MapOfTiles != null)
+            int topTileY = tempY-1;
+            int bottomTileY = tempY+1;
+            int leftTileX = tempX-1;
+            int rightTileX = tempX+1;
+
+            // Check top tile first, recursively fill upwards
+            if ((0 <= topTileY) && (topTileY < HeightInTiles) &&
+                (MapOfTiles[tempX, topTileY].TileType == previousTileType)) // Top tile equals previous tile type
             {
-                RemovePreviousTiles();
+                FillTiles(tempX, topTileY);
             }
-            LoadMap();
-        }
 
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            toolStripMenuItem4.Checked = true;
-
-            // Zoom 50% selected
-            nButtonSideLength = (int)(nTileSize * 0.5);
-            if (MapOfTiles != null)
+            // Check bottom tile
+            if ((0 <= bottomTileY) && (bottomTileY < HeightInTiles) &&
+                    (MapOfTiles[tempX, bottomTileY].TileType == previousTileType))
             {
-                RemovePreviousTiles();
+                FillTiles(tempX, bottomTileY);
             }
-            LoadMap();
-        }
 
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            toolStripMenuItem5.Checked = true;
-
-            // Zoom 25% selected
-            nButtonSideLength = (int)(nTileSize * 0.25);
-            if (MapOfTiles != null)
+            // Check left tile
+            if ((0 <= leftTileX) && (leftTileX < WidthInTiles) &&
+                    (MapOfTiles[leftTileX, tempY].TileType == previousTileType))
             {
-                RemovePreviousTiles();
+                FillTiles(leftTileX, tempY);
             }
-            LoadMap();
+
+            // Check right tile
+            if ((0 <= rightTileX) && (rightTileX < WidthInTiles) &&
+                    (MapOfTiles[rightTileX, tempY].TileType == previousTileType))
+            {
+                FillTiles(rightTileX, tempY);
+            }
         }
 
-        private void zoomToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            toolStripMenuItem2.Checked = false;
-            toolStripMenuItem3.Checked = false;
-            toolStripMenuItem4.Checked = false;
-            toolStripMenuItem5.Checked = false;
-        }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        // Load and Save section
+        private void LoadLevel_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.InitialDirectory = "C:\\deleteMe\\LevelCreator2 - Copy\\LevelCreator";
-            openFileDialog1.Filter = "jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
+            //openFileDialog1.InitialDirectory = ;
+            openFileDialog1.Filter = "png files (*.png)|*.png|jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                saveAsToolStripMenuItem.Enabled = true;
+                save_ToolStripMenuItem.Enabled = true;
+
                 string pathToFile = openFileDialog1.FileName;
-                UncroppedBackgroundImage = new Bitmap(pathToFile, true);
-                resolutionY = UncroppedBackgroundImage.Height;
-                resolutionX = UncroppedBackgroundImage.Width;
+                UnmodifiedBackgroundImage = new Bitmap(pathToFile, true);   // Keep a copy of the unmodified background image
+                ModifiedBackgroundImage = new Bitmap(pathToFile, true);     // This image shows changes
+
+                // Display background image
+                pictureBox1.BackgroundImage = ModifiedBackgroundImage;
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+
+                // Set image parameters
+                resolutionY = ModifiedBackgroundImage.Height;
+                resolutionX = ModifiedBackgroundImage.Width;
+                WidthInTiles = resolutionX / nTileSize;
+                HeightInTiles = resolutionY / nTileSize;
+
+                // For use in calculating which tile clicked
+                dScaledTileWidth = (double)pictureBox1.Width / WidthInTiles;
+                dScaledTileHeight = (double)pictureBox1.Height / HeightInTiles;
 
                 sDirectoryName = Path.GetDirectoryName(pathToFile);
                 sFilenameNoExt = Path.GetFileNameWithoutExtension(pathToFile);
@@ -729,46 +462,465 @@ namespace LevelCreator
                 {
                     MessageBox.Show("No level file(s) found. A new one will be generated for current tile size.");
                 }
-                else
-                {
-                   
-                }
-                
 
                 LoadMap();
+                LoadTileFile();
             }
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void LoadTileFile()
         {
+            string path = sPathToLevelFiles + "_" + tileSize_ComboBox1.SelectedText + ".lvl";
 
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MapEditor_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void MapEditor_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.LShiftKey)
+            if (File.Exists(path))
             {
-                bPaintTiles = !bPaintTiles;
-                if (bPaintTiles)
+                XnaContent content;
+                XmlSerializer serializer = new XmlSerializer(typeof(XnaContent));
+
+                using (StreamReader reader = new StreamReader(path))
                 {
-                    paintTilesFlag_textBox1.Text = "ON";
-                }
-                else
-                {
-                    paintTilesFlag_textBox1.Text = "OFF";
+                    content = (XnaContent)serializer.Deserialize(reader);
+                    currentContent = content;
+
+                    string temp = "";
+                    int number = -1;
+                    int x = -1;
+                    int y = -1;
+
+
+                    // Load in Grass Tiles
+                    for (int i = 0; i < currentContent.Asset.Grass.Length; i++)
+                    {
+                        // Parse XML for numbers
+                        if (currentContent.Asset.Grass[i] != ' ')
+                        {
+                            temp += currentContent.Asset.Grass[i];
+                        }
+                        else
+                        {
+                            // Convert string to number
+                            number = System.Convert.ToInt32(temp);
+                            temp = "";
+
+                            // Assign number to x OR y tile coordinate
+                            if (x < 0)
+                            {
+                                x = number;
+                            }
+                            else if (y < 0)
+                            {
+                                y = number;
+                            }
+
+                            if ((x >= 0) && (y >= 0))
+                            {
+                                // Assign tile
+                                MapOfTiles[x, y].TileType = SelectedTile.GrassTile;
+
+                                // Paint the tile
+                                selectedTileType = SelectedTile.GrassTile;
+                                PaintTile(x, y);
+
+                                // Reset coordinates
+                                x = -1;
+                                y = -1;
+                            }
+                        }
+                    }
+
+
+                    // Load in Dirt Files
+                    for (int i = 0; i < currentContent.Asset.Dirt.Length; i++)
+                    {
+                        // Parse XML for numbers
+                        if (currentContent.Asset.Dirt[i] != ' ')
+                        {
+                            temp += currentContent.Asset.Dirt[i];
+                        }
+                        else
+                        {
+                            // Convert string to number
+                            number = System.Convert.ToInt32(temp);
+                            temp = "";
+
+                            // Assign number to x OR y tile coordinate
+                            if (x < 0)
+                            {
+                                x = number;
+                            }
+                            else if (y < 0)
+                            {
+                                y = number;
+                            }
+
+                            if ((x >= 0) && (y >= 0))
+                            {
+                                // Assign tile
+                                MapOfTiles[x, y].TileType = SelectedTile.DirtTile;
+
+                                // Paint the tile
+                                selectedTileType = SelectedTile.DirtTile;
+                                PaintTile(x, y);
+
+                                // Reset coordinates
+                                x = -1;
+                                y = -1;
+                            }
+                        }
+                    }
+
+                    // Load in Tree Tiles
+                    for (int i = 0; i < currentContent.Asset.Tree.Length; i++)
+                    {
+                        // Parse XML for numbers
+                        if (currentContent.Asset.Tree[i] != ' ')
+                        {
+                            temp += currentContent.Asset.Tree[i];
+                        }
+                        else
+                        {
+                            // Convert string to number
+                            number = System.Convert.ToInt32(temp);
+                            temp = "";
+
+                            // Assign number to x OR y tile coordinate
+                            if (x < 0)
+                            {
+                                x = number;
+                            }
+                            else if (y < 0)
+                            {
+                                y = number;
+                            }
+
+                            if ((x >= 0) && (y >= 0))
+                            {
+                                // Assign tile
+                                MapOfTiles[x, y].TileType = SelectedTile.TreeTile;
+
+                                // Paint the tile
+                                selectedTileType = SelectedTile.TreeTile;
+                                PaintTile(x, y);
+
+                                // Reset coordinates
+                                x = -1;
+                                y = -1;
+                            }
+                        }
+                    }
+
+
+                    // Load in Start Point Tiles
+                    for (int i = 0; i < currentContent.Asset.Start.Length; i++)
+                    {
+                        // Parse XML for numbers
+                        if (currentContent.Asset.Start[i] != ' ')
+                        {
+                            temp += currentContent.Asset.Start[i];
+                        }
+                        else
+                        {
+                            // Convert string to number
+                            number = System.Convert.ToInt32(temp);
+                            temp = "";
+
+                            // Assign number to x OR y tile coordinate
+                            if (x < 0)
+                            {
+                                x = number;
+                            }
+                            else if (y < 0)
+                            {
+                                y = number;
+                            }
+
+                            if ((x >= 0) && (y >= 0))
+                            {
+                                // Assign tile
+                                MapOfTiles[x, y].TileType = SelectedTile.StartTile;
+
+                                // Paint the tile
+                                selectedTileType = SelectedTile.StartTile;
+                                PaintTile(x, y);
+
+                                // Reset coordinates
+                                x = -1;
+                                y = -1;
+                            }
+                        }
+                    }
+
+                    // Load End Point
+                    for (int i = 0; i < currentContent.Asset.End.Length; i++)
+                    {
+                        // Parse XML for numbers
+                        if (currentContent.Asset.End[i] != ' ')
+                        {
+                            temp += currentContent.Asset.End[i];
+                        }
+                        else
+                        {
+                            // Convert string to number
+                            number = System.Convert.ToInt32(temp);
+                            temp = "";
+
+                            // Assign number to x OR y tile coordinate
+                            if (x < 0)
+                            {
+                                x = number;
+                            }
+                            else if (y < 0)
+                            {
+                                y = number;
+                            }
+
+                            if ((x >= 0) && (y >= 0))
+                            {
+                                // Assign tile
+                                MapOfTiles[x, y].TileType = SelectedTile.EndTile;
+
+                                // Paint the tile
+                                selectedTileType = SelectedTile.EndTile;
+                                PaintTile(x, y);
+
+                                // Reset coordinates
+                                x = -1;
+                                y = -1;
+                            }
+                        }
+                    }
+
+                    // Load Barrier Tiles
+                    for (int i = 0; i < currentContent.Asset.Barrier.Length; i++)
+                    {
+                        // Parse XML for numbers
+                        if (currentContent.Asset.Barrier[i] != ' ')
+                        {
+                            temp += currentContent.Asset.Barrier[i];
+                        }
+                        else
+                        {
+                            // Convert string to number
+                            number = System.Convert.ToInt32(temp);
+                            temp = "";
+
+                            // Assign number to x OR y tile coordinate
+                            if (x < 0)
+                            {
+                                x = number;
+                            }
+                            else if (y < 0)
+                            {
+                                y = number;
+                            }
+
+                            if ((x >= 0) && (y >= 0))
+                            {
+                                // Assign tile
+                                MapOfTiles[x, y].TileType = SelectedTile.BarrierTile;
+
+                                // Paint the tile
+                                selectedTileType = SelectedTile.BarrierTile;
+                                PaintTile(x, y);
+
+                                // Reset coordinates
+                                x = -1;
+                                y = -1;
+                            }
+                        }
+                    }
+
+                    reader.Close();
+                    this.Refresh();
                 }
             }
-        }     
+            else
+            {
+                // This means there's currently no level file, so paint all tiles with grass
+                selectedTileType = SelectedTile.GrassTile;
+
+                for (int i = 0; i < WidthInTiles; i++)
+                {
+                    for (int j = 0; j < HeightInTiles; j++)
+                    {
+                        PaintTile(i, j);
+                    }
+                }
+                this.Refresh();
+            }
+        }
+
+
+        private void save_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveLevel();
+        }
+
+        private void SaveLevel()
+        {
+            if (sPathToLevelFiles != null)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(XnaContent));
+                XnaContent content = new XnaContent();
+
+                content.Asset.NumberRows = HeightInTiles.ToString();
+                content.Asset.NumberColumns = WidthInTiles.ToString();
+                content.Asset.Start = "";
+                content.Asset.End = "";
+                content.Asset.Grass = "";
+                content.Asset.Dirt = "";
+                content.Asset.Tree = "";
+                content.Asset.Barrier = "";
+
+                // Write the level file
+                for (int i = 0; i < WidthInTiles; i++)
+                {
+                    for (int j = 0; j < HeightInTiles; j++)
+                    {
+
+                        switch (MapOfTiles[i, j].TileType)
+                        {
+                            case SelectedTile.TreeTile:
+                                content.Asset.Tree += i.ToString() + ' ' + j.ToString() + ' ';
+                                break;
+                            case SelectedTile.DirtTile:
+                                content.Asset.Dirt += i.ToString() + ' ' + j.ToString() + ' ';
+                                break;
+                            case SelectedTile.GrassTile:
+                                content.Asset.Grass += i.ToString() + ' ' + j.ToString() + ' ';
+                                break;
+                            case SelectedTile.StartTile:
+                                content.Asset.Start += i.ToString() + ' ' + j.ToString() + ' ';
+                                break;
+                            case SelectedTile.EndTile:
+                                content.Asset.End += i.ToString() + ' ' + j.ToString() + ' ';
+                                break;
+                            case SelectedTile.BarrierTile:
+                                content.Asset.Barrier += i.ToString() + ' ' + j.ToString() + ' ';
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+
+                // Save image of tiles only
+                ModifiedBackgroundImage.Save(sPathToLevelFiles + "_WITHTILES" + "_" + tileSize_ComboBox1.SelectedItem + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                //NewBackgroundImage.Save("C:\\test.png", System.Drawing.Imaging.ImageFormat.Png);
+
+                // Create an XmlTextWriter using a FileStream.
+                Stream stream = new FileStream(sPathToLevelFiles + "_" + tileSize_ComboBox1.SelectedItem + ".lvl", FileMode.Create);
+                XmlWriter writer = new XmlTextWriter(stream, Encoding.Unicode);
+
+                // Serialize using the XmlTextWriter.
+                serializer.Serialize(writer, content);
+                writer.Close();
+            }
+            else
+            {
+                MessageBox.Show("No path to level files defined yet. Need to implement this feature.");
+            }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            string pathToFile = "";
+
+            saveFileDialog1.Filter = "png files (*.png)|*.png|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    pathToFile = saveFileDialog1.FileName;
+                    myStream.Close();
+                }
+            }
+
+            if (pathToFile != "")
+            {
+                saveAsToolStripMenuItem.Enabled = true;
+                save_ToolStripMenuItem.Enabled = true;
+
+                UnmodifiedBackgroundImage = LevelCreator.Properties.Resources.NewLevel;   // Keep a copy of the unmodified background image
+                ModifiedBackgroundImage = LevelCreator.Properties.Resources.NewLevel;     // This image shows changes
+
+                // Display background image
+                pictureBox1.BackgroundImage = ModifiedBackgroundImage;
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+
+                // Set image parameters
+                resolutionY = ModifiedBackgroundImage.Height;
+                resolutionX = ModifiedBackgroundImage.Width;
+                WidthInTiles = resolutionX / nTileSize;
+                HeightInTiles = resolutionY / nTileSize;
+
+                // For use in calculating which tile clicked
+                dScaledTileWidth = (double)pictureBox1.Width / WidthInTiles;
+                dScaledTileHeight = (double)pictureBox1.Height / HeightInTiles;
+
+                sDirectoryName = Path.GetDirectoryName(pathToFile);
+                sFilenameNoExt = Path.GetFileNameWithoutExtension(pathToFile);
+                sPathToLevelFiles = Path.Combine(sDirectoryName, sFilenameNoExt);
+
+                // Check to see if level files exist
+                if (!File.Exists(sPathToLevelFiles + "_16.lvl") &&
+                    !File.Exists(sPathToLevelFiles + "_32.lvl") &&
+                    !File.Exists(sPathToLevelFiles + "_64.lvl"))
+                {
+                    MessageBox.Show("No level file(s) found. A new one will be generated for current tile size.");
+                }
+
+                ModifiedBackgroundImage.Save(sPathToLevelFiles + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                LoadMap();
+                LoadTileFile();
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sPathToLevelFiles != null)
+            {
+                Stream myStream;
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                string pathToFile = "";
+
+                saveFileDialog1.Filter = "png files (*.png)|*.png|All files (*.*)|*.*";
+                saveFileDialog1.FilterIndex = 1;
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if ((myStream = saveFileDialog1.OpenFile()) != null)
+                    {
+                        // Change all the paths for files
+                        pathToFile = saveFileDialog1.FileName;
+                        sDirectoryName = Path.GetDirectoryName(pathToFile);
+                        sFilenameNoExt = Path.GetFileNameWithoutExtension(pathToFile);
+                        sPathToLevelFiles = Path.Combine(sDirectoryName, sFilenameNoExt);
+
+                        // Save level file
+                        SaveLevel();
+                        myStream.Close();
+
+                        // Save level background
+                        UnmodifiedBackgroundImage.Save(sPathToLevelFiles + ".png", System.Drawing.Imaging.ImageFormat.Png);
+
+
+                    }
+                }
+            }
+        }
+
     }
 }
