@@ -22,7 +22,7 @@ namespace RTS
 
         protected EnemyEffect effect = null;
 
-        private Texture2D texture;
+        //private Texture2D texture;
         private Texture2D turretTexture;
         Random rand = new Random();
         private PathFinder path;
@@ -49,41 +49,6 @@ namespace RTS
         const float atDestinationLimit = 5f;
 
         #region Properties
-        public Texture2D getTexture()
-        {
-            return texture;
-        }
-
-        public List<Projectile> getProjectiles()
-        {
-            return projectileList;
-        }
-
-        public float getProjectileCount()
-        {
-            return projectileList.Count;
-        }
-
-        public double getShootRotationAngle()
-        {
-            return shootRotationAngle;
-        }
-
-        public double getMoveRotationAngle()
-        {
-            return moveRotationAngle;
-        }
-
-        public double getPlayerRotationAngle()
-        {
-            return playerRotationAngle;
-        }
-
-        public bool isDead()
-        {
-            return dead;
-        }
-
         private NodeList waypoints;
         public NodeList Waypoints
         {
@@ -117,6 +82,7 @@ namespace RTS
         protected float moveSpeed = 100f;
         public float MoveSpeed
         {
+            set { moveSpeed = value; }
             get { return moveSpeed; }
         }
 
@@ -141,6 +107,47 @@ namespace RTS
         {
             return turretTexture.Width;
         }
+
+        public Vector2 getOrigin()
+        {
+            return origin;
+        }
+
+        //public Texture2D getTexture()
+        //{
+        //    return texture;
+        //}
+
+        public List<Projectile> getProjectiles()
+        {
+            return projectileList;
+        }
+
+        public float getProjectileCount()
+        {
+            return projectileList.Count;
+        }
+
+        public double getShootRotationAngle()
+        {
+            return shootRotationAngle;
+        }
+
+        public double getMoveRotationAngle()
+        {
+            return moveRotationAngle;
+        }
+
+        public double getPlayerRotationAngle()
+        {
+            return playerRotationAngle;
+        }
+
+        public bool isDead()
+        {
+            return dead;
+        }
+
         #endregion
 
         public virtual void Initialize(Game1 game)
@@ -169,21 +176,6 @@ namespace RTS
             //texture = contentManager.Load<Texture2D>(textureName);
             turretTexture = contentManager.Load<Texture2D>("TurretEnemy");
 
-            // animation
-            //Texture2D tFront = contentManager.Load<Texture2D>("elfFront");
-            //Texture2D tBack = contentManager.Load<Texture2D>("elfBack");
-            //Texture2D tRight = contentManager.Load<Texture2D>("elfRight");
-            //Texture2D tLeft = contentManager.Load<Texture2D>("elfLeft");
-            //Dictionary<String, SpriteSheet> txtMap = new Dictionary<string, SpriteSheet>();
-            //txtMap["front"] = new SpriteSheet(tFront, 16);
-            //txtMap["back"] = new SpriteSheet(tBack, 16);
-            //txtMap["right"] = new SpriteSheet(tRight, 16);
-            //txtMap["left"] = new SpriteSheet(tLeft, 16);
-            //
-            //animation = new SpriteAnimation(txtMap, true);
-            //animation.CurrentSprite = "front";
-            //
-
             origin.X = Size.Width / 2;
             origin.Y = Size.Height / 2;
             font = contentManager.Load<SpriteFont>("font");
@@ -192,7 +184,6 @@ namespace RTS
         public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            //spriteBatch.Draw(animation.currentSpriteSheet().texture, position, null, Color.White, 0f, origin, map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White, 0f, origin, 1.0f, isFlipped, 0f);
             //spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, "HP: " + (int)hp, new Vector2(position.X - 40, position.Y + 40), Color.Black);
@@ -213,12 +204,16 @@ namespace RTS
 
             if (effect != null && effectTimer>100)
             {
-                game.fire.setDirection((float)(-Math.PI/2));
-                game.fire.AddParticles(new Vector2(position.X, position.Y));
+                //game.fire.setDirection((float)(-Math.PI/2));
+                //game.fire.AddParticles(new Vector2(position.X, position.Y));
                 if (effectTimer > 100)
                 {
                     effect.applyEffects(this);
-                    if (!effect.isValid(gameTime)) effect = null;
+                    if (!effect.isValid(gameTime))
+                    {
+                        effect.undoEffect(this);
+                        effect = null;
+                    }
                     effectTimer = 0f;
                 }
             }
@@ -233,32 +228,43 @@ namespace RTS
             animation.Update(gameTime);
         }
 
-        public void Attack(List<Tower> towers, GameTime gameTime)
+        public void updateAnimation()
         {
-            foreach (Tower i in towers)
+            isFlipped = SpriteEffects.None;
+            double dir = Math.Atan2(direction.Y, direction.X);
+            dir = dir % circle;
+
+            if (Math.Abs(dir) > (Math.PI * (0.75)) && Math.Abs(dir) <= Math.PI) { animation.CurrentSprite = "left"; }
+            else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI * 0.25)
             {
-                if (boundingCircle(this.position, range, i.Position))
-                {
-                    updateMovement(i);
-
-                    if (shootElapsedTime >= shootTimer)
-                    {
-                        shootElapsedTime = 0;
-
-                        //Create new projectiles
-                        Projectile projectile = new Projectile();
-                        projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 1200f, map);
-                        projectile.LoadContent("ProjectileRed");
-                        projectileList.Add(projectile);
-
-                        //Add explosion to particle system
-                        game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
-                        game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
-                    }
-                    break;
-                }
+                animation.CurrentSprite = "left";
+                isFlipped = SpriteEffects.FlipHorizontally;
             }
-            updateProjectiles(gameTime);
+            else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25) {animation.CurrentSprite = "front";}
+            else if (dir <= -Math.PI * (0.75) && dir > -Math.PI * 0.25) { animation.CurrentSprite = "back"; }
+            else{ animation.CurrentSprite = "back"; }
+
+            //if (direction.X < 0 && direction.Y ==0)
+            //else if (direction.X < 0 && direction.Y > 0)
+            //{
+            //    animation.CurrentSprite = "rightUp";
+            //    isFlipped = SpriteEffects.FlipHorizontally;
+            //}
+            //else if (direction.X < 0 && direction.Y < 0)
+            //{
+            //    animation.CurrentSprite = "rightDown";
+            //    isFlipped = SpriteEffects.FlipHorizontally;
+            //}
+
+            //else if (direction.X > 0 && direction.Y > 0)
+            //{
+            //    animation.CurrentSprite = "rightUp";
+            //}
+            //else if (direction.X > 0 && direction.Y < 0)
+            //{
+            //    animation.CurrentSprite = "rightDown";
+            //}
+            //else if (direction.X == 0 && direction.Y > 0)
         }
 
         public void updateMovement(Tower tower)
@@ -274,8 +280,8 @@ namespace RTS
             shootRotationAngle = Math.Atan2(tower.Position.Y - position.Y, tower.Position.X - position.X);
 
             //Adjusted shoot angle with variation for bullet realism
-            int xVariation = 0;     //rand.Next(-100, 100);
-            int yVariation = 0;     //rand.Next(-100, 100);
+            int xVariation = 0;    
+            int yVariation = 0;   
             projectileRotationAngle = Math.Atan2(tower.Position.Y + yVariation - position.Y, tower.Position.X + xVariation - position.X);
         }
 
@@ -286,7 +292,6 @@ namespace RTS
             {
                 proj.Update(gameTime);
             }
-
             //Remove Projectile if it goes off-screen
             for (int i = 0; i < projectileList.Count; i++)
             {
@@ -298,6 +303,8 @@ namespace RTS
                 }
             }
         }
+
+
         #region PathFinding
         private static float WrapAngle(float radians)
         {
@@ -347,54 +354,6 @@ namespace RTS
             }
         }
 
-        public void updateAnimation()
-        {
-            isFlipped = SpriteEffects.None;
-
-            double dir = Math.Atan2(direction.Y, direction.X);
-            dir = dir % circle;
-
-            if (direction.X < 0 && direction.Y ==0)
-            //if (Math.Abs(dir) > Math.PI / 2 && Math.Abs(dir) <= Math.PI)
-            {
-                animation.CurrentSprite = "left";
-            }
-            //else if (direction.X < 0 && direction.Y > 0)
-            //{
-            //    animation.CurrentSprite = "rightUp";
-            //    isFlipped = SpriteEffects.FlipHorizontally;
-            //}
-            //else if (direction.X < 0 && direction.Y < 0)
-            //{
-            //    animation.CurrentSprite = "rightDown";
-            //    isFlipped = SpriteEffects.FlipHorizontally;
-            //}
-            //else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI / 2)
-            else if (direction.X > 0 && direction.Y == 0)
-            {
-                animation.CurrentSprite = "left";
-                isFlipped = SpriteEffects.FlipHorizontally;
-            }
-            //else if (direction.X > 0 && direction.Y > 0)
-            //{
-            //    animation.CurrentSprite = "rightUp";
-            //}
-            //else if (direction.X > 0 && direction.Y < 0)
-            //{
-            //    animation.CurrentSprite = "rightDown";
-            //}
-            else if (direction.X == 0 && direction.Y > 0)
-            //else if (dir == Math.PI / 2)
-            {
-                animation.CurrentSprite = "front";
-            }
-            //else if (dir == -Math.PI / 2)
-            else if (direction.X == 0 && direction.Y < 0)
-            {
-                animation.CurrentSprite = "back";
-            }
-        }
-
         public void Reset()
         {
             waypoints.Clear();
@@ -406,7 +365,7 @@ namespace RTS
         }
 #endregion
 
-        #region Take Damage
+        #region Attack & Take Damage
         public void Hit(float damage)
         {
             hp -= damage;
@@ -452,6 +411,14 @@ namespace RTS
                     tmpEffect.Offset = 0.5f;
                 else tmpEffect.Offset = 1.0f;
             }
+            if (effect is EnemyEffectStun)
+            {
+                EnemyEffectStun tmpEffect = (EnemyEffectStun)effect;
+                if (weakAgainst == ElementType.Lightning)
+                    tmpEffect.Duration = tmpEffect.Duration+(int)((float)tmpEffect.Duration*0.5f*damage.level);
+                else if (strongAgainst == ElementType.Lightning)
+                    tmpEffect.Duration = tmpEffect.Duration - (int)((float)tmpEffect.Duration * 0.5f);
+            }
         }
 
         public void effectDamage(float burnDmg)
@@ -461,20 +428,52 @@ namespace RTS
                 dead = true;
             
         }
-        #endregion
+
+        public void effectStun()
+        {
+            moveSpeed = 0;
+        }
+
+        public void Attack(List<Tower> towers, GameTime gameTime)
+        {
+            if (!(effect is EnemyEffectStun))
+            {
+                foreach (Tower i in towers)
+                {
+                    if (boundingCircle(this.position, range, i.Position))
+                    {
+                        updateMovement(i);
+
+                        if (shootElapsedTime >= shootTimer)
+                        {
+                            shootElapsedTime = 0;
+
+                            //Create new projectiles
+                            Projectile projectile = new Projectile();
+                            projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 1200f, map);
+                            projectile.LoadContent("ProjectileRed");
+                            projectileList.Add(projectile);
+
+                            //Add explosion to particle system
+                            game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
+                            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+                        }
+                        break;
+                    }
+                }
+            }
+            updateProjectiles(gameTime);
+        }
 
         public bool boundingCircle(Vector2 V1, int radius, Vector2 V2)
         {
-            Vector2 Distance = V1 - V2; 
+            Vector2 Distance = V1 - V2;
             if (Distance.Length() < radius)
                 return true;
             return false;
         }
 
-        public Vector2 getOrigin()
-        {
-            return origin;
-        }
+        #endregion
 
     }
 }

@@ -15,14 +15,39 @@ namespace RTS
         protected GraphicsDevice graphicsDevice;
         protected SpriteBatch spriteBatch;
         protected Map map;
-
         protected SpriteAnimation animation;
+
 
         protected Vector2 position;
         public Vector2 Position
         {
             get { return position; }
             set { position = value; }
+        }
+
+        public Rectangle Size
+        {
+            get { return animation.currentSpriteSheet().size; }
+        }
+
+        //public Vector2 getPosition()
+        //{
+        //    return position;
+        //}
+
+        protected static void addList(Sprite obj)
+        {
+            allObjects.Add(obj);
+        }
+
+        public static void removeList(Sprite obj)
+        {
+            allObjects.Remove(obj);
+        }
+
+        public static int objCount()
+        {
+            return allObjects.Count();
         }
 
         public Sprite() {
@@ -44,30 +69,6 @@ namespace RTS
 
         public static List<Sprite> allObjects = new List<Sprite>();
 
-        protected static void addList(Sprite obj)
-        {
-            allObjects.Add(obj);
-        }
-
-        public static void removeList(Sprite obj)
-        {
-            allObjects.Remove(obj);
-        }
-
-        public static int objCount()
-        {
-            return allObjects.Count();
-        }
-
-        public Rectangle Size
-        {
-            get { return animation.currentSpriteSheet().size; }
-        }
-
-        public Vector2 getPosition()
-        {
-            return position;
-        }
 
     }
 }

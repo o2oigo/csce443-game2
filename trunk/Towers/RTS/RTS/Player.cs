@@ -896,7 +896,7 @@ namespace RTS
                 {
                     fireStoneInInventory++;
                 }
-                else if (_stone.Type == ElementType.Water)
+                else if (_stone.Type == ElementType.Lightning)
                 {
                     waterStoneInInventory++;
                 }
