@@ -400,7 +400,8 @@ namespace RTS
                                 bool isFire = false;
                                 if (towerList[i].damage.type == ElementType.Fire)
                                     isFire = true;
-                                createMissileTower(towerList[i].Position, level, isFire);
+                                //createMissileTower(towerList[i].Position, level, isFire);
+                                createFlameTower(towerList[i].Position, level, isFire);             
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
                                 buildMode = false;
@@ -798,14 +799,11 @@ namespace RTS
         {
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 2000f, map);
-            if (playerIndex == PlayerIndex.One)
-                projectile.LoadContent("ProjectileBlue");
-            else
-                projectile.LoadContent("ProjectilePurple");
+            projectile.LoadContent("Projectile");
             projectileList.Add(projectile);
 
             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
-            //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
         }
 
         public void createMissile()
@@ -818,7 +816,7 @@ namespace RTS
                 missile.LoadContent("ProjectileBlue");
                 missileList.Add(missile);
                 game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
-                //game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+                game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
             }
         }
 
@@ -843,9 +841,12 @@ namespace RTS
                 if (mis.getPosition().X > graphicsDevice.Viewport.Width || mis.getPosition().X < 0
                     || mis.getPosition().Y > graphicsDevice.Viewport.Height || mis.getPosition().Y < 0)
                 {
-                    projectileList.Remove(mis);
+                    missileList.Remove(mis);
                 }
-                mis.Update(gameTime);
+                if (mis.getTarget() == null || mis.getTarget().isDead())
+                    missileList.Remove(mis);
+                else
+                    mis.Update(gameTime);
             }
         }
 
@@ -948,7 +949,10 @@ namespace RTS
             return turretTexture.Width;
         }
 
-
+        public Vector2 getOrigin()
+        {
+            return origin;
+        }
 
         public List<Tower> getTowers()
         {

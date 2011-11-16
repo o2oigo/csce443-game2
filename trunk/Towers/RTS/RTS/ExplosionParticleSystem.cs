@@ -49,13 +49,13 @@ namespace RTS
 
             // explosions should be relatively short lived
             minLifetime = .1f;
-            maxLifetime = .2f;
+            maxLifetime = .12f;
 
-            minScale = .05f;
-            maxScale = .1f;
+            minScale = .3f;
+            maxScale = .31f;
 
-            minNumParticles = 10;
-            maxNumParticles = 12;
+            minNumParticles = 2;
+            maxNumParticles = 3;
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;

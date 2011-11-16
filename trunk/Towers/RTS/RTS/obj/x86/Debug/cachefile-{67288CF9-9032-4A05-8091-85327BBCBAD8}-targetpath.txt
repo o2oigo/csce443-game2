@@ -90,6 +90,8 @@ Content\elfLeft.xnb
 Content\ProjectileFireEmpty.xnb
 Content\ProjectileFireEmptyDebug.xnb
 Content\missile.xnb
+Content\flameTowerNew.xnb
+Content\missileTowerNew.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb

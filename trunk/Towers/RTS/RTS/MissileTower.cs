@@ -34,7 +34,7 @@ namespace RTS
 
         public override void  LoadContent()
         {
-            missileTowerTexture = contentManager.Load<Texture2D>("cannon12");
+            missileTowerTexture = contentManager.Load<Texture2D>("missileTowerNew");
             //missileTowerUpgradeTexture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
@@ -65,9 +65,20 @@ namespace RTS
                 {
                     projectileList.Remove(proj);
                 }
-                proj.Update(gameTime);
-                 game.fireTower.setDirection(proj.getMissileAngle() + (float)Math.PI);
-                game.fireTower.AddParticles(proj.getPosition());
+                
+                //Remove Projectile if target is missing or dead
+                if (proj.getTarget() == null || proj.getTarget().isDead())
+                {
+                    game.explosion.AddParticles(proj.getPosition());
+                    game.smoke.AddParticles(proj.getPosition());
+                    projectileList.Remove(proj);
+                }
+                else
+                {
+                    proj.Update(gameTime);
+                    game.fireTower.setDirection(proj.getMissileAngle() + (float)Math.PI);
+                    game.fireTower.AddParticles(proj.getPosition());
+                }
             }
         }
 
