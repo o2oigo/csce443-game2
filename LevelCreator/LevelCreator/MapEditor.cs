@@ -309,6 +309,17 @@ namespace LevelCreator
         {
             Point tilePosition = new Point(x * nTileSize, y * nTileSize);
 
+            // Reset tile before painting
+            for (int i = 0; i < nTileSize; i++)
+            {
+                for (int j = 0; j < nTileSize; j++)
+                {
+                    Color originalPixel = UnmodifiedBackgroundImage.GetPixel(tilePosition.X + j, tilePosition.Y + i);
+                    ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, originalPixel);
+                }
+            }
+
+            // Paint tile
             switch (selectedTileType)
             {
                 case SelectedTile.TreeTile:
@@ -316,7 +327,7 @@ namespace LevelCreator
                     {
                         for (int j = 0; j < nTileSize; j++)
                         {
-                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.DarkOliveGreen);
+                            if ((i + j) % 2 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.DarkOliveGreen);
                         }
                     }
                     MapOfTiles[x, y].TileType = SelectedTile.TreeTile;
@@ -326,7 +337,7 @@ namespace LevelCreator
                     {
                         for (int j = 0; j < nTileSize; j++)
                         {
-                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.BurlyWood);
+                            if ((i + j) % 8 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.BurlyWood);
                         }
                     }
                     MapOfTiles[x, y].TileType = SelectedTile.DirtTile;
@@ -346,7 +357,7 @@ namespace LevelCreator
                     {
                         for (int j = 0; j < nTileSize; j++)
                         {
-                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.DarkGreen);
+                            if ((i + j) % 2 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.DarkGreen);
                         }
                     }
                     MapOfTiles[x, y].TileType = SelectedTile.StartTile;
@@ -356,7 +367,7 @@ namespace LevelCreator
                     {
                         for (int j = 0; j < nTileSize; j++)
                         {
-                            if ((i + j) % 4 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.Red);
+                            if ((i + j) % 2 == 0) ModifiedBackgroundImage.SetPixel(tilePosition.X + j, tilePosition.Y + i, Color.Red);
                         }
                     }
                     MapOfTiles[x, y].TileType = SelectedTile.EndTile;
@@ -471,7 +482,8 @@ namespace LevelCreator
 
         private void LoadTileFile()
         {
-            string path = sPathToLevelFiles + "_" + tileSize_ComboBox1.SelectedText + ".lvl";
+//            string path = sPathToLevelFiles + "_" + tileSize_ComboBox1.SelectedText + ".lvl";
+            string path = sPathToLevelFiles + "_16.lvl";
 
             if (File.Exists(path))
             {
