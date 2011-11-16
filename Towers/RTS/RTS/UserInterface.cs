@@ -103,7 +103,7 @@ namespace RTS
                 {
                     spriteBatch.Draw(startScreenBackground, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(startMenuTexture, new Vector2(400, 650), Color.White);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Black);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Black);
                 }
 
                 if (showGameScreen == false && showPauseScreen == true)
@@ -120,7 +120,7 @@ namespace RTS
                     //spriteBatch.DrawString(font, "Game Over", new Vector2(500, 600), Color.Black);
                     spriteBatch.DrawString(font, "Press A to retry", new Vector2(500, 700), Color.Black);
                     spriteBatch.DrawString(font, "Press Start to go back to title menu", new Vector2(500, 740), Color.Black);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
 
                 if (showWinScreen == true)
@@ -130,7 +130,7 @@ namespace RTS
                     spriteBatch.DrawString(font, "Thank you for playing", new Vector2(500, 600), Color.Black);
                     spriteBatch.DrawString(font, "Press A to re-play the game", new Vector2(500, 700), Color.Black);
                     spriteBatch.DrawString(font, "Press Start to go back to title menu", new Vector2(500, 740), Color.Black);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
 
                 if (showGameScreen == true)
@@ -170,7 +170,7 @@ namespace RTS
                 {
                     spriteBatch.Draw(startScreenBackground, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(startMenuTexture, new Vector2(400, 650), Color.White);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
 
                 if (showGameScreen == false && showPauseScreen == true)
@@ -186,7 +186,7 @@ namespace RTS
                     spriteBatch.DrawString(font, "Game Over", new Vector2(500, 600), Color.Black);
                     spriteBatch.DrawString(font, "Press Enter to retry", new Vector2(500, 700), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 740), Color.Black);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
 
                 if (showWinScreen == true)
@@ -195,13 +195,13 @@ namespace RTS
                     spriteBatch.DrawString(font, "Thank you for playing", new Vector2(500, 600), Color.Black);
                     spriteBatch.DrawString(font, "Press Enter to restart", new Vector2(500, 700), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 740), Color.Black);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
                 if (showTitleScreen == true)
                 {
                     spriteBatch.Draw(startScreenBackground, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(startMenuTexture, new Vector2(400, 650), Color.White);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
 
                 if (showGameScreen == false && showPauseScreen == true)
@@ -217,7 +217,7 @@ namespace RTS
                     spriteBatch.DrawString(font, "Game Over", new Vector2(500, 600), Color.Black);
                     spriteBatch.DrawString(font, "Press Enter to retry", new Vector2(500, 700), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 740), Color.Black);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
 
                 if (showWinScreen == true)
@@ -227,7 +227,7 @@ namespace RTS
                     spriteBatch.DrawString(font, "Thank you for playing", new Vector2(500, 600), Color.Black);
                     spriteBatch.DrawString(font, "Press Enter to restart", new Vector2(500, 700), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 740), Color.Black);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.0.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
 
                 if (showGameScreen == true)

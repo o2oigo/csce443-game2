@@ -56,6 +56,27 @@ namespace RTS
         private Texture2D enhanceTexture;
         private Texture2D fireTowerBuildTexture;
         private Texture2D lightningTowerBuildTexture;
+        private Texture2D arrowTowerBuildTexture;
+        private Texture2D flameTowerBuildTexture;
+        private Texture2D missileTowerBuildTexture;
+        private Texture2D canonTowerBuildTexture;
+        private Texture2D magicTowerBuildTexture;
+
+        private Texture2D fireTowerBuildSelectTexture;
+        private Texture2D lightningTowerBuildSelectTexture;
+        private Texture2D arrowTowerBuildSelectTexture;
+        private Texture2D flameTowerBuildSelectTexture;
+        private Texture2D missileTowerBuildSelectTexture;
+        private Texture2D canonTowerBuildSelectTexture;
+        private Texture2D magicTowerBuildSelectTexture;
+
+        private Texture2D fireTowerBuildInactiveTexture;
+        private Texture2D lightningTowerBuildInactiveTexture;
+        private Texture2D arrowTowerBuildInactiveTexture;
+        private Texture2D flameTowerBuildInactiveTexture;
+        private Texture2D missileTowerBuildInactiveTexture;
+        private Texture2D canonTowerBuildInactiveTexture;
+        private Texture2D magicTowerBuildInactiveTexture;
         //private Texture2D backgroundTexture;
         //private Texture2D startMenuTexture;
         //private Texture2D quitMenuTexture;
@@ -132,8 +153,31 @@ namespace RTS
             upgradeTexture = contentManager.Load<Texture2D>("upgradeSmall");
             enhanceTexture = contentManager.Load<Texture2D>("enhanceSmall");
             sellTexture = contentManager.Load<Texture2D>("sellSmall");
+
             lightningTowerBuildTexture = contentManager.Load<Texture2D>("lightningTowerSmall");
             fireTowerBuildTexture = contentManager.Load<Texture2D>("fireTowerSmall");
+            arrowTowerBuildTexture = contentManager.Load<Texture2D>("arrowTowerMenu");
+            flameTowerBuildTexture = contentManager.Load<Texture2D>("flameTowerMenu");
+            missileTowerBuildTexture = contentManager.Load<Texture2D>("missileTowerMenu");
+            canonTowerBuildTexture = contentManager.Load<Texture2D>("cannonTowerSmall");
+            magicTowerBuildTexture = contentManager.Load<Texture2D>("healingStone");
+            /*
+            lightningTowerBuildSelectTexture = contentManager.Load<Texture2D>("lightningTowerSmallSelected");
+            //fireTowerBuildSelectTexture = contentManager.Load<Texture2D>("fireTowerMenuSelected");
+            arrowTowerBuildSelectTexture = contentManager.Load<Texture2D>("arrowTowerMenu");
+            flameTowerBuildSelectTexture = contentManager.Load<Texture2D>("flameTowerMenuSelected");
+            missileTowerBuildSelectTexture = contentManager.Load<Texture2D>("missileTowerMenuSelected");
+            canonTowerBuildSelectTexture = contentManager.Load<Texture2D>("cannonTowerSmallSelected");
+            magicTowerBuildSelectTexture = contentManager.Load<Texture2D>("healingStone");
+
+            lightningTowerBuildInactiveTexture = contentManager.Load<Texture2D>("lightningTowerSmallInactive");
+            //fireTowerBuildInactiveTexture = contentManager.Load<Texture2D>("fireTowerMenuInactive");
+            arrowTowerBuildInactiveTexture = contentManager.Load<Texture2D>("arrowTowerMenu");
+            flameTowerBuildInactiveTexture = contentManager.Load<Texture2D>("flameTowerMenuInactive");
+            missileTowerBuildInactiveTexture = contentManager.Load<Texture2D>("missileTowerMenuInactive");
+            canonTowerBuildInactiveTexture = contentManager.Load<Texture2D>("cannonTowerSmallInactive");
+            magicTowerBuildInactiveTexture = contentManager.Load<Texture2D>("healingStone");
+            */
             font = contentManager.Load<SpriteFont>("font");
 
             origin.X = Size.Width / 2;
@@ -201,30 +245,83 @@ namespace RTS
                 tower.Draw(spriteBatch);
             }
 
-            if (buildMode == true && mainBuildMode == true)
+            if (buildMode == true)
             {
-                spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
-                spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
-            }
 
-            if (upgradeBuildMode == true && buildMode == true && (shootRotationAngle >= -0.93 && shootRotationAngle <= (float)Math.Sqrt(2) / 2f))
-            {
-                spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
-                spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
-                spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
-                spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
-                spriteBatch.Draw(fireTowerBuildTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
-                spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
+                if (mainBuildMode == true && (shootRotationAngle >= -2.27 && shootRotationAngle < -0.93))
+                {
+                    spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
 
-            }
+                    /*
+                    if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -1.90)
+                    {
+                        if (money < 10)
+                        {
+                            spriteBatch.Draw(arrowTowerBuildInactiveTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
+                            spriteBatch.Draw(canonTowerBuildInactiveTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
+                            spriteBatch.Draw(magicTowerBuildInactiveTexture, new Vector2(position.X + 25, position.Y - 150), Color.White);
+                        }
+                        else if (money >= 15)
+                        {
+                            spriteBatch.Draw(arrowTowerBuildTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
+                            spriteBatch.Draw(canonTowerBuildTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
+                            spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 25, position.Y - 150), Color.White);
+                        }
+                    }
 
-            if (upgradeBuildMode == true && buildMode == true && (shootRotationAngle < -0.93 || shootRotationAngle > (float)Math.Sqrt(2) / 2f))
-            {
-                spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
-                spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
-                spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
-                spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                            // for cannon tower
+                    else if (shootRotationAngle >= -1.9 && shootRotationAngle < -1.51)
+                    {
+                        if (money < 15 && fireStoneInInventory < 1)
+                        {
+
+                        }
+                    }
+
+                    // for magic tower
+                    else if (shootRotationAngle >= -1.51 && shootRotationAngle <= -(float)Math.PI / 4)
+                    {
+                        if (money >= 20)
+                        {
+
+                        }
+                    }*/
+
+                    spriteBatch.Draw(arrowTowerBuildTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
+                    spriteBatch.Draw(canonTowerBuildTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
+                    spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 25, position.Y - 150), Color.White);
+
+                }
+
+                else if (mainBuildMode == true)
+                {
+                    spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+                }
+
+                else if (upgradeBuildMode == true && (shootRotationAngle >= -0.93 && shootRotationAngle < (float)Math.Sqrt(2) / 2f))
+                {
+                    spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+                    spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
+                    spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                    spriteBatch.Draw(fireTowerBuildTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
+                    spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
+
+                }
+                
+
+
+                else if (upgradeBuildMode == true && (shootRotationAngle < -0.93 || shootRotationAngle > (float)Math.Sqrt(2) / 2f))
+                {
+                    spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+                    spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
+                    spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                }
             }
+            
 
         }
 
@@ -300,15 +397,18 @@ namespace RTS
         public void updateGamePad()
         {
             //Update move angle 
+            isMove = false;
             if (Math.Abs(currentState.ThumbSticks.Left.X) > 0 || Math.Abs(currentState.ThumbSticks.Left.Y) > 0)
             {
+                isMove = true;
+
                 moveRotationAngle = Math.Atan2(-currentState.ThumbSticks.Left.Y, currentState.ThumbSticks.Left.X);
                 moveRotationAngle = moveRotationAngle % circle;
             }
 
             //Update Speed
             if (currentState.ThumbSticks.Left.X != 0 || currentState.ThumbSticks.Left.Y != 0)
-                speed = 1;
+                speed = 3;
             else
             {
                 speed = 0;
@@ -347,12 +447,44 @@ namespace RTS
                     {
                         if (map.TileTypeAt(position) == MapTileType.MapGrass)
                         {
-                            if (money > 15)
+                            // for arrow tower
+                            if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -1.90)
                             {
-                                removeMoney(15);
-                                createTower();
-                                buildMode = false;
-                                mainBuildMode = false;
+                                if (money >= 10)
+                                {
+                                    removeMoney(10);
+                                    createTower();
+                                    buildMode = false;
+                                    mainBuildMode = false;
+                                }
+                            }
+
+                            // for cannon tower
+                            else if (shootRotationAngle >= -1.9 && shootRotationAngle < -1.51)
+                            {
+                                if (money >= 15 && fireStoneInInventory > 0)
+                                {
+                                    removeMoney(15);
+                                    removeStoneFromInventory(0);
+                                    int level = 1;
+                                    bool isFire = true;
+                                    createMissileTower(Position, level, isFire);
+                                    //createTower();
+                                    buildMode = false;
+                                    mainBuildMode = false;
+                                }
+                            }
+
+                            // for magic tower
+                            else if (shootRotationAngle >= -1.51 && shootRotationAngle <= -(float)Math.PI / 4 )
+                            {
+                                if (money >= 20)
+                                {
+                                    removeMoney(20);
+                                    //createTower();
+                                    buildMode = false;
+                                    mainBuildMode = false;
+                                }
                             }
                         }
                         if (towerList.Count == maxTowerCount)
@@ -400,8 +532,10 @@ namespace RTS
                                 bool isFire = false;
                                 if (towerList[i].damage.type == ElementType.Fire)
                                     isFire = true;
+
                                 //createMissileTower(towerList[i].Position, level, isFire);
                                 createFlameTower(towerList[i].Position, level, isFire);             
+
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
                                 buildMode = false;
@@ -470,7 +604,7 @@ namespace RTS
             }
             if (currentState.IsButtonDown(Buttons.RightShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.RightTrigger) && currentState.IsButtonDown(Buttons.LeftTrigger) && currentState.IsButtonDown(Buttons.X))
             {
-                money = 9999;
+                money = 777;
                 Stone fStone = new Stone();
                 fStone.Initialize(game, position, 0);
                 addStoneToInventory(fStone);
@@ -625,6 +759,47 @@ namespace RTS
                     {
                         if (map.TileTypeAt(position) == MapTileType.MapGrass)
                         {
+
+                            if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -1.90)
+                            {
+                                if (money >= 10)
+                                {
+                                    removeMoney(10);
+                                    createTower();
+                                    buildMode = false;
+                                    mainBuildMode = false;
+                                }
+                            }
+
+                            // for cannon tower
+                            else if (shootRotationAngle >= -1.9 && shootRotationAngle < -1.51)
+                            {
+                                if (money >= 15 && fireStoneInInventory > 0)
+                                {
+                                    removeMoney(15);
+                                    removeStoneFromInventory(0);
+                                    int level = 1;
+                                    bool isFire = true;
+                                    createMissileTower(Position, level, isFire);
+                                    //createTower();
+                                    buildMode = false;
+                                    mainBuildMode = false;
+                                }
+                            }
+
+                            // for magic tower
+                            else if (shootRotationAngle >= -1.51 && shootRotationAngle <= -(float)Math.PI / 4)
+                            {
+                                if (money >= 20)
+                                {
+                                    removeMoney(20);
+                                    //createTower();
+                                    buildMode = false;
+                                    mainBuildMode = false;
+                                }
+                            }
+
+                            /*
                             if (money > 15)
                             {
                                 removeMoney(15);
@@ -632,6 +807,7 @@ namespace RTS
                                 buildMode = false;
                                 mainBuildMode = false;
                             }
+                             * */
                         }
                         if (towerList.Count == maxTowerCount)
                         {
@@ -678,7 +854,10 @@ namespace RTS
                                 bool isFire = false;
                                 if (towerList[i].damage.type == ElementType.Fire)
                                     isFire = true;
+
+                                //createMissileTower(towerList[i].Position, level, isFire);
                                 createFlameTower(towerList[i].Position, level, isFire);
+
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
                                 buildMode = false;
