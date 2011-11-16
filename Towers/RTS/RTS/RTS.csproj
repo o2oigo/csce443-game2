@@ -116,6 +116,7 @@
     <Compile Include="ExplosionParticleSystem.cs" />
     <Compile Include="ExplosionSmokeParticleSystem.cs" />
     <Compile Include="FlameTower.cs" />
+    <Compile Include="FlameTowerSmokeParticleSystem.cs" />
     <Compile Include="LightningParticleSystem.cs" />
     <Compile Include="LightningTower.cs" />
     <Compile Include="MainUI.cs" />

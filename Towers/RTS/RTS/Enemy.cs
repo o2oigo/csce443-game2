@@ -451,7 +451,7 @@ namespace RTS
                             //Create new projectiles
                             Projectile projectile = new Projectile();
                             projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 1200f, map);
-                            projectile.LoadContent("ProjectileRed");
+                            projectile.LoadContent("Projectile");
                             projectileList.Add(projectile);
 
                             //Add explosion to particle system
