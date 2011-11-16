@@ -63,6 +63,7 @@ namespace RTS
         public FireParticleSystem fire;
         public FireParticleSystem fireTower;
         public LightningParticleSystem lightning;
+        public FlameTowerSmokeParticleSystem flameTowerSmoke;
 
 
         // Dictionary<string, SoundEffect> music;
@@ -93,6 +94,9 @@ namespace RTS
 
             smoke = new ExplosionSmokeParticleSystem(this, 100);
             Components.Add(smoke);
+
+            flameTowerSmoke = new FlameTowerSmokeParticleSystem(this, 1000);
+            Components.Add(flameTowerSmoke);
 
             fire = new FireParticleSystem(this, 1000, "fireParticle");
             Components.Add(fire);
@@ -212,6 +216,7 @@ namespace RTS
 
             explosion.Update(gameTime);
             smoke.Update(gameTime);
+            flameTowerSmoke.Update(gameTime);
             fire.Update(gameTime);
             userInterface.setWavesNumber(wave.CurrentWave);
             lightning.Update(gameTime);

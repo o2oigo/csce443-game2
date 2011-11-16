@@ -22,7 +22,7 @@ namespace RTS
             if (isFire)
             {
                 damage.type = ElementType.Fire;
-                damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
+               // damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
             }
             if (level == 2)
                 setToLvlTwo();
@@ -76,6 +76,7 @@ namespace RTS
                 else
                 {
                     proj.Update(gameTime);
+                    game.fireTower.setScale(.2f, .25f);
                     game.fireTower.setDirection(proj.getMissileAngle() + (float)Math.PI);
                     game.fireTower.AddParticles(proj.getPosition());
                 }

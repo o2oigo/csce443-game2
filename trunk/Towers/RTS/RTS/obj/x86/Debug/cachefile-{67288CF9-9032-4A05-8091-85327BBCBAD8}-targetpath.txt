@@ -92,6 +92,10 @@ Content\ProjectileFireEmptyDebug.xnb
 Content\missile.xnb
 Content\flameTowerNew.xnb
 Content\missileTowerNew.xnb
+Content\stFront.xnb
+Content\stRight.xnb
+Content\stBack.xnb
+Content\stLeft.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb
@@ -101,7 +105,3 @@ Content\Map1.xnb
 Content\Map2.xnb
 Content\Map3.xnb
 Content\Map4.xnb
-Content\stFront.xnb
-Content\stRight.xnb
-Content\stBack.xnb
-Content\stLeft.xnb

@@ -308,7 +308,7 @@ namespace RTS
 
             //Update Speed
             if (currentState.ThumbSticks.Left.X != 0 || currentState.ThumbSticks.Left.Y != 0)
-                speed = 5;
+                speed = 1;
             else
             {
                 speed = 0;
@@ -501,25 +501,25 @@ namespace RTS
             if (keystate.IsKeyDown(Keys.A) && buildMode == false)
             {
                 xComponent = -1;
-                speed = 5;
+                speed = 2;
                 isMove = true;
             }
             if (keystate.IsKeyDown(Keys.D) && buildMode == false)
             {
                 xComponent = 1;
-                speed = 5;
+                speed = 2;
                 isMove = true;
             }
             if (keystate.IsKeyDown(Keys.W) && buildMode == false)
             {
                 yComponent = -1;
-                speed = 5;
+                speed = 2;
                 isMove = true;
             }
             else if (keystate.IsKeyDown(Keys.S) && buildMode == false)
             {
                 yComponent = 1;
-                speed = 5;
+                speed = 2;
                 isMove = true;
             }
 

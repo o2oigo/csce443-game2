@@ -181,10 +181,12 @@ namespace RTS
             shootAt = null;
             if (enemies.Count != 0)
             {
-               // shootAt = enemies[0];
+                //shootAt = enemies[0];
                 foreach (Enemy enemy in enemies)
                 {
-                    if (Vector2.Distance(position, enemy.Position) <= towerRange)
+                    if (shootAt == null && Vector2.Distance(position, enemy.Position) <= towerRange)
+                        shootAt = enemy;
+                    if (Vector2.Distance(position, enemy.Position) <= towerRange /*&& (Vector2.Distance(game.House.Position, enemy.Position) < Vector2.Distance(game.House.Position, shootAt.Position))*/)
                     {
                         shootAt = enemy;
                         break;
@@ -338,7 +340,7 @@ namespace RTS
         public void setToFireTower()
         {
             damage.type = ElementType.Fire;
-            damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
+            //damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
             towerName = "Fire Tower";
         }
 

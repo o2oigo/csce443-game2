@@ -58,9 +58,13 @@ namespace RTS
 
         public override void applyEffects(Enemy enemy)
         {
-            game.fire.setDirection((float)(-Math.PI / 2));
+            game.fire.setSpeed(60, 70);
+            game.fire.setScale(.1f, .15f);
+            //game.fire.setDirection((float)(-Math.PI / 2));
+            game.fire.PickRandomDirection();
             game.fire.AddParticles(new Vector2(enemy.Position.X, enemy.Position.Y));
             enemy.effectDamage(burnDmg * offset);
+            game.fire.setSpeed(200, 300);
         }
         public override void undoEffect(Enemy enemy)
         {
