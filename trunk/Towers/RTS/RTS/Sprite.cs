@@ -25,6 +25,16 @@ namespace RTS
             set { position = value; }
         }
 
+        public Rectangle FeetSize
+        {
+            get { return new Rectangle((int)position.X, (int)position.Y, Size.Width, 10); }
+        }
+
+        public Rectangle SizePos
+        {
+            get { return new Rectangle((int)position.X, (int)position.Y, Size.Width, Size.Height); }
+        }
+
         public Rectangle Size
         {
             get { return animation.currentSpriteSheet().size; }

@@ -525,7 +525,7 @@ namespace RTS
 
             if (keystate.IsKeyDown(Keys.Enter))
             {
-                position = new Vector2(350, 400);
+                position = new Vector2(300, 400);
             }
 
             if (keystate.IsKeyDown(Keys.NumPad1))

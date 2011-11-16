@@ -17,7 +17,6 @@ namespace RTS
             get { return treeTexture; }
         }
 
-
         private Vector2 position;
         public Vector2 Position
         {
@@ -28,6 +27,11 @@ namespace RTS
         {
             get { return origin; }
         }
+
+        //public Rectangle FeetSize
+        //{
+        //    get { return new Rectangle((int)Origin.X, (int)Origin.Y + (treeTexture.Height - 10), treeTexture.Width, 10); }
+        //}
 
         Random rand = new Random();
         Map map;
@@ -73,6 +77,10 @@ namespace RTS
             get { return houseTexture; }
         }
 
+        public Rectangle FeetSize
+        {
+            get { return new Rectangle((int)position.X, (int)position.Y, houseTexture.Width, 20); }
+        }
 
         private Vector2 position;
         public Vector2 Position
