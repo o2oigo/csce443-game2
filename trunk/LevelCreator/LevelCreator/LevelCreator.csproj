@@ -54,9 +54,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tile.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Tile.cs" />
     <Compile Include="ToolSelectWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +96,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="redLightIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="barrierIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FillBucket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PaintTileIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NewLevel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

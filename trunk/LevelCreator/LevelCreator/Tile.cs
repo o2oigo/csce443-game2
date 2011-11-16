@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace LevelCreator
 {
-    public class Tile : Button
+    public class Tile
     {
         public MapEditor.SelectedTile TileType;
 
