@@ -11,8 +11,8 @@ namespace RTS
     public enum ElementType
     {
         Fire,
-        Water,
         Heal,
+        Lightning,
         Normal,
     }
 
@@ -76,7 +76,7 @@ namespace RTS
                 case ElementType.Fire:
                     stoneTexture = contentManager.Load<Texture2D>("fireStone");
                     break;
-                case ElementType.Water:
+                case ElementType.Lightning:
                     stoneTexture = contentManager.Load<Texture2D>("lightningStone");
                     break;
                 case ElementType.Heal:
@@ -97,7 +97,7 @@ namespace RTS
         {
             if (type == ElementType.Fire)
                 return 1;
-            else if (type == ElementType.Water)
+            else if (type == ElementType.Lightning)
                 return 2;
             else if (type == ElementType.Heal)
                 return 3;

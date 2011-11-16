@@ -23,7 +23,7 @@ namespace RTS
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (target != null)
             {
-                Vector2 point = GetPoint(time, originalPosition, new Vector2(originalPosition.X, originalPosition.Y - 600), target.getPosition(), target.getPosition());
+                Vector2 point = GetPoint(time, originalPosition, new Vector2(originalPosition.X, originalPosition.Y - 600), target.Position, target.Position);
                 missileAngle = (float)Math.Atan2(point.Y - projectilePosition.Y, point.X - projectilePosition.X);
                 missileAngle = missileAngle % (MathHelper.Pi * 2);
                 projectilePosition = point;

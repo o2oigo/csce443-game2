@@ -1064,3 +1064,9 @@ C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\obj
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 C:\Users\Anthony\Documents\Visual Studio 2010\Projects\Towers\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\flameTowerNew.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\missileTowerNew.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\stFront.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\stRight.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\stBack.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\stLeft.xnb

@@ -19,11 +19,11 @@ namespace RTS
             towerName = "Lightning Tower";
             this.ilevel = level;
             damage = new Damage(1, this.ilevel, ElementType.Fire, null);
-            if (isFire)
-            {
+            //if (isFire)
+            //{
                 damage.type = ElementType.Fire;
                 damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
-            }
+            //}
             if (level == 2)
                 setToLvlTwo();
 
