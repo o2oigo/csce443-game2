@@ -85,7 +85,7 @@ namespace RTS
 
             this.graphics.PreferredBackBufferHeight = 1024;
             this.graphics.PreferredBackBufferWidth = 1280;
-            this.graphics.IsFullScreen = true;
+            //this.graphics.IsFullScreen = true;
             
             map = new Map();
 

@@ -469,6 +469,7 @@ namespace RTS
                                     int level = 1;
                                     bool isFire = true;
                                     createMissileTower(Position, level, isFire);
+                                    //createArrowTower(Position, level, isFire);
                                     //createTower();
                                     buildMode = false;
                                     mainBuildMode = false;
@@ -781,6 +782,7 @@ namespace RTS
                                     int level = 1;
                                     bool isFire = true;
                                     createMissileTower(Position, level, isFire);
+                                    //createArrowTower(Position, level, isFire);
                                     //createTower();
                                     buildMode = false;
                                     mainBuildMode = false;
@@ -1032,6 +1034,12 @@ namespace RTS
         public void createTower()
         {
             Tower tower = new Tower(game, playerIndex, this.position);
+            towerList.Add(tower);
+        }
+
+        public void createArrowTower(Vector2 oldPosition, int level, bool isFire)
+        {
+            ArrowTower tower = new ArrowTower(game, playerIndex, oldPosition, level, isFire);
             towerList.Add(tower);
         }
 
