@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RTS
 {
-    class Camera
+    public class Camera
     {
         Game1 game;
         ContentManager contentManager;
@@ -43,7 +43,7 @@ namespace RTS
             graphicsDevice = _game.GraphicsDevice;
             currentState = GamePad.GetState(_playerIndex);
             Limits = null;
-            Limits = new Rectangle(0, 0, 1280, 1024);
+            Limits = new Rectangle(0, 0, 1980, 1524);
             players = _players;
         }
 

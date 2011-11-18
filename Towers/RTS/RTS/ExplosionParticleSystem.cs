@@ -24,8 +24,8 @@ namespace RTS
     /// </summary>
     public class ExplosionParticleSystem : ParticleSystem
     {
-        public ExplosionParticleSystem(Game1 game, int howManyEffects)
-            : base(game, howManyEffects)
+        public ExplosionParticleSystem(Game1 game, int howManyEffects, Camera camera)
+            : base(game, howManyEffects, camera)
         {
         }
 

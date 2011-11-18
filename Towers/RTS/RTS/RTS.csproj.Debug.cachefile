@@ -118,14 +118,6 @@ Content\upgradeSmallInactive.xnb
 Content\upgradeSmallSelected.xnb
 Content\arrowTowerMenu.xnb
 Content\flameTowerMenu.xnb
-Content\font.xnb
-Content\2DTankGame.xnb
-Content\2d_Tank_Menu.xnb
-Content\2DTankPOM.xnb
-Content\Map1.xnb
-Content\Map2.xnb
-Content\Map3.xnb
-Content\Map4.xnb
 Content\missileTowerMenu.xnb
 Content\arrow1.xnb
 Content\arrow10.xnb
@@ -139,4 +131,12 @@ Content\arrow6.xnb
 Content\arrow7.xnb
 Content\arrow8.xnb
 Content\arrow9.xnb
+Content\font.xnb
+Content\2DTankGame.xnb
+Content\2d_Tank_Menu.xnb
+Content\2DTankPOM.xnb
+Content\Map1.xnb
+Content\Map2.xnb
+Content\Map3.xnb
+Content\Map4.xnb
 Content\2d_Tank_Menu.wma

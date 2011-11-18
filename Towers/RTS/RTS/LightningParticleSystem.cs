@@ -25,8 +25,8 @@ namespace RTS
     public class LightningParticleSystem : ParticleSystem
     {
         //float rotation;
-        public LightningParticleSystem(Game1 game, int howManyEffects)
-            : base(game, howManyEffects)
+        public LightningParticleSystem(Game1 game, int howManyEffects, Camera camera)
+            : base(game, howManyEffects, camera)
         {
         }
 
