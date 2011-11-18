@@ -27,11 +27,11 @@ namespace RTS
         String textureName;
         // Game1 game;
         PlayerIndex playerIndex;
-        public FireParticleSystem(Game1 game, int howManyEffects, String textureName)
-            : base(game, howManyEffects)
+        public FireParticleSystem(Game1 game, int howManyEffects, Camera camera)
+            : base(game, howManyEffects, camera)
         {
             // this.game = game;
-            this.textureName = textureName;
+            //this.textureName = textureName;
             this.direction = new Vector2(0, 0);
         }
 
@@ -42,7 +42,7 @@ namespace RTS
         protected override void InitializeConstants()
         {
 
-            textureFilename = textureName;
+            textureFilename = "fireParticle";
 
             // high initial speed with lots of variance.  make the values closer
             // together to have more consistently circular explosions.

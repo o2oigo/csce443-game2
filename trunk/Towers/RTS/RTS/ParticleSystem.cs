@@ -162,11 +162,16 @@ namespace RTS
         /// However, this value should be set to the minimum possible, because
         /// it has a large impact on the amount of memory required, and slows down the
         /// Update and Draw functions.</remarks>
-        protected ParticleSystem(Game1 game, int howManyEffects)
+        /// 
+        Camera camera;
+
+        protected ParticleSystem(Game1 game, int howManyEffects, Camera _camera)
             : base(game)
         {
             this.game = game;
             this.howManyEffects = howManyEffects;
+            camera = _camera;
+            Initialize();
         }
 
         /// <summary>
@@ -340,7 +345,7 @@ namespace RTS
         {
             // tell sprite batch to begin, using the spriteBlendMode specified in
             // initializeConstants
-            game.getSpriteBatch().Begin(SpriteSortMode.Deferred, blendState);
+            game.getSpriteBatch().Begin(SpriteSortMode.Deferred, blendState, SamplerState.PointClamp, null, null, null, camera.ViewMatrix);
 
             foreach (Particle p in particles)
             {

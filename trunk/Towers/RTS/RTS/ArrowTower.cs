@@ -22,15 +22,11 @@ namespace RTS
         private Texture2D arrow11Texture;
         private Texture2D arrow12Texture;
 
-        public ArrowTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
+        public ArrowTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition) 
             : base(game, playerIndex, startPosition)
         {
             towerName = "Arrow Tower";
-            this.ilevel = level;
-            damage = new Damage(1, this.ilevel, ElementType.Normal, null);
-
-            if (level == 2)
-                setToLvlTwo();    
+            damage = new Damage(1, this.ilevel, ElementType.Normal, null);      
         }
 
         public override void  LoadContent()

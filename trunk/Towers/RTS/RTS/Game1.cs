@@ -89,24 +89,7 @@ namespace RTS
             
             map = new Map();
 
-            explosion = new ExplosionParticleSystem(this, 2000);
-            Components.Add(explosion);
-
-            smoke = new ExplosionSmokeParticleSystem(this, 100);
-            Components.Add(smoke);
-
-            flameTowerSmoke = new FlameTowerSmokeParticleSystem(this, 1000);
-            Components.Add(flameTowerSmoke);
-
-            fire = new FireParticleSystem(this, 1000, "fireParticle");
-            Components.Add(fire);
-
-            fireTower = new FireParticleSystem(this, 1000, "fireParticle");
-            fireTower.setSpeed(500, 600);
-            Components.Add(fireTower);
-
-            lightning = new LightningParticleSystem(this, 10);
-            Components.Add(lightning);
+            
 
             
         }
@@ -180,6 +163,25 @@ namespace RTS
 
             camera = new Camera(GraphicsDevice.Viewport);
             camera.Initialize(this, PlayerIndex.One, new Vector2(100, 100), players);
+
+            explosion = new ExplosionParticleSystem(this, 2000, camera);
+            Components.Add(explosion);
+
+            smoke = new ExplosionSmokeParticleSystem(this, 100, camera);
+            Components.Add(smoke);
+
+            flameTowerSmoke = new FlameTowerSmokeParticleSystem(this, 1000, camera);
+            Components.Add(flameTowerSmoke);
+
+            fire = new FireParticleSystem(this, 1000, camera);
+            Components.Add(fire);
+
+            fireTower = new FireParticleSystem(this, 1000, camera);
+            fireTower.setSpeed(500, 600);
+            Components.Add(fireTower);
+
+            lightning = new LightningParticleSystem(this, 10, camera);
+            Components.Add(lightning);
 
             // tankSong = Content.Load<SoundEffect>("2DTankPOM");
             //music = new Dictionary<string, SoundEffect>();
