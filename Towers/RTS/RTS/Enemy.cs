@@ -40,13 +40,16 @@ namespace RTS
         private double playerRotationAngle;
         private double projectileRotationAngle;
 
+        private List<Vector2> curve = new List<Vector2>();
+        private float curveTimer = 0;
+
         private float elapsedTime;
         private float effectTimer;
         private float shootElapsedTime;
         private float shootTimer = 1.0f;
         private float circle = MathHelper.Pi * 2;
 
-        const float atDestinationLimit = 5f;
+        const float atDestinationLimit = 0.001f;
 
         #region Properties
         private NodeList waypoints;
@@ -319,6 +322,25 @@ namespace RTS
             return radians;
         }
 
+        private void addToCurveList()
+        {
+            for (int i = 0; i < 4 && waypoints.Count >= 4-i; i++)
+            {
+                if (i == 3)
+                {
+                    curve.Add(waypoints.Peek());
+                }
+                else
+                {
+                    curve.Add(waypoints.Dequeue());
+                    waypoints.Dequeue();
+                    waypoints.Dequeue();
+                    waypoints.Dequeue();
+                }
+            }
+            if (curve.Count != 0) destination = curve[curve.Count - 1];
+        }
+
         public void doPathfinding(GameTime gameTime)
         {
             if (path.SearchStatus == SearchStatus.PathFound && !Moving)
@@ -333,25 +355,72 @@ namespace RTS
 
             if (moving)
             {
-                if (waypoints.Count >= 1)
+                if (curve.Count == 0)
                 {
-                    destination = waypoints.Peek();
+                    addToCurveList();
                 }
 
-                if (AtDestination && waypoints.Count >= 1)
+                if (AtDestination)
                 {
-                    waypoints.Dequeue();
+                    curve.Clear();
+                    addToCurveList();
+                    curveTimer = 0;
                 }
 
                 if (!AtDestination)
                 {
+                    List<Vector2> pos = new List<Vector2>();
+                    int j = 0;
+                    for (int i = 0; i < 4 && curve.Count!=0; i++)
+                    {
+                        pos.Add(curve[j]);
+                        if (j < curve.Count-1) j++;
+                    }
                     direction = -(position - destination);
 
                     direction.Normalize();
-                    position = position + (Direction *
-                        MoveSpeed * elapsedTime);
+                    position = GetPoint(curveTimer, pos[0], pos[1], pos[2], pos[3]);
+                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.3f;
                 }
+                //if (waypoints.Count >= 1)
+                //{
+                //    destination = waypoints.Peek();
+                //}
+
+                //if (AtDestination && waypoints.Count >= 1)
+                //{
+                //    waypoints.Dequeue();
+                //}
+
+                //if (!AtDestination)
+                //{
+                //    direction = -(position - destination);
+                //
+                //    direction.Normalize();
+                //    position = position + (Direction *
+                //        MoveSpeed * elapsedTime);
+                //}
             }
+        }
+
+        private Vector2 GetPoint(float t, Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3)
+        {
+            float cx = 3 * (p1.X - p0.X);
+            float cy = 3 * (p1.Y - p0.Y);
+
+            float bx = 3 * (p2.X - p1.X) - cx;
+            float by = 3 * (p2.Y - p1.Y) - cy;
+
+            float ax = p3.X - p0.X - cx - bx;
+            float ay = p3.Y - p0.Y - cy - by;
+
+            float Cube = t * t * t;
+            float Square = t * t;
+
+            float resX = (ax * Cube) + (bx * Square) + (cx * t) + p0.X;
+            float resY = (ay * Cube) + (by * Square) + (cy * t) + p0.Y;
+
+            return new Vector2(resX, resY);
         }
 
         public void Reset()
