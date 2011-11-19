@@ -167,7 +167,7 @@ namespace RTS
             arrowTowerBuildSelectTexture = contentManager.Load<Texture2D>("arrowTowerMenuSelected");
             flameTowerBuildSelectTexture = contentManager.Load<Texture2D>("flameTowerMenuSelected");
             missileTowerBuildSelectTexture = contentManager.Load<Texture2D>("missileTowerMenuSelected");
-            canonTowerBuildSelectTexture = contentManager.Load<Texture2D>("cannonTowerSmallSelected");
+            canonTowerBuildSelectTexture = contentManager.Load<Texture2D>("connonTowerSmallSelected");
             magicTowerBuildSelectTexture = contentManager.Load<Texture2D>("healingStone");
 
             lightningTowerBuildInactiveTexture = contentManager.Load<Texture2D>("lightningTowerSmallInactive");
@@ -175,7 +175,7 @@ namespace RTS
             arrowTowerBuildInactiveTexture = contentManager.Load<Texture2D>("arrowTowerMenuInactive");
             flameTowerBuildInactiveTexture = contentManager.Load<Texture2D>("flameTowerMenuInactive");
             missileTowerBuildInactiveTexture = contentManager.Load<Texture2D>("missileTowerMenuInactive");
-            canonTowerBuildInactiveTexture = contentManager.Load<Texture2D>("cannonTowerSmallInactive");
+            canonTowerBuildInactiveTexture = contentManager.Load<Texture2D>("connonTowerSmallInactive");
             magicTowerBuildInactiveTexture = contentManager.Load<Texture2D>("healingStone");
             
             font = contentManager.Load<SpriteFont>("font");
