@@ -324,7 +324,7 @@ namespace RTS
 
         private void addToCurveList()
         {
-            for (int i = 0; i < 4 && waypoints.Count >= 4-i; i++)
+            for (int i = 0; i < 4 && waypoints.Count >= 1; i++)
             {
                 if (i == 3)
                 {
@@ -333,9 +333,11 @@ namespace RTS
                 else
                 {
                     curve.Add(waypoints.Dequeue());
-                    waypoints.Dequeue();
-                    waypoints.Dequeue();
-                    waypoints.Dequeue();
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (waypoints.Count >=1) waypoints.Dequeue();
+
+                    }
                 }
             }
             if (curve.Count != 0) destination = curve[curve.Count - 1];
