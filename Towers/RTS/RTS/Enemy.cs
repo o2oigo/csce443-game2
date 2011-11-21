@@ -49,7 +49,7 @@ namespace RTS
         private float shootTimer = 1.0f;
         private float circle = MathHelper.Pi * 2;
 
-        const float atDestinationLimit = 0.001f;
+        const float atDestinationLimit = 0.01f;
 
         #region Properties
         private NodeList waypoints;
@@ -333,10 +333,9 @@ namespace RTS
                 else
                 {
                     curve.Add(waypoints.Dequeue());
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j < 4; j++)
                     {
                         if (waypoints.Count >=1) waypoints.Dequeue();
-
                     }
                 }
             }
@@ -382,26 +381,8 @@ namespace RTS
 
                     direction.Normalize();
                     position = GetPoint(curveTimer, pos[0], pos[1], pos[2], pos[3]);
-                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.3f;
+                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.4f;
                 }
-                //if (waypoints.Count >= 1)
-                //{
-                //    destination = waypoints.Peek();
-                //}
-
-                //if (AtDestination && waypoints.Count >= 1)
-                //{
-                //    waypoints.Dequeue();
-                //}
-
-                //if (!AtDestination)
-                //{
-                //    direction = -(position - destination);
-                //
-                //    direction.Normalize();
-                //    position = position + (Direction *
-                //        MoveSpeed * elapsedTime);
-                //}
             }
         }
 

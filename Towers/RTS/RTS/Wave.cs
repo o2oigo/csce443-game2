@@ -50,9 +50,13 @@ namespace RTS
                     NormalEnemy normal2 = new NormalEnemy();
                     normal2.Initialize(game);
                     normal2.LoadContent();
+                    AttackingEnemy normal4 = new AttackingEnemy();
+                    normal4.Initialize(game);
+                    normal4.LoadContent();
 
                     enemyQueue.Enqueue(normal1);
                     enemyQueue.Enqueue(normal2);
+                    enemyQueue.Enqueue(normal4);
 
                 }
                 else if (i == 2)

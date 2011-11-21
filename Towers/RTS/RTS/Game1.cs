@@ -383,13 +383,13 @@ namespace RTS
                 }
 
                 //Loop through all enemies
-                Rectangle houseRect = new Rectangle((int)house.Origin.X - (house.Texture.Width / 2), (int)house.Origin.Y, house.Texture.Width , house.Texture.Height/2);
+                Rectangle houseRect = new Rectangle((int)House.Origin.X - (House.Texture.Width / 2) + 30, (int)House.Origin.Y - 40, House.Texture.Width - 30, House.Texture.Height / 4);
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
-                    Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.Position.X - currentEnemy.getOrigin().X), (int)(currentEnemy.Position.Y - currentEnemy.getOrigin().Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
-
+                    //Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.Position.X - currentEnemy.getOrigin().X), (int)(currentEnemy.Position.Y - currentEnemy.getOrigin().Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
+                    Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.Position.X), (int)(currentEnemy.Position.Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
                     //Ckeck if current enemy and exit point                   
                     //if (map.TileTypeAt(currentEnemy.Position) == MapTileType.MapExit)
                     if (currentEnemyRect.Intersects(houseRect))
