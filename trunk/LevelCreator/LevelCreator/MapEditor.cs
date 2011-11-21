@@ -9,9 +9,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Threading;
-
-
 
 
 namespace LevelCreator
@@ -207,14 +204,41 @@ namespace LevelCreator
         {
             public class AssetContainer
             {
-                public string NumberRows;
-                public string NumberColumns;
-                public string Start;
-                public string End;
-                public string Grass;
-                public string Dirt;
-                public string Tree;
-                public string Barrier;
+                [XmlAttribute("Type")]
+                public string Type
+                { get; set; }
+
+                [XmlElement("NumberRows")]
+                public string NumberRows
+                { get; set; }
+
+                [XmlElement("NumberColumns")]
+                public string NumberColumns
+                { get; set; }
+
+                [XmlElement("Start")]
+                public string Start
+                { get; set; }
+
+                [XmlElement("End")]
+                public string End
+                { get; set; }
+
+                [XmlElement("Grass")]
+                public string Grass
+                { get; set; }
+
+                [XmlElement("Dirt")]
+                public string Dirt
+                { get; set; }
+
+                [XmlElement("Trees")]
+                public string Trees
+                { get; set; }
+
+                [XmlElement("Barriers")]
+                public string Barriers
+                { get; set; }
             }
 
             public AssetContainer Asset = new AssetContainer();
@@ -583,12 +607,12 @@ namespace LevelCreator
                     }
 
                     // Load in Tree Tiles
-                    for (int i = 0; i < currentContent.Asset.Tree.Length; i++)
+                    for (int i = 0; i < currentContent.Asset.Trees.Length; i++)
                     {
                         // Parse XML for numbers
-                        if (currentContent.Asset.Tree[i] != ' ')
+                        if (currentContent.Asset.Trees[i] != ' ')
                         {
-                            temp += currentContent.Asset.Tree[i];
+                            temp += currentContent.Asset.Trees[i];
                         }
                         else
                         {
@@ -704,12 +728,12 @@ namespace LevelCreator
                     }
 
                     // Load Barrier Tiles
-                    for (int i = 0; i < currentContent.Asset.Barrier.Length; i++)
+                    for (int i = 0; i < currentContent.Asset.Barriers.Length; i++)
                     {
                         // Parse XML for numbers
-                        if (currentContent.Asset.Barrier[i] != ' ')
+                        if (currentContent.Asset.Barriers[i] != ' ')
                         {
-                            temp += currentContent.Asset.Barrier[i];
+                            temp += currentContent.Asset.Barriers[i];
                         }
                         else
                         {
@@ -776,14 +800,15 @@ namespace LevelCreator
                 XmlSerializer serializer = new XmlSerializer(typeof(XnaContent));
                 XnaContent content = new XnaContent();
 
+                content.Asset.Type = "PathfindingData.MapData";
                 content.Asset.NumberRows = HeightInTiles.ToString();
                 content.Asset.NumberColumns = WidthInTiles.ToString();
                 content.Asset.Start = "";
                 content.Asset.End = "";
                 content.Asset.Grass = "";
                 content.Asset.Dirt = "";
-                content.Asset.Tree = "";
-                content.Asset.Barrier = "";
+                content.Asset.Trees = "";
+                content.Asset.Barriers = "";
 
                 // Write the level file
                 for (int i = 0; i < WidthInTiles; i++)
@@ -794,7 +819,7 @@ namespace LevelCreator
                         switch (MapOfTiles[i, j].TileType)
                         {
                             case SelectedTile.TreeTile:
-                                content.Asset.Tree += i.ToString() + ' ' + j.ToString() + ' ';
+                                content.Asset.Trees += i.ToString() + ' ' + j.ToString() + ' ';
                                 break;
                             case SelectedTile.DirtTile:
                                 content.Asset.Dirt += i.ToString() + ' ' + j.ToString() + ' ';
@@ -809,7 +834,7 @@ namespace LevelCreator
                                 content.Asset.End += i.ToString() + ' ' + j.ToString() + ' ';
                                 break;
                             case SelectedTile.BarrierTile:
-                                content.Asset.Barrier += i.ToString() + ' ' + j.ToString() + ' ';
+                                content.Asset.Barriers += i.ToString() + ' ' + j.ToString() + ' ';
                                 break;
                             default:
                                 break;
