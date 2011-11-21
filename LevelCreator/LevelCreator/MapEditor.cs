@@ -491,9 +491,9 @@ namespace LevelCreator
                 sPathToLevelFiles = Path.Combine(sDirectoryName, sFilenameNoExt);
 
                 // Check to see if level files exist
-                if (!File.Exists(sPathToLevelFiles + "_16.lvl") &&
-                    !File.Exists(sPathToLevelFiles + "_32.lvl") &&
-                    !File.Exists(sPathToLevelFiles + "_64.lvl"))
+                if (!File.Exists(sPathToLevelFiles + "_16.xml") &&
+                    !File.Exists(sPathToLevelFiles + "_32.xml") &&
+                    !File.Exists(sPathToLevelFiles + "_64.xml"))
                 {
                     MessageBox.Show("No level file(s) found. A new one will be generated for current tile size.");
                 }
@@ -506,8 +506,8 @@ namespace LevelCreator
 
         private void LoadTileFile()
         {
-//            string path = sPathToLevelFiles + "_" + tileSize_ComboBox1.SelectedText + ".lvl";
-            string path = sPathToLevelFiles + "_16.lvl";
+//            string path = sPathToLevelFiles + "_" + tileSize_ComboBox1.SelectedText + ".xml";
+            string path = sPathToLevelFiles + "_16.xml";
 
             if (File.Exists(path))
             {
@@ -847,7 +847,7 @@ namespace LevelCreator
                 //NewBackgroundImage.Save("C:\\test.png", System.Drawing.Imaging.ImageFormat.Png);
 
                 // Create an XmlTextWriter using a FileStream.
-                Stream stream = new FileStream(sPathToLevelFiles + "_" + tileSize_ComboBox1.SelectedItem + ".lvl", FileMode.Create);
+                Stream stream = new FileStream(sPathToLevelFiles + "_" + tileSize_ComboBox1.SelectedItem + ".xml", FileMode.Create);
                 XmlWriter writer = new XmlTextWriter(stream, Encoding.Unicode);
 
                 // Serialize using the XmlTextWriter.
@@ -906,9 +906,9 @@ namespace LevelCreator
                 sPathToLevelFiles = Path.Combine(sDirectoryName, sFilenameNoExt);
 
                 // Check to see if level files exist
-                if (!File.Exists(sPathToLevelFiles + "_16.lvl") &&
-                    !File.Exists(sPathToLevelFiles + "_32.lvl") &&
-                    !File.Exists(sPathToLevelFiles + "_64.lvl"))
+                if (!File.Exists(sPathToLevelFiles + "_16.xml") &&
+                    !File.Exists(sPathToLevelFiles + "_32.xml") &&
+                    !File.Exists(sPathToLevelFiles + "_64.xml"))
                 {
                     MessageBox.Show("No level file(s) found. A new one will be generated for current tile size.");
                 }
