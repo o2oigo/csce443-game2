@@ -26,7 +26,7 @@ namespace RTS
             : base(game, playerIndex, startPosition)
         {
             towerName = "Arrow Tower";
-            damage = new Damage(1, this.ilevel, ElementType.Normal, null);      
+            damage = new Damage(10, this.ilevel, ElementType.Normal, null);      
         }
 
         public override void  LoadContent()
@@ -92,7 +92,7 @@ namespace RTS
         {
             //arrowTowerTexture = arrowTowerUpgradeTexture;
             shotsToDestroy = 150;
-            damage.amount = 3;
+            damage.amount = 20;
             //damage.type = ElementType.Normal;
             level = "level 2";
             ilevel = 2;

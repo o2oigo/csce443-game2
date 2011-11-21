@@ -77,7 +77,7 @@ namespace RTS
         {
             // tell sprite batch to begin, using the spriteBlendMode specified in
             // initializeConstants
-            game.getSpriteBatch().Begin(SpriteSortMode.Deferred, blendState);
+            game.getSpriteBatch().Begin(SpriteSortMode.Deferred, blendState, SamplerState.PointClamp, null, null, null, camera.ViewMatrix);
 
             foreach (Particle p in particles)
             {
@@ -114,7 +114,7 @@ namespace RTS
 
             game.getSpriteBatch().End();
 
-            base.Draw(gameTime);
+           // base.Draw(gameTime);
         }
     }
 }
