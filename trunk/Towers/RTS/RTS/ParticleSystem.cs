@@ -163,7 +163,7 @@ namespace RTS
         /// it has a large impact on the amount of memory required, and slows down the
         /// Update and Draw functions.</remarks>
         /// 
-        Camera camera;
+        protected Camera camera;
 
         protected ParticleSystem(Game1 game, int howManyEffects, Camera _camera)
             : base(game)

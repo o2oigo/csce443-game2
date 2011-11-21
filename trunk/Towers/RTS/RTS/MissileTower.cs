@@ -19,11 +19,6 @@ namespace RTS
             towerName = "cannon12";
             this.ilevel = level;
             damage = new Damage(30, this.ilevel, ElementType.Normal, null);
-            if (isFire)
-            {
-                damage.type = ElementType.Fire;
-               // damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
-            }
             if (level == 2)
                 setToLvlTwo();
 

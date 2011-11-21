@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
 
 namespace RTS
 {
@@ -16,11 +17,13 @@ namespace RTS
         public Missile(Enemy target)
         {
             this.target = target;
+            this.missileAngle = (float)-Math.PI / 2;
         }
 
         public override void Update(GameTime gameTime)
         {
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            time += elapsedTime * 1.2f;
             if (target != null)
             {
                 Vector2 point = GetPoint(time, originalPosition, new Vector2(originalPosition.X, originalPosition.Y - 600), target.Position, target.Position);
@@ -28,7 +31,6 @@ namespace RTS
                 missileAngle = missileAngle % (MathHelper.Pi * 2);
                 projectilePosition = point;
             }
-            time += elapsedTime * 1.2f;
         }
 
         private Vector2 GetPoint(float t, Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3)
