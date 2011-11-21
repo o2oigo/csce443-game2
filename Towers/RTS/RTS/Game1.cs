@@ -58,7 +58,7 @@ namespace RTS
         // public ExplosionParticleSystem explosion2;
         public ExplosionSmokeParticleSystem smoke;
 
-        int live = 10;
+        int live = 100;
 
         public FireParticleSystem fire;
         public FireParticleSystem fireTower;
@@ -620,7 +620,7 @@ namespace RTS
 
             enemyTimer = 0;
             enemySpawnTime = 1f;
-            live = 10;
+            live = 100;
 
             camera.ResetCamera();
         }

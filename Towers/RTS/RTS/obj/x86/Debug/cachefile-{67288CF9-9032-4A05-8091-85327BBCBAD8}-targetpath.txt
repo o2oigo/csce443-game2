@@ -140,3 +140,15 @@ Content\Map1.xnb
 Content\Map2.xnb
 Content\Map3.xnb
 Content\Map4.xnb
+Content\snFront.xnb
+Content\snRightDown.xnb
+Content\snRight.xnb
+Content\snRightUp.xnb
+Content\snBack.xnb
+Content\stRightDown.xnb
+Content\stRightUp.xnb
+Content\fFront.xnb
+Content\fRight.xnb
+Content\fRightDown.xnb
+Content\fRightUp.xnb
+Content\fBack.xnb

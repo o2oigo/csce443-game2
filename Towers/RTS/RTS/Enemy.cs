@@ -237,37 +237,40 @@ namespace RTS
             double dir = Math.Atan2(direction.Y, direction.X);
             dir = dir % circle;
 
-            if (Math.Abs(dir) > (Math.PI * (0.75)) && Math.Abs(dir) <= Math.PI) { animation.CurrentSprite = "left"; }
+            if (Math.Abs(dir) > (Math.PI * (0.75)) && Math.Abs(dir) <= Math.PI) 
+            {
+                isFlipped = SpriteEffects.FlipHorizontally;
+                animation.CurrentSprite = "right";
+            }
             else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI * 0.25)
             {
-                animation.CurrentSprite = "left";
-                isFlipped = SpriteEffects.FlipHorizontally;
+                animation.CurrentSprite = "right";
+                //isFlipped = SpriteEffects.FlipHorizontally;
             }
             else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25) {animation.CurrentSprite = "front";}
             else if (dir <= -Math.PI * (0.75) && dir > -Math.PI * 0.25) { animation.CurrentSprite = "back"; }
             else{ animation.CurrentSprite = "back"; }
 
-            //if (direction.X < 0 && direction.Y ==0)
-            //else if (direction.X < 0 && direction.Y > 0)
+            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
             //{
             //    animation.CurrentSprite = "rightUp";
             //    isFlipped = SpriteEffects.FlipHorizontally;
             //}
-            //else if (direction.X < 0 && direction.Y < 0)
+            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
             //{
             //    animation.CurrentSprite = "rightDown";
             //    isFlipped = SpriteEffects.FlipHorizontally;
             //}
 
-            //else if (direction.X > 0 && direction.Y > 0)
+            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
             //{
             //    animation.CurrentSprite = "rightUp";
             //}
-            //else if (direction.X > 0 && direction.Y < 0)
+            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
             //{
             //    animation.CurrentSprite = "rightDown";
             //}
-            //else if (direction.X == 0 && direction.Y > 0)
+            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
         }
 
         public void updateMovement(Tower tower)
@@ -478,7 +481,6 @@ namespace RTS
             hp -= burnDmg*dmgOffset;
             if (hp <= 0)
                 dead = true;
-            
         }
 
         public void effectStun()
