@@ -239,6 +239,10 @@ namespace LevelCreator
                 [XmlElement("Barriers")]
                 public string Barriers
                 { get; set; }
+
+                [XmlElement("Buildings")]
+                public string Buildings
+                { get; set; }
             }
 
             public AssetContainer Asset = new AssetContainer();
@@ -809,6 +813,7 @@ namespace LevelCreator
                 content.Asset.Dirt = "";
                 content.Asset.Trees = "";
                 content.Asset.Barriers = "";
+                content.Asset.Buildings = "";
 
                 // Write the level file
                 for (int i = 0; i < WidthInTiles; i++)
