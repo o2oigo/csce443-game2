@@ -143,6 +143,10 @@ Content\fRight.xnb
 Content\fRightDown.xnb
 Content\fRightUp.xnb
 Content\fBack.xnb
+Content\magicTower.xnb
+Content\magicTowerMenu.xnb
+Content\magicTowerMenuInactive.xnb
+Content\magicTowerMenuSelected.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb
