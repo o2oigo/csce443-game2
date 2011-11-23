@@ -120,6 +120,7 @@
     <Compile Include="FlameTowerSmokeParticleSystem.cs" />
     <Compile Include="LightningParticleSystem.cs" />
     <Compile Include="LightningTower.cs" />
+    <Compile Include="MagicTower.cs" />
     <Compile Include="MainUI.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Missile.cs" />

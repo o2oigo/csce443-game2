@@ -228,7 +228,6 @@ namespace RTS
             {
                 restartGame();
                 userInterface.setRestartGameStatus(false);
-                
             }
             userInterface.Update();
 
