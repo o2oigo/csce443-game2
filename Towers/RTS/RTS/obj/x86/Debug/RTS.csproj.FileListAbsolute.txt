@@ -237,10 +237,6 @@ E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cannon6.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cannon7.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cannon8.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cannon9.xnb
-E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.1.xnb
-E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront1.xnb
-E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.1.xnb
-E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.1.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\wizard.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\wizardTurret.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.xnb
@@ -652,3 +648,4 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb
 C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb

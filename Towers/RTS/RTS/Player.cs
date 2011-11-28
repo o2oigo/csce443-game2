@@ -253,11 +253,6 @@ namespace RTS
                 tower.Draw(spriteBatch);
             }
 
-            spriteBatch.DrawString(font, fireStoneInInventory + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
-            spriteBatch.DrawString(font, waterStoneInInventory + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
-            spriteBatch.DrawString(font, healStoneInInventory + " Heal Stone", uiPosition2, Color.Black);
-            spriteBatch.DrawString(font, "Resources: " + money, uiPosition1, Color.Black);
-
             foreach (Tower tower in towerList)
             {
                 tower.Draw(spriteBatch);
@@ -813,10 +808,9 @@ namespace RTS
                             // for cannon tower
                             else if (shootRotationAngle >= -1.9 && shootRotationAngle < -1.51)
                             {
-                                if (money >= 15 && fireStoneInInventory > 0)
+                                if (money >= 15)
                                 {
                                     removeMoney(15);
-                                    removeStoneFromInventory(0);
                                     int level = 1;
                                     bool isFire = true;
                                     createMissileTower(Position, level, isFire);
@@ -1253,6 +1247,25 @@ namespace RTS
         public bool getMaxTower()
         {
             return maxCapacityTower;
+        }
+
+        public int getMoney()
+        {
+            return money;
+        }
+
+
+        public int getFireStoneInInventory()
+        {
+            return fireStoneInInventory;
+        }
+        public int getWaterStoneInInventory()
+        {
+            return waterStoneInInventory;
+        }
+        public int getHealStoneInInventory()
+        {
+            return healStoneInInventory;
         }
 
         //If the player was hit by an enemy or projectile

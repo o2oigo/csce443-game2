@@ -18,6 +18,9 @@ namespace RTS
         GraphicsDevice graphicsDevice;
         SpriteBatch spriteBatch;
         private PlayerIndex playerIndex;
+        List<Player> players;
+        Player player1;
+        Player player2;
 
         public bool booltest = false;
         SpriteFont font;
@@ -65,9 +68,10 @@ namespace RTS
         private Texture2D startMenuTexture;
         private Texture2D gameoverScreenBackground;
 
-        public void Initialize(Game1 game, PlayerIndex index, Vector2 startPosition)
+        public void Initialize(Game1 game, PlayerIndex index, Vector2 startPosition, List<Player> _players)
         {
             this.game = game;
+            players = _players;
             contentManager = game.Content;
             graphicsDevice = game.GraphicsDevice;
             currentState = GamePad.GetState(playerIndex);
@@ -75,7 +79,9 @@ namespace RTS
             showGameScreen = false;
             showPauseScreen = false;
             showGameOverScreen = false;
-            restartGame = false;          
+            restartGame = false;
+            player1 = players[0];
+            //player2 = players[1];
         }
        
 
@@ -96,7 +102,10 @@ namespace RTS
             spriteBatch = SB;
             int width = game.GraphicsDevice.Viewport.Width;
             int height = game.GraphicsDevice.Viewport.Height;
-            uiPosition1 = new Vector2(width - 600, height - 50);
+            uiPosition1 = new Vector2(80, game.GraphicsDevice.Viewport.Height - 50);
+            uiPosition2 = new Vector2(250, game.GraphicsDevice.Viewport.Height - 70);
+            uiPosition3 = new Vector2(500, game.GraphicsDevice.Viewport.Height - 70);
+            uiPosition4 = new Vector2(700, game.GraphicsDevice.Viewport.Height - 70);
             if (currentState.IsConnected)//Game Pad
             {
                 if (showTitleScreen == true)
@@ -135,6 +144,7 @@ namespace RTS
 
                 if (showGameScreen == true)
                 {
+                    spriteBatch.DrawString(font, "Resources: ", uiPosition2, Color.Black);
                     if (nextWave == 1)
                     {
                         spriteBatch.DrawString(font, "Next Wave: Normal", uiPosition1, Color.Black);
@@ -232,7 +242,35 @@ namespace RTS
 
                 if (showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, "Next Wave ", uiPosition1, Color.Black);
+                    spriteBatch.DrawString(font, player1.getFireStoneInInventory() + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
+                    spriteBatch.DrawString(font, player1.getWaterStoneInInventory() + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
+                    spriteBatch.DrawString(font, player1.getHealStoneInInventory() + " Heal Stone", uiPosition2, Color.Black);
+                    spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
+                    
+                    if (nextWave == 1)
+                    {
+                        spriteBatch.DrawString(font, "Next Wave: Normal", uiPosition4, Color.Black);
+                    }
+                    else if (nextWave == 2)
+                    {
+                        spriteBatch.DrawString(font, "Next Wave: Normal", uiPosition4, Color.Black);
+                    }
+                    else if (nextWave == 3)
+                    {
+                        spriteBatch.DrawString(font, "Next Wave: High HP", uiPosition4, Color.Black);
+                    }
+                    else if (nextWave == 4)
+                    {
+                        spriteBatch.DrawString(font, "Next Wave: High HP", uiPosition4, Color.Black);
+                    }
+                    else if (nextWave == 5)
+                    {
+                        spriteBatch.DrawString(font, "Next Wave: Fast", uiPosition4, Color.Black);
+                    }
+                    else if (nextWave == 6)
+                    {
+                        spriteBatch.DrawString(font, "Next Wave: ???", uiPosition4, Color.Black);
+                    }
                 }
             }
 
