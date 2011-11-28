@@ -403,10 +403,6 @@ C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\cannon6.xnb
 C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\cannon7.xnb
 C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\cannon8.xnb
 C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\cannon9.xnb
-C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.1.xnb
-C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront1.xnb
-C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.1.xnb
-C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.1.xnb
 C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\wizard.xnb
 C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\wizardTurret.xnb
 C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.xnb
@@ -655,3 +651,4 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\obj\x86\Debug\Microsoft.X
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb
+C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb
