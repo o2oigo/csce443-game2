@@ -24,15 +24,15 @@ namespace RTS
         #region Fields
 
         private Vector2 tileSquareCenter;
-        private Texture2D tileTexture;
+        //private Texture2D tileTexture;
         private Texture2D endTexture;
-        private Vector2 dotTextureCenter;
-        private Texture2D barrierTexture;
-        private Texture2D treeTexture;
+        //private Vector2 dotTextureCenter;
+        //private Texture2D barrierTexture;
+        //private Texture2D treeTexture;
 
         private List<MapData> maps;
         private MapTileType[,] mapTiles;
-        private int currentMap;
+        private int currentMap = 0;
         private int numberColumns;
         private int numberRows;
 
@@ -82,6 +82,7 @@ namespace RTS
             get { return mapReload; }
             set { mapReload = value; }
         }
+
         private bool mapReload;
 
         public List<Point> getTrees()
@@ -310,6 +311,13 @@ namespace RTS
         public int StepDistanceToEnd(Point point)
         {
             return StepDistance(point, endTile);
+        }
+
+        public void NextMap()
+        {
+            currentMap++;
+            ReloadMap();
+            tileSquareCenter = new Vector2(tileSize / 2);
         }
 
         public void ReloadMap()

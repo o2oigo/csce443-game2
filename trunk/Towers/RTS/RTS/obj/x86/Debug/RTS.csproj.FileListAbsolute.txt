@@ -75,10 +75,6 @@ C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\cannon6.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\cannon7.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\cannon8.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\cannon9.xnb
-C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.1.xnb
-C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront1.xnb
-C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.1.xnb
-C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.1.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\wizard.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\wizardTurret.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfBack.xnb
@@ -86,7 +82,6 @@ C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfFront.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRight.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTower.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\lightningTowerUpgrade.xnb
-C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfLeft.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileFireEmpty.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileFireEmptyDebug.xnb
 C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\missile.xnb
@@ -649,3 +644,10 @@ C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
 C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb
 C:\443game\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb
+C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\magicTower.xnb
+C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\magicTowerMenu.xnb
+C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\magicTowerMenuInactive.xnb
+C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\magicTowerMenuSelected.xnb
+C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightUp.xnb
+C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightDown.xnb
+C:\RTS\Towers\csce443-game2\Towers\RTS\RTS\bin\x86\Debug\Content\puddingFront.xnb

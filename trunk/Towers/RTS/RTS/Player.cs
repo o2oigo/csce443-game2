@@ -128,12 +128,15 @@ namespace RTS
             Texture2D tFront = contentManager.Load<Texture2D>("elfFront");
             Texture2D tBack = contentManager.Load<Texture2D>("elfBack");
             Texture2D tRight = contentManager.Load<Texture2D>("elfRight");
-            Texture2D tLeft = contentManager.Load<Texture2D>("elfLeft");
+            Texture2D tRightDown = contentManager.Load<Texture2D>("elfRightDown");
+            Texture2D tRightUp = contentManager.Load<Texture2D>("elfRightUp");
             Dictionary<String, SpriteSheet> txtMap = new Dictionary<string, SpriteSheet>();
-            txtMap["front"] = new SpriteSheet(tFront, 16);
-            txtMap["back"] = new SpriteSheet(tBack, 16);
-            txtMap["right"] = new SpriteSheet(tRight, 16);
-            txtMap["left"] = new SpriteSheet(tLeft, 16);
+            txtMap["front"] = new SpriteSheet(tFront, 22);
+            txtMap["back"] = new SpriteSheet(tBack, 22);
+            txtMap["right"] = new SpriteSheet(tRight, 22);
+            txtMap["rightUp"] = new SpriteSheet(tRightUp, 22);
+            txtMap["rightDown"] = new SpriteSheet(tRightDown, 22);
+            //txtMap["left"] = new SpriteSheet(tLeft, 16);
 
             animation = new SpriteAnimation(txtMap, true);
             animation.CurrentSprite = "front";
@@ -201,14 +204,14 @@ namespace RTS
             {
                 isFlipped = SpriteEffects.None;
                 animation.Loop = true; 
-                if (Math.Abs(moveRotationAngle) == 0)
+                if (moveRotationAngle == 0)
                 {
-                    animation.CurrentSprite = "left";
-                    isFlipped = SpriteEffects.FlipHorizontally;
+                    animation.CurrentSprite = "right";
                 }
-                else if (Math.Abs(moveRotationAngle) == Math.PI)
+                else if (moveRotationAngle == Math.PI)
                 {
-                    animation.CurrentSprite = "left";
+                    animation.CurrentSprite = "right";
+                    isFlipped = SpriteEffects.FlipHorizontally;
                 }
                 else if (moveRotationAngle == -Math.PI / 2)
                 {
@@ -218,22 +221,23 @@ namespace RTS
                 {
                     animation.CurrentSprite = "front";
                 }
-                else if (Math.Abs(moveRotationAngle) > 0 && Math.Abs(moveRotationAngle) < Math.PI / 2)
+                else if (moveRotationAngle > 0 && moveRotationAngle < Math.PI / 2)
                 {
-                    animation.CurrentSprite = "left";
+                    animation.CurrentSprite = "rightDown";
+                }
+                else if (moveRotationAngle > Math.PI / 2 && moveRotationAngle < Math.PI)
+                {
+                    animation.CurrentSprite = "rightDown";
                     isFlipped = SpriteEffects.FlipHorizontally;
                 }
-                else if (Math.Abs(moveRotationAngle) > Math.PI / 2 && Math.Abs(moveRotationAngle) <= Math.PI)
+                else if (moveRotationAngle < 0 && moveRotationAngle > -Math.PI / 2)
                 {
-                    animation.CurrentSprite = "left";
+                    animation.CurrentSprite = "rightUp";
                 }
-                else if (moveRotationAngle == -Math.PI / 2)
+                else if (moveRotationAngle < -(Math.PI / 2) && moveRotationAngle > -Math.PI)
                 {
-                    animation.CurrentSprite = "back";
-                }
-                else if (moveRotationAngle == Math.PI / 2)
-                {
-                    animation.CurrentSprite = "front";
+                    animation.CurrentSprite = "rightUp";
+                    isFlipped = SpriteEffects.FlipHorizontally;
                 }
             }
             spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White, 0f, origin, 1.0f, isFlipped, 0f);
@@ -984,7 +988,7 @@ namespace RTS
                 }
             }
 
-            Rectangle houseRect = new Rectangle((int)game.House.Origin.X - (game.House.Texture.Width / 2) + 30, (int)game.House.Origin.Y - 40, game.House.Texture.Width - 30, game.House.Texture.Height / 4);
+            Rectangle houseRect = new Rectangle((int)game.House.Origin.X - (game.House.Texture.Width / 2) + 30, (int)game.House.Origin.Y - 40, game.House.Texture.Width - 30, game.House.Texture.Height / 6);
             if (houseRect.Intersects(player))
             {
                 collision = true;
