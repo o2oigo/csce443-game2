@@ -35,8 +35,8 @@ namespace RTS
             txtMap["front"] = new SpriteSheet(tFront, 1);
             txtMap["back"] = new SpriteSheet(tBack, 1);
             txtMap["right"] = new SpriteSheet(tRight, 1);
-            txtMap["rightdown"] = new SpriteSheet(tRightDown, 1);
-            txtMap["rightup"] = new SpriteSheet(tRightUp, 1);
+            txtMap["rightDown"] = new SpriteSheet(tRightDown, 1);
+            txtMap["rightUp"] = new SpriteSheet(tRightUp, 1);
            //txtMap["left"] = new SpriteSheet(tLeft, 1);
 
             animation = new SpriteAnimation(txtMap, true);
@@ -75,8 +75,8 @@ namespace RTS
             txtMap["back"] = new SpriteSheet(tBack, 1);
             txtMap["right"] = new SpriteSheet(tRight, 1);
             //txtMap["left"] = new SpriteSheet(tLeft, 1);
-            txtMap["rightdown"] = new SpriteSheet(tRightDown, 1);
-            txtMap["rightup"] = new SpriteSheet(tRightUp, 1);
+            txtMap["rightDown"] = new SpriteSheet(tRightDown, 1);
+            txtMap["rightUp"] = new SpriteSheet(tRightUp, 1);
 
             animation = new SpriteAnimation(txtMap, true);
             animation.CurrentSprite = "front";
@@ -111,8 +111,8 @@ namespace RTS
             txtMap["front"] = new SpriteSheet(tFront, 1);
             txtMap["back"] = new SpriteSheet(tBack, 1);
             txtMap["right"] = new SpriteSheet(tRight, 1);
-            txtMap["rightdown"] = new SpriteSheet(tRightDown, 1);
-            txtMap["rightup"] = new SpriteSheet(tRightUp, 1);
+            txtMap["rightDown"] = new SpriteSheet(tRightDown, 1);
+            txtMap["rightUp"] = new SpriteSheet(tRightUp, 1);
 
             animation = new SpriteAnimation(txtMap, true);
             animation.CurrentSprite = "front";
@@ -142,12 +142,16 @@ namespace RTS
             Texture2D tFront = contentManager.Load<Texture2D>("elfFront");
             Texture2D tBack = contentManager.Load<Texture2D>("elfBack");
             Texture2D tRight = contentManager.Load<Texture2D>("elfRight");
-            Texture2D tLeft = contentManager.Load<Texture2D>("elfLeft");
+            Texture2D tRightDown = contentManager.Load<Texture2D>("elfRightDown");
+            Texture2D tRightUp = contentManager.Load<Texture2D>("elfRightUp");
+            //Texture2D tLeft = contentManager.Load<Texture2D>("elfLeft");
             Dictionary<String, SpriteSheet> txtMap = new Dictionary<string, SpriteSheet>();
-            txtMap["front"] = new SpriteSheet(tFront, 16);
-            txtMap["back"] = new SpriteSheet(tBack, 16);
-            txtMap["right"] = new SpriteSheet(tRight, 16);
-            txtMap["left"] = new SpriteSheet(tLeft, 16);
+            txtMap["front"] = new SpriteSheet(tFront, 22);
+            txtMap["back"] = new SpriteSheet(tBack, 22);
+            txtMap["right"] = new SpriteSheet(tRight, 22);
+            txtMap["rightUp"] = new SpriteSheet(tRightUp, 22);
+            txtMap["rightDown"] = new SpriteSheet(tRightDown, 22);
+            //txtMap["left"] = new SpriteSheet(tLeft, 16);
 
             animation = new SpriteAnimation(txtMap, true);
             animation.CurrentSprite = "front";

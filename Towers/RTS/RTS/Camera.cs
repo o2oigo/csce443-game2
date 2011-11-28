@@ -43,7 +43,7 @@ namespace RTS
             graphicsDevice = _game.GraphicsDevice;
             currentState = GamePad.GetState(_playerIndex);
             Limits = null;
-            Limits = new Rectangle(0, 0, 1980, 1524);
+            Limits = new Rectangle(0, 0, 1984, 1536);
             players = _players;
         }
 

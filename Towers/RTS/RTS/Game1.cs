@@ -48,7 +48,6 @@ namespace RTS
             get { return house; }
         }
 
-
         float enemyTimer = 0;
         float enemySpawnTime = 1f;
         Random rand = new Random();
@@ -88,10 +87,7 @@ namespace RTS
             //this.graphics.IsFullScreen = true;
             
             map = new Map();
-
-            
-
-            
+  
         }
 
         public SpriteBatch getSpriteBatch()
