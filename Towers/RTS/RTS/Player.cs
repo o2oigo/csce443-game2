@@ -201,7 +201,24 @@ namespace RTS
             {
                 isFlipped = SpriteEffects.None;
                 animation.Loop = true; 
-                if (Math.Abs(moveRotationAngle) >= 0 && Math.Abs(moveRotationAngle) < Math.PI / 2)
+                if (Math.Abs(moveRotationAngle) == 0)
+                {
+                    animation.CurrentSprite = "left";
+                    isFlipped = SpriteEffects.FlipHorizontally;
+                }
+                else if (Math.Abs(moveRotationAngle) == Math.PI)
+                {
+                    animation.CurrentSprite = "left";
+                }
+                else if (moveRotationAngle == -Math.PI / 2)
+                {
+                    animation.CurrentSprite = "back";
+                }
+                else if (moveRotationAngle == Math.PI / 2)
+                {
+                    animation.CurrentSprite = "front";
+                }
+                else if (Math.Abs(moveRotationAngle) > 0 && Math.Abs(moveRotationAngle) < Math.PI / 2)
                 {
                     animation.CurrentSprite = "left";
                     isFlipped = SpriteEffects.FlipHorizontally;

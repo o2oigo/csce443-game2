@@ -75,10 +75,6 @@ Content\cannon6.xnb
 Content\cannon7.xnb
 Content\cannon8.xnb
 Content\cannon9.xnb
-Content\elfBack.1.xnb
-Content\elfFront1.xnb
-Content\elfLeft.1.xnb
-Content\elfRight.1.xnb
 Content\wizard.xnb
 Content\wizardTurret.xnb
 Content\elfBack.xnb
@@ -156,3 +152,4 @@ Content\Map1.xnb
 Content\Map2.xnb
 Content\Map3.xnb
 Content\Map4.xnb
+Content\elfRightDown.xnb
