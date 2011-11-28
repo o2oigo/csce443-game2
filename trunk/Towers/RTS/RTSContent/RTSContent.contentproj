@@ -554,26 +554,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="elfBack.1.png">
-      <Name>elfBack.1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="elfFront1.png">
-      <Name>elfFront1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="elfLeft.1.png">
-      <Name>elfLeft.1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="elfRight.1.png">
-      <Name>elfRight.1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="wizard.png">
       <Name>wizard</Name>
       <Importer>TextureImporter</Importer>
@@ -945,6 +925,13 @@
     </Compile>
     <Compile Include="magicTowerMenuSelected.png">
       <Name>magicTowerMenuSelected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="elfRightDown.png">
+      <Name>elfRightDown</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
