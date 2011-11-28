@@ -139,9 +139,6 @@ namespace RTS
             stones = new List<Stone>();
             trees = new List<Tree>();
 
-            userInterface = new UserInterface();
-            userInterface.Initialize(this, PlayerIndex.One, new Vector2(100, 100));
-            userInterface.LoadContent();
             player1 = new Player();
             player1.Initialize(this, PlayerIndex.One, new Vector2(300, 400));
             player1.LoadContent("wizard");
@@ -153,6 +150,11 @@ namespace RTS
 
             players.Add(player1);
             //  players.Add(player2);
+
+
+            userInterface = new UserInterface();
+            userInterface.Initialize(this, PlayerIndex.One, new Vector2(100, 100), players);
+            userInterface.LoadContent();
 
             //PATHFINDING//
             map.LoadContent(Content);
@@ -332,6 +334,13 @@ namespace RTS
                 }
 
             }
+
+            spriteBatch.End();
+
+
+            // note
+
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
             userInterface.Draw(spriteBatch);
             
