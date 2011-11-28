@@ -7,45 +7,42 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace RTS
 {
-    class FlameTower : Tower
+    class IceTower : Tower
     {
-        Texture2D flameTexture;
-        Texture2D flameTowerTexture;
-        Texture2D flameTowerUpgradeTexture;
-        public FlameTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
+        Texture2D iceTexture;
+        Texture2D iceTowerTexture;
+        Texture2D iceTowerUpgradeTexture;
+        //List<AOEProjectile> AOEProjectileList(20); //NEED TO MAKE AOEPROJECTILES FOR ICE TOWER 
+        public IceTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
             : base(game, playerIndex, startPosition)
         {
-            flameTexture = game.Content.Load<Texture2D>("fireParticle");
-            towerName = "Flame Tower";
+            iceTexture = game.Content.Load<Texture2D>("iceParticle");
+            towerName = "Ice Tower";
             this.ilevel = level;
             damage = new Damage(1, this.ilevel, ElementType.Fire, null);
-            //if (isFire)
-            //{
-                damage.type = ElementType.Fire;
-                //damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
-            //}
+
             if (level == 2)
                 setToLvlTwo();
 
             this.shootTimer = .05f;
-            this.towerRange = 300f;
+            this.towerRange = 275f;
             
         }
 
         public override void  LoadContent()
         {
-            flameTowerTexture = contentManager.Load<Texture2D>("flameTowerNew");
-            flameTowerUpgradeTexture = contentManager.Load<Texture2D>("flameTowerNew");
+            iceTowerTexture = contentManager.Load<Texture2D>("iceTowerNew");
+            iceTowerUpgradeTexture = contentManager.Load<Texture2D>("iceTowerNew");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
-            origin.X = flameTowerTexture.Width / 2;
-            origin.Y = flameTowerTexture.Height / 2;
+            origin.X = iceTowerTexture.Width / 2;
+            origin.Y = iceTowerTexture.Height / 2;
         }
 
         public override void Draw(SpriteBatch SB)
         {
             spriteBatch = SB;
-            spriteBatch.Draw(flameTowerTexture, position, null, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0f); 
+            spriteBatch.Draw(iceTowerTexture, position, null, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0f); 
             spriteBatch.DrawString(font, getTowerLvl() + ", \nHP: " + hp, new Vector2(position.X - 120, position.Y + 30), Color.Black);
 
             foreach (Projectile proj in projectileList)
@@ -56,7 +53,7 @@ namespace RTS
 
         public override void setToLvlTwo()
         {
-            flameTowerTexture = flameTowerUpgradeTexture;
+            iceTowerTexture = iceTowerUpgradeTexture;
 
             shotsToDestroy = 150;
             damage.amount = 3;
@@ -72,26 +69,26 @@ namespace RTS
             projectile.LoadContent("ProjectileFireEmpty");
             projectileList.Add(projectile);
             
-            game.fireTower.setDirection((float)shootRotationAngle);
+            game.ice.setDirection((float)shootRotationAngle);
             game.flameTowerSmoke.setDirection((float)shootRotationAngle);
-            game.fireTower.setSpeed(500, 600);
+            game.ice.setSpeed(500, 600);
             if (this.ilevel == 1)
             {
-                game.fireTower.setScale(.2f, .25f);
+                game.ice.setScale(.2f, .25f);
                 game.flameTowerSmoke.setScale(.15f, .2f);
             }
             else
             {
-                game.fireTower.setScale(.3f, .4f);
+                game.ice.setScale(.3f, .4f);
                 game.flameTowerSmoke.setScale(.2f, .27f);
             }
-            game.fireTower.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+            game.ice.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
             game.flameTowerSmoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
         }
 
         public override Texture2D getTexture()
         {
-            return flameTowerTexture;
+            return iceTowerTexture;
         }
     }
 }

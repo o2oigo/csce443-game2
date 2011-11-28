@@ -77,8 +77,12 @@ Content\cannon8.xnb
 Content\cannon9.xnb
 Content\wizard.xnb
 Content\wizardTurret.xnb
+Content\elfBack.xnb
+Content\elfFront.xnb
+Content\elfRight.xnb
 Content\lightningTower.xnb
 Content\lightningTowerUpgrade.xnb
+Content\elfLeft.xnb
 Content\ProjectileFireEmpty.xnb
 Content\ProjectileFireEmptyDebug.xnb
 Content\missile.xnb
@@ -139,12 +143,11 @@ Content\magicTower.xnb
 Content\magicTowerMenu.xnb
 Content\magicTowerMenuInactive.xnb
 Content\magicTowerMenuSelected.xnb
-Content\elfRightUp.xnb
 Content\elfRightDown.xnb
-Content\elfFront.xnb
-Content\elfRight.xnb
-Content\elfBack.xnb
-Content\puddingFront.xnb
+Content\iceParticle.xnb
+Content\iceTowerNew.xnb
+Content\ProjectileIceEmpty.xnb
+Content\ProjectileIceEmptyDebug.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb
@@ -154,3 +157,4 @@ Content\Map1.xnb
 Content\Map2.xnb
 Content\Map3.xnb
 Content\Map4.xnb
+Content\elfRightUp.xnb
