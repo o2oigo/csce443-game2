@@ -894,7 +894,8 @@ namespace RTS
                                     isFire = true;
 
                                 //createMissileTower(towerList[i].Position, level, isFire);
-                                createFlameTower(towerList[i].Position, level, isFire);
+                                //createFlameTower(towerList[i].Position, level, isFire);
+                                createIceTower(towerList[i].Position, level, isFire);
 
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
@@ -1088,6 +1089,12 @@ namespace RTS
         public void createFlameTower(Vector2 oldPosition, int level, bool isFire)
         {
             FlameTower tower = new FlameTower(game, playerIndex, oldPosition, level, isFire);
+            towerList.Add(tower);
+        }
+
+        public void createIceTower(Vector2 oldPosition, int level, bool isFire)
+        {
+            IceTower tower = new IceTower(game, playerIndex, oldPosition, level, isFire);
             towerList.Add(tower);
         }
 

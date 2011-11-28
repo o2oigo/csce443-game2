@@ -36,7 +36,7 @@ namespace RTS
 
         protected float shootTimer = .8f;
         protected float towerRange = 400;
-        private float shootElapsedTime = 0;
+        protected float shootElapsedTime = 0;
 
         protected SpriteFont font;
         private int shotsTaken = 0;
@@ -46,7 +46,7 @@ namespace RTS
         private bool playerIsNear = false;
         protected string level = "level 1";
         protected int ilevel = 1;
-        protected string towerName = "Arrow Tower";
+        protected string towerName = "Cannon Tower";
        // protected int attackDamage = 25;
 
         protected double moveRotationAngle = 0;
@@ -229,8 +229,6 @@ namespace RTS
                     projectileList.Remove(proj);
                 }
                 proj.Update(gameTime);
-               // game.fireTower.setDirection(proj.getMissileAngle() + (float)Math.PI);
-               // game.fireTower.AddParticles(proj.getPosition());
             }
         }
 

@@ -118,6 +118,8 @@
     <Compile Include="ExplosionSmokeParticleSystem.cs" />
     <Compile Include="FlameTower.cs" />
     <Compile Include="FlameTowerSmokeParticleSystem.cs" />
+    <Compile Include="IceParticleSystem.cs" />
+    <Compile Include="IceTower.cs" />
     <Compile Include="LightningParticleSystem.cs" />
     <Compile Include="LightningTower.cs" />
     <Compile Include="MagicTower.cs" />

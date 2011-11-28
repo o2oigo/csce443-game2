@@ -566,6 +566,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="elfBack.png">
+      <Name>elfBack</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="elfFront.png">
+      <Name>elfFront</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="elfRight.png">
+      <Name>elfRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="lightningTowerNew.png">
       <Name>lightningTower</Name>
       <Importer>TextureImporter</Importer>
@@ -573,6 +592,13 @@
     </Compile>
     <Compile Include="lightningTowerUpgrade.png">
       <Name>lightningTowerUpgrade</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="elfLeft.png">
+      <Name>elfLeft</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -904,37 +930,41 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="elfRightUp.png">
-      <Name>elfRightUp</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="elfRightDown.png">
       <Name>elfRightDown</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="elfFront.png">
-      <Name>elfFront</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="elfRight.png">
-      <Name>elfRight</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="iceParticle.jpg">
+      <Name>iceParticle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="elfBack.png">
-      <Name>elfBack</Name>
+    <Compile Include="iceTowerNew.png">
+      <Name>iceTowerNew</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="puddingFront.png">
-      <Name>puddingFront</Name>
+    <Compile Include="ProjectileIceEmpty.png">
+      <Name>ProjectileIceEmpty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ProjectileIceEmptyDebug.png">
+      <Name>ProjectileIceEmptyDebug</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="elfRightUp.png">
+      <Name>elfRightUp</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -20,6 +20,7 @@ namespace RTS
         protected Vector2 projectilePosition;
         protected Vector2 originalPosition;
         private float elapsedTime;
+        private float lifeTime;
 
         protected Map map;
 
@@ -34,6 +35,7 @@ namespace RTS
             this.map = map;
             this.shootRotationAngle = angle;
             this.speed = flightSpeed;
+            this.lifeTime = 0f;
             projectilePosition = new Vector2(pos.X + (float)Math.Cos(shootRotationAngle) * turretLength * map.ScaleB, pos.Y + (float)Math.Sin(shootRotationAngle) * turretLength * map.ScaleB);
             this.originalPosition = projectilePosition;
             this.contentManager = CM;
@@ -51,6 +53,7 @@ namespace RTS
         public virtual void Update(GameTime gameTime)
         {
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            lifeTime += elapsedTime;
             Vector2 add = new Vector2((float)(Math.Cos(shootRotationAngle) * speed * elapsedTime), (float)(Math.Sin(shootRotationAngle) * speed * elapsedTime));
             projectilePosition += add;
             distanceTraveled += (float)Math.Sqrt(Math.Pow(add.X, 2) + Math.Pow(add.Y, 2));
@@ -82,6 +85,11 @@ namespace RTS
         public float getDistanceTraveled()
         {
             return distanceTraveled;
+        }
+
+        public float getLifeTime()
+        {
+            return lifeTime;
         }
     }
 }

@@ -63,6 +63,7 @@ namespace RTS
         public FireParticleSystem fireTower;
         public LightningParticleSystem lightning;
         public FlameTowerSmokeParticleSystem flameTowerSmoke;
+        public IceParticleSystem ice;
 
 
         // Dictionary<string, SoundEffect> music;
@@ -174,6 +175,9 @@ namespace RTS
             fire = new FireParticleSystem(this, 1000, camera);
             Components.Add(fire);
 
+            ice = new IceParticleSystem(this, 1000, camera);
+            Components.Add(ice);
+
             fireTower = new FireParticleSystem(this, 1000, camera);
             fireTower.setSpeed(500, 600);
             Components.Add(fireTower);
@@ -218,9 +222,12 @@ namespace RTS
             smoke.Update(gameTime);
             flameTowerSmoke.Update(gameTime);
             fire.Update(gameTime);
-            userInterface.setWavesNumber(wave.CurrentWave);
             lightning.Update(gameTime);
             fireTower.Update(gameTime);
+            ice.Update(gameTime);
+
+            userInterface.setWavesNumber(wave.CurrentWave);
+            
             
             if (userInterface.getRestartGameStatus() == true)
             {
