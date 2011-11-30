@@ -284,7 +284,7 @@ namespace RTS
                 userInterface.setShowGameoverScreen(true);
                 live = 10;
             }
-            else if (wave.isLevelFinish == true)
+            else if (wave.isGameFinish == true)
             {
                 userInterface.setShowWinScreen(true);
             }
@@ -651,28 +651,9 @@ namespace RTS
             return new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
         }
 
-
-        //public void DrawTrees(SpriteBatch spriteBatch)
-        //{
-        //    foreach (Point pt in map.getTrees())
-        //    {
-        //
-        //        Vector2 offset = new Vector2(0, 0);
-        //        for (int i = 0; i < map.TreeDict[pt].Count; i++)
-        //        {
-        //            Vector2 tilePosition = map.MapToWorld(pt.X, pt.Y, true);
-        //            tilePosition.Y -= treeTexture.Height*map.ScaleB;
-        //            tilePosition.X -= treeTexture.Width*map.ScaleB / 2;
-        //            offset = (map.TreeDict[pt])[i];
-        //            tilePosition.X += offset.X;
-        //            tilePosition.Y += offset.Y;
-        //            spriteBatch.Draw(treeTexture, tilePosition, null, Color.White, 0f, Vector2.Zero, map.ScaleB, SpriteEffects.None, 0f);
-        //        }
-        //    }
-        //}
-
         public void CreateTrees()
         {
+            trees.Clear();
             foreach (Point pt in map.getTrees())
             {
                 Vector2 tilePosition = map.MapToWorld(pt.X, pt.Y, true);

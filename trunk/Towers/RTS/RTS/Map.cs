@@ -36,11 +36,12 @@ namespace RTS
         private int numberColumns;
         private int numberRows;
 
-        private Dictionary<Point, Dictionary<int,Vector2>> treeDict = new Dictionary<Point, Dictionary<int,Vector2>>();
-        public Dictionary<Point, Dictionary<int, Vector2>> TreeDict
-        {
-            get { return treeDict; }
-        }
+        //private Dictionary<Point, Dictionary<int,Vector2>> treeDict = new Dictionary<Point, Dictionary<int,Vector2>>();
+        //public Dictionary<Point, Dictionary<int, Vector2>> TreeDict
+        //{
+        //    get { return treeDict; }
+        //}
+
 
         Random rand = new Random();
 
@@ -284,19 +285,6 @@ namespace RTS
             tileSquareCenter = new Vector2(tileSize / 2);
 
             
-            foreach (Point pt in maps[currentMap].Trees)
-            {
-                int r = rand.Next(1, 15);
-                Dictionary<int, Vector2> tmp = new Dictionary<int, Vector2>();
-                for (int i = 0; i < r; i++)
-                {
-                    Vector2 offset;
-                    offset.X = rand.Next((int)(-tileSize/2),(int)(tileSize / 2));
-                    offset.Y = rand.Next((int)(-tileSize / 2), (int)(tileSize / 2));
-                    tmp.Add(i, offset);
-                }
-                treeDict.Add(pt, tmp);
-            }
 
         }
 
@@ -315,7 +303,7 @@ namespace RTS
 
         public void NextMap()
         {
-            currentMap++;
+            if (currentMap < maps.Count()-1) currentMap++;
             ReloadMap();
             tileSquareCenter = new Vector2(tileSize / 2);
         }
