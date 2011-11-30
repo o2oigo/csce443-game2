@@ -148,6 +148,7 @@ Content\iceParticle.xnb
 Content\iceTowerNew.xnb
 Content\ProjectileIceEmpty.xnb
 Content\ProjectileIceEmptyDebug.xnb
+Content\elfRightUp.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb
@@ -156,5 +157,4 @@ Content\Map1.xnb
 Content\Map2.xnb
 Content\Map3.xnb
 Content\Map4.xnb
-Content\elfRightUp.xnb
 Content\2d_Tank_Menu.wma

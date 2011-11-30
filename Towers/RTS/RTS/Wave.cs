@@ -41,6 +41,12 @@ namespace RTS
             get { return levelFinished; }
         }
 
+        private Boolean gameFinished = false;
+        public Boolean isGameFinish
+        {
+            get { return gameFinished; }
+        }
+
         public void InitializeLevel()
         {
             LevelDictionary.Add(1, InitializeWave(10));
@@ -74,12 +80,12 @@ namespace RTS
             AddFastEnemy(1, 6, 10);
             AddAttackingEnemy(1, 7, 5);
             AddAttackingEnemy(1, 8, 10);
-
+            
             AddNormalEnemy(1, 9, 4);
             AddHPEnemy(1, 9, 4);
             AddFastEnemy(1, 9, 4);
             AddAttackingEnemy(1, 9, 4);
-
+            
             AddNormalEnemy(1, 10, 10);
             AddHPEnemy(1, 10, 5);
             AddFastEnemy(1, 10, 5);
@@ -94,12 +100,12 @@ namespace RTS
             AddFastEnemy(2, 6, 10);
             AddAttackingEnemy(2, 7, 5);
             AddAttackingEnemy(2, 8, 10);
-
+            
             AddNormalEnemy(2, 9, 4);
             AddHPEnemy(2, 9, 4);
             AddFastEnemy(2, 9, 4);
             AddAttackingEnemy(2, 9, 4);
-
+            
             AddNormalEnemy(2, 10, 10);
             AddHPEnemy(2, 10, 5);
             AddFastEnemy(2, 10, 5);
@@ -114,12 +120,12 @@ namespace RTS
             AddFastEnemy(3, 6, 10);
             AddAttackingEnemy(3, 7, 5);
             AddAttackingEnemy(3, 8, 10);
-
+            
             AddNormalEnemy(3, 9, 4);
             AddHPEnemy(3, 9, 4);
             AddFastEnemy(3, 9, 4);
             AddAttackingEnemy(3, 9, 4);
-
+            
             AddNormalEnemy(3, 10, 10);
             AddHPEnemy(3, 10, 5);
             AddFastEnemy(3, 10, 5);
@@ -129,7 +135,7 @@ namespace RTS
 
         public void nextWave()
         {
-            if (currentWave >= 6)
+            if (currentWave >= LevelDictionary[currentLevel].Count())
             {
                 //ENDLEVEL
                 levelFinished = true;
@@ -138,6 +144,24 @@ namespace RTS
             {
                 currentWave++;
                 waveFinished = false;
+            }
+        }
+
+        public void nextLevel()
+        {
+            if (currentLevel < LevelDictionary.Count())
+            {
+            //    //ENDGAME
+            //    gameFinished = true;
+            //}
+            //else
+            //{
+                currentLevel++;
+                levelFinished = false;
+                currentWave = 1;
+                waveFinished = false;
+                game.Map.NextMap();
+                game.CreateTrees();
             }
         }
 
@@ -158,6 +182,15 @@ namespace RTS
             if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer > 9000)
             {
                 nextWave();
+                timer = 0f;
+            }
+            if (levelFinished && game.Enemies.Count() == 0 && !gameFinished && timer > 9000)
+            {
+                if (currentLevel >= LevelDictionary.Count())
+                {
+                    gameFinished = true;
+                }
+                nextLevel();  //delete this and have nextLevel() called when ready to start next level
                 timer = 0f;
             }
         }

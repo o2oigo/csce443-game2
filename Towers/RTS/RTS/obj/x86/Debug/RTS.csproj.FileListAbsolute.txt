@@ -817,3 +817,8 @@ C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.t
 C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\RTS.exe
 C:\Anthony\Towers\RTS\RTS\obj\x86\Debug\RTS.pdb
 C:\Anthony\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightUp.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\iceParticle.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\iceTowerNew.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileIceEmpty.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileIceEmptyDebug.xnb
+C:\Users\lastwaltz\Desktop\GameDevProj2\Towers\RTS\RTS\bin\x86\Debug\Content\elfRightUp.xnb
