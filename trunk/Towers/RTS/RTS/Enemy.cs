@@ -15,6 +15,7 @@ namespace RTS
 
         //different for different enemies
         protected float hp;
+        protected float maxHP;
         protected int range;
         protected ElementType weakAgainst;
         protected ElementType strongAgainst;
@@ -22,8 +23,6 @@ namespace RTS
 
         protected EnemyEffect effect = null;
 
-        //private Texture2D texture;
-        private Texture2D turretTexture;
         Random rand = new Random();
         private PathFinder path;
 
@@ -31,13 +30,12 @@ namespace RTS
 
         private List<Projectile> projectileList = new List<Projectile>(5);
 
-        private bool dead = false;
         private Point startTile;
         private SpriteEffects isFlipped;
 
-        private double moveRotationAngle;
+        //private double moveRotationAngle;
         private double shootRotationAngle;
-        private double playerRotationAngle;
+        //private double playerRotationAngle;
         private double projectileRotationAngle;
 
         private List<Vector2> curve = new List<Vector2>();
@@ -49,7 +47,7 @@ namespace RTS
         private float shootTimer = 1.0f;
         private float circle = MathHelper.Pi * 2;
 
-        const float atDestinationLimit = 0.01f;
+        const float atDestinationLimit = 1f;
 
         #region Properties
         private NodeList waypoints;
@@ -106,20 +104,15 @@ namespace RTS
             set { moving = value; }
         }
 
-        public float getTurretLength()
+        public float getLength()
         {
-            return turretTexture.Width;
+            return 50f;
         }
 
         public Vector2 getOrigin()
         {
             return origin;
         }
-
-        //public Texture2D getTexture()
-        //{
-        //    return texture;
-        //}
 
         public List<Projectile> getProjectiles()
         {
@@ -136,16 +129,17 @@ namespace RTS
             return shootRotationAngle;
         }
 
-        public double getMoveRotationAngle()
-        {
-            return moveRotationAngle;
-        }
+        //public double getMoveRotationAngle()
+        //{
+        //    return moveRotationAngle;
+        //}
 
-        public double getPlayerRotationAngle()
-        {
-            return playerRotationAngle;
-        }
+        //public double getPlayerRotationAngle()
+        //{
+        //    return playerRotationAngle;
+        //}
 
+        private bool dead = false;
         public bool isDead()
         {
             return dead;
@@ -153,31 +147,33 @@ namespace RTS
 
         #endregion
 
-        public virtual void Initialize(Game1 game)
+        public virtual void Initialize(Game1 game, float health)
         {
             this.game = game;
+            this.map = game.Map;
             this.contentManager = game.Content;
             this.graphicsDevice = game.GraphicsDevice;
 
             waypoints = new NodeList();
             path = new PathFinder();
 
-            this.map = game.Map;
             int randomNum = rand.Next(0, map.StartTile.Count());
             startTile = map.StartTile[randomNum]; 
-
+            
             path.Initialize(map);
-
             Reset();
             path.Reset(startTile);
             path.IsSearching = !path.IsSearching;
             path.SearchPath();
+
+            hp = health;
+            maxHP = health;
         }
 
         public virtual void LoadContent()
         {
             //texture = contentManager.Load<Texture2D>(textureName);
-            turretTexture = contentManager.Load<Texture2D>("TurretEnemy");
+            //turretTexture = contentManager.Load<Texture2D>("TurretEnemy");
 
             origin.X = Size.Width / 2;
             origin.Y = Size.Height / 2;
@@ -188,7 +184,6 @@ namespace RTS
         {
             spriteBatch = SB;
             spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White, 0f, origin, 1.0f, isFlipped, 0f);
-            //spriteBatch.Draw(turretTexture, position, null, Color.White, (float)shootRotationAngle, new Vector2(0, turretTexture.Height / 2), map.ScaleB, SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, "HP: " + (int)hp, new Vector2(position.X - 40, position.Y + 40), Color.Black);
             foreach (Projectile proj in projectileList)
             {
@@ -222,7 +217,7 @@ namespace RTS
             }
 
             float facingDirection = (float)Math.Atan2(Direction.Y, Direction.X);
-            moveRotationAngle = facingDirection;
+            //moveRotationAngle = facingDirection;
             shootRotationAngle = facingDirection;
 
             doPathfinding(gameTime);
@@ -313,11 +308,11 @@ namespace RTS
         public void updateMovement(Tower tower)
         {
             //Calculate Rotation Angles and Enemy Movement
-            playerRotationAngle = (Math.Atan2(tower.Position.Y - position.Y, tower.Position.X - position.X) + 2 * circle) % circle;
-            float difference = WrapAngle((float)playerRotationAngle - (float)moveRotationAngle);
-            difference = MathHelper.Clamp(difference, -elapsedTime, elapsedTime);
-            moveRotationAngle += difference;
-            moveRotationAngle = moveRotationAngle % circle;
+            //playerRotationAngle = (Math.Atan2(tower.Position.Y - position.Y, tower.Position.X - position.X) + 2 * circle) % circle;
+            //float difference = WrapAngle((float)playerRotationAngle - (float)moveRotationAngle);
+            //difference = MathHelper.Clamp(difference, -elapsedTime, elapsedTime);
+            //moveRotationAngle += difference;
+            //moveRotationAngle = moveRotationAngle % circle;
 
             //Shoot angle
             shootRotationAngle = Math.Atan2(tower.Position.Y - position.Y, tower.Position.X - position.X);
@@ -373,7 +368,7 @@ namespace RTS
                 else
                 {
                     curve.Add(waypoints.Dequeue());
-                    for (int j = 0; j < 4; j++)
+                    for (int j = 0; j < 2; j++)
                     {
                         if (waypoints.Count >=1) waypoints.Dequeue();
                     }
@@ -420,8 +415,8 @@ namespace RTS
                     direction = -(position - destination);
 
                     direction.Normalize();
-                    position = GetPoint(curveTimer, pos[0], pos[1], pos[2], pos[3]);
-                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.4f;
+                    position = GetPoint(curveTimer, pos[0], pos[1], pos[2 ], pos[3]);
+                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.7f;
                 }
             }
         }
@@ -541,13 +536,13 @@ namespace RTS
 
                             //Create new projectiles
                             Projectile projectile = new Projectile();
-                            projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getTurretLength(), 1200f, map);
+                            projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getLength(), 1200f, map);
                             projectile.LoadContent("Projectile");
                             projectileList.Add(projectile);
 
                             //Add explosion to particle system
-                            game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
-                            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+                            game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getLength() * map.ScaleB, position.Y + (float)Math.Sin(shootRotationAngle) * getLength() * map.ScaleB));
+                            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getLength()));
                         }
                         break;
                     }

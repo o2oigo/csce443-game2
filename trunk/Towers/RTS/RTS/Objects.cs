@@ -113,7 +113,7 @@ namespace RTS
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(houseTexture, position, null, Color.White, 0f, new Vector2(0, houseTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
+            //spriteBatch.Draw(houseTexture, position, null, Color.White, 0f, new Vector2(0, houseTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
         }
     }
 }

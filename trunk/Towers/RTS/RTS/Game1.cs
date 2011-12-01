@@ -23,8 +23,6 @@ namespace RTS
         UserInterface userInterface;
         Camera camera;
 
-        Texture2D treeTexture;
-
         Player player1;
         Wave wave;
         // Player player2;
@@ -48,8 +46,8 @@ namespace RTS
             get { return house; }
         }
 
-        float enemyTimer = 0;
-        float enemySpawnTime = 1f;
+        //float enemyTimer = 0;
+        //float enemySpawnTime = 1f;
         Random rand = new Random();
         SpriteFont font;
 
@@ -65,13 +63,13 @@ namespace RTS
         public FlameTowerSmokeParticleSystem flameTowerSmoke;
         public IceParticleSystem ice;
 
+        private Rectangle test = new Rectangle(0, 0, 1984, 1536);
 
         // Dictionary<string, SoundEffect> music;
         // SoundEffect tankSong;
         // SoundEffectInstance songInstance;
 
         private Map map;
-        
         public Map Map
         {
             get { return map; }
@@ -106,15 +104,12 @@ namespace RTS
         {
             base.Initialize();
            
-
-            //PATHFINDING//
             //Rectangle test = new Rectangle(0, 0, this.graphics.PreferredBackBufferHeight, this.graphics.PreferredBackBufferWidth);
             //Rectangle test = new Rectangle(0,0,this.GraphicsDevice.Viewport.Width, this.GraphicsDevice.Viewport.Height);
             gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
-            //map.UpdateMapViewport(gameplayArea);
-            map.ReloadMap();
             map.UpdateMapViewport(gameplayArea);
-            //PATHFINDING//
+            map.ReloadMap();
+            //map.UpdateMapViewport(test);
             CreateTrees();
             wave = new Wave(this);
             house = new House(this, map.getBaseCoordinate());
@@ -239,10 +234,10 @@ namespace RTS
             if (userInterface.getShowGameScreen() == true)
             {
                 camera.Update(gameTime);
-                if (enemies.Count != 0)
-                    enemySpawnTime = .15f * enemies.Count;
-                else
-                    enemySpawnTime = 0.1f;
+                //if (enemies.Count != 0)
+                //    enemySpawnTime = .15f * enemies.Count;
+                //else
+                //    enemySpawnTime = 0.1f;
 
                 //Creates Enemies
                 //spawnEnemies(gameTime);
@@ -394,16 +389,17 @@ namespace RTS
                 }
 
                 //Loop through all enemies
-                Rectangle houseRect = new Rectangle((int)House.Origin.X - (House.Texture.Width / 2) + 30, (int)House.Origin.Y - 40, House.Texture.Width - 30, House.Texture.Height / 4);
+                //Rectangle houseRect = new Rectangle((int)House.Origin.X - (House.Texture.Width / 2) + 30, (int)House.Origin.Y - 40, House.Texture.Width - 30, House.Texture.Height / 4);
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
                     //Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.Position.X - currentEnemy.getOrigin().X), (int)(currentEnemy.Position.Y - currentEnemy.getOrigin().Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
-                    Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.Position.X), (int)(currentEnemy.Position.Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
+                    //Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.Position.X), (int)(currentEnemy.Position.Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
                     //Ckeck if current enemy and exit point                   
                     //if (map.TileTypeAt(currentEnemy.Position) == MapTileType.MapExit)
-                    if (currentEnemyRect.Intersects(houseRect))
+                    //if (currentEnemyRect.Intersects(houseRect))
+                    if (currentEnemy.boundingCircle(currentEnemy.Position,50,Map.MapToWorld(Map.EndTile,false)))
                     {
                         live--;
                         Sprite.removeList(enemies[i]);
@@ -629,8 +625,8 @@ namespace RTS
 
             this.ResetElapsedTime();
 
-            enemyTimer = 0;
-            enemySpawnTime = 1f;
+            //enemyTimer = 0;
+            //enemySpawnTime = 1f;
             live = 100;
 
             camera.ResetCamera();

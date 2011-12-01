@@ -12,8 +12,11 @@ namespace RTS
     {
         Game1 game;
         Random rand = new Random();
-        float timer, interval;
-        //protected Dictionary<int, Queue<Enemy>> WaveDictionary = new Dictionary<int, Queue<Enemy>>();
+        double timer;
+        const double intervalSpawn = 2000;
+        const double intervalWave = 10000;
+        const double intervalLevel = 9000;
+
         protected Dictionary<int, Dictionary<int, Queue<Enemy>>> LevelDictionary = new Dictionary<int, Dictionary<int, Queue<Enemy>>>();
 
         private int currentWave = 1;
@@ -67,69 +70,69 @@ namespace RTS
         #region Hard coded enemy in each level
         public Wave(Game1 game)
         {
-            interval = 1000;
+            //interval = 1000;
             this.game = game;
             InitializeLevel();
 
             //level1//
-            AddNormalEnemy(1, 1, 5);
-            AddNormalEnemy(1, 2, 10);
-            AddHPEnemy(1, 3, 5);
-            AddHPEnemy(1, 4, 10);
-            AddFastEnemy(1, 5, 5);
-            AddFastEnemy(1, 6, 10);
-            AddAttackingEnemy(1, 7, 5);
-            AddAttackingEnemy(1, 8, 10);
-            
-            AddNormalEnemy(1, 9, 4);
-            AddHPEnemy(1, 9, 4);
-            AddFastEnemy(1, 9, 4);
-            AddAttackingEnemy(1, 9, 4);
-            
-            AddNormalEnemy(1, 10, 10);
-            AddHPEnemy(1, 10, 5);
-            AddFastEnemy(1, 10, 5);
-            AddAttackingEnemy(1, 10, 5);
+            AddNormalEnemy(1, 1, 5, 50);
+            AddNormalEnemy(1, 2, 10, 100);
+            AddHPEnemy(1, 3, 5, 100);
+            AddHPEnemy(1, 4, 10, 100);
+            AddFastEnemy(1, 5, 5, 100);
+            AddFastEnemy(1, 6, 10, 100);
+            AddAttackingEnemy(1, 7, 5, 100);
+            AddAttackingEnemy(1, 8, 10, 100);
+
+            AddNormalEnemy(1, 9, 4, 100);
+            AddHPEnemy(1, 9, 4, 100);
+            AddFastEnemy(1, 9, 4, 100);
+            AddAttackingEnemy(1, 9, 4, 100);
+
+            AddNormalEnemy(1, 10, 10, 100);
+            AddHPEnemy(1, 10, 5, 100);
+            AddFastEnemy(1, 10, 5, 100);
+            AddAttackingEnemy(1, 10, 5, 100);
 
             //level2//
-            AddNormalEnemy(2, 1, 5);
-            AddNormalEnemy(2, 2, 10);
-            AddHPEnemy(2, 3, 5);
-            AddHPEnemy(2, 4, 10);
-            AddFastEnemy(2, 5, 5);
-            AddFastEnemy(2, 6, 10);
-            AddAttackingEnemy(2, 7, 5);
-            AddAttackingEnemy(2, 8, 10);
-            
-            AddNormalEnemy(2, 9, 4);
-            AddHPEnemy(2, 9, 4);
-            AddFastEnemy(2, 9, 4);
-            AddAttackingEnemy(2, 9, 4);
-            
-            AddNormalEnemy(2, 10, 10);
-            AddHPEnemy(2, 10, 5);
-            AddFastEnemy(2, 10, 5);
-            AddAttackingEnemy(2, 10, 5);
+            AddAttackingEnemy(2, 1, 5, 100);
+            AddNormalEnemy(2, 2, 10, 100);
+            AddHPEnemy(2, 3, 5, 100);
+            AddHPEnemy(2, 4, 10, 100);
+            AddFastEnemy(2, 5, 5, 100);
+            AddFastEnemy(2, 6, 10, 100);
+            AddAttackingEnemy(2, 7, 5, 100);
+            AddAttackingEnemy(2, 8, 10, 100);
+
+            AddNormalEnemy(2, 9, 4, 100);
+            AddHPEnemy(2, 9, 4, 100);
+            AddFastEnemy(2, 9, 4, 100);
+            AddAttackingEnemy(2, 9, 4, 100);
+
+            AddNormalEnemy(2, 10, 10, 100);
+            AddHPEnemy(2, 10, 5, 100);
+            AddFastEnemy(2, 10, 5, 100);
+            AddAttackingEnemy(2, 10, 5, 100);
 
             //level3//
-            AddNormalEnemy(3, 1, 5);
-            AddNormalEnemy(3, 2, 10);
-            AddHPEnemy(3, 3, 5);
-            AddHPEnemy(3, 4, 10);
-            AddFastEnemy(3, 5, 5);
-            AddFastEnemy(3, 6, 10);
-            AddAttackingEnemy(3, 7, 5);
-            AddAttackingEnemy(3, 8, 10);
-            
-            AddNormalEnemy(3, 9, 4);
-            AddHPEnemy(3, 9, 4);
-            AddFastEnemy(3, 9, 4);
-            AddAttackingEnemy(3, 9, 4);
-            
-            AddNormalEnemy(3, 10, 10);
-            AddHPEnemy(3, 10, 5);
-            AddFastEnemy(3, 10, 5);
-            AddAttackingEnemy(3, 10, 5);
+            AddAttackingEnemy(3, 1, 5, 100);
+            AddNormalEnemy(3, 2, 10, 100);
+            AddHPEnemy(3, 3, 5, 100);
+            AddHPEnemy(3, 4, 10, 100);
+            AddFastEnemy(3, 5, 5, 100);
+            AddFastEnemy(3, 6, 10, 100);
+            AddAttackingEnemy(3, 7, 5, 100);
+            AddAttackingEnemy(3, 8, 10, 100);
+
+            AddNormalEnemy(3, 9, 4, 100);
+            AddHPEnemy(3, 9, 4, 100);
+            AddFastEnemy(3, 9, 4, 100);
+            AddAttackingEnemy(3, 9, 4, 100);
+
+            AddNormalEnemy(3, 10, 10, 100);
+            AddHPEnemy(3, 10, 5, 100);
+            AddFastEnemy(3, 10, 5, 100);
+            AddAttackingEnemy(3, 10, 5, 100);
         }
         #endregion 
 
@@ -167,71 +170,71 @@ namespace RTS
 
         public void Update(GameTime gameTime)
         {
-            timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (!waveFinished && timer > interval)
+            timer += gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (!waveFinished && timer > intervalSpawn)
             {
                 //game.Enemies.Add(WaveDictionary[currentWave].Dequeue());
                 game.Enemies.Add(LevelDictionary[currentLevel][currentWave].Dequeue());
                 if (LevelDictionary[currentLevel][currentWave].Count() == 0) waveFinished = true;
-                timer = 0f;
+                timer = 0;
             }
-            if (currentWave == 10 && waveFinished && game.Enemies.Count() == 0)
+            if (currentWave == LevelDictionary[currentLevel].Count() && waveFinished && game.Enemies.Count() == 0)
             {
                 levelFinished = true;
             }
-            if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer > 9000)
+            if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer > intervalWave)
             {
                 nextWave();
-                timer = 0f;
+                timer = 0;
             }
-            if (levelFinished && game.Enemies.Count() == 0 && !gameFinished && timer > 9000)
+            if (levelFinished && game.Enemies.Count() == 0 && !gameFinished && timer > intervalWave)
             {
                 if (currentLevel >= LevelDictionary.Count())
                 {
                     gameFinished = true;
                 }
                 nextLevel();  //delete this and have nextLevel() called when ready to start next level
-                timer = 0f;
+                timer = 0;
             }
         }
 
-        public void AddNormalEnemy(int lvl, int wave, int enemyNum)
+        public void AddNormalEnemy(int lvl, int wave, int enemyNum, float hp)
         {
             for (int i = 0; i < enemyNum; i++)
             {
                 NormalEnemy e1 = new NormalEnemy();
-                e1.Initialize(game);
+                e1.Initialize(game, hp);
                 e1.LoadContent();
                 (LevelDictionary[lvl])[wave].Enqueue(e1);
             }
         }
 
-        public void AddHPEnemy(int lvl, int wave, int enemyNum)
+        public void AddHPEnemy(int lvl, int wave, int enemyNum, float hp)
         {
             for (int i = 0; i < enemyNum; i++)
             {
                 HPEnemy e1 = new HPEnemy();
-                e1.Initialize(game);
+                e1.Initialize(game, hp);
                 e1.LoadContent();
                 (LevelDictionary[lvl])[wave].Enqueue(e1);
             }
         }
 
-        public void AddAttackingEnemy(int lvl, int wave, int enemyNum)
+        public void AddAttackingEnemy(int lvl, int wave, int enemyNum, float hp)
         {
             for (int i = 0; i < enemyNum; i++)
             {
                 AttackingEnemy e1 = new AttackingEnemy();
-                e1.Initialize(game);
+                e1.Initialize(game, hp);
                 e1.LoadContent();
                 (LevelDictionary[lvl])[wave].Enqueue(e1);
             }
         }
 
-        public void AddFastEnemy(int lvl, int wave, int enemyNum)
+        public void AddFastEnemy(int lvl, int wave, int enemyNum, float hp)
         {
             FastEnemy e1 = new FastEnemy();
-            e1.Initialize(game);
+            e1.Initialize(game, hp);
             e1.LoadContent();
             (LevelDictionary[lvl])[wave].Enqueue(e1);
         }
