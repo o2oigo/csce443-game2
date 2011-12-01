@@ -15,6 +15,7 @@ namespace RTS
         MapDirt,
         MapGrass,
         MapTree,
+        MapBarrier,
         MapStart,
         MapExit
     }
@@ -348,6 +349,13 @@ namespace RTS
                 y = maps[currentMap].Trees[i].Y;
 
                 mapTiles[x, y] = MapTileType.MapTree;
+            }
+            for (int i = 0; i < maps[currentMap].Barriers.Count; i++)
+            {
+                x = maps[currentMap].Barriers[i].X;
+                y = maps[currentMap].Barriers[i].Y;
+
+                mapTiles[x, y] = MapTileType.MapBarrier;
             }
 
             mapReload = false;

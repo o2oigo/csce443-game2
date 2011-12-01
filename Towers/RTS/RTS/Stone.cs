@@ -14,6 +14,7 @@ namespace RTS
         Heal,
         Lightning,
         Normal,
+        None,
     }
 
     public class Stone
