@@ -232,19 +232,51 @@ namespace RTS
             double dir = Math.Atan2(direction.Y, direction.X);
             dir = dir % circle;
 
-            if (Math.Abs(dir) > (Math.PI * (0.75)) && Math.Abs(dir) <= Math.PI) 
+            //if (Math.Abs(dir) > (Math.PI * (0.75)) && Math.Abs(dir) <= Math.PI) 
+            //{
+            //    isFlipped = SpriteEffects.FlipHorizontally;
+            //    animation.CurrentSprite = "right";
+            //}
+            //else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI * 0.25)
+            //{
+            //    animation.CurrentSprite = "right";
+            //    //isFlipped = SpriteEffects.FlipHorizontally;
+            //}
+            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25) {animation.CurrentSprite = "front";}
+            //else if (dir <= -Math.PI * (0.75) && dir > -Math.PI * 0.25) { animation.CurrentSprite = "back"; }
+            //else { animation.CurrentSprite = "back"; }
+
+            if (Math.Abs(dir) > (Math.PI * (0.95)) && Math.Abs(dir) <= Math.PI) 
             {
                 isFlipped = SpriteEffects.FlipHorizontally;
                 animation.CurrentSprite = "right";
             }
-            else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI * 0.25)
+            else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI * 0.05)
             {
                 animation.CurrentSprite = "right";
                 //isFlipped = SpriteEffects.FlipHorizontally;
             }
-            else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25) {animation.CurrentSprite = "front";}
-            else if (dir <= -Math.PI * (0.75) && dir > -Math.PI * 0.25) { animation.CurrentSprite = "back"; }
-            else { animation.CurrentSprite = "back"; }
+            else if (dir <= -Math.PI * 0.05 && dir >= -Math.PI*0.45 )//dir < Math.PI * 0.10)
+            {
+                animation.CurrentSprite = "rightUp";
+            }
+            else if (dir >= Math.PI * 0.05 && dir <= Math.PI*0.45 )
+            {
+                animation.CurrentSprite = "rightDown";
+            }
+            else if (dir >= -Math.PI * 0.95 && dir <= -Math.PI*0.55 )//dir < Math.PI * 0.10)
+            {
+                animation.CurrentSprite = "rightUp";
+                isFlipped = SpriteEffects.FlipHorizontally;
+            }
+            else if (dir >= Math.PI * 0.55 && dir <= Math.PI*0.95 ) //
+            {
+                animation.CurrentSprite = "rightDown";
+                isFlipped = SpriteEffects.FlipHorizontally;
+            }
+            else if (dir <= Math.PI * (0.6) && dir > Math.PI * 0.4) {animation.CurrentSprite = "front";}
+            else if (dir <= -Math.PI * (0.6) && dir > -Math.PI * 0.4) { animation.CurrentSprite = "back"; }
+            //else { animation.CurrentSprite = "back"; }
 
             //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
             //{
@@ -268,11 +300,12 @@ namespace RTS
             //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
 
 
-            //if (dir == 0)
+            //if (dir == 0 || (dir > -10 && dir < 10))
             //{
             //    animation.CurrentSprite = "right";
             //}
-            //else if (dir == Math.PI)
+            ////else if (dir == Math.PI)
+            //else if (dir == Math.PI || (dir == Math.PI
             //{
             //    animation.CurrentSprite = "right";
             //    isFlipped = SpriteEffects.FlipHorizontally;
@@ -416,7 +449,7 @@ namespace RTS
 
                     direction.Normalize();
                     position = GetPoint(curveTimer, pos[0], pos[1], pos[2 ], pos[3]);
-                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.7f;
+                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.5f;
                 }
             }
         }
@@ -468,7 +501,7 @@ namespace RTS
             }
             else if (damage.type == strongAgainst)
             {
-                dmgOffset = 0.5f;
+                dmgOffset = 0.1f;
             }
             else
             {

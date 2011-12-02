@@ -103,7 +103,7 @@ namespace RTS
 
         public void LoadContent(ContentManager content)
         {
-            endTexture = content.Load<Texture2D>("Tower1");
+            //endTexture = content.Load<Texture2D>("Tower1");
 
             maps = new List<MapData>();
             maps.Add(content.Load<MapData>("map1"));
@@ -306,6 +306,7 @@ namespace RTS
         {
             if (currentMap < maps.Count()-1) currentMap++;
             ReloadMap();
+            mapReload = true;     
             tileSquareCenter = new Vector2(tileSize / 2);
         }
 

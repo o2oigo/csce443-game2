@@ -208,7 +208,8 @@ namespace RTS
                 {
                     animation.CurrentSprite = "right";
                 }
-                else if (moveRotationAngle == Math.PI)
+                else if (moveRotationAngle == Math.PI) //for keyboard
+                //else if (moveRotationAngle == -Math.PI) //for game pad
                 {
                     animation.CurrentSprite = "right";
                     isFlipped = SpriteEffects.FlipHorizontally;
@@ -1002,12 +1003,14 @@ namespace RTS
                 position.Y += (float)(Math.Sin(moveRotationAngle) * speed);
 
                 //Movement boundaries for player (keeps player on screen)
-                if (position.X > graphicsDevice.Viewport.Width)
-                    position.X = graphicsDevice.Viewport.Width;
+                if (position.X > game.getCurrentRectangle().Width)
+                    position.X = game.getCurrentRectangle().Width;
+                    //(position.X > graphicsDevice.Viewport.Width)
+                    //position.X = graphicsDevice.Viewport.Width;
                 else if (position.X < 0)
                     position.X = 0;
-                if (position.Y > graphicsDevice.Viewport.Height)
-                    position.Y = graphicsDevice.Viewport.Height;
+                if (position.Y > game.getCurrentRectangle().Height)
+                    position.Y = game.getCurrentRectangle().Height;
                 else if (position.Y < 0)
                     position.Y = 0;
             }
