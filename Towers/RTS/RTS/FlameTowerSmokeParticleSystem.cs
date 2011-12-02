@@ -52,8 +52,8 @@ namespace RTS
 
             // explosion smoke lasts for longer than the explosion itself, but not
             // as long as the plumes do.
-            minLifetime = .35f;
-            maxLifetime = .45f;
+            minLifetime = .15f;
+            maxLifetime = .25f;
 
             minScale = .15f;
             maxScale = .2f;
