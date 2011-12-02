@@ -40,6 +40,12 @@ namespace RTS
         private bool loadingGameScreen2 = false;
         private bool loadingGameScreen3 = false;
         private bool showEncyclopediaScreen = false;
+        private bool showTower1EncyclopediaScreen = false;
+        private bool showEnemy1EncyclopediaScreen = false;
+        private bool showTower2EncyclopediaScreen = false;
+        private bool showEnemy2EncyclopediaScreen = false;
+        private bool showTower3EncyclopediaScreen = false;
+        private bool showEnemy3EncyclopediaScreen = false;
         private bool restartGame = false;
         private bool firstRun = true;
         
@@ -47,6 +53,13 @@ namespace RTS
 
         private int wave = 0;
         private int nextWave = 1;
+        private int xPos1 = 0;
+        private int yPos1 = 0;
+        private int xPos2 = 0;
+        private int yPos2 = 0;
+        private int xPosMax = 0;
+        private int yPosMax = 0;
+
 
 
         private bool finishMenu1 = false;
@@ -91,13 +104,16 @@ namespace RTS
         private Texture2D menu3Texture;
         private Texture2D menu4Texture;
         private Texture2D startScreenBackground;
+        private Texture2D winScreenBackground;
         private Texture2D startMenuTexture;
         private Texture2D gameoverScreenBackground;
         private Texture2D level1MapTexture;
         private Texture2D level2MapTexture;
         private Texture2D level3MapTexture;
         private Texture2D startLevelButtonTexture;
+        private Texture2D startLevelButtonTextureSelect;
         private Texture2D encyclopediaButtonTexture;
+        private Texture2D encyclopediaButtonTextureSelect;
 
 
         // Encyclopedia texture
@@ -138,6 +154,12 @@ namespace RTS
             loadingGameScreen2 = false;
             loadingGameScreen3 = false;
             showEncyclopediaScreen = false;
+            showEnemy1EncyclopediaScreen = false;
+            showTower1EncyclopediaScreen = false;
+            showEnemy2EncyclopediaScreen = false;
+            showTower2EncyclopediaScreen = false;
+            showEnemy3EncyclopediaScreen = false;
+            showTower3EncyclopediaScreen = false;
             restartGame = false;
             player1 = players[0];
             //player2 = players[1];
@@ -151,6 +173,7 @@ namespace RTS
         public void LoadContent()
         {
             startScreenBackground = contentManager.Load<Texture2D>("startMenuBackground");
+            winScreenBackground = contentManager.Load<Texture2D>("EndingScreen");
             gameoverScreenBackground = contentManager.Load<Texture2D>("gameoverNew");
             startMenuTexture = contentManager.Load<Texture2D>("start");
             font = contentManager.Load<SpriteFont>("font");
@@ -159,6 +182,8 @@ namespace RTS
             level3MapTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\level3Screen");
             startLevelButtonTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\start");
             encyclopediaButtonTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopediaButton");
+            startLevelButtonTextureSelect = contentManager.Load<Texture2D>(".\\encyclopedia\\start");
+            encyclopediaButtonTextureSelect = contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopediaButton");
 
             // encyclopedia load texture
             mainEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia");
@@ -297,11 +322,14 @@ namespace RTS
 
                 if (showWinScreen == true)
                 {
-                    spriteBatch.Draw(startScreenBackground, new Vector2(0, 0), Color.White);
+                    /*spriteBatch.Draw(startScreenBackground, new Vector2(0, 0), Color.White);
                     spriteBatch.DrawString(font, "Thank you for playing", new Vector2(500, 600), Color.Black);
                     spriteBatch.DrawString(font, "Press Enter to restart", new Vector2(500, 700), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 740), Color.Black);
                     spriteBatch.DrawString(font, "Ver. Beta 1.2.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                     */
+
+                    spriteBatch.Draw(winScreenBackground, new Vector2(0, 0), Color.White);
                 }
                 if (showTitleScreen == true)
                 {
@@ -395,8 +423,16 @@ namespace RTS
                 if (showLevel1Screen == true)
                 {
                     spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
-                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
-                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
+                    if (xPos1 == 1 && yPos1 == 0)
+                    {
+                        spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.LightBlue);
+                        spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
+                    }
+                    if (xPos1 == 0 && yPos1 == 0)
+                    {
+                        spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                        spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.LightBlue);
+                    }
                 }
 
                 else if (showLevel2Screen == true)
@@ -415,7 +451,25 @@ namespace RTS
 
                 if (showEncyclopediaScreen == true)
                 {
-
+                    spriteBatch.Draw(mainEncyclopediaTexture, new Vector2(0, 0), Color.White);
+                }
+                else if (showTower1EncyclopediaScreen == true)
+                {
+                    spriteBatch.Draw(towerEncyclopediaTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(arrowTowerEncyclopediaTexture, new Vector2(350, 350), Color.LightBlue);
+                    spriteBatch.Draw(canonTowerEncyclopediaTexture, new Vector2(450, 350), Color.LightBlue);
+                    if (xPos2 == 0 && yPos2 == 0)
+                        spriteBatch.Draw(arrowTowerEncyclopediaTexture, new Vector2(350, 350), Color.White);
+                    if (xPos2 == 1 && yPos2 == 0)
+                        spriteBatch.Draw(canonTowerEncyclopediaTexture, new Vector2(450, 350), Color.White);
+                    
+                    
+                }
+                else if (showEnemy1EncyclopediaScreen == true)
+                {
+                    spriteBatch.Draw(enemyEncyclopediaTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(enemy1EncyclopediaTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(enemy2EncyclopediaTexture, new Vector2(0, 0), Color.White);
                 }
             }
 
@@ -643,11 +697,13 @@ namespace RTS
             else if (showGameOverScreen == true)
                 updateKeyboardForGameOverScreen();
 
-            
+            else if (showEncyclopediaScreen == true)
+                updateKeyboardForEncyclopediaScreen();
 
-            
+            else if (showTower1EncyclopediaScreen == true)
+                updateKeyboardForTower1EncyclopediaScreen();
 
-          
+        
         }
 
         private void updateKeyboardForAllScreen()
@@ -680,7 +736,18 @@ namespace RTS
 
         private void updateKeyboardForLevel1Screen()
         {
-            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter))
+            xPosMax = 1;
+            yPosMax = 0;
+
+            if (keystate.IsKeyDown(Keys.Right) && oldKeyState.IsKeyUp(Keys.Right) && xPos1 < xPosMax)
+            {
+                xPos1++;
+            }
+            if (keystate.IsKeyDown(Keys.Left) && oldKeyState.IsKeyUp(Keys.Left) && xPos1 > 0)
+            {
+                xPos1--;
+            }
+            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter) && xPos1 == 0 && yPos1 == 0)
             {
                 showGameScreen = true;
                 loadingGameScreen1 = true;
@@ -689,6 +756,16 @@ namespace RTS
                 showLevel1Screen = false;
                 restartGame = true;
             }
+
+            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter) && xPos1 == 1 && yPos1 == 0)
+            {
+                showLevel1Screen = false;
+                showEncyclopediaScreen = true;
+                xPos1 = 0;
+                yPos1 = 0;
+            }
+
+            
         }
 
         private void updateKeyboardForLevel2Screen()
@@ -700,7 +777,8 @@ namespace RTS
                 showTitleScreen = false;
                 showPauseScreen = false;
                 showLevel2Screen = false;
-                restartGame = true;
+                //restartGame = true;
+                game.goNextLevel();
             }
         }
 
@@ -713,7 +791,8 @@ namespace RTS
                 showTitleScreen = false;
                 showPauseScreen = false;
                 showLevel3Screen = false;
-                restartGame = true;
+                //restartGame = true;
+                game.goNextLevel();
             }
         }
 
@@ -762,6 +841,77 @@ namespace RTS
                 showPauseScreen = false;
                 restartGame = true;
             }
+        }
+
+        private void updateKeyboardForEncyclopediaScreen()
+        {
+            xPosMax = 1;
+            yPosMax = 0;
+
+            if (keystate.IsKeyUp(Keys.Escape) && oldKeyState.IsKeyDown(Keys.Escape))
+            {
+                showEncyclopediaScreen = false;
+                showLevel1Screen = true;
+            }
+
+            if (keystate.IsKeyDown(Keys.Right) && oldKeyState.IsKeyUp(Keys.Right) && xPos1 < xPosMax)
+            {
+                xPos1++;
+            }
+            if (keystate.IsKeyDown(Keys.Left) && oldKeyState.IsKeyUp(Keys.Left) && xPos1 > 0)
+            {
+                xPos1--;
+            }
+            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter) && xPos1 == 0 && yPos1 == 0)
+            {
+                showTower1EncyclopediaScreen = true;
+                showEncyclopediaScreen = false;
+                xPos2 = 0;
+                yPos2 = 0;
+            }
+
+            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter) && xPos1 == 1 && yPos1 == 0)
+            {
+                showEnemy1EncyclopediaScreen = true;
+                showEncyclopediaScreen = false;
+                xPos2 = 0;
+                yPos2 = 0;
+            }
+
+        }
+
+        private void updateKeyboardForTower1EncyclopediaScreen()
+        {
+            if (showTower1EncyclopediaScreen == true)
+            {
+                xPosMax = 2;
+                yPosMax = 0;
+            }
+            else if (showTower2EncyclopediaScreen == true)
+            {
+                xPosMax = 2;
+                yPosMax = 1;
+            }
+            else if (showTower3EncyclopediaScreen == true)
+            {
+                xPosMax = 2;
+                yPosMax = 0;
+            }
+            if (keystate.IsKeyUp(Keys.Escape) && oldKeyState.IsKeyDown(Keys.Escape))
+            {
+                showEncyclopediaScreen = true;
+                showTower1EncyclopediaScreen = false;
+            }
+
+            if (keystate.IsKeyDown(Keys.Right) && oldKeyState.IsKeyUp(Keys.Right) && xPos2 < xPosMax)
+            {
+                xPos2++;
+            }
+            if (keystate.IsKeyDown(Keys.Left) && oldKeyState.IsKeyUp(Keys.Left) && xPos2 > 0)
+            {
+                xPos2--;
+            }
+
         }
 
         public bool getScreen(string _screenName)

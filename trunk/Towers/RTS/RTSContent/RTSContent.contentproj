@@ -970,13 +970,13 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Encyclopedia\cannon1.png">
-      <Name>cannon1</Name>
+    <Compile Include="Encyclopedia\cannon1b.png">
+      <Name>cannon1b</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Encyclopedia\cannon1b.png">
-      <Name>cannon1b</Name>
+    <Compile Include="Encyclopedia\cannon1.png">
+      <Name>cannon1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -1262,6 +1262,20 @@
     </Compile>
     <Compile Include="Encyclopedia\towerTemplate.png">
       <Name>towerTemplate</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TowerTurret.png">
+      <Name>TowerTurret</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="endingScreen.png">
+      <Name>endingScreen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

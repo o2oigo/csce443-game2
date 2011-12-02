@@ -209,7 +209,7 @@ namespace RTS
                     gameFinished = true;
                 }
                 //nextLevel();  //delete this and have nextLevel() called when ready to start next level
-                game.goNextLevel();
+                //game.goNextLevel();
                 timer = 0;
             }
         }
