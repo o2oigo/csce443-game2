@@ -367,8 +367,8 @@ namespace RTS
             for (int i = 0; i < projectileList.Count; i++)
             {
                 Projectile proj = projectileList[i];
-                if (proj.getPosition().X > graphicsDevice.Viewport.Width || proj.getPosition().X < 0
-                    || proj.getPosition().Y > graphicsDevice.Viewport.Height || proj.getPosition().Y < 0)
+                if (proj.getPosition().X > game.getCurrentRectangle().Width || proj.getPosition().X < 0
+                    || proj.getPosition().Y > game.getCurrentRectangle().Height || proj.getPosition().Y < 0)
                 {
                     projectileList.RemoveAt(i);
                 }
