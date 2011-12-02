@@ -8,10 +8,6 @@ Content\ProjectileRed.xnb
 Content\ProjectilePurple.xnb
 Content\CrossHair1.xnb
 Content\TurretPurple.xnb
-Content\buildTowerMenu.xnb
-Content\buildTowerMenuSelect.xnb
-Content\cancelMenu.xnb
-Content\cancelMenuSelect.xnb
 Content\ssPlaceHolder.xnb
 Content\fireParticle.xnb
 Content\build.xnb
@@ -212,6 +208,8 @@ Content\Encyclopedia\towerReference.xnb
 Content\Encyclopedia\towers.xnb
 Content\Encyclopedia\towersB.xnb
 Content\Encyclopedia\towerTemplate.xnb
+Content\TowerTurret.xnb
+Content\endingScreen.xnb
 Content\font.xnb
 Content\2DTankGame.xnb
 Content\2d_Tank_Menu.xnb
@@ -220,6 +218,4 @@ Content\Map1.xnb
 Content\Map3.xnb
 Content\Map2.xnb
 Content\Map4.xnb
-Content\TowerTurret.xnb
-Content\endingScreen.xnb
 Content\2d_Tank_Menu.wma

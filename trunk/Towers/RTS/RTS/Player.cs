@@ -148,10 +148,10 @@ namespace RTS
                 turretTexture = contentManager.Load<Texture2D>("TurretPurple");
 
             mouseTexture = contentManager.Load<Texture2D>("CrossHair1");
-            menu1Texture = contentManager.Load<Texture2D>("buildTowerMenu");
-            menu2Texture = contentManager.Load<Texture2D>("cancelMenu");
-            menu3Texture = contentManager.Load<Texture2D>("buildTowerMenuSelect");
-            menu4Texture = contentManager.Load<Texture2D>("cancelMenuSelect");
+            //menu1Texture = contentManager.Load<Texture2D>("buildTowerMenu");
+            //menu2Texture = contentManager.Load<Texture2D>("cancelMenu");
+            //menu3Texture = contentManager.Load<Texture2D>("buildTowerMenuSelect");
+            //menu4Texture = contentManager.Load<Texture2D>("cancelMenuSelect");
             buildTexture = contentManager.Load<Texture2D>("buildSmall");
             cancelTexture = contentManager.Load<Texture2D>("cancelSmall");
             upgradeTexture = contentManager.Load<Texture2D>("upgradeSmall");
@@ -973,12 +973,15 @@ namespace RTS
 
         public void updateMovement()
         {
-
+            bool collision = false;
             Vector2 tmpPos;
             tmpPos.X = position.X + (float)(Math.Cos(moveRotationAngle) * speed);
             tmpPos.Y = position.Y + (float)(Math.Sin(moveRotationAngle) * speed);
             Rectangle player = new Rectangle((int)tmpPos.X - 5, (int)tmpPos.Y, animation.currentSpriteSheet().size.Width, animation.currentSpriteSheet().size.Height);
-            bool collision = false;
+
+            //TODO
+            if (map.TileTypeAt(tmpPos) == MapTileType.MapBarrier) collision = true;
+
 
             foreach (Tree t in game.Trees)
             {
@@ -990,8 +993,9 @@ namespace RTS
                 }
             }
 
-            Rectangle houseRect = new Rectangle((int)game.House.Origin.X - (game.House.Texture.Width / 2) + 30, (int)game.House.Origin.Y - 40, game.House.Texture.Width - 30, game.House.Texture.Height / 6);
-            if (houseRect.Intersects(player))
+            //Rectangle houseRect = new Rectangle((int)game.House.Origin.X - (game.House.Texture.Width / 2) + 30, (int)game.House.Origin.Y - 40, game.House.Texture.Width - 30, game.House.Texture.Height / 6);
+            //if (houseRect.Intersects(player))
+            if (game.Map.endRectangle().Intersects(player))
             {
                 collision = true;
             }
@@ -1005,8 +1009,6 @@ namespace RTS
                 //Movement boundaries for player (keeps player on screen)
                 if (position.X > game.getCurrentRectangle().Width)
                     position.X = game.getCurrentRectangle().Width;
-                    //(position.X > graphicsDevice.Viewport.Width)
-                    //position.X = graphicsDevice.Viewport.Width;
                 else if (position.X < 0)
                     position.X = 0;
                 if (position.Y > game.getCurrentRectangle().Height)

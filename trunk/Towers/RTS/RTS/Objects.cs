@@ -68,7 +68,7 @@ namespace RTS
         }
     }
 
-    public class House
+    public class EndPoint
     {
         Game1 game;
         private Texture2D houseTexture;
@@ -93,7 +93,7 @@ namespace RTS
             get { return origin; }
         }
 
-        public House(Game1 game, Vector2 pos)
+        public EndPoint(Game1 game, Vector2 pos)
         {
             this.game = game;
             position = pos;
@@ -113,7 +113,7 @@ namespace RTS
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(houseTexture, position, null, Color.White, 0f, new Vector2(0, houseTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(houseTexture, position, null, Color.White, 0f, new Vector2(0, houseTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
         }
     }
 }

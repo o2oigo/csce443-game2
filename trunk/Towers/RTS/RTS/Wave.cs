@@ -177,7 +177,7 @@ namespace RTS
                 levelFinished = false;
                 currentWave = 1;
                 waveFinished = false;
-                game.Map.NextMap();
+                game.Map.NextMap(currentLevel);
                 game.CreateTrees();
                 ReinitializeLevel(currentLevel);
             }

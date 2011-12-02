@@ -165,28 +165,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="buildTowerMenu.png">
-      <Name>buildTowerMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="buildTowerMenuSelect.png">
-      <Name>buildTowerMenuSelect</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cancelMenu.png">
-      <Name>cancelMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="cancelMenuSelect.png">
-      <Name>cancelMenuSelect</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="ssPlaceHolder.png">
       <Name>ssPlaceHolder</Name>
       <Importer>TextureImporter</Importer>
