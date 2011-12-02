@@ -449,7 +449,7 @@ namespace RTS
 
                     direction.Normalize();
                     position = GetPoint(curveTimer, pos[0], pos[1], pos[2 ], pos[3]);
-                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.5f;
+                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
                 }
             }
         }
