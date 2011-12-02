@@ -26,7 +26,6 @@ namespace RTS
             return rectDict[wave.CurrentLevel];
         }
 
-
         UserInterface userInterface;
         Camera camera;
 
@@ -51,14 +50,7 @@ namespace RTS
         {
             get { return trees; }
         }
-        private House house;
-        public House House
-        {
-            get { return house; }
-        }
 
-        //float enemyTimer = 0;
-        //float enemySpawnTime = 1f;
         Random rand = new Random();
         SpriteFont font;
 
@@ -73,8 +65,6 @@ namespace RTS
         public LightningParticleSystem lightning;
         public FlameTowerSmokeParticleSystem flameTowerSmoke;
         public IceParticleSystem ice;
-
-        //private Rectangle test = new Rectangle(0, 0, 1984, 1536);
 
         // Dictionary<string, SoundEffect> music;
         // SoundEffect tankSong;
@@ -125,8 +115,8 @@ namespace RTS
             userInterface.setScreenStatus("loadingGameScreen1",true);
             //wave = new Wave(this);
             wave = new Wave(this,userInterface);
-            house = new House(this, map.getBaseCoordinate());
-            house.LoadContent();
+            //house = new House(this, map.getBaseCoordinate());
+           // house.LoadContent();
            
         }
 
@@ -262,14 +252,6 @@ namespace RTS
             if (userInterface.getScreen("showGameScreen") == true)
             {
                 camera.Update(gameTime);
-                //if (enemies.Count != 0)
-                //    enemySpawnTime = .15f * enemies.Count;
-                //else
-                //    enemySpawnTime = 0.1f;
-
-                //Creates Enemies
-                //spawnEnemies(gameTime);
-                
                 wave.Update(gameTime);
                 
                 //Update Player
@@ -340,12 +322,7 @@ namespace RTS
             if (userInterface.getScreen("showGameScreen") == true || userInterface.getScreen("showPauseScreen") == true)
             {
                 spriteBatch.Draw(backgroundTexture, rectDict[wave.CurrentLevel], Color.White);
-                //PATHFINDING
-                //map.Draw(spriteBatch);
-                //DrawTrees(spriteBatch);
-                //PATHFINDING//
                 
-
                 foreach (Tower tower in player1.getTowers())
                     tower.Draw(spriteBatch);
 
@@ -359,8 +336,8 @@ namespace RTS
                 {
                     t.Draw(spriteBatch);
                 }
-                house.Draw(spriteBatch);
-                
+                //house.Draw(spriteBatch);
+                map.Draw(spriteBatch);
 
                 //player2.Draw(spriteBatch);
                 drawText();
@@ -369,20 +346,13 @@ namespace RTS
                 {
                     foreach (Stone i in stones) i.Draw(spriteBatch);
                 }
-
             }
-
             spriteBatch.End();
-
-
             // note
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
-
-            userInterface.Draw(spriteBatch);
-                    
+            userInterface.Draw(spriteBatch);   
             spriteBatch.End();
-
 
             base.Draw(gameTime);
         }

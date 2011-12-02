@@ -879,10 +879,6 @@ C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb
 C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb
 C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb
 C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb
-C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
-C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
-C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
-C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
 C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\ssPlaceHolder.xnb
 C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb
 C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb
@@ -1124,3 +1120,5 @@ E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\enemystockFront.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\enemystockRight.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\endingScreen.xnb
+C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\TowerTurret.xnb
+C:\RTS\Towers\RTS\RTS\bin\x86\Debug\Content\endingScreen.xnb

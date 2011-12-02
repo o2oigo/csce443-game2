@@ -25,24 +25,25 @@ namespace RTS
         #region Fields
 
         private Vector2 tileSquareCenter;
+        private List<Texture2D> endList = new List<Texture2D>();
         //private Texture2D tileTexture;
-        private Texture2D endTexture;
+        //private Texture2D endTexture;
         //private Vector2 dotTextureCenter;
         //private Texture2D barrierTexture;
         //private Texture2D treeTexture;
+
+        private EndPoint endp;
+        public EndPoint EndPt
+        {
+            get { return endp; }
+        }
+
 
         private List<MapData> maps;
         private MapTileType[,] mapTiles;
         private int currentMap = 0;
         private int numberColumns;
         private int numberRows;
-
-        //private Dictionary<Point, Dictionary<int,Vector2>> treeDict = new Dictionary<Point, Dictionary<int,Vector2>>();
-        //public Dictionary<Point, Dictionary<int, Vector2>> TreeDict
-        //{
-        //    get { return treeDict; }
-        //}
-
 
         Random rand = new Random();
 
@@ -104,23 +105,34 @@ namespace RTS
         public void LoadContent(ContentManager content)
         {
             //endTexture = content.Load<Texture2D>("Tower1");
-
             maps = new List<MapData>();
             maps.Add(content.Load<MapData>("map1"));
             maps.Add(content.Load<MapData>("map2"));
             maps.Add(content.Load<MapData>("map3"));
             maps.Add(content.Load<MapData>("map4"));
 
+            endList.Add(content.Load<Texture2D>("house"));
+            endList.Add(content.Load<Texture2D>("house"));
+            endList.Add(content.Load<Texture2D>("house"));
+
             ReloadMap();
 
             mapReload = true;
             tileSquareCenter = new Vector2(tileSize / 2);
         }
-
         #endregion
 
-        //public void Draw(SpriteBatch spriteBatch)
-        //{
+        public Rectangle endRectangle()
+        {
+            Vector2 tmp = MapToWorld(endTile,false);
+            Rectangle rct = new Rectangle((int)tmp.X, (int)tmp.Y, endList[currentMap].Width, endList[currentMap].Height/6);
+            return rct;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(endList[currentMap], MapToWorld(endTile, true), null, Color.White, 0f, new Vector2(20, endList[currentMap].Height-30), 1.0f, SpriteEffects.None, 0f);
+        }
         //    for (int i = 0; i < numberRows; i++)
         //    {
         //        for (int j = 0; j < numberColumns; j++)
@@ -192,8 +204,6 @@ namespace RTS
                 int[] array = new int[2] { numberColumns - 1, numberRows - 1 };
                 return array;
             }
-
-            // return mapTiles[column, row];
         }
 
         public MapTileType TileTypeAt(Vector2 coordinate)
@@ -302,7 +312,7 @@ namespace RTS
             return StepDistance(point, endTile);
         }
 
-        public void NextMap()
+        public void NextMap(int currentLevel)
         {
             if (currentMap < maps.Count()-1) currentMap++;
             ReloadMap();
