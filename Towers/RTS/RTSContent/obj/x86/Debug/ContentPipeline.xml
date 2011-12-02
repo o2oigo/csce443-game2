@@ -494,7 +494,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\fireStone.xnb</Output>
-      <Time>2011-11-11T10:34:52-06:00</Time>
+      <Time>2011-12-01T23:42:38-06:00</Time>
     </Item>
     <Item>
       <Source>lightningstone.png</Source>
@@ -1646,7 +1646,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level1Screen.xnb</Output>
-      <Time>2011-12-01T19:25:46-06:00</Time>
+      <Time>2011-12-01T23:42:12-06:00</Time>
     </Item>
     <Item>
       <Source>Encyclopedia\level2.png</Source>
@@ -1664,7 +1664,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level2Screen.xnb</Output>
-      <Time>2011-12-01T19:25:46-06:00</Time>
+      <Time>2011-12-01T23:42:10-06:00</Time>
     </Item>
     <Item>
       <Source>Encyclopedia\level_2.jpg</Source>
@@ -1700,7 +1700,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level3Screen.xnb</Output>
-      <Time>2011-12-01T19:25:50-06:00</Time>
+      <Time>2011-12-01T23:42:10-06:00</Time>
     </Item>
     <Item>
       <Source>Encyclopedia\lightning1.png</Source>

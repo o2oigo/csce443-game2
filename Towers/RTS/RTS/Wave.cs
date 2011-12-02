@@ -76,68 +76,76 @@ namespace RTS
             this.game = game;
             InitializeLevel();
 
-            //level1//
-            AddNormalEnemy(1, 1, 5, 50);
-            AddNormalEnemy(1, 2, 10, 100);
-            AddHPEnemy(1, 3, 5, 100);
-            AddHPEnemy(1, 4, 10, 100);
-            AddFastEnemy(1, 5, 5, 100);
-            AddFastEnemy(1, 6, 10, 100);
-            AddAttackingEnemy(1, 7, 5, 100);
-            AddAttackingEnemy(1, 8, 10, 100);
-
-            AddNormalEnemy(1, 9, 4, 100);
-            AddHPEnemy(1, 9, 4, 100);
-            AddFastEnemy(1, 9, 4, 100);
-            AddAttackingEnemy(1, 9, 4, 100);
-
-            AddNormalEnemy(1, 10, 10, 100);
-            AddHPEnemy(1, 10, 5, 100);
-            AddFastEnemy(1, 10, 5, 100);
-            AddAttackingEnemy(1, 10, 5, 100);
-
-            //level2//
-            AddAttackingEnemy(2, 1, 5, 100);
-            AddNormalEnemy(2, 2, 10, 100);
-            AddHPEnemy(2, 3, 5, 100);
-            AddHPEnemy(2, 4, 10, 100);
-            AddFastEnemy(2, 5, 5, 100);
-            AddFastEnemy(2, 6, 10, 100);
-            AddAttackingEnemy(2, 7, 5, 100);
-            AddAttackingEnemy(2, 8, 10, 100);
-
-            AddNormalEnemy(2, 9, 4, 100);
-            AddHPEnemy(2, 9, 4, 100);
-            AddFastEnemy(2, 9, 4, 100);
-            AddAttackingEnemy(2, 9, 4, 100);
-
-            AddNormalEnemy(2, 10, 10, 100);
-            AddHPEnemy(2, 10, 5, 100);
-            AddFastEnemy(2, 10, 5, 100);
-            AddAttackingEnemy(2, 10, 5, 100);
-
-            //level3//
-            AddAttackingEnemy(3, 1, 5, 100);
-            AddNormalEnemy(3, 2, 10, 100);
-            AddHPEnemy(3, 3, 5, 100);
-            AddHPEnemy(3, 4, 10, 100);
-            AddFastEnemy(3, 5, 5, 100);
-            AddFastEnemy(3, 6, 10, 100);
-            AddAttackingEnemy(3, 7, 5, 100);
-            AddAttackingEnemy(3, 8, 10, 100);
-
-            AddNormalEnemy(3, 9, 4, 100);
-            AddHPEnemy(3, 9, 4, 100);
-            AddFastEnemy(3, 9, 4, 100);
-            AddAttackingEnemy(3, 9, 4, 100);
-
-            AddNormalEnemy(3, 10, 10, 100);
-            AddHPEnemy(3, 10, 5, 100);
-            AddFastEnemy(3, 10, 5, 100);
-            AddAttackingEnemy(3, 10, 5, 100);
-            if (userInterface.getScreen("showGameScreen") == true)
+            if (userInterface.getScreen("firstRun") == false)
             {
-                userInterface.setScreenStatus("loadingGameScreen",false);
+                //level1//
+                AddNormalEnemy(1, 1, 10, 50);
+                AddNormalEnemy(1, 2, 20, 100);
+                AddHPEnemy(1, 3, 20, 100);
+                AddHPEnemy(1, 4, 20, 100);
+                AddFastEnemy(1, 5, 5, 100);
+                AddFastEnemy(1, 6, 10, 100);
+                AddAttackingEnemy(1, 7, 5, 100);
+                AddAttackingEnemy(1, 8, 10, 100);
+
+                AddNormalEnemy(1, 9, 4, 100);
+                AddHPEnemy(1, 9, 4, 100);
+                AddFastEnemy(1, 9, 4, 100);
+                AddAttackingEnemy(1, 9, 4, 100);
+
+                AddNormalEnemy(1, 10, 10, 100);
+                AddHPEnemy(1, 10, 5, 100);
+                AddFastEnemy(1, 10, 5, 100);
+                AddAttackingEnemy(1, 10, 5, 100);
+
+                //level2//
+                AddAttackingEnemy(2, 1, 5, 100);
+                AddNormalEnemy(2, 2, 10, 100);
+                AddHPEnemy(2, 3, 5, 100);
+                AddHPEnemy(2, 4, 10, 100);
+                AddFastEnemy(2, 5, 5, 100);
+                AddFastEnemy(2, 6, 10, 100);
+                AddAttackingEnemy(2, 7, 5, 100);
+                AddAttackingEnemy(2, 8, 10, 100);
+
+                AddNormalEnemy(2, 9, 4, 100);
+                AddHPEnemy(2, 9, 4, 100);
+                AddFastEnemy(2, 9, 4, 100);
+                AddAttackingEnemy(2, 9, 4, 100);
+
+                AddNormalEnemy(2, 10, 10, 100);
+                AddHPEnemy(2, 10, 5, 100);
+                AddFastEnemy(2, 10, 5, 100);
+                AddAttackingEnemy(2, 10, 5, 100);
+
+                //level3//
+                AddAttackingEnemy(3, 1, 5, 100);
+                AddNormalEnemy(3, 2, 10, 100);
+                AddHPEnemy(3, 3, 5, 100);
+                AddHPEnemy(3, 4, 10, 100);
+                AddFastEnemy(3, 5, 5, 100);
+                AddFastEnemy(3, 6, 10, 100);
+                AddAttackingEnemy(3, 7, 5, 100);
+                AddAttackingEnemy(3, 8, 10, 100);
+
+                AddNormalEnemy(3, 9, 4, 100);
+                AddHPEnemy(3, 9, 4, 100);
+                AddFastEnemy(3, 9, 4, 100);
+                AddAttackingEnemy(3, 9, 4, 100);
+
+                AddNormalEnemy(3, 10, 10, 100);
+                AddHPEnemy(3, 10, 5, 100);
+                AddFastEnemy(3, 10, 5, 100);
+                AddAttackingEnemy(3, 10, 5, 100);
+                if (userInterface.getScreen("showGameScreen") == true)
+                {
+                    userInterface.setScreenStatus("loadingGameScreen1", false);
+                    userInterface.setScreenStatus("loadingGameScreen2", false);
+                    userInterface.setScreenStatus("loadingGameScreen3", false);
+                    userInterface.setScreenStatus("showLevel1Screen", false);
+                    userInterface.setScreenStatus("showLevel2Screen", false);
+                    userInterface.setScreenStatus("showLevel3Screen", false);
+                }
             }
         }
         #endregion 

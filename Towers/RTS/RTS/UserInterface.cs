@@ -36,9 +36,12 @@ namespace RTS
         private bool showLevel1Screen = false;
         private bool showLevel2Screen = false;
         private bool showLevel3Screen = false;
-        private bool loadingGameScreen = false;
+        private bool loadingGameScreen1 = false;
+        private bool loadingGameScreen2 = false;
+        private bool loadingGameScreen3 = false;
         private bool showEncyclopediaScreen = false;
         private bool restartGame = false;
+        private bool firstRun = true;
         
         
 
@@ -93,6 +96,8 @@ namespace RTS
         private Texture2D level1MapTexture;
         private Texture2D level2MapTexture;
         private Texture2D level3MapTexture;
+        private Texture2D startLevelButtonTexture;
+        private Texture2D encyclopediaButtonTexture;
 
 
         // Encyclopedia texture
@@ -114,6 +119,7 @@ namespace RTS
         private Texture2D enemy6EncyclopediaTexture;
         private Texture2D enemy7EncyclopediaTexture;
 
+
         public void Initialize(Game1 game, PlayerIndex index, Vector2 startPosition, List<Player> _players)
         {
             this.game = game;
@@ -128,7 +134,9 @@ namespace RTS
             showLevel1Screen = false;
             showLevel2Screen = false;
             showLevel3Screen = false;
-            loadingGameScreen = false;
+            loadingGameScreen1 = false;
+            loadingGameScreen2 = false;
+            loadingGameScreen3 = false;
             showEncyclopediaScreen = false;
             restartGame = false;
             player1 = players[0];
@@ -149,6 +157,8 @@ namespace RTS
             level1MapTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\level1Screen");
             level2MapTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\level2Screen");
             level3MapTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\level3Screen");
+            startLevelButtonTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\start");
+            encyclopediaButtonTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopediaButton");
 
             // encyclopedia load texture
             mainEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia");
@@ -244,7 +254,15 @@ namespace RTS
                         spriteBatch.DrawString(font, "Next Wave: ???" , uiPosition1, Color.Black);
                     }
                 }
-                if (loadingGameScreen == true)
+                if (loadingGameScreen1 == true)
+                {
+                    spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
+                }
+                if (loadingGameScreen2 == true)
+                {
+                    spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
+                }
+                if (loadingGameScreen3 == true)
                 {
                     spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
                 }
@@ -352,24 +370,47 @@ namespace RTS
                     }
                 }
 
-                if (loadingGameScreen == true && showGameScreen == true)
+                if (loadingGameScreen1 == true && showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
+                    spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
+                    spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
+                }
+                if (loadingGameScreen2 == true && showGameScreen == true)
+                {
+                    spriteBatch.Draw(level2MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
+                    spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
+                }
+                if (loadingGameScreen3 == true && showGameScreen == true)
+                {
+                    spriteBatch.Draw(level3MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
+                    spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
                 }
 
                 if (showLevel1Screen == true)
                 {
                     spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
                 }
 
                 else if (showLevel2Screen == true)
                 {
                     spriteBatch.Draw(level2MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
                 }
 
                 else if (showLevel3Screen == true)
                 {
                     spriteBatch.Draw(level3MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
                 }
 
                 if (showEncyclopediaScreen == true)
@@ -395,6 +436,7 @@ namespace RTS
                 showTitleScreen = false;
                 showGameOverScreen = false;
                 skipToGame = false;
+
             }
 
             if (restartGame == true)
@@ -582,19 +624,22 @@ namespace RTS
 
             if (showTitleScreen == true)
                 updateKeyboardForTitleScreen();
+
             else if (showLevel1Screen == true)
-            { }
+                updateKeyboardForLevel1Screen();
+
             else if (showLevel2Screen == true)
-            {
-            }
+                updateKeyboardForLevel2Screen();
+
             else if (showLevel3Screen == true)
-            { }
+                updateKeyboardForLevel3Screen();
+
             else if (showGameScreen == true)
-            {
                 updateKeyboardForGameScreen();
-            }
+
             else if (showPauseScreen == true)
                 updateKeyboardForPauseScreen();
+
             else if (showGameOverScreen == true)
                 updateKeyboardForGameOverScreen();
 
@@ -621,45 +666,53 @@ namespace RTS
 
         private void updateKeyboardForTitleScreen()
         {
-            if (keystate.IsKeyDown(Keys.Enter))
+            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter))
             {
-                showGameScreen = true;
+                //showGameScreen = true;
+                showGameScreen = false;
                 showTitleScreen = false;
                 showPauseScreen = false;
-                restartGame = true;
+                showLevel1Screen = true;
+                //restartGame = true;
+                firstRun = false;
             }
         }
 
         private void updateKeyboardForLevel1Screen()
         {
-            if (keystate.IsKeyDown(Keys.Enter))
+            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter))
             {
                 showGameScreen = true;
-                loadingGameScreen = true;
+                loadingGameScreen1 = true;
                 showTitleScreen = false;
                 showPauseScreen = false;
+                showLevel1Screen = false;
                 restartGame = true;
             }
         }
 
         private void updateKeyboardForLevel2Screen()
         {
-            if (keystate.IsKeyDown(Keys.Enter))
+            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter))
             {
                 showGameScreen = true;
+                loadingGameScreen2 = true;
                 showTitleScreen = false;
                 showPauseScreen = false;
+                showLevel2Screen = false;
                 restartGame = true;
             }
         }
 
         private void updateKeyboardForLevel3Screen()
         {
-            if (keystate.IsKeyDown(Keys.Enter))
+            if (keystate.IsKeyDown(Keys.Enter) && oldKeyState.IsKeyUp(Keys.Enter))
             {
                 showGameScreen = true;
+                loadingGameScreen3 = true;
                 showTitleScreen = false;
                 showPauseScreen = false;
+                showLevel3Screen = false;
                 restartGame = true;
             }
         }
@@ -715,8 +768,12 @@ namespace RTS
         {
             if (_screenName == "showTitleScreen")
                 return showTitleScreen;
-            else if (_screenName == "loadingGameScreen")
-                return loadingGameScreen;
+            else if (_screenName == "loadingGameScreen1")
+                return loadingGameScreen1;
+            else if (_screenName == "loadingGameScreen2")
+                return loadingGameScreen2;
+            else if (_screenName == "loadingGameScreen3")
+                return loadingGameScreen3;
             else if (_screenName == "showEncyclopediaScreen")
                 return showEncyclopediaScreen;
             else if (_screenName == "showGameOverScreen")
@@ -735,6 +792,8 @@ namespace RTS
                 return showWinScreen;
             else if (_screenName == "restartGame")
                 return restartGame;
+            else if (_screenName == "firstRun")
+                return firstRun;
             else
                 return false;
         }
@@ -745,111 +804,27 @@ namespace RTS
                 showGameScreen = _status;
             else if (_screenName == "showTitleScreen")
                 showTitleScreen = _status;
-            else if (_screenName == "showGameOverScreen") 
+            else if (_screenName == "showGameOverScreen")
                 showGameOverScreen = _status;
-            else if (_screenName == "showWinScreen") 
+            else if (_screenName == "showWinScreen")
                 showWinScreen = _status;
-            else if (_screenName == "restartGame") 
+            else if (_screenName == "restartGame")
                 restartGame = _status;
-            else if (_screenName == "loadingGameScreen") 
-                loadingGameScreen = _status;
-            else if (_screenName == "showLevel1Screen") 
+            else if (_screenName == "loadingGameScreen1")
+                loadingGameScreen1 = _status;
+            else if (_screenName == "loadingGameScreen2")
+                loadingGameScreen2 = _status;
+            else if (_screenName == "loadingGameScreen3")
+                loadingGameScreen3 = _status;
+            else if (_screenName == "showLevel1Screen")
                 showLevel1Screen = _status;
-            else if (_screenName == "showLevel2Screen") 
+            else if (_screenName == "showLevel2Screen")
                 showLevel2Screen = _status;
-            else if (_screenName == "showLevel3Screen") 
+            else if (_screenName == "showLevel3Screen")
                 showLevel3Screen = _status;
+            else if (_screenName == "firstRun")
+                firstRun = _status;
         }
-/*
-        public bool getShowGameScreen()
-        {
-            return showGameScreen;
-        }
-
-        public bool getShowTitleScreen()
-        {
-            return showTitleScreen;
-        }
-
-        public bool getShowPauseScreen()
-        {
-            return showPauseScreen;
-        }
-
-        public void setShowGameScreen(bool _status)
-        {
-            showGameScreen = _status;
-        }
-
-        public void setShowTitleScreen(bool _status)
-        {
-            showTitleScreen = _status;
-        }
-
-        public void setShowGameoverScreen(bool _status)
-        {
-            showGameOverScreen = _status;
-        }
-
-        public void setShowWinScreen(bool _status)
-        {
-            showWinScreen = _status;
-        }
-
-        public void setRestartGameStatus(bool _status)
-        {
-            restartGame = _status;
-        }
-
-        public bool getRestartGameStatus()
-        {
-            return restartGame;
-        }
-
-        public void setLoadingScreen(bool _status)
-        {
-            loadingGameScreen = _status;
-        }
-
-        public bool getLoadingScreen()
-        {
-            return loadingGameScreen;
-        }
-
-
-        public void setShowLevel1Screen(bool _status)
-        {
-            showLevel1Screen = _status;
-        }
-
-        public bool getShowLevel1Screen()
-        {
-            return showLevel1Screen;
-        }
-
-        public void setShowLevel2Screen(bool _status)
-        {
-            showLevel2Screen = _status;
-        }
-
-        public bool getShowLevel2Screen()
-        {
-            return showLevel2Screen;
-        }
-
-        public void setShowLevel3Screen(bool _status)
-        {
-            showLevel3Screen = _status;
-        }
-
-        public bool getShowLevel3Screen()
-        {
-            return showLevel3Screen;
-        }
-
-        */
-
-        
 
         public void setWavesNumber(int _wave)
         {
