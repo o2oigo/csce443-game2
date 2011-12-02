@@ -59,7 +59,7 @@ namespace RTS
         }
 
 
-        private float timeToUpdate = 0.05f;
+        private float timeToUpdate = 0.1f;
         public int FramesPerSecond
         {
             set { timeToUpdate = (1f / value); }
@@ -76,7 +76,7 @@ namespace RTS
         {
             textureMap = txtMap;
             IsLooping = isLoop;
-            FramesPerSecond = 30;
+            FramesPerSecond = 50;
         }
 
         public void Update(GameTime gameTime)

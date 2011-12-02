@@ -176,19 +176,19 @@ namespace RTS
             camera = new Camera(GraphicsDevice.Viewport);
             camera.Initialize(this, PlayerIndex.One, new Vector2(100, 100), players);
 
-            explosion = new ExplosionParticleSystem(this, 2000, camera);
+            explosion = new ExplosionParticleSystem(this, 1000, camera);
             Components.Add(explosion);
 
             smoke = new ExplosionSmokeParticleSystem(this, 100, camera);
             Components.Add(smoke);
 
-            flameTowerSmoke = new FlameTowerSmokeParticleSystem(this, 1000, camera);
+            flameTowerSmoke = new FlameTowerSmokeParticleSystem(this, 5000, camera);
             Components.Add(flameTowerSmoke);
 
-            fire = new FireParticleSystem(this, 1000, camera);
+            fire = new FireParticleSystem(this, 5000, camera);
             Components.Add(fire);
 
-            ice = new IceParticleSystem(this, 1000, camera);
+            ice = new IceParticleSystem(this, 5000, camera);
             Components.Add(ice);
 
             fireTower = new FireParticleSystem(this, 1000, camera);
