@@ -13,6 +13,7 @@ namespace RTS
         Game1 game;
         Random rand = new Random();
         UserInterface userInterface;
+
         double timer;
         const double intervalSpawn = 2000;
         const double intervalWave = 10000;
@@ -53,9 +54,9 @@ namespace RTS
 
         public void InitializeLevel()
         {
-            LevelDictionary.Add(1, InitializeWave(10));
-            LevelDictionary.Add(2, InitializeWave(10));
-            LevelDictionary.Add(3, InitializeWave(10));
+            LevelDictionary.Add(1, InitializeWave(1));
+            LevelDictionary.Add(2, InitializeWave(1));
+            LevelDictionary.Add(3, InitializeWave(1));
         }
 
         public Dictionary<int, Queue<Enemy>> InitializeWave(int waveNum)
@@ -69,83 +70,82 @@ namespace RTS
         }   
 
         #region Hard coded enemy in each level
+
+        //level, wave, normal,hp,
+        public void AddEnemy()
+        {
+        }
+
+        public void ReinitializeLevel(int i)
+        {
+            switch (i)
+            {
+                case 1:
+                    AddNormalEnemy(i, 1, 5, 50);
+                    //AddNormalEnemy(i, 2, 10, 100);
+                    //AddHPEnemy(i, 3, 5, 100);
+                    //AddHPEnemy(i, 4, 10, 100);
+                    //AddFastEnemy(i, 5, 5, 100);
+                    //AddFastEnemy(1, 6, 10, 100);
+                    //AddAttackingEnemy(i, 7, 5, 100);
+                    //AddAttackingEnemy(i, 8, 10, 100);
+                    //AddNormalEnemy(i, 9, 4, 100);
+                    //AddHPEnemy(i, 9, 4, 100);
+                    //AddFastEnemy(i, 9, 4, 100);
+                    //AddAttackingEnemy(i, 9, 4, 100);
+                    //
+                    //AddNormalEnemy(i, 10, 10, 100);
+                    //AddHPEnemy(i, 10, 5, 100);
+                    //AddFastEnemy(i, 10, 5, 100);
+                    //AddAttackingEnemy(i, 10, 5, 100);
+                    break;
+                case 2:
+                    AddAttackingEnemy(i, 1, 5, 100);
+                    //AddNormalEnemy(i, 2, 10, 100);
+                    //AddHPEnemy(i, 3, 5, 100);
+                    //AddHPEnemy(i, 4, 10, 100);
+                    //AddFastEnemy(i, 5, 5, 100);
+                    //AddFastEnemy(i, 6, 10, 100);
+                    //AddAttackingEnemy(i, 7, 5, 100);
+                    //AddAttackingEnemy(i, 8, 10, 100);
+                    //
+                    //AddNormalEnemy(i, 9, 4, 100);
+                    //AddHPEnemy(i, 9, 4, 100);
+                    //AddFastEnemy(i, 9, 4, 100);
+                    //AddAttackingEnemy(i, 9, 4, 100);
+                    //
+                    //AddNormalEnemy(i, 10, 10, 100);
+                    //AddHPEnemy(i, 10, 5, 100);
+                    //AddFastEnemy(i, 10, 5, 100);
+                    //AddAttackingEnemy(i, 10, 5, 100);
+                    break;
+                case 3:
+                    AddAttackingEnemy(i, 1, 5, 100);
+                    break;
+                default:
+                    break;
+            }
+            if (userInterface.getScreen("showGameScreen") == true)
+            {
+                userInterface.setScreenStatus("loadingGameScreen1", false);
+                userInterface.setScreenStatus("loadingGameScreen2", false);
+                userInterface.setScreenStatus("loadingGameScreen3", false);
+                userInterface.setScreenStatus("showLevel1Screen", false);
+                userInterface.setScreenStatus("showLevel2Screen", false);
+                userInterface.setScreenStatus("showLevel3Screen", false);
+
+            }
+        }
+
         public Wave(Game1 game, UserInterface _userInterface)
         {
             userInterface = _userInterface;
             //interval = 1000;
             this.game = game;
             InitializeLevel();
-
             if (userInterface.getScreen("firstRun") == false)
             {
-                //level1//
-                AddNormalEnemy(1, 1, 10, 50);
-                AddNormalEnemy(1, 2, 20, 100);
-                AddHPEnemy(1, 3, 20, 100);
-                AddHPEnemy(1, 4, 20, 100);
-                AddFastEnemy(1, 5, 5, 100);
-                AddFastEnemy(1, 6, 10, 100);
-                AddAttackingEnemy(1, 7, 5, 100);
-                AddAttackingEnemy(1, 8, 10, 100);
-
-                AddNormalEnemy(1, 9, 4, 100);
-                AddHPEnemy(1, 9, 4, 100);
-                AddFastEnemy(1, 9, 4, 100);
-                AddAttackingEnemy(1, 9, 4, 100);
-
-                AddNormalEnemy(1, 10, 10, 100);
-                AddHPEnemy(1, 10, 5, 100);
-                AddFastEnemy(1, 10, 5, 100);
-                AddAttackingEnemy(1, 10, 5, 100);
-
-                //level2//
-                AddAttackingEnemy(2, 1, 5, 100);
-                AddNormalEnemy(2, 2, 10, 100);
-                AddHPEnemy(2, 3, 5, 100);
-                AddHPEnemy(2, 4, 10, 100);
-                AddFastEnemy(2, 5, 5, 100);
-                AddFastEnemy(2, 6, 10, 100);
-                AddAttackingEnemy(2, 7, 5, 100);
-                AddAttackingEnemy(2, 8, 10, 100);
-
-                AddNormalEnemy(2, 9, 4, 100);
-                AddHPEnemy(2, 9, 4, 100);
-                AddFastEnemy(2, 9, 4, 100);
-                AddAttackingEnemy(2, 9, 4, 100);
-
-                AddNormalEnemy(2, 10, 10, 100);
-                AddHPEnemy(2, 10, 5, 100);
-                AddFastEnemy(2, 10, 5, 100);
-                AddAttackingEnemy(2, 10, 5, 100);
-
-                //level3//
-                AddAttackingEnemy(3, 1, 5, 100);
-                AddNormalEnemy(3, 2, 10, 100);
-                AddHPEnemy(3, 3, 5, 100);
-                AddHPEnemy(3, 4, 10, 100);
-                AddFastEnemy(3, 5, 5, 100);
-                AddFastEnemy(3, 6, 10, 100);
-                AddAttackingEnemy(3, 7, 5, 100);
-                AddAttackingEnemy(3, 8, 10, 100);
-
-                AddNormalEnemy(3, 9, 4, 100);
-                AddHPEnemy(3, 9, 4, 100);
-                AddFastEnemy(3, 9, 4, 100);
-                AddAttackingEnemy(3, 9, 4, 100);
-
-                AddNormalEnemy(3, 10, 10, 100);
-                AddHPEnemy(3, 10, 5, 100);
-                AddFastEnemy(3, 10, 5, 100);
-                AddAttackingEnemy(3, 10, 5, 100);
-                if (userInterface.getScreen("showGameScreen") == true)
-                {
-                    userInterface.setScreenStatus("loadingGameScreen1", false);
-                    userInterface.setScreenStatus("loadingGameScreen2", false);
-                    userInterface.setScreenStatus("loadingGameScreen3", false);
-                    userInterface.setScreenStatus("showLevel1Screen", false);
-                    userInterface.setScreenStatus("showLevel2Screen", false);
-                    userInterface.setScreenStatus("showLevel3Screen", false);
-                }
+                ReinitializeLevel(currentLevel);
             }
         }
         #endregion 
@@ -179,6 +179,7 @@ namespace RTS
                 waveFinished = false;
                 game.Map.NextMap();
                 game.CreateTrees();
+                ReinitializeLevel(currentLevel);
             }
         }
 
@@ -207,7 +208,8 @@ namespace RTS
                 {
                     gameFinished = true;
                 }
-                nextLevel();  //delete this and have nextLevel() called when ready to start next level
+                //nextLevel();  //delete this and have nextLevel() called when ready to start next level
+                game.goNextLevel();
                 timer = 0;
             }
         }

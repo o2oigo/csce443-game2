@@ -19,6 +19,13 @@ namespace RTS
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D backgroundTexture;
+        Dictionary<int, Texture2D> mapTextureDict;
+        private Dictionary<int, Rectangle> rectDict;
+        public Rectangle getCurrentRectangle()
+        {
+            return rectDict[wave.CurrentLevel];
+        }
+
 
         UserInterface userInterface;
         Camera camera;
@@ -63,7 +70,7 @@ namespace RTS
         public FlameTowerSmokeParticleSystem flameTowerSmoke;
         public IceParticleSystem ice;
 
-        private Rectangle test = new Rectangle(0, 0, 1984, 1536);
+        //private Rectangle test = new Rectangle(0, 0, 1984, 1536);
 
         // Dictionary<string, SoundEffect> music;
         // SoundEffect tankSong;
@@ -74,7 +81,7 @@ namespace RTS
         {
             get { return map; }
         }
-        private Rectangle gameplayArea;
+        //private Rectangle gameplayArea;
 
         public Game1()
         {
@@ -106,12 +113,13 @@ namespace RTS
            
             //Rectangle test = new Rectangle(0, 0, this.graphics.PreferredBackBufferHeight, this.graphics.PreferredBackBufferWidth);
             //Rectangle test = new Rectangle(0,0,this.GraphicsDevice.Viewport.Width, this.GraphicsDevice.Viewport.Height);
-            gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
-            map.UpdateMapViewport(gameplayArea);
-            map.ReloadMap();
+            //gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
+            //map.UpdateMapViewport(test);
+            //map.ReloadMap();
             //map.UpdateMapViewport(test);
             CreateTrees();
             userInterface.setScreenStatus("loadingGameScreen1",true);
+            //wave = new Wave(this);
             wave = new Wave(this,userInterface);
             house = new House(this, map.getBaseCoordinate());
             house.LoadContent();
@@ -153,7 +161,22 @@ namespace RTS
             map.LoadContent(Content);
             //PATHFINDING//
 
-            backgroundTexture = Content.Load<Texture2D>("levelOne");
+            //background//
+            mapTextureDict = new Dictionary<int, Texture2D>();
+            mapTextureDict.Add(1, Content.Load<Texture2D>("levelOne"));
+            mapTextureDict.Add(2, Content.Load<Texture2D>("levelTwo"));
+            mapTextureDict.Add(3, Content.Load<Texture2D>("levelThree"));
+            backgroundTexture = mapTextureDict[1];
+
+            rectDict = new Dictionary<int, Rectangle>();
+            rectDict.Add(1, new Rectangle(0,0,1280,1024));
+            rectDict.Add(2, new Rectangle(0,0,1984, 1536));
+            rectDict.Add(3, new Rectangle(0,0,1984, 1536));
+            wave = new Wave(this, userInterface);
+
+            map.UpdateMapViewport(rectDict[1]);
+            map.ReloadMap();
+
             font = Content.Load<SpriteFont>("font");
 
             camera = new Camera(GraphicsDevice.Viewport);
@@ -300,7 +323,7 @@ namespace RTS
            
             if (userInterface.getScreen("showGameScreen") == true || userInterface.getScreen("showPauseScreen") == true)
             {
-                spriteBatch.Draw(backgroundTexture, gameplayArea, Color.White);
+                spriteBatch.Draw(backgroundTexture, rectDict[wave.CurrentLevel], Color.White);
                 //PATHFINDING
                 //map.Draw(spriteBatch);
                 //DrawTrees(spriteBatch);
@@ -398,7 +421,7 @@ namespace RTS
                     //Ckeck if current enemy and exit point                   
                     //if (map.TileTypeAt(currentEnemy.Position) == MapTileType.MapExit)
                     //if (currentEnemyRect.Intersects(houseRect))
-                    if (currentEnemy.boundingCircle(currentEnemy.Position,50,Map.MapToWorld(Map.EndTile,false)))
+                    if (currentEnemy.boundingCircle(currentEnemy.Position,60,Map.MapToWorld(Map.EndTile,false)))
                     {
                         live--;
                         Sprite.removeList(enemies[i]);
@@ -666,5 +689,10 @@ namespace RTS
             }
         }
 
+        public void goNextLevel()
+        {
+            wave.nextLevel();
+            backgroundTexture = mapTextureDict[wave.CurrentLevel];
+        }
     }
 }
