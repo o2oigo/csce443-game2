@@ -111,7 +111,7 @@ namespace RTS
             map.ReloadMap();
             //map.UpdateMapViewport(test);
             CreateTrees();
-            userInterface.setScreenStatus("loadingGameScreen",true);
+            userInterface.setScreenStatus("loadingGameScreen1",true);
             wave = new Wave(this,userInterface);
             house = new House(this, map.getBaseCoordinate());
             house.LoadContent();
