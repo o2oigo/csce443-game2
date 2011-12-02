@@ -54,9 +54,9 @@ namespace RTS
 
         public void InitializeLevel()
         {
-            LevelDictionary.Add(1, InitializeWave(7));
-            LevelDictionary.Add(2, InitializeWave(3));
-            LevelDictionary.Add(3, InitializeWave(6));
+            LevelDictionary.Add(1, InitializeWave(1));
+            LevelDictionary.Add(2, InitializeWave(1));
+            LevelDictionary.Add(3, InitializeWave(1));
         }
 
         public Dictionary<int, Queue<Enemy>> InitializeWave(int waveNum)
@@ -82,12 +82,12 @@ namespace RTS
             {
                 case 1:
                     AddNormalEnemy(i, 1, 5, 50);
-                    AddNormalEnemy(i, 2, 10, 100);
-                    AddHPEnemy(i, 3, 5, 100);
-                    AddHPEnemy(i, 4, 10, 100);
-                    AddFastEnemy(i, 5, 5, 100);
-                    AddFastEnemy(1, 6, 10, 100);
-                    AddAttackingEnemy(i, 7, 5, 100);
+                    //AddNormalEnemy(i, 2, 10, 100);
+                    //AddHPEnemy(i, 3, 5, 100);
+                    //AddHPEnemy(i, 4, 10, 100);
+                    //AddFastEnemy(i, 5, 5, 100);
+                    //AddFastEnemy(1, 6, 10, 100);
+                    //AddAttackingEnemy(i, 7, 5, 100);
                     //AddAttackingEnemy(i, 8, 10, 100);
                     //AddNormalEnemy(i, 9, 4, 100);
                     //AddHPEnemy(i, 9, 4, 100);
@@ -101,9 +101,9 @@ namespace RTS
                     break;
                 case 2:
                     AddAttackingEnemy(i, 1, 5, 100);
-                    AddNormalEnemy(i, 2, 10, 100);
-                    AddHPEnemy(i, 3, 5, 100);
-                    AddFastEnemy(i, 3, 5, 100);
+                    //AddNormalEnemy(i, 2, 10, 100);
+                    //AddHPEnemy(i, 3, 5, 100);
+                    //AddFastEnemy(i, 3, 5, 100);
                     //AddHPEnemy(i, 4, 10, 100);
                     //AddFastEnemy(i, 5, 5, 100);
                     //AddFastEnemy(i, 6, 10, 100);
@@ -122,11 +122,11 @@ namespace RTS
                     break;
                 case 3:
                     AddAttackingEnemy(i, 1, 5, 100);
-                    AddNormalEnemy(i, 2, 10, 100);
-                    AddHPEnemy(i, 3, 5, 100);
-                    AddHPEnemy(i, 4, 10, 100);
-                    AddFastEnemy(i, 5, 5, 100);
-                    AddFastEnemy(i, 6, 10, 100);
+                    //AddNormalEnemy(i, 2, 10, 100);
+                    //AddHPEnemy(i, 3, 5, 100);
+                    //AddHPEnemy(i, 4, 10, 100);
+                    //AddFastEnemy(i, 5, 5, 100);
+                    //AddFastEnemy(i, 6, 10, 100);
                     //AddAttackingEnemy(i, 7, 5, 100);
                     //AddAttackingEnemy(i, 8, 10, 100);
                     //
