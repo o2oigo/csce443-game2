@@ -12,6 +12,7 @@ namespace RTS
     {
         Game1 game;
         Random rand = new Random();
+        UserInterface userInterface;
         double timer;
         const double intervalSpawn = 2000;
         const double intervalWave = 10000;
@@ -68,8 +69,9 @@ namespace RTS
         }   
 
         #region Hard coded enemy in each level
-        public Wave(Game1 game)
+        public Wave(Game1 game, UserInterface _userInterface)
         {
+            userInterface = _userInterface;
             //interval = 1000;
             this.game = game;
             InitializeLevel();
@@ -133,6 +135,10 @@ namespace RTS
             AddHPEnemy(3, 10, 5, 100);
             AddFastEnemy(3, 10, 5, 100);
             AddAttackingEnemy(3, 10, 5, 100);
+            if (userInterface.getScreen("showGameScreen") == true)
+            {
+                userInterface.setScreenStatus("loadingGameScreen",false);
+            }
         }
         #endregion 
 

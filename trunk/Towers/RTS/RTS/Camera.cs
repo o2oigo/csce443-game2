@@ -26,6 +26,13 @@ namespace RTS
         GamePadState currentState;
         GamePadState oldState;
 
+        bool level1 = true;
+        bool level2 = false;
+        bool level3 = false;
+
+        float minZoom = 1;
+        float maxZoom = 2;
+
 
 
 
@@ -43,7 +50,8 @@ namespace RTS
             graphicsDevice = _game.GraphicsDevice;
             currentState = GamePad.GetState(_playerIndex);
             Limits = null;
-            Limits = new Rectangle(0, 0, 1984, 1536);
+            //Limits = new Rectangle(0, 0, 1984, 1536);
+            //Limits = new Rectangle(0, 0, 1280, 1024);
             players = _players;
         }
 
@@ -59,7 +67,19 @@ namespace RTS
 
             keystate = Keyboard.GetState();
 
-            
+            if (level1)
+            {
+                Limits = new Rectangle(0, 0, 1280, 1024);
+                minZoom = 1;
+                maxZoom = 1;
+            }
+
+            if (level2)
+            {
+                Limits = new Rectangle(0, 0, 1984, 1536);
+                minZoom = 0.6f;
+                maxZoom = 1f;
+            }
 
             if (keystate.IsKeyDown(Keys.Right))
                 Position += new Vector2(400.0f * elapsedTime, 0.0f);
@@ -83,12 +103,19 @@ namespace RTS
             Position = new Vector2(players[0].Position.X - (1280 / 2), players[0].Position.Y - (1024 / 2));
 
             if (keystate.IsKeyDown(Keys.PageUp))
-                Zoom += 2.5f * elapsedTime * Zoom;
+            {
+                if (Zoom < maxZoom)
+                    Zoom += 2.5f * elapsedTime * Zoom;
+            }
 
             if (keystate.IsKeyDown(Keys.PageDown))
-            {
-                Zoom -= 2.5f * elapsedTime * Zoom;
+            {   
+                if (Zoom > minZoom)
+                    Zoom -= 2.5f * elapsedTime * Zoom;
             }
+
+            
+            
 
             oldKeyState = keystate;
         }

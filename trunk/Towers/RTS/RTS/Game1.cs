@@ -111,7 +111,8 @@ namespace RTS
             map.ReloadMap();
             //map.UpdateMapViewport(test);
             CreateTrees();
-            wave = new Wave(this);
+            userInterface.setScreenStatus("loadingGameScreen",true);
+            wave = new Wave(this,userInterface);
             house = new House(this, map.getBaseCoordinate());
             house.LoadContent();
            
@@ -224,14 +225,14 @@ namespace RTS
             userInterface.setWavesNumber(wave.CurrentWave);
             
             
-            if (userInterface.getRestartGameStatus() == true)
+            if (userInterface.getScreen("restartGame") == true)
             {
                 restartGame();
-                userInterface.setRestartGameStatus(false);
+                userInterface.setScreenStatus("restartGame",false);
             }
             userInterface.Update();
 
-            if (userInterface.getShowGameScreen() == true)
+            if (userInterface.getScreen("showGameScreen") == true)
             {
                 camera.Update(gameTime);
                 //if (enemies.Count != 0)
@@ -241,8 +242,9 @@ namespace RTS
 
                 //Creates Enemies
                 //spawnEnemies(gameTime);
+                
                 wave.Update(gameTime);
-
+                
                 //Update Player
                 foreach (Player player in players)
                 {
@@ -276,12 +278,12 @@ namespace RTS
 
             if (live < 1)
             {
-                userInterface.setShowGameoverScreen(true);
+                userInterface.setScreenStatus("showGameOverScreen", true);
                 live = 10;
             }
             else if (wave.isGameFinish == true)
             {
-                userInterface.setShowWinScreen(true);
+                userInterface.setScreenStatus("showWinScreen", true);
             }
 
 
@@ -296,7 +298,7 @@ namespace RTS
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, camera.ViewMatrix);
            
-            if (userInterface.getShowGameScreen() == true || userInterface.getShowPauseScreen() == true)
+            if (userInterface.getScreen("showGameScreen") == true || userInterface.getScreen("showPauseScreen") == true)
             {
                 spriteBatch.Draw(backgroundTexture, gameplayArea, Color.White);
                 //PATHFINDING
@@ -323,8 +325,6 @@ namespace RTS
 
                 //player2.Draw(spriteBatch);
                 drawText();
-  
-                spriteBatch.DrawString(font, "Lives: " + live, new Vector2(500, this.GraphicsDevice.Viewport.Height - 50), Color.Black);
 
                 if (stones.Count() > 0)
                 {
@@ -341,8 +341,7 @@ namespace RTS
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
             userInterface.Draw(spriteBatch);
-            
-         
+                    
             spriteBatch.End();
 
 
@@ -621,7 +620,7 @@ namespace RTS
             player1.restartGameLevel1();
             //enemies.Clear();
             stones.Clear();
-            wave = new Wave(this);
+            wave = new Wave(this,userInterface);
 
             this.ResetElapsedTime();
 
@@ -636,6 +635,11 @@ namespace RTS
         {
             camera.Zoom = 1f;
             camera.Position = Vector2.Zero;
+        }
+
+        public int getLive()
+        {
+            return live;
         }
 
         private static Rectangle CalculateFrameRectangle(int width, int height, int columns, int rows, int frame)
