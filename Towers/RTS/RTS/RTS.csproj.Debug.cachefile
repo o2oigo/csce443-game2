@@ -153,8 +153,8 @@ Content\Encyclopedia\arrow.xnb
 Content\Encyclopedia\arrowb.xnb
 Content\Encyclopedia\arrowL.xnb
 Content\Encyclopedia\backButton.xnb
-Content\Encyclopedia\cannon1.xnb
 Content\Encyclopedia\cannon1b.xnb
+Content\Encyclopedia\cannon1.xnb
 Content\Encyclopedia\cannon1L.xnb
 Content\Encyclopedia\cannon3.xnb
 Content\Encyclopedia\cannon3b.xnb
@@ -220,4 +220,6 @@ Content\Map1.xnb
 Content\Map3.xnb
 Content\Map2.xnb
 Content\Map4.xnb
+Content\TowerTurret.xnb
+Content\endingScreen.xnb
 Content\2d_Tank_Menu.wma

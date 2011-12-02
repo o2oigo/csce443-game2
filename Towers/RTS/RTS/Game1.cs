@@ -31,7 +31,11 @@ namespace RTS
         Camera camera;
 
         Player player1;
-        Wave wave;
+        private Wave wave;
+        public Wave Wave
+        {
+            get { return wave; }
+        }
         // Player player2;
 
         private List<Enemy> enemies;
@@ -303,6 +307,18 @@ namespace RTS
             {
                 userInterface.setScreenStatus("showGameOverScreen", true);
                 live = 10;
+            }
+            else if (wave.isLevelFinish == true && wave.CurrentLevel == 1)
+            {
+                userInterface.setScreenStatus("showGameScreen", false);
+                userInterface.setScreenStatus("showLevel2Screen", true);
+                resetGame();
+            }
+            else if (wave.isLevelFinish == true && wave.CurrentLevel == 2)
+            {
+                userInterface.setScreenStatus("showGameScreen", false);
+                userInterface.setScreenStatus("showLevel3Screen", true);
+                resetGame();
             }
             else if (wave.isGameFinish == true)
             {
@@ -645,6 +661,38 @@ namespace RTS
             stones.Clear();
             wave = new Wave(this,userInterface);
 
+            this.ResetElapsedTime();
+
+            //enemyTimer = 0;
+            //enemySpawnTime = 1f;
+            live = 100;
+
+            camera.ResetCamera();
+        }
+
+        public void resetGame()
+        {
+            /*
+            for (int i = enemies.Count - 1; i >= 0; i--)
+            {
+                Enemy currentEnemy = enemies[i];
+                Sprite.removeList(enemies[i]);
+                enemies.RemoveAt(i);
+            }
+            */
+            for (int k = 0; k < player1.getTowers().Count; k++)
+            {
+                Tower tower = player1.getTowers()[k];
+                Sprite.removeList(tower);
+                player1.getTowers().RemoveAt(k);
+
+            }
+            
+            player1.restartGameLevel1();
+            //enemies.Clear();
+            stones.Clear();
+            //wave = new Wave(this, userInterface);
+            
             this.ResetElapsedTime();
 
             //enemyTimer = 0;

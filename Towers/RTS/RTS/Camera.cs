@@ -66,19 +66,25 @@ namespace RTS
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             keystate = Keyboard.GetState();
-
-            if (level1)
+            
+            if (game.Wave.CurrentLevel == 1)
             {
                 Limits = new Rectangle(0, 0, 1280, 1024);
                 minZoom = 1;
                 maxZoom = 1;
             }
 
-            if (level2)
+            else if (game.Wave.CurrentLevel == 2 || game.Wave.CurrentLevel == 3)
             {
                 Limits = new Rectangle(0, 0, 1984, 1536);
                 minZoom = 0.6f;
                 maxZoom = 1f;
+            }
+            else
+            {
+                Limits = new Rectangle(0, 0, 1280, 1024);
+                minZoom = 1;
+                maxZoom = 1;
             }
 
             if (keystate.IsKeyDown(Keys.Right))
