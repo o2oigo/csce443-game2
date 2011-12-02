@@ -1049,8 +1049,8 @@ namespace RTS
             {
                 //Remove Projectile if it goes off-screen
                 Projectile proj = projectileList[i];
-                if (proj.getPosition().X > graphicsDevice.Viewport.Width || proj.getPosition().X < 0
-                    || proj.getPosition().Y > graphicsDevice.Viewport.Height || proj.getPosition().Y < 0)
+                if ((proj.getPosition().X > game.getCurrentRectangle().Width) || proj.getPosition().X < 0
+                    || (proj.getPosition().Y > game.getCurrentRectangle().Height) || proj.getPosition().Y < 0)
                 {
                     projectileList.Remove(proj);
                 }
@@ -1061,8 +1061,8 @@ namespace RTS
             {
                 //Remove Projectile if it goes off-screen
                 Missile mis = missileList[i];
-                if (mis.getPosition().X > graphicsDevice.Viewport.Width || mis.getPosition().X < 0
-                    || mis.getPosition().Y > graphicsDevice.Viewport.Height || mis.getPosition().Y < 0)
+                if (mis.getPosition().X > game.getCurrentRectangle().Width || mis.getPosition().X < 0
+                    || mis.getPosition().Y > game.getCurrentRectangle().Height || mis.getPosition().Y < 0)
                 {
                     missileList.Remove(mis);
                 }
@@ -1285,22 +1285,22 @@ namespace RTS
         }
 
         //If the player was hit by an enemy or projectile
-        public void Hit()
-        {
-            timesHit++;
-            if (timesHit % 4 == 0)
-                Position = new Vector2(100, 100);
-            if (timesHit % 4 == 1)
-                Position = new Vector2(graphicsDevice.Viewport.Width - 100, 100);
-            if (timesHit % 4 == 2)
-                Position = new Vector2(100, graphicsDevice.Viewport.Height - 100);
-            if (timesHit % 4 == 3)
-                Position = new Vector2(graphicsDevice.Viewport.Width - 100, graphicsDevice.Viewport.Height - 100);
-            buildMode = false;
-            mainBuildMode = false;
-            spawnShield = true;
-
-        }
+        //public void Hit()
+        //{
+        //    timesHit++;
+        //    if (timesHit % 4 == 0)
+        //        Position = new Vector2(100, 100);
+        //    if (timesHit % 4 == 1)
+        //        Position = new Vector2(graphicsDevice.Viewport.Width - 100, 100);
+        //    if (timesHit % 4 == 2)
+        //        Position = new Vector2(100, graphicsDevice.Viewport.Height - 100);
+        //    if (timesHit % 4 == 3)
+        //        Position = new Vector2(graphicsDevice.Viewport.Width - 100, graphicsDevice.Viewport.Height - 100);
+        //    buildMode = false;
+        //    mainBuildMode = false;
+        //    spawnShield = true;
+        //
+        //}
 
 
         public void restartGameLevel1()
