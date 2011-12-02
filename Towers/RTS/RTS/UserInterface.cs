@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RTS
 {
-    class UserInterface
+    public class UserInterface
     {
 
         Game1 game;
@@ -33,7 +33,14 @@ namespace RTS
         private bool showPauseScreen = false;
         private bool showGameOverScreen = false;
         private bool showWinScreen = false;
+        private bool showLevel1Screen = false;
+        private bool showLevel2Screen = false;
+        private bool showLevel3Screen = false;
+        private bool loadingGameScreen = false;
+        private bool showEncyclopediaScreen = false;
         private bool restartGame = false;
+        
+        
 
         private int wave = 0;
         private int nextWave = 1;
@@ -46,6 +53,22 @@ namespace RTS
         private Vector2 uiPosition2;
         private Vector2 uiPosition3;
         private Vector2 uiPosition4;
+        private Vector2 uiPositionMiddle;
+        private Vector2 encyclopediaTowerPosition;
+        private Vector2 encyclopediaEnemyPosition;
+        private Vector2 encyclopediaTower1Position;
+        /*
+        private Vector2 encyclopediaTower1Position;
+        private Vector2 encyclopediaTower1Position;
+        private Vector2 encyclopediaTower1Position;
+        private Vector2 encyclopediaTower1Position;
+        private Vector2 encyclopediaTower1Position;
+        private Vector2 encyclopediaTower1Position;
+        private Vector2 encyclopediaTower1Position;
+        private Vector2 encyclopediaTower1Position;
+        private Vector2 encyclopediaTower1Position;
+        */
+        
         
 
         KeyboardState keystate;
@@ -67,6 +90,29 @@ namespace RTS
         private Texture2D startScreenBackground;
         private Texture2D startMenuTexture;
         private Texture2D gameoverScreenBackground;
+        private Texture2D level1MapTexture;
+        private Texture2D level2MapTexture;
+        private Texture2D level3MapTexture;
+
+
+        // Encyclopedia texture
+        private Texture2D mainEncyclopediaTexture;
+        private Texture2D towerEncyclopediaTexture;
+        private Texture2D enemyEncyclopediaTexture;
+        private Texture2D arrowTowerEncyclopediaTexture;
+        private Texture2D canonTowerEncyclopediaTexture;
+        private Texture2D missileTowerEncyclopediaTexture;
+        private Texture2D magicTowerEncyclopediaTexture;
+        private Texture2D iceTowerEncyclopediaTexture;
+        private Texture2D flameTowerEncyclopediaTexture;
+        private Texture2D shockTowerEncyclopediaTexture;
+        private Texture2D enemy1EncyclopediaTexture;
+        private Texture2D enemy2EncyclopediaTexture;
+        private Texture2D enemy3EncyclopediaTexture;
+        private Texture2D enemy4EncyclopediaTexture;
+        private Texture2D enemy5EncyclopediaTexture;
+        private Texture2D enemy6EncyclopediaTexture;
+        private Texture2D enemy7EncyclopediaTexture;
 
         public void Initialize(Game1 game, PlayerIndex index, Vector2 startPosition, List<Player> _players)
         {
@@ -79,6 +125,11 @@ namespace RTS
             showGameScreen = false;
             showPauseScreen = false;
             showGameOverScreen = false;
+            showLevel1Screen = false;
+            showLevel2Screen = false;
+            showLevel3Screen = false;
+            loadingGameScreen = false;
+            showEncyclopediaScreen = false;
             restartGame = false;
             player1 = players[0];
             //player2 = players[1];
@@ -95,6 +146,29 @@ namespace RTS
             gameoverScreenBackground = contentManager.Load<Texture2D>("gameoverNew");
             startMenuTexture = contentManager.Load<Texture2D>("start");
             font = contentManager.Load<SpriteFont>("font");
+            level1MapTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\level1Screen");
+            level2MapTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\level2Screen");
+            level3MapTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\level3Screen");
+
+            // encyclopedia load texture
+            mainEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia");
+            towerEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\towerTemplate");
+            enemyEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\enemyTemp");
+            arrowTowerEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\arrow");
+            canonTowerEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\cannon1");
+            missileTowerEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia");
+            magicTowerEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\magic");
+            iceTowerEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\ice");
+            flameTowerEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\flame");
+            shockTowerEncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\lightning1");
+            enemy1EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\stock");
+            enemy2EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\muffin");
+            enemy3EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\stick");
+            enemy4EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\puddin");
+            enemy5EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\snow");
+            enemy6EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia");
+            enemy7EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia");
+            
         }
 
         public void Draw(SpriteBatch SB)
@@ -106,6 +180,7 @@ namespace RTS
             uiPosition2 = new Vector2(250, game.GraphicsDevice.Viewport.Height - 70);
             uiPosition3 = new Vector2(500, game.GraphicsDevice.Viewport.Height - 70);
             uiPosition4 = new Vector2(700, game.GraphicsDevice.Viewport.Height - 70);
+            uiPositionMiddle = new Vector2(400, game.GraphicsDevice.Viewport.Height - 600);
             if (currentState.IsConnected)//Game Pad
             {
                 if (showTitleScreen == true)
@@ -120,7 +195,6 @@ namespace RTS
                     spriteBatch.DrawString(font, "Game Paused", new Vector2(500, 450), Color.Black);
                     spriteBatch.DrawString(font, "Press Y to go back to title menu to quit", new Vector2(500, 470), Color.Black);
                     spriteBatch.DrawString(font, "Press A to re-play the game", new Vector2(500, 490), Color.Black);
-
                 }
 
                 if (showGameOverScreen == true)
@@ -169,6 +243,10 @@ namespace RTS
                     {
                         spriteBatch.DrawString(font, "Next Wave: ???" , uiPosition1, Color.Black);
                     }
+                }
+                if (loadingGameScreen == true)
+                {
+                    spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
                 }
             }
 
@@ -244,8 +322,9 @@ namespace RTS
                 {
                     spriteBatch.DrawString(font, player1.getFireStoneInInventory() + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
                     spriteBatch.DrawString(font, player1.getWaterStoneInInventory() + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
-                    spriteBatch.DrawString(font, player1.getHealStoneInInventory() + " Heal Stone", uiPosition2, Color.Black);
+                    spriteBatch.DrawString(font, player1.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
                     spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
+                    spriteBatch.DrawString(font, "Lives: " + game.getLive(), uiPosition3, Color.Black);
                     
                     if (nextWave == 1)
                     {
@@ -271,6 +350,31 @@ namespace RTS
                     {
                         spriteBatch.DrawString(font, "Next Wave: ???", uiPosition4, Color.Black);
                     }
+                }
+
+                if (loadingGameScreen == true && showGameScreen == true)
+                {
+                    spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
+                }
+
+                if (showLevel1Screen == true)
+                {
+                    spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                }
+
+                else if (showLevel2Screen == true)
+                {
+                    spriteBatch.Draw(level2MapTexture, new Vector2(0, 0), Color.White);
+                }
+
+                else if (showLevel3Screen == true)
+                {
+                    spriteBatch.Draw(level3MapTexture, new Vector2(0, 0), Color.White);
+                }
+
+                if (showEncyclopediaScreen == true)
+                {
+
                 }
             }
 
@@ -478,6 +582,13 @@ namespace RTS
 
             if (showTitleScreen == true)
                 updateKeyboardForTitleScreen();
+            else if (showLevel1Screen == true)
+            { }
+            else if (showLevel2Screen == true)
+            {
+            }
+            else if (showLevel3Screen == true)
+            { }
             else if (showGameScreen == true)
             {
                 updateKeyboardForGameScreen();
@@ -486,6 +597,7 @@ namespace RTS
                 updateKeyboardForPauseScreen();
             else if (showGameOverScreen == true)
                 updateKeyboardForGameOverScreen();
+
             
 
             
@@ -508,6 +620,40 @@ namespace RTS
         }
 
         private void updateKeyboardForTitleScreen()
+        {
+            if (keystate.IsKeyDown(Keys.Enter))
+            {
+                showGameScreen = true;
+                showTitleScreen = false;
+                showPauseScreen = false;
+                restartGame = true;
+            }
+        }
+
+        private void updateKeyboardForLevel1Screen()
+        {
+            if (keystate.IsKeyDown(Keys.Enter))
+            {
+                showGameScreen = true;
+                loadingGameScreen = true;
+                showTitleScreen = false;
+                showPauseScreen = false;
+                restartGame = true;
+            }
+        }
+
+        private void updateKeyboardForLevel2Screen()
+        {
+            if (keystate.IsKeyDown(Keys.Enter))
+            {
+                showGameScreen = true;
+                showTitleScreen = false;
+                showPauseScreen = false;
+                restartGame = true;
+            }
+        }
+
+        private void updateKeyboardForLevel3Screen()
         {
             if (keystate.IsKeyDown(Keys.Enter))
             {
@@ -565,6 +711,56 @@ namespace RTS
             }
         }
 
+        public bool getScreen(string _screenName)
+        {
+            if (_screenName == "showTitleScreen")
+                return showTitleScreen;
+            else if (_screenName == "loadingGameScreen")
+                return loadingGameScreen;
+            else if (_screenName == "showEncyclopediaScreen")
+                return showEncyclopediaScreen;
+            else if (_screenName == "showGameOverScreen")
+                return showGameOverScreen;
+            else if (_screenName == "showGameScreen")
+                return showGameScreen;
+            else if (_screenName == "showLevel1Screen")
+                return showLevel1Screen;
+            else if (_screenName == "showLevel2Screen")
+                return showLevel2Screen;
+            else if (_screenName == "showLevel3Screen")
+                return showLevel3Screen;
+            else if (_screenName == "showPauseScreen")
+                return showPauseScreen;
+            else if (_screenName == "showWinScreen")
+                return showWinScreen;
+            else if (_screenName == "restartGame")
+                return restartGame;
+            else
+                return false;
+        }
+
+        public void setScreenStatus(string _screenName, bool _status)
+        {
+            if (_screenName == "showGameScreen")
+                showGameScreen = _status;
+            else if (_screenName == "showTitleScreen")
+                showTitleScreen = _status;
+            else if (_screenName == "showGameOverScreen") 
+                showGameOverScreen = _status;
+            else if (_screenName == "showWinScreen") 
+                showWinScreen = _status;
+            else if (_screenName == "restartGame") 
+                restartGame = _status;
+            else if (_screenName == "loadingGameScreen") 
+                loadingGameScreen = _status;
+            else if (_screenName == "showLevel1Screen") 
+                showLevel1Screen = _status;
+            else if (_screenName == "showLevel2Screen") 
+                showLevel2Screen = _status;
+            else if (_screenName == "showLevel3Screen") 
+                showLevel3Screen = _status;
+        }
+/*
         public bool getShowGameScreen()
         {
             return showGameScreen;
@@ -610,7 +806,48 @@ namespace RTS
             return restartGame;
         }
 
+        public void setLoadingScreen(bool _status)
+        {
+            loadingGameScreen = _status;
+        }
 
+        public bool getLoadingScreen()
+        {
+            return loadingGameScreen;
+        }
+
+
+        public void setShowLevel1Screen(bool _status)
+        {
+            showLevel1Screen = _status;
+        }
+
+        public bool getShowLevel1Screen()
+        {
+            return showLevel1Screen;
+        }
+
+        public void setShowLevel2Screen(bool _status)
+        {
+            showLevel2Screen = _status;
+        }
+
+        public bool getShowLevel2Screen()
+        {
+            return showLevel2Screen;
+        }
+
+        public void setShowLevel3Screen(bool _status)
+        {
+            showLevel3Screen = _status;
+        }
+
+        public bool getShowLevel3Screen()
+        {
+            return showLevel3Screen;
+        }
+
+        */
 
         
 
