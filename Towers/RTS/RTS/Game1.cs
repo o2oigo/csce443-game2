@@ -30,6 +30,7 @@ namespace RTS
         Camera camera;
 
         Player player1;
+        Player player2;
         private Wave wave;
         public Wave Wave
         {
@@ -138,13 +139,13 @@ namespace RTS
             player1.Initialize(this, PlayerIndex.One, new Vector2(300, 400));
             player1.LoadContent("wizard");
 
-            // player2 = new Player();
-            // player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
-            // player2.LoadContent("TankPurple");
+            player2 = new Player();
+            player2.Initialize(this, PlayerIndex.Two, new Vector2(200, 200));
+            player2.LoadContent("wizard");
 
 
             players.Add(player1);
-            //  players.Add(player2);
+           // players.Add(player2);
 
 
             userInterface = new UserInterface();
@@ -325,11 +326,14 @@ namespace RTS
                 
                 foreach (Tower tower in player1.getTowers())
                     tower.Draw(spriteBatch);
+                foreach (Tower tower in player2.getTowers())
+                    tower.Draw(spriteBatch);
 
                 for (int i = 0; i < enemies.Count; i++)
                     enemies[i].Draw(spriteBatch);
 
                 player1.Draw(spriteBatch);
+                player2.Draw(spriteBatch);
 
                 // Sprite.DrawT(spriteBatch);
                 foreach (Tree t in trees)
