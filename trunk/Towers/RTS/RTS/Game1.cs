@@ -67,9 +67,10 @@ namespace RTS
         public FlameTowerSmokeParticleSystem flameTowerSmoke;
         public IceParticleSystem ice;
 
-        // Dictionary<string, SoundEffect> music;
-        // SoundEffect tankSong;
-        // SoundEffectInstance songInstance;
+         Dictionary<string, SoundEffect> music;
+         SoundEffect soundeffect;
+         Song song;
+         SoundEffectInstance songInstance;
 
         private Map map;
         public Map Map
@@ -199,17 +200,22 @@ namespace RTS
             lightning = new LightningParticleSystem(this, 10, camera);
             Components.Add(lightning);
 
-            // tankSong = Content.Load<SoundEffect>("2DTankPOM");
-            //music = new Dictionary<string, SoundEffect>();
-            //music.Add("tankSong", tankSong);
+           /* soundeffect = Content.Load<SoundEffect>("MainSong");
+            music = new Dictionary<string, SoundEffect>();
+            music.Add("song", soundeffect);
             //songInstance = new SoundEffectInstance();
-            //if (songInstance != null)
-            //    songInstance.Dispose();
-            //songInstance = music["tankSong"].CreateInstance();
-            //songInstance.IsLooped = true;
-            //songInstance.Play();
+            if (songInstance != null)
+                songInstance.Dispose();
+            songInstance = music["song"].CreateInstance();
+            songInstance.IsLooped = true;
+            songInstance.Play();
 
-            //tankSong.Play();
+            soundeffect.Play();
+            */
+
+            Song song = Content.Load<Song>("Sound/MainSong");  // Put the name of your song in instead of "song_title"
+            MediaPlayer.Play(song);
+
         }
 
         /// <summary>
@@ -283,6 +289,8 @@ namespace RTS
                 detectCollisions();
 
                 checkDeadEnemies();
+
+                //updateTowers();
 
             }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace RTS
 {
@@ -16,7 +17,7 @@ namespace RTS
             : base(game, playerIndex, startPosition)
         {
             missileTexture = game.Content.Load<Texture2D>("fireParticle");
-            towerName = "cannon12";
+            towerName = "Missile Tower";
             this.ilevel = level;
             damage = new Damage(30, this.ilevel, ElementType.Normal, null);
             if (level == 2)
@@ -29,6 +30,8 @@ namespace RTS
 
         public override void  LoadContent()
         {
+            shootSound = contentManager.Load<SoundEffect>("Sound/cannon");
+
             missileTowerTexture = contentManager.Load<Texture2D>("missileTowerNew");
             //missileTowerUpgradeTexture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
@@ -103,7 +106,8 @@ namespace RTS
            // else
           //      game.fireTower.setScale(.3f, .4f);
           //  game.fireTower.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
-            
+
+            playShootSound();
         }
         
         public override Texture2D getTexture()

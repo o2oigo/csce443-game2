@@ -15,7 +15,8 @@ namespace RTS
             : base(game, playerIndex, startPosition)
         {
             towerName = "Magic Tower";
-            damage = new Damage(10, this.ilevel, ElementType.Normal, null);      
+            damage = new Damage(0, this.ilevel, ElementType.Normal, null);
+            this.towerRange = 0f;
         }
 
         public override void  LoadContent()

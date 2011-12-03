@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace RTS
 {
@@ -12,6 +14,7 @@ namespace RTS
         Texture2D lightningTexture;
         Texture2D lightningTowerTexture;
         Texture2D lightningTowerUpgradeTexture;
+        SoundEffect shootSound2;
         public LightningTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
             : base(game, playerIndex, startPosition)
         {
@@ -30,6 +33,9 @@ namespace RTS
 
         public override void  LoadContent()
         {
+            shootSound = contentManager.Load<SoundEffect>("Sound/electric-sparks1");
+            shootSound2 = contentManager.Load<SoundEffect>("Sound/electric-sparks2");
+
             lightningTowerTexture = contentManager.Load<Texture2D>("lightningTower");
             lightningTowerUpgradeTexture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
@@ -69,6 +75,19 @@ namespace RTS
             game.lightning.setScale(scale, scale);
             game.lightning.setRotation((float)shootRotationAngle);   
             game.lightning.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * lightningTexture.Width / 2 * scale + (float)Math.Cos(shootRotationAngle) * (getTurretLength()) * map.ScaleB, position.Y - 15 + (float)Math.Sin(shootRotationAngle) * lightningTexture.Width / 2 * scale + (float)Math.Sin(shootRotationAngle) * (getTurretLength()) * map.ScaleB));
+
+            playShootSound();
+
+        }
+
+        public override void playShootSound()
+        {
+            Random rand = new Random();
+            int next = rand.Next(1, 3);
+            if (next == 1)
+                shootSound.Play();
+            else
+                shootSound2.Play();
         }
 
         public override Texture2D getTexture()

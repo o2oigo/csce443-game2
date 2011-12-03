@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace RTS
 {
@@ -12,6 +13,10 @@ namespace RTS
         Texture2D flameTexture;
         Texture2D flameTowerTexture;
         Texture2D flameTowerUpgradeTexture;
+        SoundEffect startSound;
+        SoundEffectInstance instance;
+        SoundEffectInstance startInstance;
+
         public FlameTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
             : base(game, playerIndex, startPosition)
         {
@@ -19,11 +24,8 @@ namespace RTS
             towerName = "Flame Tower";
             this.ilevel = level;
             damage = new Damage(1, this.ilevel, ElementType.Fire, null);
-            //if (isFire)
-            //{
-                damage.type = ElementType.Fire;
-                //damage.effect = new EnemyEffectBurn(game, 5, 0.2f);
-            //}
+            damage.type = ElementType.Fire;
+
             if (level == 2)
                 setToLvlTwo();
 
@@ -34,6 +36,13 @@ namespace RTS
 
         public override void  LoadContent()
         {
+            shootSound = contentManager.Load<SoundEffect>("Sound/flametower-loop");
+            startSound = contentManager.Load<SoundEffect>("Sound/flametower-start");
+            instance = shootSound.CreateInstance();
+            startInstance = startSound.CreateInstance();
+            instance.IsLooped = true;
+            startInstance.IsLooped = false;
+
             flameTowerTexture = contentManager.Load<Texture2D>("flameTowerNew");
             flameTowerUpgradeTexture = contentManager.Load<Texture2D>("flameTowerNew");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
@@ -87,6 +96,43 @@ namespace RTS
             }
             game.fireTower.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
             game.flameTowerSmoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+
+            
+        }
+
+        public override void Update(GameTime gameTime, List<Enemy> enemies)
+        {
+            //Elapsed Time Calculations
+            elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            shootElapsedTime += elapsedTime;
+            hp = shotsToDestroy - shotsTaken;
+            updateTurret(enemies);
+            updateProjectiles(gameTime);
+
+            playShootSound(elapsedTime);
+        }
+
+        public void playShootSound(float elapsedTime)
+        {
+
+            if (isShooting == true && soundElapsedTime == 0)
+            {
+                soundElapsedTime += elapsedTime;
+                startInstance.Play();
+            }
+            else if (isShooting == true && soundElapsedTime >= .2f)
+            {
+                soundElapsedTime += elapsedTime;
+                instance.Resume();
+                startInstance.Stop();
+            }
+            else if (isShooting == false)
+            {
+                soundElapsedTime = 0;
+                instance.Stop();
+            }
+            else
+                soundElapsedTime += elapsedTime;
         }
 
         public override Texture2D getTexture()
