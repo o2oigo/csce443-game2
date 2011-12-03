@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 
 namespace RTS
 {
@@ -29,17 +30,19 @@ namespace RTS
     {
         GamePadState currentState;
 
-        private float elapsedTime;
+        protected float elapsedTime;
         protected Vector2 origin;
         protected PlayerIndex playerIndex;
         protected Enemy shootAt;
 
         protected float shootTimer = .8f;
+        protected float soundTimer = 1f;
         protected float towerRange = 400;
-        protected float shootElapsedTime = 0;
+        protected float shootElapsedTime = 5f;
+        protected float soundElapsedTime = 0f;
 
         protected SpriteFont font;
-        private int shotsTaken = 0;
+        protected int shotsTaken = 0;
         protected int shotsToDestroy = 100;
         protected int hp;
         private bool dead = false;
@@ -47,6 +50,8 @@ namespace RTS
         protected string level = "level 1";
         protected int ilevel = 1;
         protected string towerName = "Cannon Tower";
+        protected SoundEffect shootSound;
+        protected bool isShooting = false;
        // protected int attackDamage = 25;
 
         protected double moveRotationAngle = 0;
@@ -100,6 +105,8 @@ namespace RTS
         
         public virtual void LoadContent()
         {
+            shootSound = contentManager.Load<SoundEffect>("Sound/cannon2 - no filter");
+
             cannon1Texture = contentManager.Load<Texture2D>("cannon1");
             cannon2Texture = contentManager.Load<Texture2D>("cannon2");
             cannon3Texture = contentManager.Load<Texture2D>("cannon3");
@@ -156,11 +163,12 @@ namespace RTS
             }
         }
 
-        public void Update(GameTime gameTime, List<Enemy> enemies)
+        public virtual void Update(GameTime gameTime, List<Enemy> enemies)
         {
             //Elapsed Time Calculations
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             shootElapsedTime += elapsedTime;
+            //soundElapsedTime += elapsedTime;
             hp = shotsToDestroy - shotsTaken;
             updateTurret(enemies);
             updateProjectiles(gameTime);
@@ -179,6 +187,7 @@ namespace RTS
         public virtual void updateTurret(List<Enemy> enemies)
         {
             shootAt = null;
+            isShooting = false;
             if (enemies.Count != 0)
             {
                 //shootAt = enemies[0];
@@ -188,7 +197,7 @@ namespace RTS
                         shootAt = enemy;
                     if (Vector2.Distance(position, enemy.Position) <= towerRange /*&& (Vector2.Distance(game.House.Position, enemy.Position) < Vector2.Distance(game.House.Position, shootAt.Position))*/)
                     {
-                        shootAt = enemy;
+                        shootAt = enemy;     
                         break;
                     }
                 }
@@ -196,6 +205,7 @@ namespace RTS
                 //Shoot
                 if (shootAt != null)
                 {
+                    isShooting = true;
                     shootRotationAngle = Math.Atan2(shootAt.Position.Y - position.Y, shootAt.Position.X - position.X);
                     if (shootElapsedTime > shootTimer)
                     {
@@ -214,7 +224,14 @@ namespace RTS
             projectileList.Add(projectile);
 
             game.explosion.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength() * map.ScaleB, position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength() * map.ScaleB));
-            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength()));         
+            game.smoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y - 25 + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+
+            playShootSound();
+        }
+
+        public virtual void playShootSound()
+        {
+            shootSound.Play();
         }
 
         public virtual void updateProjectiles(GameTime gameTime)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace RTS
 {
@@ -31,6 +32,8 @@ namespace RTS
 
         public override void  LoadContent()
         {
+            shootSound = contentManager.Load<SoundEffect>("Sound/cannon");
+
             arrow1Texture = contentManager.Load<Texture2D>("arrow1");
             arrow2Texture = contentManager.Load<Texture2D>("arrow2");
             arrow3Texture = contentManager.Load<Texture2D>("arrow3");
@@ -103,7 +106,9 @@ namespace RTS
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 2000f, map);
             projectile.LoadContent("Projectile");
-            projectileList.Add(projectile);      
+            projectileList.Add(projectile);
+
+            playShootSound();
         }
 
         public override Texture2D getTexture()
