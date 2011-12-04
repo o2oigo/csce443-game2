@@ -100,9 +100,9 @@ namespace RTS
                     //AddAttackingEnemy(i, 10, 5, 100);
                     break;
                 case 2:
-                    AddAttackingEnemy(i, 1, 5, 100);
-                    AddNormalEnemy(i, 2, 10, 100);
-                    AddHPEnemy(i, 3, 5, 100);
+                    AddAttackingEnemy(i, 1, 1, 100);
+                    //AddNormalEnemy(i, 2, 10, 100);
+                    //AddHPEnemy(i, 3, 5, 100);
                     //AddFastEnemy(i, 3, 5, 100);
                     //AddHPEnemy(i, 4, 10, 100);
                     //AddFastEnemy(i, 5, 5, 100);
@@ -267,10 +267,35 @@ namespace RTS
 
         public void AddFastEnemy(int lvl, int wave, int enemyNum, float hp)
         {
-            FastEnemy e1 = new FastEnemy();
-            e1.Initialize(game, hp);
-            e1.LoadContent();
-            (LevelDictionary[lvl])[wave].Enqueue(e1);
+            for (int i = 0; i < enemyNum; i++)
+            {
+                FastEnemy e1 = new FastEnemy();
+                e1.Initialize(game, hp);
+                e1.LoadContent();
+                (LevelDictionary[lvl])[wave].Enqueue(e1);
+            }
+        }
+
+        public void AddRegenEnemy(int lvl, int wave, int enemyNum, float hp)
+        {
+            for (int i = 0; i < enemyNum; i++)
+            {
+                RegenEnemy e1 = new RegenEnemy();
+                e1.Initialize(game, hp);
+                e1.LoadContent();
+                (LevelDictionary[lvl])[wave].Enqueue(e1);
+            }
+        }
+
+        public void AddMagicOnlyEnemy(int lvl, int wave, int enemyNum, float hp)
+        {
+            for (int i = 0; i < enemyNum; i++)
+            {
+                MagicOnlyEnemy e1 = new MagicOnlyEnemy();
+                e1.Initialize(game, hp);
+                e1.LoadContent();
+                (LevelDictionary[lvl])[wave].Enqueue(e1);
+            }
         }
     }
 }

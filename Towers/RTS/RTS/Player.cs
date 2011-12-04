@@ -253,15 +253,15 @@ namespace RTS
                 mis.Draw(spriteBatch);
             }
 
-            foreach (Tower tower in towerList)
-            {
-                tower.Draw(spriteBatch);
-            }
+            //foreach (Tower tower in towerList)
+            //{
+            //    tower.Draw(spriteBatch);
+            //}
 
-            foreach (Tower tower in towerList)
-            {
-                tower.Draw(spriteBatch);
-            }
+            //foreach (Tower tower in towerList)
+            //{
+            //    tower.Draw(spriteBatch);
+            //}
 
             if (buildMode == true)
             {
@@ -1117,9 +1117,11 @@ namespace RTS
 
         public void updateTowers(GameTime gameTime, List<Enemy> enemies)
         {
-            for (int i = 0; i < towerList.Count; i++)
+           // for (int i = 0; i < towerList.Count; i++)
+            foreach (Tower t in towerList)
             {
-                towerList[i].Update(gameTime, enemies);
+                //towerList[i].Update(gameTime, enemies);
+                t.Update(gameTime, enemies);
             }
         }
 
@@ -1328,6 +1330,10 @@ namespace RTS
             timeForResources = 0;
 
             projectileList.Clear();
+            foreach (Tower t in towerList)
+            {
+                Sprite.removeList(t);
+            }
             towerList.Clear();
             stoneList.Clear();
 

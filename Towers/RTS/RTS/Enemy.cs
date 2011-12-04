@@ -147,6 +147,7 @@ namespace RTS
 
         #endregion
 
+
         public virtual void Initialize(Game1 game, float health)
         {
             this.game = game;
@@ -157,8 +158,15 @@ namespace RTS
             waypoints = new NodeList();
             path = new PathFinder();
 
+            //if (rand.Next(0, 10) < map.StartTile.Count())
+            //{
             int randomNum = rand.Next(0, map.StartTile.Count());
-            startTile = map.StartTile[randomNum]; 
+            startTile = map.StartTile[randomNum];
+            //}
+            //else
+            //{
+            startTile = map.StartTile[0];
+            //}
             
             path.Initialize(map);
             Reset();
@@ -449,7 +457,7 @@ namespace RTS
 
                     direction.Normalize();
                     position = GetPoint(curveTimer, pos[0], pos[1], pos[2 ], pos[3]);
-                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
+                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.4f;
                 }
             }
         }
@@ -493,7 +501,7 @@ namespace RTS
                 dead = true;
         }
 
-        public void Hit(Damage damage)
+        public virtual void Hit(Damage damage)
         {
             if (damage.type == weakAgainst)
             {

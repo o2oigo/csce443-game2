@@ -39,6 +39,10 @@ namespace RTS
         {
             get { return animation.currentSpriteSheet().size; }
         }
+        ~Sprite()
+        {
+            allObjects.Remove(this);
+        }
 
         //public Vector2 getPosition()
         //{
@@ -67,14 +71,27 @@ namespace RTS
         public static void DrawT(SpriteBatch spriteBatch)
         {
             //TODO: sort allObjects
-            for (int i = 0; i < allObjects.Count(); i++)
+            //for (int i = 0; i < allObjects.Count(); i++)
+            //{
+            //    allObjects[i].Draw(spriteBatch);
+            //}
+            foreach (Sprite sprite in allObjects)
             {
-                allObjects[i].Draw(spriteBatch);
+                sprite.Draw(spriteBatch);
             }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
+        }
+
+        public static void SortSprite()
+        {
+            var length = (from i in allObjects
+                          orderby i.Position.Y
+                          select i) as List<Sprite>;
+            var lambda = allObjects.OrderBy(i => i.Position.Y).ToList();
+            allObjects = lambda;
         }
 
         public static List<Sprite> allObjects = new List<Sprite>();

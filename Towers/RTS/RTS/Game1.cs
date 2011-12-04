@@ -289,7 +289,7 @@ namespace RTS
                 detectCollisions();
 
                 checkDeadEnemies();
-
+                Sprite.SortSprite();
                 //updateTowers();
 
             }
@@ -332,18 +332,18 @@ namespace RTS
             {
                 spriteBatch.Draw(backgroundTexture, rectDict[wave.CurrentLevel], Color.White);
                 
-                foreach (Tower tower in player1.getTowers())
-                    tower.Draw(spriteBatch);
-                foreach (Tower tower in player2.getTowers())
-                    tower.Draw(spriteBatch);
+                //foreach (Tower tower in player1.getTowers())
+                //    tower.Draw(spriteBatch);
+                //foreach (Tower tower in player2.getTowers())
+                //    tower.Draw(spriteBatch);
+                //
+                //for (int i = 0; i < enemies.Count; i++)
+                //    enemies[i].Draw(spriteBatch);
 
-                for (int i = 0; i < enemies.Count; i++)
-                    enemies[i].Draw(spriteBatch);
+                //player1.Draw(spriteBatch);
+                //player2.Draw(spriteBatch);
 
-                player1.Draw(spriteBatch);
-                player2.Draw(spriteBatch);
-
-                // Sprite.DrawT(spriteBatch);
+                Sprite.DrawT(spriteBatch);
                 foreach (Tree t in trees)
                 {
                     t.Draw(spriteBatch);
@@ -608,7 +608,7 @@ namespace RTS
             //    //d spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
             //}
             //spriteBatch.DrawString(font, "TILE: " + map.TileString(new Vector2(player1.Position.X, player1.Position.Y)), new Vector2(500, 100), Color.MediumBlue);
-            //spriteBatch.DrawString(font, "SPRITE COUNT: " + Sprite.objCount(), new Vector2(500, 150), Color.MediumBlue);
+            spriteBatch.DrawString(font, "SPRITE COUNT: " + Sprite.objCount(), new Vector2(500, 150), Color.MediumBlue);
               spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.Black);
             //   foreach (Tower tower in player2.getTowers())
             //   {
@@ -625,15 +625,15 @@ namespace RTS
 
             for (int i = enemies.Count - 1; i >= 0; i--)
             {
-                Enemy currentEnemy = enemies[i];
+                //Enemy currentEnemy = enemies[i];
                 Sprite.removeList(enemies[i]);
                 enemies.RemoveAt(i);
             }
             
             for (int k = 0; k < player1.getTowers().Count; k++)
             {
-                Tower tower = player1.getTowers()[k];
-                Sprite.removeList(tower);
+                //Tower tower = player1.getTowers()[k];
+                Sprite.removeList(player1.getTowers()[k]);
                 player1.getTowers().RemoveAt(k);
 
             }
@@ -664,8 +664,8 @@ namespace RTS
             */
             for (int k = 0; k < player1.getTowers().Count; k++)
             {
-                Tower tower = player1.getTowers()[k];
-                Sprite.removeList(tower);
+                //Tower tower = player1.getTowers()[k];
+                Sprite.removeList(player1.getTowers()[k]);
                 player1.getTowers().RemoveAt(k);
 
             }
