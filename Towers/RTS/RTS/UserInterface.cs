@@ -278,17 +278,26 @@ namespace RTS
                         spriteBatch.DrawString(font, "Next Wave: ???" , uiPosition1, Color.Black);
                     }
                 }
-                if (loadingGameScreen1 == true)
+                if (loadingGameScreen1 == true && showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
+                    spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
+                    spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
                 }
-                if (loadingGameScreen2 == true)
+                if (loadingGameScreen2 == true && showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
+                    spriteBatch.Draw(level2MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
+                    spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
                 }
-                if (loadingGameScreen3 == true)
+                if (loadingGameScreen3 == true && showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, "Loading", uiPositionMiddle, Color.Black);
+                    spriteBatch.Draw(level3MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
+                    spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
+                    spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
                 }
             }
 
@@ -538,18 +547,33 @@ namespace RTS
 
             updateGamePadForAllScreen();
 
+
             if (showTitleScreen == true)
                 updateGamePadForTitleScreen();
+
+            else if (showLevel1Screen == true)
+                updateGamePadForLevel1Screen();
+
+            else if (showLevel2Screen == true)
+                updateGamePadForLevel2Screen();
+
+            else if (showLevel3Screen == true)
+                updateGamePadForLevel3Screen();
+
             else if (showGameScreen == true)
-            {
                 updateGamePadForGameScreen();
-            }
+
             else if (showPauseScreen == true)
                 updateGamePadForPauseScreen();
+
             else if (showGameOverScreen == true)
                 updateGamePadForGameOverScreen();
-            else if (showWinScreen == true)
-                updateGamePadForWinScreen();
+
+            else if (showEncyclopediaScreen == true)
+                updateGamePadForEncyclopediaScreen();
+
+            else if (showTower1EncyclopediaScreen == true)
+                updateGamePadForTower1EncyclopediaScreen();
             
 
           
@@ -574,18 +598,86 @@ namespace RTS
         {
             if (currentState.IsButtonDown(Buttons.Start) && oldState.IsButtonUp(Buttons.Start))
             {
-                showGameScreen = true;
+                //showGameScreen = true;
+                showGameScreen = false;
                 showTitleScreen = false;
                 showPauseScreen = false;
-                restartGame = true;
+                showLevel1Screen = true;
+                //restartGame = true;
+                firstRun = false;
             }
 
             if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A))
             {
-                showGameScreen = true;
+                //showGameScreen = true;
+                showGameScreen = false;
                 showTitleScreen = false;
                 showPauseScreen = false;
+                showLevel1Screen = true;
+                //restartGame = true;
+                firstRun = false;
+            }
+        }
+
+        private void updateGamePadForLevel1Screen()
+        {
+            xPosMax = 1;
+            yPosMax = 0;
+
+            if (currentState.IsButtonDown(Buttons.DPadRight) && oldState.IsButtonUp(Buttons.DPadRight) && xPos1 < xPosMax)
+            {
+                xPos1++;
+            }
+            if (currentState.IsButtonDown(Buttons.DPadLeft) && oldState.IsButtonUp(Buttons.DPadLeft) && xPos1 > 0)
+            {
+                xPos1--;
+            }
+            if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 0 && yPos1 == 0)
+            {
+                showGameScreen = true;
+                loadingGameScreen1 = true;
+                showTitleScreen = false;
+                showPauseScreen = false;
+                showLevel1Screen = false;
                 restartGame = true;
+            }
+
+            if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 1 && yPos1 == 0)
+            {
+                showLevel1Screen = false;
+                showEncyclopediaScreen = true;
+                xPos1 = 0;
+                yPos1 = 0;
+            }
+
+
+        }
+
+        private void updateGamePadForLevel2Screen()
+        {
+            if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A))
+            {
+                showGameScreen = true;
+                loadingGameScreen2 = true;
+                showTitleScreen = false;
+                showPauseScreen = false;
+                showLevel2Screen = false;
+                //restartGame = true;
+                game.goNextLevel();
+            }
+        }
+
+        private void updateGamePadForLevel3Screen()
+        {
+            if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A))
+            {
+                showGameScreen = true;
+                loadingGameScreen3 = true;
+                showTitleScreen = false;
+                showPauseScreen = false;
+                showLevel3Screen = false;
+                //restartGame = true;
+                game.goNextLevel();
             }
         }
 
@@ -664,6 +756,78 @@ namespace RTS
                 showWinScreen = false;
             }
         }
+
+        private void updateGamePadForEncyclopediaScreen()
+        {
+            xPosMax = 1;
+            yPosMax = 0;
+
+            if (currentState.IsButtonDown(Buttons.Y) && oldState.IsButtonUp(Buttons.Y))
+            {
+                showEncyclopediaScreen = false;
+                showLevel1Screen = true;
+            }
+
+            if (currentState.IsButtonDown(Buttons.DPadRight) && oldState.IsButtonUp(Buttons.DPadRight) && xPos1 < xPosMax)
+            {
+                xPos1++;
+            }
+            if (currentState.IsButtonDown(Buttons.DPadLeft) && oldState.IsButtonUp(Buttons.DPadLeft) && xPos1 > 0)
+            {
+                xPos1--;
+            }
+            if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 0 && yPos1 == 0)
+            {
+                showTower1EncyclopediaScreen = true;
+                showEncyclopediaScreen = false;
+                xPos2 = 0;
+                yPos2 = 0;
+            }
+
+            if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 1 && yPos1 == 0)
+            {
+                showEnemy1EncyclopediaScreen = true;
+                showEncyclopediaScreen = false;
+                xPos2 = 0;
+                yPos2 = 0;
+            }
+
+        }
+
+        private void updateGamePadForTower1EncyclopediaScreen()
+        {
+            if (showTower1EncyclopediaScreen == true)
+            {
+                xPosMax = 2;
+                yPosMax = 0;
+            }
+            else if (showTower2EncyclopediaScreen == true)
+            {
+                xPosMax = 2;
+                yPosMax = 1;
+            }
+            else if (showTower3EncyclopediaScreen == true)
+            {
+                xPosMax = 2;
+                yPosMax = 0;
+            }
+            if (currentState.IsButtonDown(Buttons.Y) && oldState.IsButtonUp(Buttons.Y))
+            {
+                showEncyclopediaScreen = true;
+                showTower1EncyclopediaScreen = false;
+            }
+
+            if (currentState.IsButtonDown(Buttons.DPadRight) && oldState.IsButtonUp(Buttons.DPadRight) && xPos2 < xPosMax)
+            {
+                xPos2++;
+            }
+            if (currentState.IsButtonDown(Buttons.DPadLeft) && oldState.IsButtonUp(Buttons.DPadLeft) && xPos2 > 0)
+            {
+                xPos2--;
+            }
+
+        }
+
 
 
         public void updateKeyboard()
