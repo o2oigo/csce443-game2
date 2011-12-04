@@ -81,7 +81,7 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 5, 50);
+                    AddAttackingEnemy(i, 1, 5, 50);
                     //AddNormalEnemy(i, 2, 10, 100);
                     //AddHPEnemy(i, 3, 5, 100);
                     //AddHPEnemy(i, 4, 10, 100);
@@ -226,8 +226,7 @@ namespace RTS
                 {
                     gameFinished = true;
                 }
-                //nextLevel();  //delete this and have nextLevel() called when ready to start next level
-                //game.goNextLevel();
+                //game.goNextLevel(); //delete this and have goNextLevel() called when ready to start next level
                 timer = 0;
             }
         }

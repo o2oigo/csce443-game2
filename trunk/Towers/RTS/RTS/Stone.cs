@@ -8,14 +8,6 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    public enum ElementType
-    {
-        Fire,
-        Heal,
-        Lightning,
-        Normal,
-        None,
-    }
 
     public class Stone
     {

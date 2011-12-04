@@ -67,7 +67,8 @@ namespace RTS
         {
             iceTowerTexture = iceTowerUpgradeTexture;
 
-            shotsToDestroy = 150;
+            //shotsToDestroy = 150;
+            hp += 50;
             damage.amount = 3;
             //damage.type = ElementType.Normal;
             level = "level 2";
@@ -107,7 +108,7 @@ namespace RTS
             //Elapsed Time Calculations
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             shootElapsedTime += elapsedTime;
-            hp = shotsToDestroy - shotsTaken;
+            //hp = shotsToDestroy - shotsTaken;
             updateTurret(enemies);
             updateProjectiles(gameTime);
             

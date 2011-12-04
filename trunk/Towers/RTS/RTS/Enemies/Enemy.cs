@@ -14,9 +14,13 @@ namespace RTS
         protected SpriteFont font;
 
         //different for different enemies
-        protected float hp;
         protected float maxHP;
         protected int range;
+        protected float attackDamage = 0;
+        public float AttackDamage
+        {
+            get { return attackDamage; }
+        }
         protected ElementType weakAgainst;
         protected ElementType strongAgainst;
         protected float dmgOffset = 1.0f;
@@ -33,9 +37,7 @@ namespace RTS
         private Point startTile;
         private SpriteEffects isFlipped;
 
-        //private double moveRotationAngle;
         private double shootRotationAngle;
-        //private double playerRotationAngle;
         private double projectileRotationAngle;
 
         private List<Vector2> curve = new List<Vector2>();
@@ -50,6 +52,12 @@ namespace RTS
         const float atDestinationLimit = 1f;
 
         #region Properties
+        protected float hp;
+        public float HP
+        {
+            get { return hp; }
+        }
+
         private NodeList waypoints;
         public NodeList Waypoints
         {
@@ -129,16 +137,6 @@ namespace RTS
             return shootRotationAngle;
         }
 
-        //public double getMoveRotationAngle()
-        //{
-        //    return moveRotationAngle;
-        //}
-
-        //public double getPlayerRotationAngle()
-        //{
-        //    return playerRotationAngle;
-        //}
-
         private bool dead = false;
         public bool isDead()
         {
@@ -180,9 +178,6 @@ namespace RTS
 
         public virtual void LoadContent()
         {
-            //texture = contentManager.Load<Texture2D>(textureName);
-            //turretTexture = contentManager.Load<Texture2D>("TurretEnemy");
-
             origin.X = Size.Width / 2;
             origin.Y = Size.Height / 2;
             font = contentManager.Load<SpriteFont>("font");
@@ -243,20 +238,6 @@ namespace RTS
             double dir = Math.Atan2(direction.Y, direction.X);
             dir = dir % circle;
 
-            //if (Math.Abs(dir) > (Math.PI * (0.75)) && Math.Abs(dir) <= Math.PI) 
-            //{
-            //    isFlipped = SpriteEffects.FlipHorizontally;
-            //    animation.CurrentSprite = "right";
-            //}
-            //else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI * 0.25)
-            //{
-            //    animation.CurrentSprite = "right";
-            //    //isFlipped = SpriteEffects.FlipHorizontally;
-            //}
-            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25) {animation.CurrentSprite = "front";}
-            //else if (dir <= -Math.PI * (0.75) && dir > -Math.PI * 0.25) { animation.CurrentSprite = "back"; }
-            //else { animation.CurrentSprite = "back"; }
-
             if (Math.Abs(dir) > (Math.PI * (0.95)) && Math.Abs(dir) <= Math.PI) 
             {
                 isFlipped = SpriteEffects.FlipHorizontally;
@@ -267,7 +248,7 @@ namespace RTS
                 animation.CurrentSprite = "right";
                 //isFlipped = SpriteEffects.FlipHorizontally;
             }
-            else if (dir <= -Math.PI * 0.05 && dir >= -Math.PI*0.45 )//dir < Math.PI * 0.10)
+            else if (dir <= -Math.PI * 0.05 && dir >= -Math.PI*0.45 )
             {
                 animation.CurrentSprite = "rightUp";
             }
@@ -275,78 +256,18 @@ namespace RTS
             {
                 animation.CurrentSprite = "rightDown";
             }
-            else if (dir >= -Math.PI * 0.95 && dir <= -Math.PI*0.55 )//dir < Math.PI * 0.10)
+            else if (dir >= -Math.PI * 0.95 && dir <= -Math.PI*0.55 )
             {
                 animation.CurrentSprite = "rightUp";
                 isFlipped = SpriteEffects.FlipHorizontally;
             }
-            else if (dir >= Math.PI * 0.55 && dir <= Math.PI*0.95 ) //
+            else if (dir >= Math.PI * 0.55 && dir <= Math.PI*0.95 ) 
             {
                 animation.CurrentSprite = "rightDown";
                 isFlipped = SpriteEffects.FlipHorizontally;
             }
             else if (dir <= Math.PI * (0.6) && dir > Math.PI * 0.4) {animation.CurrentSprite = "front";}
             else if (dir <= -Math.PI * (0.6) && dir > -Math.PI * 0.4) { animation.CurrentSprite = "back"; }
-            //else { animation.CurrentSprite = "back"; }
-
-            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
-            //{
-            //    animation.CurrentSprite = "rightUp";
-            //    isFlipped = SpriteEffects.FlipHorizontally;
-            //}
-            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
-            //{
-            //    animation.CurrentSprite = "rightDown";
-            //    isFlipped = SpriteEffects.FlipHorizontally;
-            //}
-
-            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
-            //{
-            //    animation.CurrentSprite = "rightUp";
-            //}
-            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
-            //{
-            //    animation.CurrentSprite = "rightDown";
-            //}
-            //else if (dir <= Math.PI * (0.75) && dir > Math.PI * 0.25)
-
-
-            //if (dir == 0 || (dir > -10 && dir < 10))
-            //{
-            //    animation.CurrentSprite = "right";
-            //}
-            ////else if (dir == Math.PI)
-            //else if (dir == Math.PI || (dir == Math.PI
-            //{
-            //    animation.CurrentSprite = "right";
-            //    isFlipped = SpriteEffects.FlipHorizontally;
-            //}
-            //else if (dir == -Math.PI / 2)
-            //{
-            //    animation.CurrentSprite = "back";
-            //}
-            //else if (dir == Math.PI / 2)
-            //{
-            //    animation.CurrentSprite = "front";
-            //}
-            //else if (dir > 0 && dir < Math.PI / 2)
-            //{
-            //    animation.CurrentSprite = "rightDown";
-            //}
-            //else if (dir > Math.PI / 2 && dir < Math.PI)
-            //{
-            //    animation.CurrentSprite = "rightDown";
-            //    isFlipped = SpriteEffects.FlipHorizontally;
-            //}
-            //else if (dir < 0 && dir > -Math.PI / 2)
-            //{
-            //    animation.CurrentSprite = "rightUp";
-            //}
-            //else if (dir < -(Math.PI / 2) && dir > -Math.PI)
-            //{
-            //    animation.CurrentSprite = "rightUp";
-            //    isFlipped = SpriteEffects.FlipHorizontally;
-            //}
         }
 
         public void updateMovement(Tower tower)
@@ -533,16 +454,16 @@ namespace RTS
 
         public void applyOffset(Damage damage)
         {
-            if (effect is EnemyEffectBurn)
+            if (effect is EnemyEffectBurn && strongAgainst != ElementType.Fire)
             {
                 EnemyEffectBurn tmpEffect = (EnemyEffectBurn)effect;
                 if (weakAgainst == ElementType.Fire)
                     tmpEffect.Offset = 1.5f;
-                else if (strongAgainst == ElementType.Fire)
-                    tmpEffect.Offset = 0.5f;
+                //else if (strongAgainst == ElementType.Fire)
+                //tmpEffect.Offset = 0.5f;
                 else tmpEffect.Offset = 1.0f;
             }
-            if (effect is EnemyEffectStun)
+            if (effect is EnemyEffectStun && rand.Next(0, 6) >3)
             {
                 EnemyEffectStun tmpEffect = (EnemyEffectStun)effect;
                 if (weakAgainst == ElementType.Lightning)

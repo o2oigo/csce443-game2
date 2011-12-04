@@ -45,7 +45,8 @@ namespace RTS
         public override void setToLvlTwo()
         {
             //arrowTowerTexture = arrowTowerUpgradeTexture;
-            shotsToDestroy = 150;
+            //shotsToDestroy = 150;
+            hp += 50;
             damage.amount = 20;
             //damage.type = ElementType.Normal;
             level = "level 2";
