@@ -448,7 +448,7 @@ namespace RTS
                             if (towerRect.Intersects(enemyProjectileRect))
                             {
                                 currentEnemy.getProjectiles().Remove(proj);
-                                tower.Hit();
+                                tower.Hit(currentEnemy.AttackDamage);
                                 if (player.getTowers().Count != 0 && tower.isDead())
                                 {
                                     Sprite.removeList(tower);

@@ -17,7 +17,6 @@ namespace RTS
         protected Map map;
         protected SpriteAnimation animation;
 
-
         protected Vector2 position;
         public Vector2 Position
         {
@@ -39,6 +38,7 @@ namespace RTS
         {
             get { return animation.currentSpriteSheet().size; }
         }
+
         ~Sprite()
         {
             allObjects.Remove(this);
@@ -48,6 +48,8 @@ namespace RTS
         //{
         //    return position;
         //}
+
+
 
         protected static void addList(Sprite obj)
         {

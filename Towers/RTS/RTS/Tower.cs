@@ -10,21 +10,6 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace RTS
 {
-    public struct Damage
-    {
-        public float amount;
-        public int level;
-        public ElementType type;
-        public EnemyEffect effect;
-
-        public Damage(float amt, int lvl, ElementType t,EnemyEffect e)
-        {
-            amount = amt;
-            level = lvl;
-            type = t;
-            effect = e;
-        }
-    }
 
     public class Tower : Sprite
     {
@@ -42,9 +27,15 @@ namespace RTS
         protected float soundElapsedTime = 0f;
 
         protected SpriteFont font;
-        protected int shotsTaken = 0;
-        protected int shotsToDestroy = 100;
-        protected int hp;
+        //protected int shotsTaken = 0;
+        //protected int shotsToDestroy = 100;
+
+        protected float hp = 100;
+        public float HP
+        {
+            get { return hp; }
+        }
+
         private bool dead = false;
         private bool playerIsNear = false;
         protected string level = "level 1";
@@ -169,7 +160,7 @@ namespace RTS
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             shootElapsedTime += elapsedTime;
             //soundElapsedTime += elapsedTime;
-            hp = shotsToDestroy - shotsTaken;
+            //hp = shotsToDestroy - shotsTaken;
             updateTurret(enemies);
             updateProjectiles(gameTime);
         }
@@ -280,10 +271,24 @@ namespace RTS
         }
 
         //If the tower was hit by an enemy or projectile
-        public void Hit()
+        //public void Hit()
+        //{
+        //    shotsTaken++;
+        //    if (shotsTaken >= shotsToDestroy)
+        //        dead = true;
+        //}
+
+        public void Hit(Damage dmg)
         {
-            shotsTaken++;
-            if (shotsTaken >= shotsToDestroy)
+            hp -= dmg.amount;
+            if (hp <= 0)
+                dead = true;
+        }
+
+        public void Hit(float dmg)
+        {
+            hp -= dmg;
+            if (hp <= 0)
                 dead = true;
         }
 
@@ -292,15 +297,15 @@ namespace RTS
             return dead;
         }
 
-        public int getShotsTaken()
-        {
-            return shotsTaken;
-        }
-
-        public int getShotsToDestroy()
-        {
-            return shotsToDestroy;
-        }
+        //public int getShotsTaken()
+        //{
+        //    return shotsTaken;
+        //}
+        //
+        //public int getShotsToDestroy()
+        //{
+        //    return shotsToDestroy;
+        //}
 
        // public int getAttackDamage()
        // {
@@ -310,7 +315,8 @@ namespace RTS
         public virtual void setToLvlTwo()
         {
 
-            shotsToDestroy = 150;
+            //shotsToDestroy = 150;
+            hp += 50;
             damage.amount = 20;
             //damage.type = ElementType.Normal;
             level = "level 2";
