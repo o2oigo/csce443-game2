@@ -23,7 +23,7 @@ namespace RTS
         Player player2;
 
         
-        public bool runTestChecking = false;  // true to show the test Status on every screen, false to show nothing
+        public bool runTestChecking = true;  // true to show the test Status on every screen, false to show nothing
         SpriteFont font;
 
 

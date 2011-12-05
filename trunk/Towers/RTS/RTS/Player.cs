@@ -830,14 +830,6 @@ namespace RTS
             
             if (buildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
             {
-                /*
-                if (upgradeBuildMode == false && upgradeBuildMagicMode == false)
-                {
-                    mainBuildMode = true;
-                }
-                else
-                    mainBuildMode = false;
-                  */
 
                 if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= -(float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
                 {
@@ -845,7 +837,7 @@ namespace RTS
                     {
                         if (map.TileTypeAt(position) == MapTileType.MapGrass)
                         {
-
+                            // for arrow tower
                             if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -1.90)
                             {
                                 if (money >= 10)
@@ -910,13 +902,16 @@ namespace RTS
                         }
                     }
                 }
+
+                // Exit from build menu
                 else if (shootRotationAngle > (float)Math.PI / 4 && shootRotationAngle <= 3 * (float)Math.PI / 4)
                 {
                     buildMode = false;
                     mainBuildMode = false;
                     upgradeBuildMode = false;
+                    upgradeBuildMagicMode = false;
                 }
-                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.PI / 4 && upgradeBuildMode == true)
+                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.PI / 4 && upgradeBuildMagicMode == true)
                 {
 
                     for (int i = 0; i < towerList.Count(); i++)
@@ -947,7 +942,7 @@ namespace RTS
                     }
                 }
 
-                else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= 0 && upgradeBuildMode == true)
+                else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= 0 && upgradeBuildMagicMode == true)
                 {
 
                     for (int i = 0; i < towerList.Count(); i++)
@@ -973,12 +968,21 @@ namespace RTS
                     }
                 }
 
+
+                // selling tower
                 else if ((shootRotationAngle <= -3 * Math.PI / 4 && shootRotationAngle >= -Math.PI) || (shootRotationAngle <= Math.PI && shootRotationAngle > 3 * Math.PI / 4))
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
                         if (towerList[i].getPlayerIsNear() == true)
                         {
+                            if (towerList[i].getTowerName() == "Flame Tower")
+                            {
+
+                                FlameTower temp = (FlameTower)towerList[i];
+                                temp.getSound().Stop();
+
+                            }
                             if (towerList[i].getTowerLvl() == "level 1")
                             {
                                 addMoney(5);
