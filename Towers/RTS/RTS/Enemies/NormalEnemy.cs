@@ -18,7 +18,7 @@ namespace RTS
             range = 200;
             weakAgainst = ElementType.None;
             strongAgainst = ElementType.None;
-            moveSpeed = 50.0f;
+            //moveSpeed = 50.0f;
         }
 
         public override void LoadContent()

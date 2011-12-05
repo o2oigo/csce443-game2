@@ -17,7 +17,7 @@ namespace RTS
             range = 200;
             weakAgainst = ElementType.Normal;
             strongAgainst = ElementType.None;
-            moveSpeed = 50.0f;
+            //moveSpeed = 50.0f;
         }
 
 

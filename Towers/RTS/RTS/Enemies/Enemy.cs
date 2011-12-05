@@ -46,7 +46,7 @@ namespace RTS
         private float elapsedTime;
         private float effectTimer;
         private float shootElapsedTime;
-        private float shootTimer = 1.0f;
+        private float shootTimer = 2.7f;
         private float circle = MathHelper.Pi * 2;
 
         const float atDestinationLimit = 1f;
@@ -88,7 +88,7 @@ namespace RTS
             get { return destination; }
         }
 
-        protected float moveSpeed = 100f;
+        protected float moveSpeed = 0.5f;
         public float MoveSpeed
         {
             set { moveSpeed = value; }
@@ -163,7 +163,7 @@ namespace RTS
             //}
             //else
             //{
-            startTile = map.StartTile[0];
+            //startTile = map.StartTile[0];
             //}
             
             path.Initialize(map);
@@ -267,7 +267,7 @@ namespace RTS
                 isFlipped = SpriteEffects.FlipHorizontally;
             }
             else if (dir <= Math.PI * (0.6) && dir > Math.PI * 0.4) {animation.CurrentSprite = "front";}
-            else if (dir <= -Math.PI * (0.6) && dir > -Math.PI * 0.4) { animation.CurrentSprite = "back"; }
+            else if (dir > -Math.PI * (0.6) && dir <= -Math.PI * 0.4) { animation.CurrentSprite = "back"; }
         }
 
         public void updateMovement(Tower tower)
@@ -381,7 +381,8 @@ namespace RTS
 
                     direction.Normalize();
                     position = GetPoint(curveTimer, pos[0], pos[1], pos[2 ], pos[3]);
-                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.4f;
+                    //curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.4f;
+                    curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * moveSpeed;
                 }
             }
         }
@@ -427,6 +428,7 @@ namespace RTS
 
         public virtual void Hit(Damage damage)
         {
+            dmgOffset = 1.0f;
             if (damage.type == weakAgainst)
             {
                 dmgOffset = 1.5f;
@@ -434,10 +436,6 @@ namespace RTS
             else if (damage.type == strongAgainst)
             {
                 dmgOffset = 0.1f;
-            }
-            else
-            {
-                dmgOffset = 1.0f;
             }
 
             hp -= damage.amount * dmgOffset;
@@ -454,28 +452,33 @@ namespace RTS
 
         public void applyOffset(Damage damage)
         {
-            if (effect is EnemyEffectBurn && strongAgainst != ElementType.Fire)
+            if (effect is EnemyEffectBurn)
             {
                 EnemyEffectBurn tmpEffect = (EnemyEffectBurn)effect;
                 if (weakAgainst == ElementType.Fire)
                     tmpEffect.Offset = 1.5f;
-                //else if (strongAgainst == ElementType.Fire)
-                //tmpEffect.Offset = 0.5f;
+                else if (strongAgainst == ElementType.Fire)
+                    tmpEffect.Offset = 0f;
                 else tmpEffect.Offset = 1.0f;
             }
-            if (effect is EnemyEffectStun && rand.Next(0, 6) >3)
+            if (effect is EnemyEffectStun)
             {
                 EnemyEffectStun tmpEffect = (EnemyEffectStun)effect;
                 if (weakAgainst == ElementType.Lightning)
-                    tmpEffect.Duration = tmpEffect.Duration+(int)((float)tmpEffect.Duration*0.5f*damage.level);
+                    //tmpEffect.Duration = tmpEffect.Duration + (int)((float)tmpEffect.Duration * 0.5f * damage.level);
+                    tmpEffect.Offset = 1.5f * damage.level;
                 else if (strongAgainst == ElementType.Lightning)
-                    tmpEffect.Duration = tmpEffect.Duration - (int)((float)tmpEffect.Duration * 0.5f);
+                    //tmpEffect.Duration = 0;
+                    tmpEffect.Offset = 0f;
+                else
+                    tmpEffect.Offset = 1.0f * damage.level;
+                    //tmpEffect.Duration = tmpEffect.Duration - (int)((float)tmpEffect.Duration * 0.5f);
             }
         }
 
         public void effectDamage(float burnDmg)
         {
-            hp -= burnDmg*dmgOffset;
+            hp -= burnDmg;
             if (hp <= 0)
                 dead = true;
         }

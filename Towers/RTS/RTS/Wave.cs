@@ -15,13 +15,14 @@ namespace RTS
         UserInterface userInterface;
 
         double timer;
-        const double intervalSpawn = 2000;
-        const double intervalWave = 10000;
-        const double intervalLevel = 9000;
+        // in milliseconds
+        const double intervalSpawn = 2000; // 2 seconds
+        const double intervalWave = 10000; // 10 seconds
+        const double intervalLevel = 9000; 
 
         protected Dictionary<int, Dictionary<int, Queue<Enemy>>> LevelDictionary = new Dictionary<int, Dictionary<int, Queue<Enemy>>>();
 
-        private int currentWave = 1;
+        private int currentWave = 0;
         public int CurrentWave
         {
         get {return currentWave;}
@@ -33,10 +34,16 @@ namespace RTS
             get { return currentLevel; }
         }
 
-        private Boolean waveFinished = false;
+        private Boolean waveFinished = true;
         public Boolean isWaveFinish
         {
             get { return waveFinished; }
+        }
+
+        private double waveTimer;
+        public double WaveTimer
+        {
+            get { return waveTimer; }
         }
 
 
@@ -54,8 +61,8 @@ namespace RTS
 
         public void InitializeLevel()
         {
-            LevelDictionary.Add(1, InitializeWave(1));
-            LevelDictionary.Add(2, InitializeWave(3));
+            LevelDictionary.Add(1, InitializeWave(2));
+            LevelDictionary.Add(2, InitializeWave(2));
             LevelDictionary.Add(3, InitializeWave(1));
         }
 
@@ -71,20 +78,18 @@ namespace RTS
 
         #region Hard coded enemy in each level
 
-        //level, wave, normal,hp,
-        public void AddEnemy()
-        {
-        }
-
         public void ReinitializeLevel(int i)
         {
+            //NOTE:
+            // to add enemy :  
+            //       Add<ENEMYTYPE>(i, waveNum, numberofEnemies, HP)
             switch (i)
             {
                 case 1:
-                    AddAttackingEnemy(i, 1, 5, 50);
-                    //AddNormalEnemy(i, 2, 10, 100);
-                    //AddHPEnemy(i, 3, 5, 100);
-                    //AddHPEnemy(i, 4, 10, 100);
+                    AddMagicOnlyEnemy(i, 1, 5, 50);
+                    AddNormalEnemy(i, 2, 5, 50);
+                    //AddHPEnemy(i, 3, 5, 1);
+                    //AddHPEnemy(i, 4, 10, 1);
                     //AddFastEnemy(i, 5, 5, 100);
                     //AddFastEnemy(1, 6, 10, 100);
                     //AddAttackingEnemy(i, 7, 5, 100);
@@ -100,12 +105,12 @@ namespace RTS
                     //AddAttackingEnemy(i, 10, 5, 100);
                     break;
                 case 2:
-                    AddAttackingEnemy(i, 1, 1, 100);
-                    AddNormalEnemy(i, 2, 10, 100);
-                    AddHPEnemy(i, 3, 5, 100);
+                    AddAttackingEnemy(i, 1, 5, 50);
+                    AddNormalEnemy(i, 2, 5, 50);
+                    //AddHPEnemy(i, 3, 5, 1);
                     //AddFastEnemy(i, 3, 5, 100);
-                    //AddHPEnemy(i, 4, 10, 100);
-                    //AddFastEnemy(i, 5, 5, 100);
+                    //AddHPEnemy(i, 4,2, 1);
+                    //AddFastEnemy(i, 5, 2, 1);
                     //AddFastEnemy(i, 6, 10, 100);
                     //AddAttackingEnemy(i, 7, 5, 100);
                     //AddAttackingEnemy(i, 8, 10, 100);
@@ -170,64 +175,94 @@ namespace RTS
 
         public void nextWave()
         {
-            if (currentWave >= LevelDictionary[currentLevel].Count())
-            {
-                //ENDLEVEL
-                levelFinished = true;
-            }
-            else
-            {
-                currentWave++;
-                waveFinished = false;
-            }
+            //if (waveFinished)
+            //{
+                if (currentWave >= LevelDictionary[currentLevel].Count())
+                {
+                    //ENDLEVEL
+                    levelFinished = true;
+                }
+                else
+                {
+                    currentWave++;
+                    waveFinished = false;
+                }
+                waveTimer = 0;
+            //}
         }
 
         public void nextLevel()
         {
-            if (currentLevel < LevelDictionary.Count())
-            {
-            //    //ENDGAME
-            //    gameFinished = true;
-            //}
-            //else
+            //if (waveFinished && levelFinished)
             //{
-                currentLevel++;
-                levelFinished = false;
-                currentWave = 1;
-                waveFinished = false;
-                game.Map.NextMap(currentLevel);
-                game.CreateTrees();
-                ReinitializeLevel(currentLevel);
-            }
+                if (currentLevel < LevelDictionary.Count())
+                {
+                    //    //ENDGAME
+                    //    gameFinished = true;
+                    //}
+                    //else
+                    //{
+                    waveTimer = 0;
+                    currentLevel++;
+                    levelFinished = false;
+                    currentWave = 0;
+                    waveFinished = true ;
+                    game.Map.NextMap(currentLevel);
+                    game.CreateTrees();
+                    ReinitializeLevel(currentLevel);
+                }
+            //}
         }
 
         public void Update(GameTime gameTime)
         {
             timer += gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (!waveFinished && timer > intervalSpawn)
+            if (currentWave == 0)
             {
-                //game.Enemies.Add(WaveDictionary[currentWave].Dequeue());
-                game.Enemies.Add(LevelDictionary[currentLevel][currentWave].Dequeue());
-                if (LevelDictionary[currentLevel][currentWave].Count() == 0) waveFinished = true;
-                timer = 0;
-            }
-            if (currentWave == LevelDictionary[currentLevel].Count() && waveFinished && game.Enemies.Count() == 0)
-            {
-                levelFinished = true;
-            }
-            if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer > intervalWave)
-            {
-                nextWave();
-                timer = 0;
-            }
-            if (levelFinished && game.Enemies.Count() == 0 && !gameFinished && timer > intervalWave)
-            {
-                if (currentLevel >= LevelDictionary.Count())
+                waveTimer = intervalWave - timer;
+                if (timer > intervalWave)
                 {
-                    gameFinished = true;
+                    nextWave();
+                    timer = 0;
                 }
-                //game.goNextLevel(); //delete this and have goNextLevel() called when ready to start next level
-                timer = 0;
+            }
+            else
+            {
+                if (!waveFinished && timer > intervalSpawn)
+                {
+                    if (LevelDictionary[currentLevel][currentWave].Count != 0)
+                    {
+                        game.Enemies.Add(LevelDictionary[currentLevel][currentWave].Dequeue());
+                    }
+                    if (LevelDictionary[currentLevel][currentWave].Count() == 0)
+                    {
+                        waveFinished = true;
+                    }
+                    timer = 0;
+                }
+                if (currentWave == LevelDictionary[currentLevel].Count() && waveFinished && game.Enemies.Count() == 0)
+                {
+                    levelFinished = true;
+                    //timer = 0;
+                }
+                if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer > intervalWave)
+                {
+                    nextWave();
+                    timer = 0;
+                }
+                else if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer <= intervalWave)
+                {
+                    waveTimer = intervalWave - timer;
+                }
+                if (levelFinished && game.Enemies.Count() == 0 && !gameFinished && timer > intervalWave)
+                {
+                    if (currentLevel >= LevelDictionary.Count())
+                    {
+                        gameFinished = true;
+                    }
+                    //game.goNextLevel(); //delete this and have goNextLevel() called when ready to start next level
+                    timer = 0;
+                }
             }
         }
 
@@ -238,6 +273,7 @@ namespace RTS
                 NormalEnemy e1 = new NormalEnemy();
                 e1.Initialize(game, hp);
                 e1.LoadContent();
+                
                 (LevelDictionary[lvl])[wave].Enqueue(e1);
             }
         }
@@ -294,6 +330,25 @@ namespace RTS
                 e1.Initialize(game, hp);
                 e1.LoadContent();
                 (LevelDictionary[lvl])[wave].Enqueue(e1);
+            }
+        }
+
+        public void AddPhysicalOnlyEnemy(int lvl, int wave, int enemyNum, float hp)
+        {
+            for (int i = 0; i < enemyNum; i++)
+            {
+                PhysicalOnlyEnemy e1 = new PhysicalOnlyEnemy();
+                e1.Initialize(game, hp);
+                e1.LoadContent();
+                (LevelDictionary[lvl])[wave].Enqueue(e1);
+            }
+        }
+
+        public void endTimer()
+        {
+            if (waveFinished)
+            {
+                timer = intervalWave;
             }
         }
     }

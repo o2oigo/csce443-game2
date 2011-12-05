@@ -752,6 +752,11 @@ namespace RTS
                 removeMoney(10);
             }
 
+            if (keystate.IsKeyDown(Keys.LeftShift))
+            {
+                game.Wave.endTimer();
+            }
+
 
 
             //Update moveRotationAngle
