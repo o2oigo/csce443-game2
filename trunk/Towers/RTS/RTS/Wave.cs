@@ -61,6 +61,8 @@ namespace RTS
 
         public void InitializeLevel()
         {
+            //LevelDictionary.Add(levelnumber, InitializeWave(numberofwaves));
+            //NOTE: number of waves must match ReinitializeWave info (each wave must be populated with enemy)
             LevelDictionary.Add(1, InitializeWave(2));
             LevelDictionary.Add(2, InitializeWave(2));
             LevelDictionary.Add(3, InitializeWave(1));

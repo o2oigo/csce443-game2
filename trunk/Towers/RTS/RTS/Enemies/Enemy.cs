@@ -14,7 +14,6 @@ namespace RTS
         protected SpriteFont font;
 
         //different for different enemies
-        protected float maxHP;
         protected int range;
         protected float attackDamage = 0;
         public float AttackDamage
@@ -56,6 +55,12 @@ namespace RTS
         public float HP
         {
             get { return hp; }
+        }
+
+        protected float maxHP;
+        public float MaxHP
+        {
+            get { return maxHP; }
         }
 
         private NodeList waypoints;
