@@ -19,8 +19,6 @@ namespace RTS
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D backgroundTexture;
-        Texture2D hpBarFrame;
-        Texture2D hpBarInside;
         Dictionary<int, Texture2D> mapTextureDict;
         private Dictionary<int, Rectangle> rectDict;
         public Rectangle getCurrentRectangle()
@@ -218,8 +216,7 @@ namespace RTS
             Song song = Content.Load<Song>("Sound/MainSong");  // Put the name of your song in instead of "song_title"
             MediaPlayer.Play(song);
 
-            hpBarFrame = Content.Load<Texture2D>("hpFrame");
-            hpBarInside = Content.Load<Texture2D>("hpInsid");
+            Sprite.LoadContent(Content);
         }
 
         /// <summary>
@@ -357,7 +354,6 @@ namespace RTS
 
                 //player2.Draw(spriteBatch);
                 drawText();
-                drawHPBar();
 
                 if (stones.Count() > 0)
                 {
@@ -759,19 +755,6 @@ namespace RTS
                         temp.getSound().Stop();
                     }
                 }
-            }
-        }
-
-        public void drawHPBar()
-        {
-            foreach (Enemy i in enemies)
-            {
-                Vector2 pos = i.Position;
-                pos.X -= 20;
-                Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((i.HP / i.MaxHP)*hpBarInside.Width), (int)hpBarInside.Height);
-
-                spriteBatch.Draw(hpBarInside, newRect, Color.White);
-                spriteBatch.Draw(hpBarFrame, pos, Color.White);
             }
         }
 

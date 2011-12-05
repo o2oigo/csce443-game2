@@ -35,6 +35,11 @@ namespace RTS
         {
             get { return hp; }
         }
+        protected float maxHP = 100;
+        public float MaxHP
+        {
+            get { return maxHP; }
+        }
 
         private bool dead = false;
         private bool playerIsNear = false;
@@ -317,7 +322,7 @@ namespace RTS
 
             //shotsToDestroy = 150;
             //hp += 50;
-            hp = 150;
+            maxHP = hp = 150;
             damage.amount = 20;
             //damage.type = ElementType.Normal;
             level = "level 2";

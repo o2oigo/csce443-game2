@@ -47,7 +47,7 @@ namespace RTS
             //arrowTowerTexture = arrowTowerUpgradeTexture;
             //shotsToDestroy = 150;
             //hp += 50;
-            hp = 150;
+            maxHP = hp = 150;
             damage.amount = 20;
             //damage.type = ElementType.Normal;
             level = "level 2";
