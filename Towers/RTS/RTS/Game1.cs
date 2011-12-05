@@ -106,20 +106,13 @@ namespace RTS
         protected override void Initialize()
         {
             base.Initialize();
-           
-            //Rectangle test = new Rectangle(0, 0, this.graphics.PreferredBackBufferHeight, this.graphics.PreferredBackBufferWidth);
-            //Rectangle test = new Rectangle(0,0,this.GraphicsDevice.Viewport.Width, this.GraphicsDevice.Viewport.Height);
             //gameplayArea = GraphicsDevice.Viewport.TitleSafeArea;
             //map.UpdateMapViewport(test);
             //map.ReloadMap();
-            //map.UpdateMapViewport(test);
             CreateTrees();
             userInterface.setScreenStatus("loadingGameScreen1",true);
             //wave = new Wave(this);
             wave = new Wave(this,userInterface);
-            //house = new House(this, map.getBaseCoordinate());
-           // house.LoadContent();
-           
         }
 
         /// <summary>
@@ -153,9 +146,7 @@ namespace RTS
             userInterface.Initialize(this, PlayerIndex.One, new Vector2(100, 100), players);
             userInterface.LoadContent();
 
-            //PATHFINDING//
             map.LoadContent(Content);
-            //PATHFINDING//
 
             //background//
             mapTextureDict = new Dictionary<int, Texture2D>();
@@ -370,21 +361,6 @@ namespace RTS
             base.Draw(gameTime);
         }
 
-        //public void spawnEnemies(GameTime gameTime)
-        //{
-        //    enemyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-        //    if (enemyTimer > enemySpawnTime /*&& enemies.Count < 15*/)          /// Set enemy number here
-        //    {
-        //        int randWidth = rand.Next(this.GraphicsDevice.Viewport.Width);
-        //        int randHeight = rand.Next(this.GraphicsDevice.Viewport.Height);
-        //        FastEnemy spawn = new FastEnemy();
-        //        spawn.Initialize(this, new Vector2(randWidth, randHeight), map);
-        //        spawn.LoadContent();
-        //        enemies.Add(spawn);
-        //        enemyTimer = 0;
-        //    }
-        //}
-
         public void detectCollisions()
         {
             //COLLISION DETECTION
@@ -415,11 +391,8 @@ namespace RTS
                 {
                     //Get current enemy and create collision box
                     Enemy currentEnemy = enemies[i];
-                    //Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.Position.X - currentEnemy.getOrigin().X), (int)(currentEnemy.Position.Y - currentEnemy.getOrigin().Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
-                    //Rectangle currentEnemyRect = new Rectangle((int)(currentEnemy.Position.X), (int)(currentEnemy.Position.Y), currentEnemy.Size.Width, currentEnemy.Size.Height);
-                    //Ckeck if current enemy and exit point                   
+                    //Ckeck if current enemy and exit point intersects                   
                     //if (map.TileTypeAt(currentEnemy.Position) == MapTileType.MapExit)
-                    //if (currentEnemyRect.Intersects(houseRect))
                     if (currentEnemy.boundingCircle(currentEnemy.Position,60,Map.MapToWorld(Map.EndTile,false)))
                     {
                         live--;
@@ -657,9 +630,6 @@ namespace RTS
             wave = new Wave(this,userInterface);
 
             this.ResetElapsedTime();
-
-            //enemyTimer = 0;
-            //enemySpawnTime = 1f;
             live = 100;
 
             camera.ResetCamera();
@@ -698,8 +668,6 @@ namespace RTS
             
             this.ResetElapsedTime();
 
-            //enemyTimer = 0;
-            //enemySpawnTime = 1f;
             live = 100;
 
             camera.ResetCamera();

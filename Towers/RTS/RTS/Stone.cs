@@ -75,6 +75,9 @@ namespace RTS
                 case ElementType.Heal:
                     stoneTexture = contentManager.Load<Texture2D>("healingStone");
                     break;
+                case ElementType.Normal:
+                    //stoneTexture = contentManager.Load<Texture2D>("money");
+                    break;
                 default:
                     stoneTexture = contentManager.Load<Texture2D>("fireStone");
                     break;

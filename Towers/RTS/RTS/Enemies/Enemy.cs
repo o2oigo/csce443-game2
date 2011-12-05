@@ -215,14 +215,15 @@ namespace RTS
             {
                 //game.fire.setDirection((float)(-Math.PI/2));
                 //game.fire.AddParticles(new Vector2(position.X, position.Y));
-                if (effectTimer > 100)
+                if (!effect.isValid(gameTime))
+                {
+                    effect.undoEffect(this);
+                    effect = null;
+                    effectTimer = 0f;
+                }
+                else if (effectTimer > 500)
                 {
                     effect.applyEffects(this);
-                    if (!effect.isValid(gameTime))
-                    {
-                        effect.undoEffect(this);
-                        effect = null;
-                    }
                     effectTimer = 0f;
                 }
             }
@@ -447,8 +448,11 @@ namespace RTS
 
             if (effect == null && damage.effect != null)
             {
-                effect = damage.effect;
-                applyOffset(damage);
+                if (strongAgainst != damage.type)
+                {
+                    effect = damage.effect;
+                    applyOffset(damage);
+                }   
             }
 
             if (hp <= 0)
