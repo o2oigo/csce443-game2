@@ -43,7 +43,7 @@ namespace RTS
         SpriteEffects isFlipped = SpriteEffects.None;
 
         // fredy code for User Interface (tower menu)
-        private bool boolForTest = false;
+        public bool boolForTest = false;
         private Texture2D mouseTexture;
         private Texture2D menu1Texture;
         private Texture2D menu2Texture;
@@ -265,8 +265,8 @@ namespace RTS
 
             if (buildMode == true)
             {
-
-                if (mainBuildMode == true && (shootRotationAngle >= -2.27 && shootRotationAngle < -0.93))
+                // if player aim up, basic tower will showed up
+                if (mainBuildMode == true && upgradeBuildMode == false && (shootRotationAngle >= -2.27 && shootRotationAngle < -0.93))
                 {
                     // default texture (not greyed nor selected)
                     spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
@@ -305,20 +305,33 @@ namespace RTS
 
                 }
 
+                // If player aim other place, only show the base texture, not extension
                 else if (mainBuildMode == true)
                 {
                     spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                 }
 
-                else if (upgradeBuildMode == true && (shootRotationAngle >= -0.93 && shootRotationAngle < (float)Math.Sqrt(2) / 2f))
+                else if (upgradeBuildMode == true)
                 {
                     spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                     spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
                     spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
-                    
-                    if (upgradeBuildMagicMode == true)
+
+                    if (shootRotationAngle >= -0.93 && shootRotationAngle < (float)Math.Sqrt(2) / 2f)
+                    {
+                    }
+                }
+
+                else if (upgradeBuildMagicMode == true)
+                {
+                    spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+                    spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
+                    spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+
+                    if (shootRotationAngle >= -0.93 && shootRotationAngle < (float)Math.Sqrt(2) / 2f)
                     {
                         spriteBatch.Draw(flameTowerBuildTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
                         spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
@@ -340,19 +353,25 @@ namespace RTS
                             spriteBatch.Draw(lightningTowerBuildSelectTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
                         }
                     }
-
                 }
+
+               
                 
 
-
+/*
                 else if (upgradeBuildMode == true && (shootRotationAngle < -0.93 || shootRotationAngle > (float)Math.Sqrt(2) / 2f))
                 {
                     spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                     spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
                     spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+ 
                 }
+ */
+ 
             }
+
+           
 
         }
 
@@ -377,6 +396,9 @@ namespace RTS
                 }
             }
 
+            // to reset everything equal false before checking
+            upgradeBuildMode = false;
+            upgradeBuildMagicMode = false;
             foreach (Tower tower in towerList)
             {
                 //Set upgrade mode if near tower
@@ -385,18 +407,25 @@ namespace RTS
                     if (tower is MagicTower)
                     {
                         upgradeBuildMagicMode = true;
+                        upgradeBuildMode = false;
+                        mainBuildMode = false;
+                    }
+
+                    else
+                    {
+                        upgradeBuildMagicMode = false;
+                        upgradeBuildMode = true;
+                        mainBuildMode = false;
                     }
                     
-                    upgradeBuildMode = true;
-                    mainBuildMode = false;
                     break;
                 }
-                else
+                
+                // check if it is the last tower in tower list and no tower is near player
+                if (tower == towerList[towerList.Count()-1])
                 {
-                    mainBuildMode = true;
                     upgradeBuildMagicMode = false;
                     upgradeBuildMode = false;
-
                 }
 
 
@@ -475,7 +504,9 @@ namespace RTS
             else if (buildMode == true && oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder))
             {
                 if (upgradeBuildMode == false)
+                {
                     mainBuildMode = true;
+                }
                 else
                     mainBuildMode = false;
 
@@ -788,14 +819,25 @@ namespace RTS
             if (keystate.IsKeyUp(Keys.Space) && oldKeyState.IsKeyDown(Keys.Space))
             {
                 buildMode = true;
-                mainBuildMode = true;
-            }
-            else if (buildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
-            {
+
                 if (upgradeBuildMode == false && upgradeBuildMagicMode == false)
+                {
                     mainBuildMode = true;
+                }
                 else
                     mainBuildMode = false;
+            }
+            
+            if (buildMode == true && oldMousestate.LeftButton == ButtonState.Pressed && mousestate.LeftButton == ButtonState.Released)
+            {
+                /*
+                if (upgradeBuildMode == false && upgradeBuildMagicMode == false)
+                {
+                    mainBuildMode = true;
+                }
+                else
+                    mainBuildMode = false;
+                  */
 
                 if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= -(float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
                 {
@@ -843,15 +885,6 @@ namespace RTS
                                 }
                             }
 
-                            /*
-                            if (money > 15)
-                            {
-                                removeMoney(15);
-                                createTower();
-                                buildMode = false;
-                                mainBuildMode = false;
-                            }
-                             * */
                         }
                         if (towerList.Count == maxTowerCount)
                         {
