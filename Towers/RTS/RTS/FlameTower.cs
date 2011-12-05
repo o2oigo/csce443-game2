@@ -69,7 +69,8 @@ namespace RTS
             flameTowerTexture = flameTowerUpgradeTexture;
 
             //shotsToDestroy = 150;
-            hp += 50;
+            hp = 150;
+            //hp += 50;
             damage.amount = 3;
             //damage.type = ElementType.Normal;
             level = "level 2";

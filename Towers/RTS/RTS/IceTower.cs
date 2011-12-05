@@ -68,7 +68,8 @@ namespace RTS
             iceTowerTexture = iceTowerUpgradeTexture;
 
             //shotsToDestroy = 150;
-            hp += 50;
+            //hp += 50;
+            hp = 150;
             damage.amount = 3;
             //damage.type = ElementType.Normal;
             level = "level 2";
