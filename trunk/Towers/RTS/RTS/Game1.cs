@@ -139,7 +139,7 @@ namespace RTS
 
 
             players.Add(player1);
-           // players.Add(player2);
+            players.Add(player2);
 
 
             userInterface = new UserInterface();

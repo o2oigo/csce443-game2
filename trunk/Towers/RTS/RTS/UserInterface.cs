@@ -909,6 +909,11 @@ namespace RTS
                 game.Exit();
             }
 
+            if (keystate.IsKeyUp(Keys.P) && oldKeyState.IsKeyDown(Keys.P))
+            {
+                game.Exit();
+            }
+
             if (keystate.IsKeyUp(Keys.F10) && oldKeyState.IsKeyDown(Keys.F10))
             {
                 showGameOverScreen = true;
