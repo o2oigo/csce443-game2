@@ -21,11 +21,14 @@ namespace RTS
             lightningTexture = game.Content.Load<Texture2D>("LightningParticle");
             towerName = "Lightning Tower";
             this.ilevel = level;
-            if (isFire)
-            {
-                damage.type = ElementType.Lightning;
-                damage.effect = new EnemyEffectStun(game, 7);
-            }
+            //damage = new Damage(10, this.ilevel, ElementType.Lightning, null);
+            damage.type = ElementType.Lightning;
+            damage.effect = new EnemyEffectStun(game, 2);
+            //if (isFire)
+            //{
+            //    damage.type = ElementType.Lightning;
+            //    damage.effect = new EnemyEffectStun(game, 7);
+            //}
             if (level == 2)
                 setToLvlTwo();
             

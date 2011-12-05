@@ -21,7 +21,7 @@ namespace RTS
             range = 200;
             weakAgainst = ElementType.Lightning;
             strongAgainst = ElementType.Fire;
-            moveSpeed = 50.0f;
+            //moveSpeed = 50.0f;
         }
 
 
