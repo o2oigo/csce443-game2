@@ -17,6 +17,9 @@ namespace RTS
         protected Map map;
         protected SpriteAnimation animation;
 
+        static Texture2D hpBarFrame;
+        static Texture2D hpBarInside;
+
         protected Vector2 position;
         public Vector2 Position
         {
@@ -49,6 +52,11 @@ namespace RTS
         //    return position;
         //}
 
+        public static void LoadContent(ContentManager Content)
+        {
+            hpBarFrame = Content.Load<Texture2D>("hpFrame");
+            hpBarInside = Content.Load<Texture2D>("hpInsid");
+        }
 
 
         protected static void addList(Sprite obj)
@@ -80,6 +88,26 @@ namespace RTS
             foreach (Sprite sprite in allObjects)
             {
                 sprite.Draw(spriteBatch);
+                if (sprite is Enemy && ((Enemy)sprite).Moving==true)
+                {
+                    Vector2 pos = sprite.Position;
+                    pos.X -= 40;
+                    pos.Y -= 30;
+                    Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)sprite).HP / ((Enemy)sprite).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
+                
+                    spriteBatch.Draw(hpBarInside, newRect, Color.White);
+                    spriteBatch.Draw(hpBarFrame, pos, Color.White);
+                }
+                else if (sprite is Tower)
+                {
+                    Vector2 pos = sprite.Position;
+                    pos.X -= 40;
+                    pos.Y += 40;
+                    Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Tower)sprite).HP / ((Tower)sprite).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
+
+                    spriteBatch.Draw(hpBarInside, newRect, Color.White);
+                    spriteBatch.Draw(hpBarFrame, pos, Color.White);
+                }
             }
         }
 

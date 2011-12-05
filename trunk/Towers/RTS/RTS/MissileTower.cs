@@ -86,7 +86,7 @@ namespace RTS
            // missileTowerTexture = missileTowerUpgradeTexture;
 
             //shotsToDestroy = 150;
-            hp = 150;
+            maxHP = hp = 150;
             //hp += 50;
             damage.amount = 50f;
             //damage.type = ElementType.Normal;

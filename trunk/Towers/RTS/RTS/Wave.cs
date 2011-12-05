@@ -236,7 +236,7 @@ namespace RTS
                     {
                         game.Enemies.Add(LevelDictionary[currentLevel][currentWave].Dequeue());
                     }
-                    if (LevelDictionary[currentLevel][currentWave].Count() == 0)
+                    if (LevelDictionary[currentLevel][currentWave].Count() == 0 && game.Enemies.Count() == 0)
                     {
                         waveFinished = true;
                     }
