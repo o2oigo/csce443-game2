@@ -136,6 +136,11 @@ namespace RTS
                 soundElapsedTime += elapsedTime;
         }
 
+        public SoundEffectInstance getSound()
+        {
+            return instance;
+        }
+
         public override Texture2D getTexture()
         {
             return flameTowerTexture;

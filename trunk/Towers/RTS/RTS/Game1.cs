@@ -450,7 +450,12 @@ namespace RTS
                                 currentEnemy.getProjectiles().Remove(proj);
                                 tower.Hit(currentEnemy.AttackDamage);
                                 if (player.getTowers().Count != 0 && tower.isDead())
-                                {
+                                { 
+                                    if (player.getTowers()[k].getTowerName() == "Flame Tower")
+                                    {
+                                        FlameTower temp = (FlameTower)player.getTowers()[k];
+                                        temp.getSound().Stop();
+                                    }
                                     Sprite.removeList(tower);
                                     player.getTowers().RemoveAt(k);
 
@@ -629,16 +634,23 @@ namespace RTS
                 Sprite.removeList(enemies[i]);
                 enemies.RemoveAt(i);
             }
-            
-            for (int k = 0; k < player1.getTowers().Count; k++)
+            foreach (Player player in players)
             {
-                //Tower tower = player1.getTowers()[k];
-                Sprite.removeList(player1.getTowers()[k]);
-                player1.getTowers().RemoveAt(k);
-
+                for (int k = 0; k < player.getTowers().Count; k++)
+                {
+                    //Tower tower = player1.getTowers()[k];
+                    if (player.getTowers()[k].getTowerName() == "Flame Tower")
+                    {
+                        FlameTower temp = (FlameTower)player.getTowers()[k];
+                        temp.getSound().Stop();
+                    }
+                    Sprite.removeList(player.getTowers()[k]);
+                    player.getTowers().RemoveAt(k);
+                }
             }
 
             player1.restartGameLevel1();
+            player2.restartGameLevel1();
             //enemies.Clear();
             stones.Clear();
             wave = new Wave(this,userInterface);
@@ -662,15 +674,23 @@ namespace RTS
                 enemies.RemoveAt(i);
             }
             */
-            for (int k = 0; k < player1.getTowers().Count; k++)
+            foreach (Player player in players)
             {
-                //Tower tower = player1.getTowers()[k];
-                Sprite.removeList(player1.getTowers()[k]);
-                player1.getTowers().RemoveAt(k);
+                for (int k = 0; k < player.getTowers().Count; k++)
+                {
+                    //Tower tower = player1.getTowers()[k];
+                    if (player.getTowers()[k].getTowerName() == "Flame Tower")
+                    {
+                        FlameTower temp = (FlameTower)player.getTowers()[k];
+                        temp.getSound().Stop();
+                    }
+                    Sprite.removeList(player.getTowers()[k]);
+                    player.getTowers().RemoveAt(k);
 
+                }
             }
-            
             player1.restartGameLevel1();
+            player2.restartGameLevel1();
             //enemies.Clear();
             stones.Clear();
             //wave = new Wave(this, userInterface);
@@ -723,6 +743,18 @@ namespace RTS
         {
             wave.nextLevel();
             backgroundTexture = mapTextureDict[wave.CurrentLevel];
+            foreach (Player player in players)
+            {
+                for (int k = 0; k < player.getTowers().Count; k++)
+                {
+                    //Tower tower = player1.getTowers()[k];
+                    if (player.getTowers()[k].getTowerName() == "Flame Tower")
+                    {
+                        FlameTower temp = (FlameTower)player.getTowers()[k];
+                        temp.getSound().Stop();
+                    }
+                }
+            }
         }
     }
 }

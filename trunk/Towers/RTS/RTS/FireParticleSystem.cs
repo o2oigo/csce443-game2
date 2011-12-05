@@ -56,8 +56,8 @@ namespace RTS
             minScale = .15f;
             maxScale = .25f;
 
-            minNumParticles = 3;
-            maxNumParticles = 4;
+            minNumParticles = 2;
+            maxNumParticles = 3;
 
             minRotationSpeed =  -MathHelper.PiOver4;
             maxRotationSpeed =   MathHelper.PiOver4;
