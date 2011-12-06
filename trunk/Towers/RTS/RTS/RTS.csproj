@@ -107,10 +107,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrowTower.cs" />
     <Compile Include="Enemies\PhysicalOnlyEnemy.cs" />
+    <Compile Include="FlameTower.cs" />
+    <Compile Include="IceTower.cs" />
+    <Compile Include="LightningTower.cs" />
+    <Compile Include="MagicTower.cs" />
+    <Compile Include="MissileTower.cs" />
     <Compile Include="Structs and Enums\ElementType.cs" />
     <Compile Include="Structs and Enums\Damage.cs" />
-    <Compile Include="ArrowTower.cs" />
     <Compile Include="BuildInterface.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Enemies\AttackingEnemy.cs" />
@@ -124,17 +129,12 @@
     <Compile Include="EnemyEffect.cs" />
     <Compile Include="ExplosionParticleSystem.cs" />
     <Compile Include="ExplosionSmokeParticleSystem.cs" />
-    <Compile Include="FlameTower.cs" />
     <Compile Include="FlameTowerSmokeParticleSystem.cs" />
     <Compile Include="IceParticleSystem.cs" />
-    <Compile Include="IceTower.cs" />
     <Compile Include="LightningParticleSystem.cs" />
-    <Compile Include="LightningTower.cs" />
-    <Compile Include="MagicTower.cs" />
     <Compile Include="MainUI.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Missile.cs" />
-    <Compile Include="MissileTower.cs" />
     <Compile Include="NodeList.cs" />
     <Compile Include="Objects.cs" />
     <Compile Include="Particle.cs" />
@@ -193,9 +193,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Towers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

@@ -9,13 +9,20 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
+    /// <summary>
+    /// MUFFIN
+    /// Has ability to attack, higher attack range, higher attack damage
+    /// WEAKNESS: FIRE
+    /// STRENGTH: LIGHTNING
+    /// </summary>
+
     public class AttackingEnemy : Enemy
     {
         public override void Initialize(Game1 game, float health)
         {
             base.Initialize(game, health);
 
-            attackDamage = 5;
+            attackDamage = 10;
             range = 400;
             weakAgainst = ElementType.Fire;
             strongAgainst = ElementType.Lightning;

@@ -262,7 +262,23 @@ namespace RTS
             //{
             //    tower.Draw(spriteBatch);
             //}
+   
 
+/*
+                else if (upgradeBuildMode == true && (shootRotationAngle < -0.93 || shootRotationAngle > (float)Math.Sqrt(2) / 2f))
+                {
+                    spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+                    spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
+                    spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+ 
+                }
+ */
+ 
+            }
+
+        public void DrawBuildMenu(SpriteBatch spriteBatch)
+        {
             if (buildMode == true)
             {
                 // if player aim up, basic tower will showed up
@@ -354,25 +370,7 @@ namespace RTS
                         }
                     }
                 }
-
-               
-                
-
-/*
-                else if (upgradeBuildMode == true && (shootRotationAngle < -0.93 || shootRotationAngle > (float)Math.Sqrt(2) / 2f))
-                {
-                    spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
-                    spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
-                    spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
-                    spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
- 
-                }
- */
- 
             }
-
-           
-
         }
 
         public void Update(GameTime gameTime, List<Enemy> enemies)
@@ -1186,7 +1184,7 @@ namespace RTS
                 {
                     waterStoneInInventory++;
                 }
-                else if (_stone.Type == ElementType.Heal)
+                else if (_stone.Type == ElementType.Ice)
                 {
                     healStoneInInventory++;
                 }

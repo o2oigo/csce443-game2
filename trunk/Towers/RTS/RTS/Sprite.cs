@@ -88,28 +88,55 @@ namespace RTS
             foreach (Sprite sprite in allObjects)
             {
                 sprite.Draw(spriteBatch);
-                if (sprite is Enemy && ((Enemy)sprite).Moving==true)
-                {
-                    Vector2 pos = sprite.Position;
-                    pos.X -= 40;
-                    pos.Y -= 30;
-                    Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)sprite).HP / ((Enemy)sprite).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
-                
-                    spriteBatch.Draw(hpBarInside, newRect, Color.White);
-                    spriteBatch.Draw(hpBarFrame, pos, Color.White);
-                }
-                else if (sprite is Tower)
-                {
-                    Vector2 pos = sprite.Position;
-                    pos.X -= 40;
-                    pos.Y += 40;
-                    Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Tower)sprite).HP / ((Tower)sprite).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
-
-                    spriteBatch.Draw(hpBarInside, newRect, Color.White);
-                    spriteBatch.Draw(hpBarFrame, pos, Color.White);
-                }
+                //if (sprite is Enemy && ((Enemy)sprite).Moving==true)
+                //{
+                //    Vector2 pos = sprite.Position;
+                //    pos.X -= 40;
+                //    pos.Y -= 30;
+                //    Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)sprite).HP / ((Enemy)sprite).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
+                //
+                //    spriteBatch.Draw(hpBarInside, newRect, Color.White);
+                //    spriteBatch.Draw(hpBarFrame, pos, Color.White);
+                //}
+                //else if (sprite is Tower)
+                //{
+                //    Vector2 pos = sprite.Position;
+                //    pos.X -= 40;
+                //    pos.Y += 40;
+                //    Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Tower)sprite).HP / ((Tower)sprite).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
+                //
+                //    spriteBatch.Draw(hpBarInside, newRect, Color.White);
+                //    spriteBatch.Draw(hpBarFrame, pos, Color.White);
+                //}
             }
         }
+
+
+        public void DrawHPBarEnemy(SpriteBatch spriteBatch)
+        {
+            if (((Enemy)this).Moving==true)
+            {
+                Vector2 pos = this.Position;
+                pos.X -= 40;
+                pos.Y -= 30;
+                Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)this).HP / ((Enemy)this).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
+            
+                spriteBatch.Draw(hpBarInside, newRect, Color.White);
+                spriteBatch.Draw(hpBarFrame, pos, Color.White);
+            }
+        }
+
+        public void DrawHPBarTower(SpriteBatch spriteBatch)
+        {
+                Vector2 pos = this.Position;
+                pos.X -= 40;
+                pos.Y += 40;
+                Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Tower)this).HP / ((Tower)this).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
+
+                spriteBatch.Draw(hpBarInside, newRect, Color.White);
+                spriteBatch.Draw(hpBarFrame, pos, Color.White);
+        }
+
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {

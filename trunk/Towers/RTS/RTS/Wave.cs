@@ -63,7 +63,7 @@ namespace RTS
         {
             //LevelDictionary.Add(levelnumber, InitializeWave(numberofwaves));
             //NOTE: number of waves must match ReinitializeWave info (each wave must be populated with enemy)
-            LevelDictionary.Add(1, InitializeWave(2));
+            LevelDictionary.Add(1, InitializeWave(1));
             LevelDictionary.Add(2, InitializeWave(2));
             LevelDictionary.Add(3, InitializeWave(1));
         }
@@ -88,11 +88,14 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddMagicOnlyEnemy(i, 1, 5, 50);
-                    AddNormalEnemy(i, 2, 5, 50);
-                    //AddHPEnemy(i, 3, 5, 1);
-                    //AddHPEnemy(i, 4, 10, 1);
-                    //AddFastEnemy(i, 5, 5, 100);
+                    AddNormalEnemy(i, 1, 10, 100);
+                    //AddHPEnemy(i, 2, 10, 100);
+                    //AddAttackingEnemy(i, 3, 10, 100);
+                    //AddFastEnemy(i, 4, 10, 100);
+                    //AddMagicOnlyEnemy(i, 5, 10, 100);
+                    //AddRegenEnemy(i, 6, 10, 100);
+                    //AddPhysicalOnlyEnemy(i, 7, 10, 100);
+
                     //AddFastEnemy(1, 6, 10, 100);
                     //AddAttackingEnemy(i, 7, 5, 100);
                     //AddAttackingEnemy(i, 8, 10, 100);
@@ -353,5 +356,6 @@ namespace RTS
                 timer = intervalWave;
             }
         }
+
     }
 }
