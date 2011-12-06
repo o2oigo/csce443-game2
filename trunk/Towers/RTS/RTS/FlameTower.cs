@@ -71,7 +71,7 @@ namespace RTS
             //shotsToDestroy = 150;
             maxHP = hp = 150;
             //hp += 50;
-            damage.amount = 3;
+            damage.amount = 0.9f;
             //damage.type = ElementType.Normal;
             level = "level 2";
             ilevel = 2;

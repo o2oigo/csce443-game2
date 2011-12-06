@@ -46,7 +46,6 @@ namespace RTS
             get { return waveTimer; }
         }
 
-
         private Boolean levelFinished = false;
         public Boolean isLevelFinish
         {
@@ -57,6 +56,11 @@ namespace RTS
         public Boolean isGameFinish
         {
             get { return gameFinished; }
+        }
+
+        public int totalWave()
+        {
+            return LevelDictionary[currentLevel].Count();
         }
 
         public void InitializeLevel()
