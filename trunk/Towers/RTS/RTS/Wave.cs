@@ -16,7 +16,7 @@ namespace RTS
 
         double timer;
         // in milliseconds
-        const double intervalSpawn = 2000; // 2 seconds
+        const double intervalSpawn = 1000; // 2 seconds
         const double intervalWave = 10000; // 10 seconds
         const double intervalLevel = 9000; 
 
@@ -92,7 +92,7 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 10, 100);
+                    AddNormalEnemy(i, 1, 100, 100);
                     //AddHPEnemy(i, 2, 10, 100);
                     //AddAttackingEnemy(i, 3, 10, 100);
                     //AddFastEnemy(i, 4, 10, 100);

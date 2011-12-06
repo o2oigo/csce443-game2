@@ -44,14 +44,18 @@ namespace RTS
 
         public override void setToLvlTwo()
         {
-            //arrowTowerTexture = arrowTowerUpgradeTexture;
-            //shotsToDestroy = 150;
-            //hp += 50;
             maxHP = hp = 150;
-            damage.amount = 20;
-            //damage.type = ElementType.Normal;
+            damage.amount = 0;
             level = "level 2";
             ilevel = 2;
+        }
+
+        public override void setToLvlThree()
+        {
+            maxHP = hp = 200;
+            damage.amount = 0;
+            level = "level 3";
+            ilevel = 3;
         }
  
         public override void createProjectile(Enemy target)

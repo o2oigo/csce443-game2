@@ -12,10 +12,9 @@ namespace RTS
     {
         Texture2D iceTexture;
         Texture2D iceTowerTexture;
-        Texture2D iceTowerUpgradeTexture;
-       // SoundEffect startSound;
+        Texture2D iceTowerUpgrade2Texture;
+        Texture2D iceTowerUpgrade3Texture;
         SoundEffectInstance instance;
-       // SoundEffectInstance startInstance;
 
         float particleTimer = .35f;
         float particleElapsedTime = 5f;
@@ -26,7 +25,7 @@ namespace RTS
             iceTexture = game.Content.Load<Texture2D>("iceParticle");
             towerName = "Ice Tower";
             this.ilevel = level;
-            damage = new Damage(0, this.ilevel, ElementType.Fire, null);
+            damage = new Damage(0, this.ilevel, ElementType.Ice, null);
 
             if (level == 2)
                 setToLvlTwo();
@@ -46,8 +45,9 @@ namespace RTS
             instance.IsLooped = true;
            // startInstance.IsLooped = false;
 
-            iceTowerTexture = contentManager.Load<Texture2D>("iceTowerNew");
-            iceTowerUpgradeTexture = contentManager.Load<Texture2D>("iceTowerNew");
+            iceTowerTexture = contentManager.Load<Texture2D>("iceLevel1");
+            iceTowerUpgrade2Texture = contentManager.Load<Texture2D>("iceLevel2");
+            iceTowerUpgrade2Texture = contentManager.Load<Texture2D>("iceLevel3");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = iceTowerTexture.Width / 2;
@@ -68,15 +68,18 @@ namespace RTS
 
         public override void setToLvlTwo()
         {
-            iceTowerTexture = iceTowerUpgradeTexture;
-
-            //shotsToDestroy = 150;
-            //hp += 50;
+            iceTowerTexture = iceTowerUpgrade2Texture;
             maxHP = hp = 150;
-            //damage.amount = 3;
-            //damage.type = ElementType.Normal;
             level = "level 2";
             ilevel = 2;
+        }
+
+        public override void setToLvlThree()
+        {
+            iceTowerTexture = iceTowerUpgrade3Texture;
+            maxHP = hp = 200;
+            level = "level 3";
+            ilevel = 3;
         }
  
         public override void createProjectile(Enemy target)

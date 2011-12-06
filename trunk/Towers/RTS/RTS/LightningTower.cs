@@ -13,7 +13,8 @@ namespace RTS
     {
         Texture2D lightningTexture;
         Texture2D lightningTowerTexture;
-        Texture2D lightningTowerUpgradeTexture;
+        Texture2D lightningTowerUpgrade2Texture;
+        Texture2D lightningTowerUpgrade3Texture;
         SoundEffect shootSound2;
         public LightningTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
             : base(game, playerIndex, startPosition)
@@ -40,7 +41,8 @@ namespace RTS
             shootSound2 = contentManager.Load<SoundEffect>("Sound/electric-sparks2");
 
             lightningTowerTexture = contentManager.Load<Texture2D>("lightningTower");
-            lightningTowerUpgradeTexture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
+            lightningTowerUpgrade2Texture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
+            lightningTowerUpgrade2Texture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = lightningTowerTexture.Width / 2;
@@ -61,7 +63,13 @@ namespace RTS
 
         public override void setToLvlTwo()
         {
-            lightningTowerTexture = lightningTowerUpgradeTexture;
+            lightningTowerTexture = lightningTowerUpgrade2Texture;
+            base.setToLvlTwo();
+        }
+
+        public override void setToLvlThree()
+        {
+            lightningTowerTexture = lightningTowerUpgrade3Texture;
             base.setToLvlTwo();
         }
  
