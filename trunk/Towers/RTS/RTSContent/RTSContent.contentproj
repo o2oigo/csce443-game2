@@ -1089,8 +1089,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Encyclopedia\lignhtning3.png">
-      <Name>lignhtning3</Name>
+    <Compile Include="Encyclopedia\lightning3.png">
+      <Name>lightning3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -1551,6 +1551,18 @@
   <ItemGroup>
     <Compile Include="lamppost.png">
       <Name>lamppost</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Encyclopedia\encyclopedia_enemy_yellow.png">
+      <Name>encyclopedia_enemy_yellow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Encyclopedia\encyclopedia_tower_yellow.png">
+      <Name>encyclopedia_tower_yellow</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
