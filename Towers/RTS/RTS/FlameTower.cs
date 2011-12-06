@@ -12,7 +12,8 @@ namespace RTS
     {
         Texture2D flameTexture;
         Texture2D flameTowerTexture;
-        Texture2D flameTowerUpgradeTexture;
+        Texture2D flameTowerUpgrade2Texture;
+        Texture2D flameTowerUpgrade3Texture;
         SoundEffect startSound;
         SoundEffectInstance instance;
         SoundEffectInstance startInstance;
@@ -44,8 +45,9 @@ namespace RTS
             instance.IsLooped = true;
             startInstance.IsLooped = false;
 
-            flameTowerTexture = contentManager.Load<Texture2D>("flameTowerNew");
-            flameTowerUpgradeTexture = contentManager.Load<Texture2D>("flameTowerNew");
+            flameTowerTexture = contentManager.Load<Texture2D>("flameLevel1");
+            flameTowerUpgrade2Texture = contentManager.Load<Texture2D>("flameLevel2");
+            flameTowerUpgrade3Texture = contentManager.Load<Texture2D>("flameLevel3");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = flameTowerTexture.Width / 2;
@@ -66,15 +68,22 @@ namespace RTS
 
         public override void setToLvlTwo()
         {
-            flameTowerTexture = flameTowerUpgradeTexture;
+            flameTowerTexture = flameTowerUpgrade2Texture;
 
-            //shotsToDestroy = 150;
             maxHP = hp = 150;
-            //hp += 50;
             damage.amount = 0.9f;
-            //damage.type = ElementType.Normal;
             level = "level 2";
             ilevel = 2;
+        }
+
+        public override void setToLvlThree()
+        {
+            flameTowerTexture = flameTowerUpgrade3Texture;
+
+            maxHP = hp = 200;
+            damage.amount = 1.3f;
+            level = "level 3";
+            ilevel = 3;
         }
  
         public override void createProjectile(Enemy target)

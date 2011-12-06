@@ -12,7 +12,8 @@ namespace RTS
     {
         Texture2D missileTexture;
         Texture2D missileTowerTexture;
-        //Texture2D missileTowerUpgradeTexture;
+        Texture2D missileTowerUpgrade2Texture;
+        Texture2D missileTowerUpgrade3Texture;
         public MissileTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
             : base(game, playerIndex, startPosition)
         {
@@ -32,8 +33,9 @@ namespace RTS
         {
             shootSound = contentManager.Load<SoundEffect>("Sound/cannon");
 
-            missileTowerTexture = contentManager.Load<Texture2D>("missileTowerNew");
-            //missileTowerUpgradeTexture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
+            missileTowerTexture = contentManager.Load<Texture2D>("missileLevel1");
+            missileTowerUpgrade2Texture = contentManager.Load<Texture2D>("missileLevel2");
+            missileTowerUpgrade3Texture = contentManager.Load<Texture2D>("missileLevel3");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = missileTowerTexture.Width / 2;
@@ -83,15 +85,20 @@ namespace RTS
 
         public override void setToLvlTwo()
         {
-           // missileTowerTexture = missileTowerUpgradeTexture;
-
-            //shotsToDestroy = 150;
+            missileTowerTexture = missileTowerUpgrade2Texture;
             maxHP = hp = 150;
-            //hp += 50;
             damage.amount = 50f;
-            //damage.type = ElementType.Normal;
             level = "level 2";
             ilevel = 2;
+        }
+
+        public override void setToLvlThree()
+        {
+            missileTowerTexture = missileTowerUpgrade3Texture;
+            maxHP = hp = 200;
+            damage.amount = 100f;
+            level = "level 3";
+            ilevel = 3;
         }
  
         public override void createProjectile(Enemy target)

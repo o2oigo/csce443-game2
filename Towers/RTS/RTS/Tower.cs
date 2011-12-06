@@ -330,6 +330,17 @@ namespace RTS
 
         }
 
+        public virtual void setToLvlThree()
+        {
+
+
+            maxHP = hp = 200;
+            damage.amount = 30;
+            level = "level 3";
+            ilevel = 3;
+
+        }
+
         public void setPlayerIsNear(bool _playerIsNear)
         {
             playerIsNear = _playerIsNear;
