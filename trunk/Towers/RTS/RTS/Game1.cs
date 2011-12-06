@@ -69,8 +69,10 @@ namespace RTS
 
          Dictionary<string, SoundEffect> music;
          SoundEffect soundeffect;
-         Song song;
          SoundEffectInstance songInstance;
+
+         Song menuSong;
+         Song level1Song; 
 
         private Map map;
         public Map Map
@@ -204,8 +206,12 @@ namespace RTS
             soundeffect.Play();
             */
 
-            Song song = Content.Load<Song>("Sound/MainSong");  // Put the name of your song in instead of "song_title"
-            MediaPlayer.Play(song);
+            menuSong = Content.Load<Song>("Sound/menuSong");  
+            level1Song = Content.Load<Song>("Sound/level1Song");  
+            //Song level2Song = Content.Load<Song>("Sound/MainSong");  
+            //Song level3Song = Content.Load<Song>("Sound/MainSong");  
+           // Song endSong = Content.Load<Song>("Sound/MainSong");
+            MediaPlayer.Play(menuSong);
 
             Sprite.LoadContent(Content);
         }
@@ -250,6 +256,7 @@ namespace RTS
 
             if (userInterface.getScreen("showGameScreen") == true)
             {
+                MediaPlayer.Play(level1Song);
                 camera.Update(gameTime);
                 wave.Update(gameTime);
                 
