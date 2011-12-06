@@ -364,6 +364,12 @@ namespace RTS
         {
             return ilevel;
         }
+
+        public float getRange()
+        {
+            return towerRange;
+        }
+
         public void setToFireTower()
         {
             damage.type = ElementType.Fire;
