@@ -72,11 +72,12 @@ namespace RTS
                 case ElementType.Lightning:
                     stoneTexture = contentManager.Load<Texture2D>("lightningStone");
                     break;
-                case ElementType.Heal:
+                case ElementType.Ice:
                     stoneTexture = contentManager.Load<Texture2D>("healingStone");
                     break;
                 case ElementType.Normal:
                     //stoneTexture = contentManager.Load<Texture2D>("money");
+                    stoneTexture = contentManager.Load<Texture2D>("healingStone");
                     break;
                 default:
                     stoneTexture = contentManager.Load<Texture2D>("fireStone");
@@ -95,7 +96,7 @@ namespace RTS
                 return 1;
             else if (type == ElementType.Lightning)
                 return 2;
-            else if (type == ElementType.Heal)
+            else if (type == ElementType.Ice)
                 return 3;
             else
                 return 2;

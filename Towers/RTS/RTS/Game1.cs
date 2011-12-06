@@ -135,6 +135,7 @@ namespace RTS
             players = new List<Player>(4);
             stones = new List<Stone>();
             trees = new List<Tree>();
+            //snowList = new List<Snow>();
 
             player1 = new Player();
             player1.Initialize(this, PlayerIndex.One, new Vector2(300, 400));
@@ -348,12 +349,13 @@ namespace RTS
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, camera.ViewMatrix);
            
             if (userInterface.getScreen("showGameScreen") == true || userInterface.getScreen("showPauseScreen") == true)
             {
                 spriteBatch.Draw(backgroundTexture, rectDict[wave.CurrentLevel], Color.White);
-                
+
                 //foreach (Tower tower in player1.getTowers())
                 //    tower.Draw(spriteBatch);
                 //foreach (Tower tower in player2.getTowers())
@@ -366,11 +368,15 @@ namespace RTS
                 //player2.Draw(spriteBatch);
 
                 Sprite.DrawT(spriteBatch);
+
+                spriteBatch.End();
+                base.Draw(gameTime);
+                spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, camera.ViewMatrix);
+
                 //foreach (Tree t in trees)
                 //{
                 //    t.Draw(spriteBatch);
                 //}
-                //house.Draw(spriteBatch);
                 map.Draw(spriteBatch);
 
                 //player2.Draw(spriteBatch);
@@ -380,6 +386,24 @@ namespace RTS
                 {
                     foreach (Stone i in stones) i.Draw(spriteBatch);
                 }
+
+                foreach (Enemy e in enemies)
+                {
+                    e.DrawHPBarEnemy(spriteBatch);
+                }
+
+                foreach (Player p in players)
+                {
+                    foreach (Tower t in p.getTowers())
+                    {
+                        t.DrawHPBarTower(spriteBatch);
+                    }
+                }
+
+                foreach (Player p in players)
+                {
+                    p.DrawBuildMenu(spriteBatch);
+                }
             }
             spriteBatch.End();
             // note
@@ -388,7 +412,6 @@ namespace RTS
             userInterface.Draw(spriteBatch);   
             spriteBatch.End();
 
-            base.Draw(gameTime);
         }
 
         public void detectCollisions()
@@ -487,19 +510,6 @@ namespace RTS
                         {            
                             player.getProjectiles().Remove(proj);
                             currentEnemy.Hit(1.0f);
-                            //if (enemies.Count != 0 && enemies[i].isDead())
-                            //{
-                            //    int randNum = rand.Next(1, 10);
-                            //    if (randNum < 4)
-                            //    {
-                            //        Stone newStone = new Stone();
-                            //        newStone.Initialize(this, enemies[i].Position, randNum);
-                            //        stones.Add(newStone);
-                            //    }
-                            //    Sprite.removeList(enemies[i]);
-                            //    enemies.RemoveAt(i);
-                            //    player.enemyDestroyed();
-                            //}
                         }
                     }
                 }
@@ -530,19 +540,6 @@ namespace RTS
                                 }
                                 tower.getProjectiles().Remove(proj);
                                 currentEnemy.Hit(tower.Damage);
-                                //if (enemies.Count != 0 && enemies[i].isDead())
-                                //{
-                                //    int randNum = rand.Next(1, 10);
-                                //    if (randNum < 4)
-                                //    {
-                                //        Stone newStone = new Stone();
-                                //        newStone.Initialize(this, enemies[i].Position, randNum);
-                                //        stones.Add(newStone);
-                                //    }
-                                //    Sprite.removeList(enemies[i]);
-                                //    enemies.RemoveAt(i);
-                                //    player.towerEnemyDestroyed();
-                                //}
                             }
                         }
                     }
@@ -553,7 +550,14 @@ namespace RTS
                     Rectangle currentStoneRect = new Rectangle((int)stones[j].Position.X, (int)stones[j].Position.Y, stones[j].Texture.Width, stones[j].Texture.Height);
                     if (playerRect.Intersects(currentStoneRect))
                     {
-                        player.addStoneToInventory(stones[j]);
+                        if (stones[j].Type == ElementType.Normal)
+                        {
+                            player.addMoney(50);
+                        }
+                        else
+                        {
+                            player.addStoneToInventory(stones[j]);
+                        }
                         stones.Remove(stones[j]);
                     }
                 }
@@ -568,7 +572,11 @@ namespace RTS
                         {
                             if (Vector2.Distance(enemies[i].Position, tower.Position) <= tower.getRange())
                             {
-                                enemies[i].MoveSpeed = .2f;
+                                if (enemies[i].Effect is EnemyEffectStun){}
+                                else
+                                {
+                                    enemies[i].MoveSpeed = .2f;
+                                }
                             }                            
                         }
                     }
@@ -582,8 +590,8 @@ namespace RTS
             {
                 if (enemies[i].isDead())
                 {
-                    int randNum = rand.Next(0, 15);
-                    if (randNum < 3)
+                    int randNum = rand.Next(0, 12);
+                    if (randNum < 4)
                     {
                         Stone newStone = new Stone();
                         newStone.Initialize(this, enemies[i].Position, randNum);
@@ -775,6 +783,10 @@ namespace RTS
                 }
             }
         }
+
+
+
+
 
     }
 }

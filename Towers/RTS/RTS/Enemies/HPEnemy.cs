@@ -7,9 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 namespace RTS
-{
-    //SNOWMAN
-    //Moves slower, but has higher HP.  
+{    
+    /// <summary>
+    /// SNOWMAN
+    /// Moves slower, but has higher HP.  
+    /// Attacks but lower range than Attacking enemy
+    /// WEAKNESS: NONE
+    /// STRENGTH: LIGHTNING
+    /// </summary>
+
     public class HPEnemy : Enemy
     {
         public override void Initialize(Game1 game, float health)
@@ -20,7 +26,7 @@ namespace RTS
             range = 200;
             weakAgainst = ElementType.None;
             strongAgainst = ElementType.Lightning;
-            //moveSpeed = 20.0f;
+            maxSpeed = moveSpeed  = 0.3f;
         }
 
 

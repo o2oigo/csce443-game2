@@ -8,11 +8,99 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
+
+    public class Snow
+    {
+        static List<Snow> snowList = new List<Snow>();
+
+        private Texture2D snowTexture;
+        Game1 game;
+        double snowTimer;
+        Random rand = new Random();
+
+        private Vector2 origin;
+        public Vector2 Origin
+        {
+            get { return origin; }
+        }
+        private Vector2 position;
+        public Vector2 Position
+        {
+            get { return position; }
+        }
+
+        public Snow(Game1 game)
+        {
+            this.game = game;
+            //snowList.Add(this);
+            position = origin = new Vector2(rand.Next(0, 500),0);
+        }
+
+        public void createSnow(Game1 game)
+        {
+            snowList.Add(new Snow(game));
+        }
+         public void LoadContent()
+         {
+             snowTexture = game.Content.Load<Texture2D>("snow");
+         }
+
+        public void Update(GameTime gameTime)
+        {
+            snowTimer = gameTime.ElapsedGameTime.Milliseconds;
+            if (snowTimer > 100)
+            {
+                position.Y++;
+                snowTimer = 0;
+            }
+            //if (snowTimer > 100)
+            {
+                Snow tmp = new Snow(this.game);
+                tmp.LoadContent();
+                snowList.Add(tmp);
+                snowTimer = 0;
+            }
+            for (int i=0; i<snowList.Count; i++)
+            {
+                snowList[i].Update(gameTime);
+                if (snowList[i].Position.Y > game.getCurrentRectangle().Height)
+                {
+                    snowList.RemoveAt(i);
+                }
+            }
+        }
+
+         public void Draw(SpriteBatch spriteBatch)
+         {
+             spriteBatch.Draw(snowTexture, position,Color.White);
+         }
+        //public void updateSnow(GameTime gameTime)
+        //{
+        //    snowTimer += gameTime.ElapsedGameTime.Milliseconds;
+        //    if (snowTimer > 1000)
+        //    {
+        //        Snow tmp = new Snow(this);
+        //        tmp.LoadContent();
+        //        snowList.Add(tmp);
+        //        snowTimer = 0;
+        //    }
+        //    //foreach (Snow snow in snowList)
+        //    for (int i=0; i<snowList.Count; i++)
+        //    {
+        //        snowList[i].Update(gameTime);
+        //        if (snowList[i].Position.Y > rectDict[wave.CurrentLevel].Height)
+        //        {
+        //            snowList.RemoveAt(i);
+        //         
+        //        }
+        //    }
+        //}
+    }
+
+
     public class Tree : Sprite
     {
         //Game1 game;
-        private Rectangle bark;
-
         private Texture2D treeTexture;
         public Texture2D Texture
         {
@@ -64,8 +152,6 @@ namespace RTS
             position.X -= treeTexture.Width / 2;
             position.Y -= treeTexture.Height / 2; 
             //bark = new Rectangle((int)origin.X, (int)origin.Y, 50, 50);
-
-            Sprite.addList(this);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

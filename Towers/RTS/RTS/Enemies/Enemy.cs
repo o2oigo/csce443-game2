@@ -13,25 +13,29 @@ namespace RTS
     {
         protected SpriteFont font;
 
-        //different for different enemies
         protected int range;
+        protected ElementType weakAgainst;
+        protected ElementType strongAgainst;
+        protected float dmgOffset = 1.0f;
         protected float attackDamage = 0;
+
         public float AttackDamage
         {
             get { return attackDamage; }
         }
-        protected ElementType weakAgainst;
-        protected ElementType strongAgainst;
-        protected float dmgOffset = 1.0f;
 
         protected EnemyEffect effect = null;
+        public EnemyEffect Effect
+        {
+            get { return effect; }
+        }
 
         Random rand = new Random();
         private PathFinder path;
-
         protected Vector2 origin;
 
         private List<Projectile> projectileList = new List<Projectile>(5);
+        private List<Vector2> curve = new List<Vector2>();
 
         private Point startTile;
         private SpriteEffects isFlipped;
@@ -39,9 +43,7 @@ namespace RTS
         private double shootRotationAngle;
         private double projectileRotationAngle;
 
-        private List<Vector2> curve = new List<Vector2>();
         private float curveTimer = 0;
-
         private float elapsedTime;
         private float effectTimer;
         private float shootElapsedTime;
@@ -76,7 +78,6 @@ namespace RTS
             set
             {
                 scale = value;
-                //waypoints.Scale = value;
             }
         }
 
@@ -98,6 +99,13 @@ namespace RTS
         {
             set { moveSpeed = value; }
             get { return moveSpeed; }
+        }
+
+        protected float maxSpeed = 0.5f;
+        public float MaxSpeed 
+        {
+            set { maxSpeed = value; }
+            get { return maxSpeed; }
         }
 
         public float DistanceToDestination
@@ -213,8 +221,6 @@ namespace RTS
 
             if (effect != null && effectTimer>100)
             {
-                //game.fire.setDirection((float)(-Math.PI/2));
-                //game.fire.AddParticles(new Vector2(position.X, position.Y));
                 if (!effect.isValid(gameTime))
                 {
                     effect.undoEffect(this);
@@ -237,7 +243,8 @@ namespace RTS
             updateAnimation();
             animation.Update(gameTime);
 
-            MoveSpeed = .5f;//Resets Enemy Speed (for Ice Tower)
+            //MoveSpeed = .5f;//Resets Enemy Speed (for Ice Tower)
+            MoveSpeed = MaxSpeed; 
         }
 
         public void updateAnimation()
@@ -254,7 +261,6 @@ namespace RTS
             else if (Math.Abs(dir) >= 0 && Math.Abs(dir) < Math.PI * 0.05)
             {
                 animation.CurrentSprite = "right";
-                //isFlipped = SpriteEffects.FlipHorizontally;
             }
             else if (dir <= -Math.PI * 0.05 && dir >= -Math.PI*0.45 )
             {
@@ -389,7 +395,6 @@ namespace RTS
 
                     direction.Normalize();
                     position = GetPoint(curveTimer, pos[0], pos[1], pos[2 ], pos[3]);
-                    //curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.4f;
                     curveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds * moveSpeed;
                 }
             }
@@ -443,7 +448,7 @@ namespace RTS
             }
             else if (damage.type == strongAgainst)
             {
-                dmgOffset = 0.1f;
+                dmgOffset = 0.5f;
             }
 
             hp -= damage.amount * dmgOffset;
@@ -469,7 +474,7 @@ namespace RTS
                 if (weakAgainst == ElementType.Fire)
                     tmpEffect.Offset = 1.5f;
                 else if (strongAgainst == ElementType.Fire)
-                    tmpEffect.Offset = 0f;
+                    tmpEffect.Offset = 0;
                 else tmpEffect.Offset = 1.0f;
             }
             if (effect is EnemyEffectStun)
@@ -496,7 +501,8 @@ namespace RTS
 
         public void effectStun()
         {
-            moveSpeed = 0;
+            //moveSpeed = 0;
+            maxSpeed = 0;
         }
 
         public void Attack(List<Tower> towers, GameTime gameTime)
@@ -537,6 +543,7 @@ namespace RTS
                 return true;
             return false;
         }
+
 
         #endregion
 

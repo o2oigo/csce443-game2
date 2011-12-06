@@ -8,6 +8,13 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
+    /// <summary>
+    /// PHYSICALONLY [PUDDING - BROWN]
+    /// Moves slower, but has higher HP.  
+    /// Attacks but lower range than Attacking enemy
+    /// WEAKNESS: NORMAL
+    /// STRENGTH: NONE
+    /// </summary>
     public class PhysicalOnlyEnemy : Enemy
     {
         public override void Initialize(Game1 game, float health)

@@ -8,8 +8,13 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    //CANDYCANE 
-    //Regenerates an amount of HP overtime
+    /// <summary>
+    /// CANDYCANE
+    /// Regenerates an amount of HP overtimev (max twice) 
+    /// WEAKNESS: LIGHTNING
+    /// STRENGTH: ICE
+    /// </summary>
+    
     public class RegenEnemy : Enemy
     {
         int regenTimes = 2;
@@ -20,7 +25,7 @@ namespace RTS
 
             range = 200;
             weakAgainst = ElementType.Lightning;
-            strongAgainst = ElementType.Fire;
+            strongAgainst = ElementType.Ice;
             //moveSpeed = 50.0f;
         }
 
@@ -55,7 +60,7 @@ namespace RTS
 
         public void regen()
         {
-            float tmp = (hp + 0.3f * (maxHP));
+            float tmp = (hp + 0.5f * (maxHP));
             if (tmp < maxHP) hp = tmp;
             else hp = maxHP;
             regenTimes--;

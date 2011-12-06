@@ -84,13 +84,13 @@ namespace RTS
 
         public override void applyEffects(Enemy enemy)
         {
-            if (enemy.MoveSpeed != 0) prevSpeed = enemy.MoveSpeed;
+            if (enemy.MaxSpeed != 0) prevSpeed = enemy.MaxSpeed;
             enemy.effectStun();
         }
 
         public override void undoEffect(Enemy enemy)
         {
-            enemy.MoveSpeed = prevSpeed;
+            enemy.MaxSpeed = prevSpeed;
         }
     }
 

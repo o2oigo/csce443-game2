@@ -8,6 +8,13 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
+    /// <summary>
+    /// STOCKING - RED
+    /// Moves fastest
+    /// WEAKNESS: ICE
+    /// STRENGTH: FIRE
+    /// </summary>
+
     public class FastEnemy : Enemy
     {
         public override void Initialize(Game1 game, float health)
@@ -15,9 +22,9 @@ namespace RTS
             base.Initialize(game, health);
 
             range = 200;
-            weakAgainst = ElementType.Lightning;
+            weakAgainst = ElementType.Ice;
             strongAgainst = ElementType.Fire;
-            moveSpeed = 1.0f;
+            maxSpeed = moveSpeed = 1.0f;
         }
 
 

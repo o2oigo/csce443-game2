@@ -8,6 +8,12 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
+    /// <summary>
+    /// PUDDING - NORMAL
+    /// Only gets hit by Magic (Fire/Lightning/Ice)
+    /// WEAKNESS: NONE
+    /// STRENGTH: NONE
+    /// </summary>
     public class MagicOnlyEnemy : Enemy
     {
         public override void Initialize(Game1 game, float health)
@@ -15,7 +21,7 @@ namespace RTS
             base.Initialize(game, health);
 
             range = 200;
-            weakAgainst = ElementType.Lightning;
+            weakAgainst = ElementType.None;
             strongAgainst = ElementType.None;
             //moveSpeed = 50.0f;
         }

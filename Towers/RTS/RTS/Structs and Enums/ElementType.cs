@@ -13,7 +13,7 @@ namespace RTS
     public enum ElementType
     {
         Fire,
-        Heal,
+        Ice,
         Lightning,
         Normal,
         None,
