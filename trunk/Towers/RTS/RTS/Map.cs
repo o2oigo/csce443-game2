@@ -15,6 +15,7 @@ namespace RTS
         MapDirt,
         MapGrass,
         MapTree,
+        MapLamp,
         MapBarrier,
         MapStart,
         MapExit
@@ -93,6 +94,11 @@ namespace RTS
             return maps[currentMap].Trees;
         }
 
+        public List<Point> getLamps()
+        {
+            return maps[currentMap].Lamps;
+        }
+
         public Vector2 getBaseCoordinate()
         {
             return MapToWorld(maps[currentMap].End, true);
@@ -125,13 +131,13 @@ namespace RTS
         public Rectangle endRectangle()
         {
             Vector2 tmp = MapToWorld(endTile,false);
-            Rectangle rct = new Rectangle((int)tmp.X, (int)tmp.Y, endList[currentMap].Width, endList[currentMap].Height/6);
+            Rectangle rct = new Rectangle((int)tmp.X - endList[currentMap].Width/4, (int)tmp.Y, endList[currentMap].Width, endList[currentMap].Height / 6);
             return rct;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(endList[currentMap], MapToWorld(endTile, true), null, Color.White, 0f, new Vector2(20, endList[currentMap].Height-30), 1.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(endList[currentMap], MapToWorld(endTile, true), null, Color.White, 0f, new Vector2(endList[currentMap].Width/2, endList[currentMap].Height-25), 1.0f, SpriteEffects.None, 0f);
         }
         //    for (int i = 0; i < numberRows; i++)
         //    {
@@ -360,6 +366,13 @@ namespace RTS
                 y = maps[currentMap].Trees[i].Y;
 
                 mapTiles[x, y] = MapTileType.MapTree;
+            }
+            for (int i = 0; i < maps[currentMap].Lamps.Count; i++)
+            {
+                x = maps[currentMap].Lamps[i].X;
+                y = maps[currentMap].Lamps[i].Y;
+
+                mapTiles[x, y] = MapTileType.MapLamp;
             }
             for (int i = 0; i < maps[currentMap].Barriers.Count; i++)
             {

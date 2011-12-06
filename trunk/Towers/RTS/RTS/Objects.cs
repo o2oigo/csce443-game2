@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
+    public abstract class Object
+    {
+    }
 
     public class Snow
     {
@@ -106,25 +109,14 @@ namespace RTS
         {
             get { return treeTexture; }
         }
-
-        //private Vector2 position;
-        //public Vector2 Position
-        //{
-        //    get { return position; }
-        //}
         private Vector2 origin;
         public Vector2 Origin
         {
             get { return origin; }
         }
 
-        //public Rectangle FeetSize
-        //{
-        //    get { return new Rectangle((int)Origin.X, (int)Origin.Y + (treeTexture.Height - 10), treeTexture.Width, 10); }
-        //}
-
         Random rand = new Random();
-        Map map;
+        //Map map;
         static List<String> treeTextureList = new List<String>();
 
         public Tree(Game1 game, Vector2 pos)
@@ -133,7 +125,6 @@ namespace RTS
             map = game.Map;
             position = pos;
             origin = pos;
-
 
             treeTextureList.Add("treeA");
             treeTextureList.Add("treeB");
@@ -147,7 +138,6 @@ namespace RTS
 
         public void LoadContent(int i)
         {
-            //int i = rand.Next(8);
             treeTexture = game.Content.Load<Texture2D>(treeTextureList[i]);
             position.X -= treeTexture.Width / 2;
             position.Y -= treeTexture.Height / 2; 
@@ -157,6 +147,44 @@ namespace RTS
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(treeTexture, position, null, Color.White, 0f, new Vector2(0, treeTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
+        }
+    }
+
+    public class Lamp : Sprite
+    {
+        //Game1 game;
+        private Texture2D lampTexture;
+        public Texture2D Texture
+        {
+            get { return lampTexture; }
+        }
+        private Vector2 origin;
+        public Vector2 Origin
+        {
+            get { return origin; }
+        }
+
+        Random rand = new Random();
+        //Map map;
+
+        public Lamp(Game1 game, Vector2 pos)
+        {
+            this.game = game;
+            map = game.Map;
+            position = pos;
+            origin = pos;
+        }
+
+        public void LoadContent()
+        {
+            lampTexture = game.Content.Load<Texture2D>("lamppost");
+            position.X -= lampTexture.Width / 2;
+            position.Y -= lampTexture.Height / 2;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(lampTexture, position, null, Color.White, 0f, new Vector2(0, lampTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
         }
     }
 
