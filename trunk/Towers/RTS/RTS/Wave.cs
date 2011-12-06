@@ -218,6 +218,7 @@ namespace RTS
                     waveFinished = true ;
                     game.Map.NextMap(currentLevel);
                     game.CreateTrees();
+                    game.CreateLamps();
                     ReinitializeLevel(currentLevel);
                 }
             //}
