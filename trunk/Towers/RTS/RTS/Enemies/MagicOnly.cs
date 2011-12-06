@@ -15,8 +15,8 @@ namespace RTS
             base.Initialize(game, health);
 
             range = 200;
-            weakAgainst = ElementType.Fire;
-            strongAgainst = ElementType.Lightning;
+            weakAgainst = ElementType.Lightning;
+            strongAgainst = ElementType.None;
             //moveSpeed = 50.0f;
         }
 

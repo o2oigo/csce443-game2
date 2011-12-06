@@ -21,7 +21,7 @@ namespace RTS
         List<Player> players;
         Player player1;
         Player player2;
-
+        Texture2D statusBar;
         
         public bool runTestChecking = true;  // true to show the test Status on every screen, false to show nothing
         SpriteFont font;
@@ -204,6 +204,8 @@ namespace RTS
             enemy5EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\snow");
             enemy6EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia");
             enemy7EncyclopediaTexture =  contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia");
+
+            statusBar = contentManager.Load<Texture2D>("statusBar");
         }
 
         public void Draw(SpriteBatch SB)
@@ -253,6 +255,8 @@ namespace RTS
 
                 if (showGameScreen == true)
                 {
+                    spriteBatch.Draw(statusBar, new Vector2(0, -20), Color.White);
+
                     spriteBatch.DrawString(font, "Resources: ", uiPosition2, Color.Black);
                     if (nextWave == 1)
                     {
@@ -319,7 +323,7 @@ namespace RTS
                 {
                     spriteBatch.DrawString(font, "Game Paused", new Vector2(500, 250), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 270), Color.Black);
-
+                    spriteBatch.Draw(statusBar, new Vector2(0, -20), Color.White);
                 }
 
                 if (showGameOverScreen == true)
@@ -353,11 +357,12 @@ namespace RTS
                 {
                     spriteBatch.DrawString(font, "Game Paused", new Vector2(500, 250), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 270), Color.Black);
-
+                    spriteBatch.Draw(statusBar, new Vector2(0, -20), Color.White);
                 }
 
                 if (showGameOverScreen == true)
                 {
+
                     spriteBatch.Draw(startScreenBackground, new Vector2(0, 0), Color.White);
                     spriteBatch.DrawString(font, "Game Over", new Vector2(500, 600), Color.Black);
                     spriteBatch.DrawString(font, "Press Enter to retry", new Vector2(500, 700), Color.Black);
@@ -382,7 +387,8 @@ namespace RTS
                     spriteBatch.DrawString(font, player1.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
                     spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
                     spriteBatch.DrawString(font, "Lives: " + game.getLive(), uiPosition3, Color.Black);
-                    
+                    spriteBatch.Draw(statusBar, new Vector2(0, -20), Color.White);
+
                     if (nextWave == 1)
                     {
                         spriteBatch.DrawString(font, "Next Wave: Normal", uiPosition4, Color.Black);

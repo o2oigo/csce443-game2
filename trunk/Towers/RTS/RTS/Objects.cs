@@ -8,20 +8,22 @@ using Microsoft.Xna.Framework.Content;
 
 namespace RTS
 {
-    public class Tree
+    public class Tree : Sprite
     {
-        Game1 game;
+        //Game1 game;
+        private Rectangle bark;
+
         private Texture2D treeTexture;
         public Texture2D Texture
         {
             get { return treeTexture; }
         }
 
-        private Vector2 position;
-        public Vector2 Position
-        {
-            get { return position; }
-        }
+        //private Vector2 position;
+        //public Vector2 Position
+        //{
+        //    get { return position; }
+        //}
         private Vector2 origin;
         public Vector2 Origin
         {
@@ -44,6 +46,7 @@ namespace RTS
             position = pos;
             origin = pos;
 
+
             treeTextureList.Add("treeA");
             treeTextureList.Add("treeB");
             treeTextureList.Add("treeC");
@@ -59,10 +62,13 @@ namespace RTS
             //int i = rand.Next(8);
             treeTexture = game.Content.Load<Texture2D>(treeTextureList[i]);
             position.X -= treeTexture.Width / 2;
-            position.Y -= treeTexture.Height / 2;
+            position.Y -= treeTexture.Height / 2; 
+            //bark = new Rectangle((int)origin.X, (int)origin.Y, 50, 50);
+
+            Sprite.addList(this);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(treeTexture, position, null, Color.White, 0f, new Vector2(0, treeTexture.Height / 2), 1.0f, SpriteEffects.None, 0f);
         }
