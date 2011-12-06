@@ -1384,12 +1384,12 @@
   <ItemGroup>
     <Compile Include="Sound\Zajed - Merry Christmas %28Level Loop%29.wav">
       <Name>level1Song</Name>
-      <Importer>Mp3Importer</Importer>
+      <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
     <Compile Include="Sound\Zajed - Merry Christmas %28Menu Loop%29.wav">
       <Name>menuSong</Name>
-      <Importer>Mp3Importer</Importer>
+      <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>

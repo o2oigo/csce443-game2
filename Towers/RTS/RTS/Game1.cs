@@ -67,12 +67,17 @@ namespace RTS
         public FlameTowerSmokeParticleSystem flameTowerSmoke;
         public IceParticleSystem ice;
 
-         Dictionary<string, SoundEffect> music;
-         SoundEffect soundeffect;
-         SoundEffectInstance songInstance;
+        Dictionary<string, SoundEffect> music;
+        SoundEffect soundeffect;
+        SoundEffectInstance songInstance;
 
-         Song menuSong;
-         Song level1Song; 
+        SoundEffect menuSound;
+        SoundEffect level1Sound;
+        SoundEffectInstance menuSoundInstance;
+        SoundEffectInstance level1SoundInstance;
+
+        Song menuSong;
+        Song level1Song; 
 
         private Map map;
         public Map Map
@@ -206,12 +211,28 @@ namespace RTS
             soundeffect.Play();
             */
 
-            menuSong = Content.Load<Song>("Sound/menuSong");  
-            level1Song = Content.Load<Song>("Sound/level1Song");  
+           // menuSong = Content.Load<Song>("Sound/menuSong");  
+           // level1Song = Content.Load<Song>("Sound/level1Song");
+            menuSound = Content.Load<SoundEffect>("Sound/menuSong");
+            level1Sound = Content.Load<SoundEffect>("Sound/level1Song");
+            music = new Dictionary<string, SoundEffect>();
+            music.Add("menuSound", menuSound);
+            music.Add("level1Sound", level1Sound);
+           // menuSoundInstance = new SoundEffectInstance();
+            if (menuSoundInstance != null)
+                menuSoundInstance.Dispose();
+            menuSoundInstance = music["menuSound"].CreateInstance();
+            menuSoundInstance.IsLooped = true;
+           // level1SoundInstance = new SoundEffectInstance();
+            if (level1SoundInstance != null)
+                level1SoundInstance.Dispose();
+            level1SoundInstance = music["level1Sound"].CreateInstance();
+            level1SoundInstance.IsLooped = true;
+            menuSoundInstance.Play();
             //Song level2Song = Content.Load<Song>("Sound/MainSong");  
             //Song level3Song = Content.Load<Song>("Sound/MainSong");  
            // Song endSong = Content.Load<Song>("Sound/MainSong");
-            MediaPlayer.Play(menuSong);
+            //MediaPlayer.Play(menuSong);
 
             Sprite.LoadContent(Content);
         }
@@ -256,7 +277,9 @@ namespace RTS
 
             if (userInterface.getScreen("showGameScreen") == true)
             {
-                MediaPlayer.Play(level1Song);
+                menuSoundInstance.Stop();
+                level1SoundInstance.Play();
+                
                 camera.Update(gameTime);
                 wave.Update(gameTime);
                 
