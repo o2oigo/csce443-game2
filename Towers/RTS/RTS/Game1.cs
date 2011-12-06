@@ -51,6 +51,11 @@ namespace RTS
         {
             get { return trees; }
         }
+        private List<Lamp> lamps;
+        public List<Lamp> Lamps
+        {
+            get { return lamps; }
+        }
 
         Random rand = new Random();
         SpriteFont font;
@@ -117,6 +122,7 @@ namespace RTS
             //map.UpdateMapViewport(test);
             //map.ReloadMap();
             CreateTrees();
+            CreateLamps();
             userInterface.setScreenStatus("loadingGameScreen1",true);
             //wave = new Wave(this);
             wave = new Wave(this,userInterface);
@@ -135,6 +141,7 @@ namespace RTS
             players = new List<Player>(4);
             stones = new List<Stone>();
             trees = new List<Tree>();
+            lamps = new List<Lamp>();
             //snowList = new List<Snow>();
 
             player1 = new Player();
@@ -765,6 +772,26 @@ namespace RTS
                 t.LoadContent(i);
             }
         }
+
+        public void CreateLamps()
+        {
+            foreach (Lamp l in lamps)
+            {
+                Sprite.removeList(l);
+            }
+            lamps.Clear();
+            foreach (Point pt in map.getLamps())
+            {
+                Vector2 tilePosition = map.MapToWorld(pt.X, pt.Y, true);
+                lamps.Add(new Lamp(this, tilePosition));
+            }
+            foreach (Lamp l in lamps)
+            {
+                int i = rand.Next(8);
+                l.LoadContent();
+            }
+        }
+
 
         public void goNextLevel()
         {

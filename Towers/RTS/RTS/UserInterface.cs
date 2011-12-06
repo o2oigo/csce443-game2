@@ -67,13 +67,13 @@ namespace RTS
         private bool finishMenu2 = false;
 
 
-        private Vector2 uiMoneyPosition = new Vector2(90, 13);
-        private Vector2 uiLifePosition= new Vector2(170, 13);
+        private Vector2 uiMoneyPosition = new Vector2(100, 23);
+        private Vector2 uiLifePosition= new Vector2(180, 23);
         //private Vector2 uiStonePosition = new Vector2(50, 43);
-        private Vector2 uiWavePosition = new Vector2(145, 85);
-        private Vector2 uiFirePosition = new Vector2(75, 47);
-        private Vector2 uiLightningPosition = new Vector2(135, 47);
-        private Vector2 uiIcePosition = new Vector2(200, 47);
+        private Vector2 uiWavePosition = new Vector2(155, 95);
+        private Vector2 uiFirePosition = new Vector2(85, 57);
+        private Vector2 uiLightningPosition = new Vector2(145, 57);
+        private Vector2 uiIcePosition = new Vector2(210, 57);
 
 
         private Vector2 uiPosition1;
@@ -266,7 +266,7 @@ namespace RTS
 
                 if (showGameScreen == true)
                 {
-                    spriteBatch.Draw(statusBar, new Vector2(0, -20), Color.White);
+                    spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
 
                     spriteBatch.DrawString(font, "Resources: ", uiPosition2, Color.Black);
                     if (nextWave == 1)
@@ -334,7 +334,7 @@ namespace RTS
                 {
                     spriteBatch.DrawString(font, "Game Paused", new Vector2(500, 250), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 270), Color.Black);
-                    spriteBatch.Draw(statusBar, new Vector2(0, -20), Color.White);
+                    spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
                 }
 
                 if (showGameOverScreen == true)
@@ -368,7 +368,7 @@ namespace RTS
                 {
                     spriteBatch.DrawString(font, "Game Paused", new Vector2(500, 250), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 270), Color.Black);
-                    spriteBatch.Draw(statusBar, new Vector2(0, -20), Color.White);
+                    spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
                 }
 
                 if (showGameOverScreen == true)
@@ -398,7 +398,7 @@ namespace RTS
                     spriteBatch.DrawString(font, player1.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
                     //spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
                     spriteBatch.DrawString(font, "Lives: " + game.getLive(), uiPosition3, Color.Black);
-                    spriteBatch.Draw(statusBar, new Vector2(0, -20), Color.White);
+                    spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
                     spriteBatch.DrawString(font, "" + player1.getMoney(), uiMoneyPosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);

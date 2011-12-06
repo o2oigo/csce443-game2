@@ -1091,6 +1091,16 @@ namespace RTS
                     break;
                 }
             }
+            foreach (Lamp l in game.Lamps)
+            {
+                //Rectangle treeRect = new Rectangle((int)t.Origin.X, (int)t.Origin.Y, t.Texture.Width / 3, t.Texture.Height / 3);
+                Rectangle lampRect = new Rectangle((int)l.Origin.X+15, (int)l.Origin.Y+5, 1, 1);
+                if (lampRect.Intersects(player))
+                {
+                    collision = true;
+                    break;
+                }
+            }
 
             //Rectangle houseRect = new Rectangle((int)game.House.Origin.X - (game.House.Texture.Width / 2) + 30, (int)game.House.Origin.Y - 40, game.House.Texture.Width - 30, game.House.Texture.Height / 6);
             //if (houseRect.Intersects(player))
