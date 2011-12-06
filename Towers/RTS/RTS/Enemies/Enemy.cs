@@ -202,7 +202,7 @@ namespace RTS
             {
                 spriteBatch = SB;
                 spriteBatch.Draw(animation.currentSpriteSheet().texture, Position, animation.currentSpriteSheet().rectangles[animation.FrameIndex], Color.White, 0f, origin, 1.0f, isFlipped, 0f);
-                spriteBatch.DrawString(font, "HP: " + (int)hp, new Vector2(position.X - 40, position.Y + 40), Color.Black);
+                //spriteBatch.DrawString(font, "HP: " + (int)hp, new Vector2(position.X - 40, position.Y + 40), Color.Black);
                 foreach (Projectile proj in projectileList)
                 {
                     proj.Draw(spriteBatch);

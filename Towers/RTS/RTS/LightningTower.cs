@@ -51,7 +51,7 @@ namespace RTS
         {
             spriteBatch = SB;
             spriteBatch.Draw(lightningTowerTexture, position, null, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0f); 
-            spriteBatch.DrawString(font, getTowerLvl() + ", \nHP: " + hp, new Vector2(position.X - 120, position.Y + 30), Color.Black);
+            //spriteBatch.DrawString(font, getTowerLvl() + ", \nHP: " + hp, new Vector2(position.X - 120, position.Y + 30), Color.Black);
 
             foreach (Projectile proj in projectileList)
             {
@@ -77,7 +77,12 @@ namespace RTS
             float scale = Vector2.Distance(shootAt.Position, position) / lightningTexture.Width;
             game.lightning.setScale(scale, scale);
             game.lightning.setRotation((float)shootRotationAngle);   
-            game.lightning.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * lightningTexture.Width / 2 * scale + (float)Math.Cos(shootRotationAngle) * (getTurretLength()) * map.ScaleB, position.Y - 15 + (float)Math.Sin(shootRotationAngle) * lightningTexture.Width / 2 * scale + (float)Math.Sin(shootRotationAngle) * (getTurretLength()) * map.ScaleB));
+            
+            game.lightning.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * lightningTexture.Width / 2 * scale + (float)Math.Cos(shootRotationAngle) * (1) * map.ScaleB, position.Y - 15 + (float)Math.Sin(shootRotationAngle) * lightningTexture.Width / 2 * scale + (float)Math.Sin(shootRotationAngle) * (1) * map.ScaleB));
+           // float xVal = position.X;
+            //float yVal = position.Y;
+
+           // game.lightning.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * lightningTexture.Width / 2 + (float)Math.Cos(shootRotationAngle) * (getTurretLength()) * map.ScaleB, position.Y - 15 + (float)Math.Sin(shootRotationAngle) * lightningTexture.Width / 2 + (float)Math.Sin(shootRotationAngle) * (getTurretLength()) * map.ScaleB));
 
             playShootSound();
 

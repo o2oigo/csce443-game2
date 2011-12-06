@@ -37,10 +37,12 @@ namespace RTS
         protected override void InitializeConstants()
         {
             textureFilename = "lightningParticle";
+           // textureFilename = "fireParticle";
 
             // high initial speed with lots of variance.  make the values closer
             // together to have more consistently circular explosions.
-            minInitialSpeed = 20;
+           
+             minInitialSpeed = 20;
             maxInitialSpeed = 30;
 
             // doesn't matter what these values are set to, acceleration is tweaked in
@@ -55,8 +57,26 @@ namespace RTS
             minScale = 1f;
             maxScale = 1f;
 
-            minNumParticles = 10;
-            maxNumParticles = 15;
+            minNumParticles = 1;
+            maxNumParticles = 2;
+
+            /*minInitialSpeed = 0;
+            maxInitialSpeed = 0;
+
+            // doesn't matter what these values are set to, acceleration is tweaked in
+            // the override of InitializeParticle.
+            minAcceleration = 0;
+            maxAcceleration = 0;
+
+            // explosions should be relatively short lived
+            minLifetime = 1f;
+            maxLifetime = 1f;
+
+            minScale = .1f;
+            maxScale = .2f;
+
+            minNumParticles = 1;
+            maxNumParticles = 1;*/
 
             minRotationSpeed = 0; //-MathHelper.PiOver4;
             maxRotationSpeed = 0;// MathHelper.PiOver4;
