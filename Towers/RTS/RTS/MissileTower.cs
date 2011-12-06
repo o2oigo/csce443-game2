@@ -23,6 +23,8 @@ namespace RTS
             damage = new Damage(30, this.ilevel, ElementType.Normal, null);
             if (level == 2)
                 setToLvlTwo();
+            if (level == 3)
+                setToLvlThree();
 
             this.shootTimer = 5f;
             this.towerRange = 2000f;
