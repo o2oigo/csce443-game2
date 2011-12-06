@@ -1286,13 +1286,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sound\MainSong.mp3">
-      <Name>MainSong</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sound\canon sound.wav">
       <Name>cannon</Name>
       <Importer>WavImporter</Importer>
@@ -1386,6 +1379,18 @@
       <Name>levelOne</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sound\Zajed - Merry Christmas %28Level Loop%29.wav">
+      <Name>level1Song</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Sound\Zajed - Merry Christmas %28Menu Loop%29.wav">
+      <Name>menuSong</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
