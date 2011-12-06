@@ -29,6 +29,8 @@ namespace RTS
 
             if (level == 2)
                 setToLvlTwo();
+            if (level == 3)
+                setToLvlThree();
 
             this.shootTimer = .05f;
             this.soundTimer = 1f;
@@ -47,7 +49,7 @@ namespace RTS
 
             iceTowerTexture = contentManager.Load<Texture2D>("iceLevel1");
             iceTowerUpgrade2Texture = contentManager.Load<Texture2D>("iceLevel2");
-            iceTowerUpgrade2Texture = contentManager.Load<Texture2D>("iceLevel3");
+            iceTowerUpgrade3Texture = contentManager.Load<Texture2D>("iceLevel3");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = iceTowerTexture.Width / 2;
