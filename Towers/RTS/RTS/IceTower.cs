@@ -13,9 +13,9 @@ namespace RTS
         Texture2D iceTexture;
         Texture2D iceTowerTexture;
         Texture2D iceTowerUpgradeTexture;
-        SoundEffect startSound;
+       // SoundEffect startSound;
         SoundEffectInstance instance;
-        SoundEffectInstance startInstance;
+       // SoundEffectInstance startInstance;
 
         public IceTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
             : base(game, playerIndex, startPosition)
@@ -23,7 +23,7 @@ namespace RTS
             iceTexture = game.Content.Load<Texture2D>("iceParticle");
             towerName = "Ice Tower";
             this.ilevel = level;
-            damage = new Damage(1, this.ilevel, ElementType.Fire, null);
+            damage = new Damage(0, this.ilevel, ElementType.Fire, null);
 
             if (level == 2)
                 setToLvlTwo();
@@ -37,11 +37,11 @@ namespace RTS
         public override void  LoadContent()
         {
             shootSound = contentManager.Load<SoundEffect>("Sound/flametower-loop");
-            startSound = contentManager.Load <SoundEffect>("Sound/flametower-start");
+           // startSound = contentManager.Load <SoundEffect>("Sound/flametower-start");
             instance = shootSound.CreateInstance();
-            startInstance = startSound.CreateInstance();
+            //startInstance = startSound.CreateInstance();
             instance.IsLooped = true;
-            startInstance.IsLooped = false;
+           // startInstance.IsLooped = false;
 
             iceTowerTexture = contentManager.Load<Texture2D>("iceTowerNew");
             iceTowerUpgradeTexture = contentManager.Load<Texture2D>("iceTowerNew");
@@ -70,7 +70,7 @@ namespace RTS
             //shotsToDestroy = 150;
             //hp += 50;
             maxHP = hp = 150;
-            damage.amount = 3;
+            //damage.amount = 3;
             //damage.type = ElementType.Normal;
             level = "level 2";
             ilevel = 2;
@@ -78,7 +78,7 @@ namespace RTS
  
         public override void createProjectile(Enemy target)
         {
-            Projectile projectile = new Projectile();
+           /* Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 2000f, map);
             projectile.LoadContent("ProjectileFireEmpty");
             projectileList.Add(projectile);
@@ -95,11 +95,11 @@ namespace RTS
             {
                 game.ice.setScale(.3f, .4f);
                 game.flameTowerSmoke.setScale(.2f, .27f);
-            }
+            }*/
             game.ice.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
-            game.flameTowerSmoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
+            //game.flameTowerSmoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
 
-
+            
            // playShootSound();
 
         }
@@ -108,27 +108,27 @@ namespace RTS
         {
             //Elapsed Time Calculations
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            shootElapsedTime += elapsedTime;
+            //shootElapsedTime += elapsedTime;
             //hp = shotsToDestroy - shotsTaken;
-            updateTurret(enemies);
-            updateProjectiles(gameTime);
+            //updateTurret(enemies);
+            //updateProjectiles(gameTime);
             
-            playShootSound(elapsedTime);
+           // playShootSound(elapsedTime);
         }
 
-        public void playShootSound(float elapsedTime)
+       /* public void playShootSound(float elapsedTime)
         {
 
             if (isShooting == true && soundElapsedTime == 0)
             {
                 soundElapsedTime += elapsedTime;
-                startInstance.Play();
+               // startInstance.Play();
             }
             else if (isShooting == true && soundElapsedTime >= .2f)
             {
                 soundElapsedTime += elapsedTime;
                 instance.Resume();
-                startInstance.Stop();
+                //startInstance.Stop();
             }
             else if (isShooting == false)
             {
@@ -137,7 +137,7 @@ namespace RTS
             }
             else
                 soundElapsedTime += elapsedTime;
-        }
+        }*/
 
         public override Texture2D getTexture()
         {

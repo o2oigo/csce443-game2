@@ -236,6 +236,8 @@ namespace RTS
 
             updateAnimation();
             animation.Update(gameTime);
+
+            MoveSpeed = .5f;//Resets Enemy Speed (for Ice Tower)
         }
 
         public void updateAnimation()

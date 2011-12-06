@@ -604,8 +604,8 @@ namespace RTS
                                     isFire = true;
 
                                 //createMissileTower(towerList[i].Position, level, isFire);
-                                createFlameTower(towerList[i].Position, level, isFire);             
-
+                                //createFlameTower(towerList[i].Position, level, isFire);             
+                                createIceTower(towerList[i].Position, level, isFire);
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
                                 buildMode = false;
@@ -928,8 +928,8 @@ namespace RTS
                                     isFire = true;
 
                                 //createMissileTower(towerList[i].Position, level, isFire);
-                                createFlameTower(towerList[i].Position, level, isFire);
-                                //createIceTower(towerList[i].Position, level, isFire);
+                                //createFlameTower(towerList[i].Position, level, isFire);
+                                createIceTower(towerList[i].Position, level, isFire);
 
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);

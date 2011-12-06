@@ -54,3 +54,12 @@ C:\443game\LevelCreator\LevelCreator\obj\x86\Release\GenerateResource.write.1.tl
 C:\443game\LevelCreator\LevelCreator\bin\Release\LevelCreator.exe
 C:\443game\LevelCreator\LevelCreator\bin\Release\LevelCreator.pdb
 C:\443game\LevelCreator\LevelCreator\obj\x86\Release\LevelCreator.Properties.Resources.resources
+C:\RTS\LevelCreator\LevelCreator\obj\x86\Release\LevelCreator.exe
+C:\RTS\LevelCreator\LevelCreator\obj\x86\Release\LevelCreator.pdb
+C:\RTS\LevelCreator\LevelCreator\bin\Release\LevelCreator.exe
+C:\RTS\LevelCreator\LevelCreator\bin\Release\LevelCreator.pdb
+C:\RTS\LevelCreator\LevelCreator\obj\x86\Release\ResolveAssemblyReference.cache
+C:\RTS\LevelCreator\LevelCreator\obj\x86\Release\LevelCreator.MapEditor.resources
+C:\RTS\LevelCreator\LevelCreator\obj\x86\Release\LevelCreator.Properties.Resources.resources
+C:\RTS\LevelCreator\LevelCreator\obj\x86\Release\GenerateResource.read.1.tlog
+C:\RTS\LevelCreator\LevelCreator\obj\x86\Release\GenerateResource.write.1.tlog

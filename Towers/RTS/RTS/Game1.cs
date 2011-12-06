@@ -527,6 +527,22 @@ namespace RTS
                         stones.Remove(stones[j]);
                     }
                 }
+
+                //Ice Tower Range Collision
+                for (int i = 0; i < enemies.Count; i++)
+                { 
+                   // enemies[i].MoveSpeed = .5f;     
+                    foreach (Tower tower in player.getTowers())
+                    {   
+                        if (tower.getTowerName() == "Ice Tower")
+                        {
+                            if (Vector2.Distance(enemies[i].Position, tower.Position) <= tower.getRange())
+                            {
+                                enemies[i].MoveSpeed = .2f;
+                            }                            
+                        }
+                    }
+                }
             }
         }
 

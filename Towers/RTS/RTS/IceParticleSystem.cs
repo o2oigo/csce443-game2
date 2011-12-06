@@ -46,8 +46,8 @@ namespace RTS
 
             // high initial speed with lots of variance.  make the values closer
             // together to have more consistently circular explosions.
-            minInitialSpeed = 200;
-            maxInitialSpeed = 300;
+            minInitialSpeed = 10;
+            maxInitialSpeed = 20;
 
             // doesn't matter what these values are set to, acceleration is tweaked in
             // the override of InitializeParticle.
@@ -55,14 +55,14 @@ namespace RTS
             maxAcceleration = 0;
 
             // explosions should be relatively short lived
-            minLifetime = .3f;
-            maxLifetime = .4f;
+            minLifetime = 1f;
+            maxLifetime = 2f;
 
-            minScale = .15f;
-            maxScale = .25f;
+            minScale = 1f;
+            maxScale = 2f;
 
-            minNumParticles = 5;
-            maxNumParticles = 7;
+            minNumParticles = 2;
+            maxNumParticles = 3;
 
             minRotationSpeed =  -MathHelper.PiOver4;
             maxRotationSpeed =   MathHelper.PiOver4;
