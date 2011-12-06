@@ -126,6 +126,7 @@ namespace RTS
         private Texture2D startLevelButtonTexture;
         private Texture2D startLevelButtonTextureSelect;
         private Texture2D encyclopediaButtonTexture;
+        private Texture2D encyclopediaBackgroundTexture;
         private Texture2D encyclopediaButtonTextureSelect;
 
 
@@ -261,6 +262,7 @@ namespace RTS
             level3MapTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\level3Screen");
             startLevelButtonTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\start");
             encyclopediaButtonTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopediaButton");
+            encyclopediaBackgroundTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\background");
             startLevelButtonTextureSelect = contentManager.Load<Texture2D>(".\\encyclopedia\\start");
             encyclopediaButtonTextureSelect = contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopediaButton");
 
@@ -432,21 +434,21 @@ namespace RTS
                 }
                 if (loadingGameScreen1 == true && showGameScreen == true)
                 {
-                    spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
                     spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
                     spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
                 }
                 if (loadingGameScreen2 == true && showGameScreen == true)
                 {
-                    spriteBatch.Draw(level2MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
                     spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
                     spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
                 }
                 if (loadingGameScreen3 == true && showGameScreen == true)
                 {
-                    spriteBatch.Draw(level3MapTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(startLevelButtonTexture, new Vector2(500, 900), Color.White);
                     spriteBatch.Draw(encyclopediaButtonTexture, new Vector2(650, 900), Color.White);
                     spriteBatch.DrawString(font, "Loading...", uiPositionMiddle, Color.Blue);
@@ -615,7 +617,7 @@ namespace RTS
                 if (showEncyclopediaScreen == true)
                 {
 
-                    // background image
+                    // background image 
                     if (currentLevel == 1)
                         spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
                     else if (currentLevel == 2)
@@ -623,6 +625,8 @@ namespace RTS
                     else if (currentLevel == 3)
                         spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
 
+                    // negate previous background image
+                    spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(mainEncyclopediaTexture, new Vector2(230, 130), Color.White);
 
 
@@ -647,11 +651,11 @@ namespace RTS
 
                     // background image
                     if (currentLevel == 1)
-                        spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                        spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
                     else if (currentLevel == 2)
-                        spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                        spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
                     else if (currentLevel == 3)
-                        spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                        spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(towerEncyclopediaTexture, new Vector2(0, 0), Color.White);
 
                     if (currentLevel == 1)
@@ -832,6 +836,8 @@ namespace RTS
                         spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
                     else if (currentLevel == 3)
                         spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
+                    // negate previous background imaga
+                    spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
                     spriteBatch.Draw(enemyEncyclopediaTexture, new Vector2(230, 130), Color.LightBlue);
                     //spriteBatch.Draw(enemyEncyclopediaTexture, new Vector2(0, 0), Color.LightBlue);
 
