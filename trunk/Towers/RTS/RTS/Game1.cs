@@ -552,7 +552,7 @@ namespace RTS
                     {
                         if (stones[j].Type == ElementType.Normal)
                         {
-                            player.addMoney(50);
+                            Player.addMoney(50);
                         }
                         else
                         {
@@ -601,7 +601,7 @@ namespace RTS
                     explosion.AddParticles(enemies[i].Position);
                     smoke.AddParticles(enemies[i].Position);
                     enemies.RemoveAt(i);
-                    player1.addMoney(3);
+                    Player.addMoney(3);
                    // player.enemyDestroyed();
                 }
             }
@@ -641,8 +641,8 @@ namespace RTS
             //    //d spriteBatch.DrawString(font, "P1", new Vector2(tower.getPosition().X - 10, tower.getPosition().Y + 25), Color.MediumBlue);
             //}
             //spriteBatch.DrawString(font, "TILE: " + map.TileString(new Vector2(player1.Position.X, player1.Position.Y)), new Vector2(500, 100), Color.MediumBlue);
-            spriteBatch.DrawString(font, "SPRITE COUNT: " + Sprite.objCount(), new Vector2(500, 150), Color.MediumBlue);
-              spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.Black);
+            //spriteBatch.DrawString(font, "SPRITE COUNT: " + Sprite.objCount(), new Vector2(500, 150), Color.MediumBlue);
+            //  spriteBatch.DrawString(font, "Player 1 Shoot Angle     : " + player1.getShootRotationAngle(), new Vector2(510, 75), Color.Black);
             //   foreach (Tower tower in player2.getTowers())
             //   {
             //       spriteBatch.DrawString(font, "" + (tower.getShotsToDestroy() - tower.getShotsTaken()), new Vector2(tower.getPosition().X - 5, tower.getPosition().Y - 60), Color.Purple);

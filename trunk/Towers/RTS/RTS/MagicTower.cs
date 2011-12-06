@@ -34,7 +34,7 @@ namespace RTS
             spriteBatch = SB;
             spriteBatch.Draw(magic1Texture, position, null, Color.White, (float)moveRotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
 
-            spriteBatch.DrawString(font, getTowerLvl() + ", \nHP: " + hp, new Vector2(position.X - 120, position.Y + 30), Color.Black);
+           // spriteBatch.DrawString(font, getTowerLvl() + ", \nHP: " + hp, new Vector2(position.X - 120, position.Y + 30), Color.Black);
             
             foreach (Projectile proj in projectileList)
             {

@@ -91,7 +91,7 @@ namespace RTS
         private int fireStoneInInventory = 1;
         private int waterStoneInInventory = 1;
         private int healStoneInInventory = 1;
-        private int money = 35;
+        static int money = 35;
         private float timeForResources = 0;
         private Vector2 uiPosition1;
         private Vector2 uiPosition2;
@@ -101,13 +101,13 @@ namespace RTS
         private List<Projectile> projectileList = new List<Projectile>(5);
         private List<Missile> missileList = new List<Missile>(5);
         private List<Tower> towerList = new List<Tower>(20);
-        private List<Stone> stoneList = new List<Stone>(20);
+        private static List<Stone> stoneList = new List<Stone>(20);
 
         private List<Enemy> enemyList = new List<Enemy>(30);
 
         private int enemiesDestroyed = 0;
         private int towerEnemiesDestroyed = 0;
-        private int maxTowerCount = 10;
+        private static int maxTowerCount = 10;
 
         private float circle = MathHelper.Pi * 2;
 
@@ -282,7 +282,7 @@ namespace RTS
             if (buildMode == true)
             {
                 // if player aim up, basic tower will showed up
-                if (mainBuildMode == true && upgradeBuildMode == false && (shootRotationAngle >= -2.27 && shootRotationAngle < -0.93))
+                if (mainBuildMode == true && upgradeBuildMode == false && (shootRotationAngle >= -3 * (float)Math.PI / 4 && shootRotationAngle < -(float)Math.PI / 4))
                 {
                     // default texture (not greyed nor selected)
                     spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
@@ -292,13 +292,13 @@ namespace RTS
                     spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
 
 
-                    if (shootRotationAngle > -2.27 && shootRotationAngle < -1.90 && money >= 10)
+                    if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -7 * (float)Math.PI / 12 && money >= 10)
                         spriteBatch.Draw(arrowTowerBuildSelectTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
 
-                    if (shootRotationAngle >= -1.9 && shootRotationAngle < -1.51 && money >= 15)
+                    if (shootRotationAngle >= -7 * (float)Math.PI / 12 && shootRotationAngle < -5 * (float)Math.PI / 12 && money >= 15)
                         spriteBatch.Draw(canonTowerBuildSelectTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
 
-                    if (shootRotationAngle >= -1.51 && shootRotationAngle <= -(float)Math.PI / 4 && money >= 20)
+                    if (shootRotationAngle >= -5 * (float)Math.PI / 12 && shootRotationAngle <= -(float)Math.PI / 4 && money >= 20)
                         spriteBatch.Draw(magicTowerBuildSelectTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
 
                     if (money < 10)
@@ -335,7 +335,7 @@ namespace RTS
                     spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
                     spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
 
-                    if (shootRotationAngle >= -0.93 && shootRotationAngle < (float)Math.Sqrt(2) / 2f)
+                    if (shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4)
                     {
                     }
                 }
@@ -347,7 +347,7 @@ namespace RTS
                     spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
                     spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
 
-                    if (shootRotationAngle >= -0.93 && shootRotationAngle < (float)Math.Sqrt(2) / 2f)
+                    if (shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4)
                     {
                         spriteBatch.Draw(flameTowerBuildTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
                         spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
@@ -360,11 +360,11 @@ namespace RTS
                         {
                             spriteBatch.Draw(lightningTowerBuildInactiveTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
                         }
-                        if (fireStoneInInventory > 0 && shootRotationAngle >= 0 && shootRotationAngle < (float)Math.Sqrt(2) / 2f)
+                        if (fireStoneInInventory > 0 && shootRotationAngle >= -1 * (float)Math.PI / 12 && shootRotationAngle < 1 * (float)Math.PI / 12)
                         {
                             spriteBatch.Draw(flameTowerBuildSelectTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
                         }
-                        if (waterStoneInInventory > 0 && shootRotationAngle >= -0.93 && shootRotationAngle < 0)
+                        if (waterStoneInInventory > 0 && shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < -1 * (float)Math.PI / 12)
                         {
                             spriteBatch.Draw(lightningTowerBuildSelectTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
                         }
@@ -515,7 +515,7 @@ namespace RTS
                         if (map.TileTypeAt(position) == MapTileType.MapGrass)
                         {
                             // for arrow tower
-                            if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -1.90)
+                            if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -7 * (float)Math.PI / 12)
                             {
                                 if (money >= 10)
                                 {
@@ -527,7 +527,7 @@ namespace RTS
                             }
 
                             // for cannon tower
-                            else if (shootRotationAngle >= -1.9 && shootRotationAngle < -1.51)
+                            else if (shootRotationAngle >= -7 * (float)Math.PI / 12 && shootRotationAngle < -5 * (float)Math.PI / 12)
                             {
                                 if (money >= 15 && fireStoneInInventory > 0)
                                 {
@@ -544,7 +544,7 @@ namespace RTS
                             }
 
                             // for magic tower
-                            else if (shootRotationAngle >= -1.51 && shootRotationAngle <= -(float)Math.PI / 4 )
+                            else if (shootRotationAngle >= -5 * (float)Math.PI / 12 && shootRotationAngle <= -(float)Math.PI / 4)
                             {
                                 if (money >= 20)
                                 {
@@ -585,7 +585,36 @@ namespace RTS
                     mainBuildMode = false;
                     upgradeBuildMode = false;
                 }
-                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.PI / 4 && (upgradeBuildMode == true || upgradeBuildMagicMode == true))
+                else if (shootRotationAngle > 1 * (float)Math.PI / 12 && shootRotationAngle <= 1 * (float)Math.PI / 4 && (upgradeBuildMode == true || upgradeBuildMagicMode == true))
+                {
+
+                    for (int i = 0; i < towerList.Count(); i++)
+                    {
+                        if (towerList[i].getPlayerIsNear() == true)
+                        {
+                            if (healStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            {
+                                removeStoneFromInventory(2);
+                                //towerList[i].setToFireTower();
+                                int level = towerList[i].getLevel();
+                                bool isFire = false;
+                                if (towerList[i].damage.type == ElementType.Fire)
+                                    isFire = true;
+
+                                //createMissileTower(towerList[i].Position, level, isFire);
+                                //createFlameTower(towerList[i].Position, level, isFire);
+                                createIceTower(towerList[i].Position, level, isFire);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
+                        }
+
+                    }
+                }
+                else if (shootRotationAngle > -1 * (float)Math.PI / 12 && shootRotationAngle <= 1 * (float)Math.PI / 12 && (upgradeBuildMode == true || upgradeBuildMagicMode == true))
                 {
 
                     for (int i = 0; i < towerList.Count(); i++)
@@ -602,8 +631,8 @@ namespace RTS
                                     isFire = true;
 
                                 //createMissileTower(towerList[i].Position, level, isFire);
-                                //createFlameTower(towerList[i].Position, level, isFire);             
-                                createIceTower(towerList[i].Position, level, isFire);
+                                createFlameTower(towerList[i].Position, level, isFire);             
+                                //createIceTower(towerList[i].Position, level, isFire);
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
                                 buildMode = false;
@@ -615,7 +644,7 @@ namespace RTS
                     }
                 }
 
-                else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= 0 && (upgradeBuildMode == true || upgradeBuildMagicMode == true))
+                else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= 1 * (float)Math.PI / 12 && (upgradeBuildMode == true || upgradeBuildMagicMode == true))
                 {
 
                     for (int i = 0; i < towerList.Count(); i++)
@@ -641,7 +670,7 @@ namespace RTS
                     }
                 }
 
-                else if ((shootRotationAngle <= -3 * Math.PI / 4 && shootRotationAngle >= -Math.PI) || (shootRotationAngle <= Math.PI && shootRotationAngle > 3 * Math.PI / 4))
+                else if ((shootRotationAngle <= -3 * (float)Math.PI / 4 && shootRotationAngle >= -(float)Math.PI) || (shootRotationAngle <= (float)Math.PI && shootRotationAngle > 3 * (float)Math.PI / 4))
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
@@ -836,7 +865,7 @@ namespace RTS
                         if (map.TileTypeAt(position) == MapTileType.MapGrass)
                         {
                             // for arrow tower
-                            if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -1.90)
+                            if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -7 * (float)Math.PI / 12)
                             {
                                 if (money >= 10)
                                 {
@@ -848,7 +877,7 @@ namespace RTS
                             }
 
                             // for cannon tower
-                            else if (shootRotationAngle >= -1.9 && shootRotationAngle < -1.51)
+                            else if (shootRotationAngle >= -7 * (float)Math.PI / 12 && shootRotationAngle < -5 * (float)Math.PI / 12)
                             {
                                 if (money >= 15)
                                 {
@@ -864,7 +893,7 @@ namespace RTS
                             }
 
                             // for magic tower
-                            else if (shootRotationAngle >= -1.51 && shootRotationAngle <= -(float)Math.PI / 4)
+                            else if (shootRotationAngle >= - 5 * (float)Math.PI / 12 && shootRotationAngle <= -(float)Math.PI / 4)
                             {
                                 if (money >= 20)
                                 {
@@ -909,7 +938,36 @@ namespace RTS
                     upgradeBuildMode = false;
                     upgradeBuildMagicMode = false;
                 }
-                else if (shootRotationAngle > 0 && shootRotationAngle <= (float)Math.PI / 4 && upgradeBuildMagicMode == true)
+                else if (shootRotationAngle > 1 * (float)Math.PI / 12 && shootRotationAngle <= 1 * (float)Math.PI / 4 && (upgradeBuildMode == true || upgradeBuildMagicMode == true))
+                {
+
+                    for (int i = 0; i < towerList.Count(); i++)
+                    {
+                        if (towerList[i].getPlayerIsNear() == true)
+                        {
+                            if (healStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            {
+                                removeStoneFromInventory(2);
+                                //towerList[i].setToFireTower();
+                                int level = towerList[i].getLevel();
+                                bool isFire = false;
+                                if (towerList[i].damage.type == ElementType.Fire)
+                                    isFire = true;
+
+                                //createMissileTower(towerList[i].Position, level, isFire);
+                                //createFlameTower(towerList[i].Position, level, isFire);
+                                createIceTower(towerList[i].Position, level, isFire);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
+                        }
+
+                    }
+                }
+                else if (shootRotationAngle > -1 * (float)Math.PI / 12 && shootRotationAngle <= 1 * (float)Math.PI / 12 && upgradeBuildMagicMode == true)
                 {
 
                     for (int i = 0; i < towerList.Count(); i++)
@@ -926,8 +984,8 @@ namespace RTS
                                     isFire = true;
 
                                 //createMissileTower(towerList[i].Position, level, isFire);
-                                //createFlameTower(towerList[i].Position, level, isFire);
-                                createIceTower(towerList[i].Position, level, isFire);
+                                createFlameTower(towerList[i].Position, level, isFire);
+                                //createIceTower(towerList[i].Position, level, isFire);
 
                                 Sprite.removeList(towerList[i]);
                                 towerList.RemoveAt(i);
@@ -940,7 +998,7 @@ namespace RTS
                     }
                 }
 
-                else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= 0 && upgradeBuildMagicMode == true)
+                else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= -1 * (float)Math.PI / 12 && upgradeBuildMagicMode == true)
                 {
 
                     for (int i = 0; i < towerList.Count(); i++)
@@ -1218,12 +1276,12 @@ namespace RTS
             }
         }
 
-        public void addMoney(int _money)
+        static public void addMoney(int _money)
         {
             money += _money;
         }
 
-        public void removeMoney(int _money)
+        static public void removeMoney(int _money)
         {
             money -= _money;
         }

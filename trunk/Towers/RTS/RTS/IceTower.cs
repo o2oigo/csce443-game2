@@ -58,7 +58,7 @@ namespace RTS
         {
             spriteBatch = SB;
             spriteBatch.Draw(iceTowerTexture, position, null, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0f); 
-            spriteBatch.DrawString(font, getTowerLvl() + ", \nHP: " + hp, new Vector2(position.X - 120, position.Y + 30), Color.Black);
+            //spriteBatch.DrawString(font, getTowerLvl() + ", \nHP: " + hp, new Vector2(position.X - 120, position.Y + 30), Color.Black);
 
             foreach (Projectile proj in projectileList)
             {
