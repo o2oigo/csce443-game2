@@ -17,6 +17,9 @@ namespace RTS
         SoundEffectInstance instance;
        // SoundEffectInstance startInstance;
 
+        float particleTimer = .35f;
+        float particleElapsedTime = 5f;
+
         public IceTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
             : base(game, playerIndex, startPosition)
         {
@@ -30,7 +33,7 @@ namespace RTS
 
             this.shootTimer = .05f;
             this.soundTimer = 1f;
-            this.towerRange = 275f;
+            this.towerRange = 175f;
             
         }
 
@@ -96,6 +99,7 @@ namespace RTS
                 game.ice.setScale(.3f, .4f);
                 game.flameTowerSmoke.setScale(.2f, .27f);
             }*/
+            game.ice.PickRandomDirection();
             game.ice.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
             //game.flameTowerSmoke.AddParticles(new Vector2(position.X + (float)Math.Cos(shootRotationAngle) * getTurretLength(), position.Y + (float)Math.Sin(shootRotationAngle) * getTurretLength()));
 
@@ -114,6 +118,8 @@ namespace RTS
             //updateProjectiles(gameTime);
             
            // playShootSound(elapsedTime);
+
+            updateParticleSystem(elapsedTime);
         }
 
        /* public void playShootSound(float elapsedTime)
@@ -138,6 +144,17 @@ namespace RTS
             else
                 soundElapsedTime += elapsedTime;
         }*/
+
+        public void updateParticleSystem(float elapsedTime)
+        {
+            particleElapsedTime += elapsedTime;
+            if (particleElapsedTime >= particleTimer)
+            {
+                game.ice.PickRandomDirection();
+                game.ice.AddParticles(position);
+                particleElapsedTime = 0f;
+            }
+        }
 
         public override Texture2D getTexture()
         {

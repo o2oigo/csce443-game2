@@ -218,13 +218,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="levelOne.jpg">
-      <Name>levelOne</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="cannonTowerSmall.png">
       <Name>cannonTowerSmall</Name>
       <Importer>TextureImporter</Importer>
@@ -1384,6 +1377,13 @@
   <ItemGroup>
     <Compile Include="statusbar.png">
       <Name>statusbar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="levelOne.png">
+      <Name>levelOne</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
