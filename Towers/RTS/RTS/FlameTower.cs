@@ -25,7 +25,7 @@ namespace RTS
             this.ilevel = level;
             damage = new Damage(0.5f, this.ilevel, ElementType.Fire, null);
             damage.type = ElementType.Fire;
-            damage.effect = new EnemyEffectBurn(game, 20, 1);
+            damage.effect = new EnemyEffectBurn(game, 20, 0.2f);
 
             if (level == 2)
                 setToLvlTwo();

@@ -1027,7 +1027,8 @@ namespace RTS
 
             foreach (Tree t in game.Trees)
             {
-                Rectangle treeRect = new Rectangle((int)t.Origin.X, (int)t.Origin.Y, t.Texture.Width / 3, t.Texture.Height / 3);
+                //Rectangle treeRect = new Rectangle((int)t.Origin.X, (int)t.Origin.Y, t.Texture.Width / 3, t.Texture.Height / 3);
+                Rectangle treeRect = new Rectangle((int)t.Origin.X, (int)t.Origin.Y-10, 40, 5);
                 if (treeRect.Intersects(player))
                 {
                     collision = true;

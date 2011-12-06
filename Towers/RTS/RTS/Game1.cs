@@ -336,10 +336,10 @@ namespace RTS
                 //player2.Draw(spriteBatch);
 
                 Sprite.DrawT(spriteBatch);
-                foreach (Tree t in trees)
-                {
-                    t.Draw(spriteBatch);
-                }
+                //foreach (Tree t in trees)
+                //{
+                //    t.Draw(spriteBatch);
+                //}
                 //house.Draw(spriteBatch);
                 map.Draw(spriteBatch);
 
@@ -695,6 +695,10 @@ namespace RTS
 
         public void CreateTrees()
         {
+            foreach (Tree t in trees)
+            {
+                Sprite.removeList(t);
+            }
             trees.Clear();
             foreach (Point pt in map.getTrees())
             {
