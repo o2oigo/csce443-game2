@@ -556,7 +556,7 @@ namespace RTS
                             //Create new projectiles
                             Projectile projectile = new Projectile();
                             projectile.Initialize(contentManager, graphicsDevice, position, (float)projectileRotationAngle, getLength(), 1200f, map);
-                            projectile.LoadContent("Projectile");
+                            projectile.LoadContent("snowball");
                             projectileList.Add(projectile);
 
                             //Add explosion to particle system

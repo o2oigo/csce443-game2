@@ -194,7 +194,7 @@ namespace RTS
         {
             Projectile projectile = new Projectile();
             projectile.Initialize(contentManager, graphicsDevice, position, (float)shootRotationAngle, getTurretLength(), 2000f, map);
-            projectile.LoadContent("Projectile");
+            projectile.LoadContent("shootingArrow");
             projectileList.Add(projectile);
 
             playShootSound();
