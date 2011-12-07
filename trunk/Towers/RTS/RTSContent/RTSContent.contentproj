@@ -1606,7 +1606,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sound\Red_Alarm_Red_Dimension_OC_ReMix %28Level 3 Loop%29.wav">
-      <Name>level3Song</Name>
+      <Name>level3SongAlternate</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
@@ -1846,6 +1846,13 @@
       <Name>missle3L</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sound\doomcloud_Dance_of_the_Sugar_Plum_Fairy_ULTRA_BLAST_MIXXX %28Level 3 Song%29.wav">
+      <Name>level3Song</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
