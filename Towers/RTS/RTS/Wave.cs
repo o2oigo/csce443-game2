@@ -93,27 +93,27 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 10, 100);
-                    AddFastEnemy(i, 1, 10, 100);
-                    AddNormalEnemy(i, 1, 2, 100);
-                    AddFastEnemy(i, 1, 5, 100);
-                    AddNormalEnemy(i, 1, 8, 100);
-                    AddFastEnemy(i, 1, 3, 100);
-                    AddHPEnemy(i, 1, 10, 100);
-                    AddNormalEnemy(i, 1, 10, 100);
-                    AddFastEnemy(i, 1, 10, 100);
-                    AddNormalEnemy(i, 1, 2, 100);
-                    AddFastEnemy(i, 1, 5, 100);
-                    AddNormalEnemy(i, 1, 8, 100);
-                    AddFastEnemy(i, 1, 3, 100);
-                    AddHPEnemy(i, 1, 10, 100);
-                    AddNormalEnemy(i, 1, 10, 100);
-                    AddFastEnemy(i, 1, 10, 100);
-                    AddNormalEnemy(i, 1, 2, 100);
-                    AddFastEnemy(i, 1, 5, 100);
-                    AddNormalEnemy(i, 1, 8, 100);
-                    AddFastEnemy(i, 1, 3, 100);
-                    AddHPEnemy(i, 1, 10, 100);
+                    AddNormalEnemy(i, 1, 0, 100);
+                    //AddFastEnemy(i, 1, 10, 100);
+                    //AddNormalEnemy(i, 1, 2, 100);
+                    //AddFastEnemy(i, 1, 5, 100);
+                    //AddNormalEnemy(i, 1, 8, 100);
+                    //AddFastEnemy(i, 1, 3, 100);
+                    //AddHPEnemy(i, 1, 10, 100);
+                    //AddNormalEnemy(i, 1, 10, 100);
+                    //AddFastEnemy(i, 1, 10, 100);
+                    //AddNormalEnemy(i, 1, 2, 100);
+                    //AddFastEnemy(i, 1, 5, 100);
+                    //AddNormalEnemy(i, 1, 8, 100);
+                    //AddFastEnemy(i, 1, 3, 100);
+                    //AddHPEnemy(i, 1, 10, 100);
+                    //AddNormalEnemy(i, 1, 10, 100);
+                    //AddFastEnemy(i, 1, 10, 100);
+                    //AddNormalEnemy(i, 1, 2, 100);
+                    //AddFastEnemy(i, 1, 5, 100);
+                    //AddNormalEnemy(i, 1, 8, 100);
+                    //AddFastEnemy(i, 1, 3, 100);
+                    //AddHPEnemy(i, 1, 10, 100);
                     //AddHPEnemy(i, 2, 10, 100);
                     //AddAttackingEnemy(i, 3, 10, 100);
                     //AddFastEnemy(i, 4, 10, 100);
