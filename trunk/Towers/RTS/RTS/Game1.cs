@@ -412,9 +412,11 @@ namespace RTS
                 else if (Wave.isGameFinish && video == null)
                 {
                     //masterReset();
+                    this.Exit();
                 }
-
             }
+            //else if (Keyboard.GetState().IsKeyDown(Keys.Delete)) ;
+
             //base.Update(gameTime);
         }
 
@@ -489,8 +491,8 @@ namespace RTS
 
             Rectangle screen = new Rectangle(GraphicsDevice.Viewport.X,
          GraphicsDevice.Viewport.Y,
-    GraphicsDevice.Viewport.Width,
-    GraphicsDevice.Viewport.Height);
+        GraphicsDevice.Viewport.Width,
+        GraphicsDevice.Viewport.Height);
 
             // Draw the video, if we have a texture to draw.
             if (player.State != MediaState.Stopped)
@@ -926,7 +928,12 @@ namespace RTS
         }
 
 
-
+        public void masterReset()
+        {
+            map = new Map();
+            Initialize();
+            LoadContent();
+        }
 
 
     }
