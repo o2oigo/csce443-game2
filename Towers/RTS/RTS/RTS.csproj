@@ -111,6 +111,7 @@
     <Compile Include="Enemies\PhysicalOnlyEnemy.cs" />
     <Compile Include="FlameTower.cs" />
     <Compile Include="IceTower.cs" />
+    <Compile Include="LampParticleSystem.cs" />
     <Compile Include="LightningTower.cs" />
     <Compile Include="MagicTower.cs" />
     <Compile Include="MissileTower.cs" />

@@ -24,7 +24,7 @@ namespace RTS
             this.ilevel = level;
             damage = new Damage(5, this.ilevel, ElementType.Lightning, null);
             //damage.type = ElementType.Lightning;
-            damage.effect = new EnemyEffectStun(game, 2);
+            damage.effect = new EnemyEffectStun(game, 5);
             //if (isFire)
             //{
             //    damage.type = ElementType.Lightning;
@@ -34,7 +34,8 @@ namespace RTS
                 setToLvlTwo();
             if (level == 3)
                 setToLvlThree();
-            
+
+            this.shootTimer = 2f;
         }
 
         public override void  LoadContent()
@@ -66,13 +67,21 @@ namespace RTS
         public override void setToLvlTwo()
         {
             lightningTowerTexture = lightningTowerUpgrade2Texture;
-            base.setToLvlTwo();
+            maxHP = hp = 150;
+            damage.amount = 10;
+            //damage.type = ElementType.Normal;
+            level = "level 2";
+            ilevel = 2;
         }
 
         public override void setToLvlThree()
         {
             lightningTowerTexture = lightningTowerUpgrade3Texture;
-            base.setToLvlThree();
+            maxHP = hp = 200;
+            damage.amount = 15;
+            //damage.type = ElementType.Normal;
+            level = "level 3";
+            ilevel = 3;
         }
  
         public override void createProjectile(Enemy target)
