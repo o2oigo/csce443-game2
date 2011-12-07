@@ -12,7 +12,7 @@ namespace RTS
     /// SNOWMAN
     /// Moves slower, but has higher HP.  
     /// Attacks but lower range than Attacking enemy
-    /// WEAKNESS: NONE
+    /// WEAKNESS: FIRE
     /// STRENGTH: LIGHTNING
     /// </summary>
 
@@ -24,7 +24,7 @@ namespace RTS
 
             attackDamage = 3;
             range = 200;
-            weakAgainst = ElementType.None;
+            weakAgainst = ElementType.Fire;
             strongAgainst = ElementType.Lightning;
             maxSpeed = moveSpeed  = 0.3f;
         }

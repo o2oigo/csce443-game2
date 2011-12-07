@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 namespace RTS
 {
     /// <summary>
-    /// MUFFIN
+    /// Petulent Pudding (Sr)
     /// Has ability to attack, higher attack range, higher attack damage
     /// WEAKNESS: FIRE
     /// STRENGTH: LIGHTNING
@@ -24,8 +24,8 @@ namespace RTS
 
             attackDamage = 10;
             range = 400;
-            weakAgainst = ElementType.Fire;
-            strongAgainst = ElementType.Lightning;
+            weakAgainst = ElementType.Lightning;
+            strongAgainst = ElementType.Fire;
             //moveSpeed = 0.5f;
         }
 

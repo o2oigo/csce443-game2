@@ -11,8 +11,8 @@ namespace RTS
     /// <summary>
     /// CANDYCANE
     /// Regenerates an amount of HP overtimev (max twice) 
-    /// WEAKNESS: LIGHTNING
-    /// STRENGTH: ICE
+    /// WEAKNESS: FIRE
+    /// STRENGTH: NORMAL
     /// </summary>
     
     public class RegenEnemy : Enemy
@@ -24,8 +24,8 @@ namespace RTS
             base.Initialize(game, health);
 
             range = 200;
-            weakAgainst = ElementType.Lightning;
-            strongAgainst = ElementType.Ice;
+            weakAgainst = ElementType.Fire;
+            strongAgainst = ElementType.Normal;
             //moveSpeed = 50.0f;
         }
 
