@@ -22,6 +22,8 @@ namespace RTS
         Player player1;
         Player player2;
         Texture2D statusBar;
+        Texture2D timerSprite;
+        Texture2D timerBar;
         
         public bool runTestChecking = true;  // true to show the test Status on every screen, false to show nothing
         SpriteFont font;
@@ -353,8 +355,10 @@ namespace RTS
             #endregion
 
             #endregion
-
             statusBar = contentManager.Load<Texture2D>("statusBar");
+            timerSprite = contentManager.Load<Texture2D>("enemystockRight");
+            timerBar = contentManager.Load<Texture2D>("timer");
+
         }
 
         public void Draw(SpriteBatch SB)
@@ -1355,6 +1359,14 @@ namespace RTS
                     spriteBatch.DrawString(font, player1.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
                     //spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
                     spriteBatch.DrawString(font, "Lives: " + game.getLive(), uiPosition3, Color.Black);
+
+                    int tmp2 = (int)((game.Wave.WaveTimer / game.Wave.IntervalWave) * 140);
+
+                    if (game.Wave.WaveTimer > 0)
+                    {
+                        spriteBatch.Draw(timerBar, new Vector2((width / 2) - timerBar.Width / 2, 10), Color.White);
+                        spriteBatch.Draw(timerSprite, new Vector2(((width / 2) + 35 - tmp2), 3), new Rectangle(0, 0, timerSprite.Width, timerSprite.Height), Color.White, 0f, Vector2.Zero, 0.8f, SpriteEffects.None, 1.0f);
+                    }
                     spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
                     spriteBatch.DrawString(font, "" + player1.getMoney(), uiMoneyPosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
@@ -1362,6 +1374,8 @@ namespace RTS
                     spriteBatch.DrawString(font, "" + player1.getFireStoneInInventory(), uiFirePosition, Color.White);
                     spriteBatch.DrawString(font, "" + player1.getHealStoneInInventory(), uiIcePosition, Color.White);
                     spriteBatch.DrawString(font, "" + player1.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+
+                    //Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)this).HP / ((Enemy)this).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
 
                     if (nextWave == 1)
                     {
@@ -2294,6 +2308,7 @@ namespace RTS
             oldMousestate = mousestate;
             oldKeyState = keystate;
             oldState = currentState;
+
         }
 
         #region game pad update
