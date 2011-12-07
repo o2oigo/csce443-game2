@@ -636,7 +636,7 @@ namespace RTS
                             }
                         }
 
-                        else if (towerList[i].getPlayerIsNear() == true && towerList[i].getTowerIntLevel() == 2)
+                        else if (towerList[i].getPlayerIsNear() == true && (towerList[i].getTowerIntLevel() == 2 || towerList[i].getTowerIntLevel() == 3))
                         {
                             if (money >= 10)
                             {
