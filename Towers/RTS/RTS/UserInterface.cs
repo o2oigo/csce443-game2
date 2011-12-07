@@ -82,6 +82,7 @@ namespace RTS
         private Vector2 uiLightningPosition = new Vector2(145, 57);
         private Vector2 uiIcePosition = new Vector2(210, 57);
 
+        private Vector2 towerSelectCoord = new Vector2(100, 200);
 
         private Vector2 uiEncyclopediaPosition1;
         private Vector2 uiEncyclopediaPosition2;
@@ -106,8 +107,8 @@ namespace RTS
         private Vector2 encyclopediaTower1Position;
         private Vector2 encyclopediaTower1Position;
         */
-        
-        
+
+        float selectElapsedTime = 0f;
 
         KeyboardState keystate;
         KeyboardState oldKeyState;
@@ -1473,7 +1474,89 @@ namespace RTS
                         // draw select tower
                         if (currentLevel == 1)
                         {
+                            for (int i = 0; i < player1.getBuildableTowers().Count; i++)
+                            {
+                                if (player1.getBuildableTowers()[i] == true)
+                                {
+                                    switch (i)
+                                    {
+                                        case 0:
+                                            spriteBatch.Draw(arrowTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 1:
+                                            spriteBatch.Draw(canonTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 2:
+                                            spriteBatch.Draw(missileTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 3:
+                                            //spriteBatch.Draw(magicTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            //towerSelectCoord.Y += 100;
+                                            break;
+                                        case 4:
+                                            spriteBatch.Draw(shockTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 5:
+                                            spriteBatch.Draw(flameTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 6:
+                                            spriteBatch.Draw(iceTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        default:
+                                            break;
 
+                                    }
+                                }
+                            }
+                            towerSelectCoord = new Vector2(1100, 200);
+
+                            for (int i = 0; i < player2.getBuildableTowers().Count; i++)
+                            {
+                                if (player2.getBuildableTowers()[i] == true)
+                                {
+                                    switch (i)
+                                    {
+                                        case 0:
+                                            spriteBatch.Draw(arrowTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 1:
+                                            spriteBatch.Draw(canonTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 2:
+                                            spriteBatch.Draw(missileTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 3:
+                                            //spriteBatch.Draw(magicTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            //towerSelectCoord.Y += 100;
+                                            break;
+                                        case 4:
+                                            spriteBatch.Draw(shockTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 5:
+                                            spriteBatch.Draw(flameTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        case 6:
+                                            spriteBatch.Draw(iceTowerEncyclopediaTexture, towerSelectCoord, Color.White);
+                                            towerSelectCoord.Y += 100;
+                                            break;
+                                        default:
+                                            break;
+
+                                    }
+                                }
+                            }
+                            towerSelectCoord = new Vector2(100, 200);
                         }
                         else if (currentLevel == 2)
                         {
@@ -3039,38 +3122,41 @@ namespace RTS
 
                 else
                 {
-                    currentState = GamePad.GetState(PlayerIndex.One);
-                    if (currentLevel == 1)
+                    selectElapsedTime += 1;
+                    if (selectElapsedTime >= 2)
                     {
-                        showGameScreen = true;
-                        loadingGameScreen1 = true;
-                        showTitleScreen = false;
-                        showPauseScreen = false;
-                        showLevel1SelectScreen = false;
-                        restartGame = true;
-                    }
-                    else if (currentLevel == 2)
-                    {
-                        showGameScreen = true;
-                        loadingGameScreen2 = true;
-                        showTitleScreen = false;
-                        showPauseScreen = false;
-                        showLevel1SelectScreen = false;
-                        //restartGame = true;
-                        game.goNextLevel();
-                    }
-                    else if (currentLevel == 3)
-                    {
-                        showGameScreen = true;
-                        loadingGameScreen3 = true;
-                        showTitleScreen = false;
-                        showPauseScreen = false;
-                        showLevel1SelectScreen = false;
-                        //restartGame = true;
-                        game.goNextLevel();
+                        currentState = GamePad.GetState(PlayerIndex.One);
+                        if (currentLevel == 1)
+                        {
+                            showGameScreen = true;
+                            loadingGameScreen1 = true;
+                            showTitleScreen = false;
+                            showPauseScreen = false;
+                            showLevel1SelectScreen = false;
+                            restartGame = true;
+                        }
+                        else if (currentLevel == 2)
+                        {
+                            showGameScreen = true;
+                            loadingGameScreen2 = true;
+                            showTitleScreen = false;
+                            showPauseScreen = false;
+                            showLevel1SelectScreen = false;
+                            //restartGame = true;
+                            game.goNextLevel();
+                        }
+                        else if (currentLevel == 3)
+                        {
+                            showGameScreen = true;
+                            loadingGameScreen3 = true;
+                            showTitleScreen = false;
+                            showPauseScreen = false;
+                            showLevel1SelectScreen = false;
+                            //restartGame = true;
+                            game.goNextLevel();
+                        }
                     }
                 }
-
 
 
             }
