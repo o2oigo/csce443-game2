@@ -135,8 +135,8 @@ namespace RTS
                     //AddAttackingEnemy(i, 10, 5, 100);
                     break;
                 case 2:
-                    AddAttackingEnemy(i, 1, 5, 50);
-                    AddNormalEnemy(i, 2, 5, 50);
+                    AddAttackingEnemy(i, 1, 0, 50);
+                    //AddNormalEnemy(i, 2, 5, 50);
                     //AddHPEnemy(i, 3, 5, 1);
                     //AddFastEnemy(i, 3, 5, 100);
                     //AddHPEnemy(i, 4,2, 1);
@@ -156,7 +156,7 @@ namespace RTS
                     //AddAttackingEnemy(i, 10, 5, 100);
                     break;
                 case 3:
-                    AddAttackingEnemy(i, 1, 5, 100);
+                    AddAttackingEnemy(i, 1, 0, 100);
                     //AddNormalEnemy(i, 2, 10, 100);
                     //AddHPEnemy(i, 3, 5, 100);
                     //AddHPEnemy(i, 4, 10, 100);
