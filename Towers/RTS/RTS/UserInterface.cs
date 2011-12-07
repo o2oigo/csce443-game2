@@ -23,7 +23,7 @@ namespace RTS
         Player player2;
         Texture2D statusBar;
         
-        public bool runTestChecking = false;  // true to show the test Status on every screen, false to show nothing
+        public bool runTestChecking = true;  // true to show the test Status on every screen, false to show nothing
         SpriteFont font;
 
 
@@ -1193,7 +1193,7 @@ namespace RTS
                 // testing purpose only, set runTestChecking = true to enable this
                 if (runTestChecking)
                 {
-                    spriteBatch.Draw(mainEncyclopediaTexture, new Vector2(50, 140), Color.White);
+                    //spriteBatch.Draw(mainEncyclopediaTexture, new Vector2(50, 140), Color.White);
                     /// checking the buildMenu boolean, need to change all of these from private to public at player.cs class
 
 
@@ -2570,7 +2570,12 @@ namespace RTS
             if (currentState.IsButtonDown(Buttons.B) && oldState.IsButtonUp(Buttons.B))
             {
                 showEncyclopediaScreen = false;
-                showLevel1Screen = true;
+                if (currentLevel == 1)
+                    showLevel1Screen = true;
+                if (currentLevel == 2)
+                    showLevel2Screen = true;
+                if (currentLevel == 3)
+                    showLevel3Screen = true;
             }
 
             if ((currentState.IsButtonDown(Buttons.DPadRight) && oldState.IsButtonUp(Buttons.DPadRight) ||
