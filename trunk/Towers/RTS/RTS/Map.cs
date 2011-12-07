@@ -115,7 +115,7 @@ namespace RTS
             maps.Add(content.Load<MapData>("map1"));
             maps.Add(content.Load<MapData>("map2"));
             maps.Add(content.Load<MapData>("map3"));
-            maps.Add(content.Load<MapData>("map4"));
+            //maps.Add(content.Load<MapData>("map4"));
 
             endList.Add(content.Load<Texture2D>("house"));
             endList.Add(content.Load<Texture2D>("house"));

@@ -99,9 +99,9 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 20, 8);
-                    AddNormalEnemy(i, 2, 30, 20);
-                    AddFastEnemy(i, 3, 15, 15);
+                    AddNormalEnemy(i, 1, 0, 8);
+                    //AddNormalEnemy(i, 2, 30, 20);
+                    //AddFastEnemy(i, 3, 15, 15);
                     //AddAttackingEnemy(i, 1, 1, 1);
                     //AddFastEnemy(i, 1, 1, 1);
                     //AddHPEnemy(i, 1, 1, 1);

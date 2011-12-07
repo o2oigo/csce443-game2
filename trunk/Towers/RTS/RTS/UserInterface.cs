@@ -25,7 +25,7 @@ namespace RTS
         Texture2D timerSprite;
         Texture2D timerBar;
         
-        public bool runTestChecking = true;  // true to show the test Status on every screen, false to show nothing
+        public bool runTestChecking = false;  // true to show the test Status on every screen, false to show nothing
         SpriteFont font;
 
 
@@ -484,10 +484,10 @@ namespace RTS
                 if (showWinScreen == true)
                 {
                     spriteBatch.Draw(winScreenBackground, new Vector2(0, 0), Color.White);
-                    spriteBatch.DrawString(font, "Thank you for playing", new Vector2(500, 600), Color.Black);
-                    spriteBatch.DrawString(font, "Press Enter to restart", new Vector2(500, 700), Color.Black);
-                    spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 740), Color.Black);
-                    spriteBatch.DrawString(font, "Ver. Beta 1.3.0", new Vector2(width - 200, height - 50), Color.Tomato);
+                    //spriteBatch.DrawString(font, "Thank you for playing", new Vector2(500, 600), Color.Black);
+                    //spriteBatch.DrawString(font, "Press Enter to restart", new Vector2(500, 700), Color.Black);
+                    //spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 740), Color.Black);
+                    //spriteBatch.DrawString(font, "Ver. Beta 1.3.0", new Vector2(width - 200, height - 50), Color.Tomato);
                 }
                 #endregion
 

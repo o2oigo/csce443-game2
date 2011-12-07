@@ -21,6 +21,13 @@ namespace RTS
         Texture2D backgroundTexture;
         Dictionary<int, Texture2D> mapTextureDict;
         private Dictionary<int, Rectangle> rectDict;
+
+        Video video;
+
+        VideoPlayer player;
+        Texture2D videoTexture;
+        bool quickFixSound;
+
         public Rectangle getCurrentRectangle()
         {
             return rectDict[wave.CurrentLevel];
@@ -134,6 +141,7 @@ namespace RTS
             userInterface.setScreenStatus("loadingGameScreen1",true);
             //wave = new Wave(this);
             wave = new Wave(this,userInterface);
+            quickFixSound = false;
         }
 
         /// <summary>
@@ -259,8 +267,13 @@ namespace RTS
             level3SoundInstance = music["level3Sound"].CreateInstance();
             level3SoundInstance.IsLooped = true;
 
-            menuSoundInstance.Play();
+           // menuSoundInstance.Play();
 
+            video = Content.Load<Video>("intro");
+            player = new VideoPlayer();
+
+            player.IsLooped = false;
+            player.Play(video);
             Sprite.LoadContent(Content);
         }
 
@@ -280,106 +293,128 @@ namespace RTS
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-
-            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            explosion.Update(gameTime);
-            smoke.Update(gameTime);
-            flameTowerSmoke.Update(gameTime);
-            fire.Update(gameTime);
-            lightning.Update(gameTime);
-            fireTower.Update(gameTime);
-            ice.Update(gameTime);
-            light.Update(gameTime);
-            
-
-            userInterface.setWavesNumber(wave.CurrentWave);
-            
-            
-            if (userInterface.getScreen("restartGame") == true)
+            if (player.State == MediaState.Stopped)
             {
-                restartGame();
-                userInterface.setScreenStatus("restartGame",false);
-            }
-            userInterface.Update();
+                if (!quickFixSound)
+                {
+                    menuSoundInstance.Play();
+                    quickFixSound = true;
+                }
 
-            if (userInterface.getScreen("showGameScreen") == true)
-            {
-                
-                camera.Update(gameTime);
-                wave.Update(gameTime);
-                
-                //Update Player
-             
+                float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                // Allows the game to exit
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                    this.Exit();
+
+                explosion.Update(gameTime);
+                smoke.Update(gameTime);
+                flameTowerSmoke.Update(gameTime);
+                fire.Update(gameTime);
+                lightning.Update(gameTime);
+                fireTower.Update(gameTime);
+                ice.Update(gameTime);
+                light.Update(gameTime);
+
+
+                userInterface.setWavesNumber(wave.CurrentWave);
+
+
+                if (userInterface.getScreen("restartGame") == true)
+                {
+                    restartGame();
+                    userInterface.setScreenStatus("restartGame", false);
+                }
+                userInterface.Update();
+
+                if (userInterface.getScreen("showGameScreen") == true)
+                {
+
+                    camera.Update(gameTime);
+                    wave.Update(gameTime);
+
+                    //Update Player
+
                     player1.Update(gameTime, enemies);
-                   // player2.addOtherPlayerTowers(player1.getTowers());
+                    // player2.addOtherPlayerTowers(player1.getTowers());
                     player2.Update(gameTime, enemies);
-                   // player1.addOtherPlayerTowers(player2.getTowers());
+                    // player1.addOtherPlayerTowers(player2.getTowers());
                     Player.updateTowers(gameTime, enemies);
-                
 
-                //Update Enemies
-                for (int i = 0; i < enemies.Count; i++)
-                {
-                    //Get current enemy and update
-                    Enemy currentEnemy = enemies[i];
-                    currentEnemy.Update(gameTime, Player.getTowers());
-                }
 
-                //Update Stone Timer
-                if (stones.Count() > 0)
-                {
-                    for (int i = 0; i < stones.Count; i++)
+                    //Update Enemies
+                    for (int i = 0; i < enemies.Count; i++)
                     {
-                        stones[i].Update(gameTime);
-                        if (!stones[i].isAppear) stones.Remove(stones[i]);
+                        //Get current enemy and update
+                        Enemy currentEnemy = enemies[i];
+                        currentEnemy.Update(gameTime, Player.getTowers());
                     }
+
+                    //Update Stone Timer
+                    if (stones.Count() > 0)
+                    {
+                        for (int i = 0; i < stones.Count; i++)
+                        {
+                            stones[i].Update(gameTime);
+                            if (!stones[i].isAppear) stones.Remove(stones[i]);
+                        }
+                    }
+
+                    //Update Lamp Particles
+                    lampElapsedTime += elapsedTime;
+                    if (lampElapsedTime >= lampTimer)
+                    {
+                        lampElapsedTime = 0f;
+                        foreach (Lamp lamp in lamps)
+                            light.AddParticles(new Vector2(lamp.Position.X + 21, lamp.Position.Y - 27));
+                    }
+
+                    //Detect Collisions
+                    detectCollisions();
+
+                    checkDeadEnemies();
+                    Sprite.SortSprite();
+                    //updateTowers();
+
                 }
 
-                //Update Lamp Particles
-                lampElapsedTime += elapsedTime;
-                if (lampElapsedTime >= lampTimer)
+                if (live < 1)
                 {
-                    lampElapsedTime = 0f;
-                    foreach (Lamp lamp in lamps)       
-                        light.AddParticles(new Vector2(lamp.Position.X + 21, lamp.Position.Y - 27));       
+                    userInterface.setScreenStatus("showGameOverScreen", true);
+                    live = 10;
+                }
+                else if (wave.isLevelFinish == true && wave.CurrentLevel == 1 && userInterface.getScreen("showGameScreen") == true)
+                {
+                    userInterface.setScreenStatus("showGameScreen", false);
+                    userInterface.setScreenStatus("showLevel2Screen", true);
+                    resetGame();
+                }
+                else if (wave.isLevelFinish == true && wave.CurrentLevel == 2 && userInterface.getScreen("showGameScreen") == true)
+                {
+                    userInterface.setScreenStatus("showGameScreen", false);
+                    userInterface.setScreenStatus("showLevel3Screen", true);
+                    resetGame();
+                }
+                else if (wave.isGameFinish == true && userInterface.getScreen("showGameScreen") == true)
+                {
+                    userInterface.setScreenStatus("showWinScreen", true);
                 }
 
-                //Detect Collisions
-                detectCollisions();
-
-                checkDeadEnemies();
-                Sprite.SortSprite();
-                //updateTowers();
+                if (userInterface.getScreen("showWinScreen") && video != null)// && !quickVidFix)
+                {
+                    video = Content.Load<Video>("ending");
+                    player.IsLooped = false;
+                    player.Play(video);
+                    video = null;
+                    //quickVidFix = true;
+                    //player.IsLooped = false;
+                    //userInterface.ShowWinScreen = false;
+                }
+                else if (Wave.isGameFinish && video == null)
+                {
+                    //masterReset();
+                }
 
             }
-
-            if (live < 1)
-            {
-                userInterface.setScreenStatus("showGameOverScreen", true);
-                live = 10;
-            }
-            else if (wave.isLevelFinish == true && wave.CurrentLevel == 1 && userInterface.getScreen("showGameScreen") == true)
-            {
-                userInterface.setScreenStatus("showGameScreen", false);
-                userInterface.setScreenStatus("showLevel2Screen", true);
-                resetGame();
-            }
-            else if (wave.isLevelFinish == true && wave.CurrentLevel == 2 && userInterface.getScreen("showGameScreen") == true)
-            {
-                userInterface.setScreenStatus("showGameScreen", false);
-                userInterface.setScreenStatus("showLevel3Screen", true);
-                resetGame();
-            }
-            else if (wave.isGameFinish == true && userInterface.getScreen("showGameScreen") == true)
-            {
-                userInterface.setScreenStatus("showWinScreen", true);
-            }
-
-
             //base.Update(gameTime);
         }
 
@@ -451,6 +486,20 @@ namespace RTS
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
             userInterface.Draw(spriteBatch);   
             spriteBatch.End();
+
+            Rectangle screen = new Rectangle(GraphicsDevice.Viewport.X,
+         GraphicsDevice.Viewport.Y,
+    GraphicsDevice.Viewport.Width,
+    GraphicsDevice.Viewport.Height);
+
+            // Draw the video, if we have a texture to draw.
+            if (player.State != MediaState.Stopped)
+            {
+                videoTexture = player.GetTexture();
+                spriteBatch.Begin();
+                spriteBatch.Draw(videoTexture, screen, Color.White);
+                spriteBatch.End();
+            }
 
         }
 
@@ -674,7 +723,7 @@ namespace RTS
 
             //spriteBatch.DrawString(font, "Player 1 Kills      : " + player1.getEnemiesDestroyed(), new Vector2(width - 400, 15), Color.White);
             ////    spriteBatch.DrawString(font, "Player 2 Kills      : " + player2.getEnemiesDestroyed(), new Vector2(510, 15), Color.White);
-            spriteBatch.DrawString(font, "Timer      : " + wave.WaveTimer, new Vector2(500, 200), Color.MediumBlue);
+            //spriteBatch.DrawString(font, "Timer      : " + wave.WaveTimer, new Vector2(500, 200), Color.MediumBlue);
             //spriteBatch.DrawString(font, "Player 1 Tower Kills: " + player1.getTowerEnemiesDestroyed(), new Vector2(width - 400, 35), Color.White);
             ////   spriteBatch.DrawString(font, "Player 2 Tower Kills: " + player2.getTowerEnemiesDestroyed(), new Vector2(510, 35), Color.White);
             //
