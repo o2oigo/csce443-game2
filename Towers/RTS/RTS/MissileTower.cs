@@ -26,8 +26,8 @@ namespace RTS
             if (level == 3)
                 setToLvlThree();
 
-            this.shootTimer = 5f;
-            this.towerRange = 2000f;
+            this.shootTimer = 3f;
+            this.towerRange = 450f;
             
         }
 

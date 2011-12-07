@@ -26,7 +26,7 @@ namespace RTS
             this.ilevel = level;
             damage = new Damage(0.5f, this.ilevel, ElementType.Fire, null);
             damage.type = ElementType.Fire;
-            damage.effect = new EnemyEffectBurn(game, 20, 0.2f);
+            damage.effect = new EnemyEffectBurn(game, 30, 0.5f);
 
             if (level == 2)
                 setToLvlTwo();
@@ -74,6 +74,7 @@ namespace RTS
 
             maxHP = hp = 150;
             damage.amount = 0.9f;
+            damage.effect = new EnemyEffectBurn(game, 50, 0.7f);
             level = "level 2";
             ilevel = 2;
         }
@@ -84,6 +85,7 @@ namespace RTS
 
             maxHP = hp = 200;
             damage.amount = 1.3f;
+            damage.effect = new EnemyEffectBurn(game, 70, 0.9f);
             level = "level 3";
             ilevel = 3;
         }

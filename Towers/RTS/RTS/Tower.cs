@@ -245,6 +245,11 @@ namespace RTS
             }
         }
 
+        public int getTowerIntLevel()
+        {
+            return ilevel;
+        }
+
         public Vector2 getOrigin()
         {
             return origin;
@@ -332,13 +337,10 @@ namespace RTS
 
         public virtual void setToLvlThree()
         {
-
-
             maxHP = hp = 200;
             damage.amount = 30;
             level = "level 3";
             ilevel = 3;
-
         }
 
         public void setPlayerIsNear(bool _playerIsNear)

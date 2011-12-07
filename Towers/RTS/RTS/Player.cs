@@ -564,13 +564,24 @@ namespace RTS
                     {
                         for (int i = 0; i < towerList.Count(); i++)
                         {
-                            if (towerList[i].getPlayerIsNear() == true)
+                            if (towerList[i].getPlayerIsNear() == true && towerList[i].getTowerIntLevel() == 1)
                             {
                                 if (money >= 10)
                                 {
                                     removeMoney(10);
 
                                     towerList[i].setToLvlTwo();
+                                    buildMode = false;
+                                    upgradeBuildMode = false;
+                                }
+                            }
+
+                            else if (towerList[i].getPlayerIsNear() == true && towerList[i].getTowerIntLevel() == 2)
+                            {
+                                if (money >= 10)
+                                {
+                                    removeMoney(10);
+                                    towerList[i].setToLvlThree();
                                     buildMode = false;
                                     upgradeBuildMode = false;
                                 }
@@ -686,6 +697,15 @@ namespace RTS
                                 upgradeBuildMode = false;
                             }
                             else if (towerList[i].getTowerLvl() == "level 2")
+                            {
+                                addMoney(10);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
+                            else if (towerList[i].getTowerLvl() == "level 3")
                             {
                                 addMoney(10);
                                 Sprite.removeList(towerList[i]);
@@ -914,13 +934,23 @@ namespace RTS
                     {
                         for (int i = 0; i < towerList.Count(); i++)
                         {
-                            if (towerList[i].getPlayerIsNear() == true)
+                            if (towerList[i].getPlayerIsNear() == true && towerList[i].getTowerIntLevel() == 1)
                             {
                                 if (money >= 10)
                                 {
                                     removeMoney(10);
 
                                     towerList[i].setToLvlTwo();
+                                    buildMode = false;
+                                    upgradeBuildMode = false;
+                                }
+                            }
+                            else if (towerList[i].getPlayerIsNear() == true && towerList[i].getTowerIntLevel() == 2)
+                            {
+                                if (money >= 10)
+                                {
+                                    removeMoney(10);
+                                    towerList[i].setToLvlThree();
                                     buildMode = false;
                                     upgradeBuildMode = false;
                                 }
@@ -1057,7 +1087,15 @@ namespace RTS
                                 mainBuildMode = false;
                                 upgradeBuildMode = false;
                             }
-
+                            else if (towerList[i].getTowerLvl() == "level 3")
+                            {
+                                addMoney(10);
+                                Sprite.removeList(towerList[i]);
+                                towerList.RemoveAt(i);
+                                buildMode = false;
+                                mainBuildMode = false;
+                                upgradeBuildMode = false;
+                            }
                         }
                     }
                 }
