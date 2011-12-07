@@ -27,6 +27,9 @@ namespace RTS
         int cannonTowerCost = 15;
         int missileTowerCost = 20;
 
+        int towerSelectCount = 1;
+        int towerSelectMax = 2;
+
         private float elapsedTime;
 
         private Vector2 mousePos;
@@ -379,6 +382,22 @@ namespace RTS
                         spriteBatch.Draw(missileTowerBuildInactiveTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
                     }
 
+                    #region select tower drawing
+                    if (getBuildableTowers()[0] == false)
+                    {
+                        spriteBatch.Draw(arrowTowerBuildInactiveTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
+                    }
+                    if (getBuildableTowers()[1] == false)
+                    {
+                        spriteBatch.Draw(canonTowerBuildInactiveTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
+                    }
+                    if (getBuildableTowers()[2] == false)
+                    {
+                        spriteBatch.Draw(missileTowerBuildInactiveTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
+                    }
+                    #endregion
+
+
 
 
                 }
@@ -474,7 +493,24 @@ namespace RTS
                         {
                             spriteBatch.Draw(iceTowerBuildSelectTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
                         }
+
+                        #region select tower draw
+                        if (getBuildableTowers()[4] == false)
+                        {
+                            spriteBatch.Draw(lightningTowerBuildInactiveTexture, new Vector2(position.X + 60, position.Y - 90), Color.White);
+                        }
+                        if (getBuildableTowers()[5] == false)
+                        {
+                            spriteBatch.Draw(flameTowerBuildInactiveTexture, new Vector2(position.X + 90, position.Y - 30), Color.White);
+                        }
+                        if (getBuildableTowers()[6] == false)
+                        {
+                            spriteBatch.Draw(iceTowerBuildInactiveTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
+                        }
+
+                        #endregion
                     }
+                        
 
                     else if (shootRotationAngle <= 3 * (float)Math.PI / 4 && shootRotationAngle > 1 * (float)Math.PI / 4)
                     {
@@ -490,6 +526,11 @@ namespace RTS
                     {
                         spriteBatch.Draw(sellSelectTexture, new Vector2(position.X - 103, position.Y - 33), Color.White);
                     }
+
+                }
+                if (getBuildableTowers()[4] == false && getBuildableTowers()[5] == false && getBuildableTowers()[6] == false)
+                {
+                    spriteBatch.Draw(magicTowerBuildInactiveTexture, new Vector2(position.X + 30, position.Y - 30), Color.White);
                 }
             }
         }
@@ -642,7 +683,7 @@ namespace RTS
                             // for arrow tower
                             if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -7 * (float)Math.PI / 12)
                             {
-                                if (money >= arrowTowerCost)
+                                if (money >= arrowTowerCost && getBuildableTowers()[0] == true)
                                 {
                                     removeMoney(arrowTowerCost);
                                     createArrowTower();
@@ -654,7 +695,7 @@ namespace RTS
                             // for cannon tower
                             else if (shootRotationAngle >= -7 * (float)Math.PI / 12 && shootRotationAngle < -5 * (float)Math.PI / 12)
                             {
-                                if (money >= cannonTowerCost)
+                                if (money >= cannonTowerCost && getBuildableTowers()[1] == true)
                                 {
                                     removeMoney(cannonTowerCost);
                                     removeStoneFromInventory(0);
@@ -671,7 +712,7 @@ namespace RTS
                             // for missile tower
                             else if (shootRotationAngle >= -5 * (float)Math.PI / 12 && shootRotationAngle <= -(float)Math.PI / 4)
                             {
-                                if (money >= missileTowerCost)
+                                if (money >= missileTowerCost && getBuildableTowers()[2] == true)
                                 {
                                     removeMoney(missileTowerCost);
                                     int level = 1;
@@ -686,7 +727,7 @@ namespace RTS
                             // for magic tower
                             else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= (float)Math.PI / 4)
                             {
-                                if (money >= magicTowerCost)
+                                if (money >= magicTowerCost && (getBuildableTowers()[4] == true || getBuildableTowers()[5] == true || getBuildableTowers()[6] == true))
                                 {
                                     removeMoney(magicTowerCost);
                                     int level = 1;
@@ -747,7 +788,7 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
-                            if (iceStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            if (iceStoneInInventory >= 1 && towerList[i] is MagicTower && getBuildableTowers()[6] == true)
                             {
                                 removeStoneFromInventory(1);
                                 //towerList[i].setToFireTower();
@@ -776,7 +817,7 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
-                            if (fireStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            if (fireStoneInInventory >= 1 && towerList[i] is MagicTower && getBuildableTowers()[5] == true)
                             {
                                 removeStoneFromInventory(0);
                                 //towerList[i].setToFireTower();
@@ -806,7 +847,7 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
-                            if (lightningStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            if (lightningStoneInInventory >= 1 && towerList[i] is MagicTower && getBuildableTowers()[4] == true)
                             {
                                 removeStoneFromInventory(2);
                                 int level = towerList[i].getLevel();
@@ -1509,6 +1550,10 @@ namespace RTS
             return buildableTowers;
         }
 
+        public void setBuildableTower(int index)
+        {
+            buildableTowers[index] = !buildableTowers[index];
+        }
         static public void addMoney(int _money)
         {
             money += _money;
@@ -1604,6 +1649,30 @@ namespace RTS
             return money;
         }
 
+        public int getTowerSelectCount()
+        {
+            return towerSelectCount;
+        }
+
+        public void addTowerSelectCount()
+        {
+            this.towerSelectCount++;
+        }
+
+        public void subtractTowerSelectCount()
+        {
+            this.towerSelectCount -= 1;
+        }
+
+        public int getTowerSelectMax()
+        {
+            return towerSelectMax;
+        }
+
+        public void setTowerSelectMax(int max)
+        {
+            this.towerSelectMax = max;
+        }
 
         public static int getFireStoneInInventory()
         {
