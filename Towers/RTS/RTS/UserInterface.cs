@@ -245,6 +245,14 @@ namespace RTS
         private Texture2D enemy5EncyclopediaLargeTexture;
         private Texture2D enemy6EncyclopediaLargeTexture;
         private Texture2D enemy7EncyclopediaLargeTexture;
+
+        private Texture2D enemy1EncyclopediaLarge1Texture;
+        private Texture2D enemy2EncyclopediaLarge1Texture;
+        private Texture2D enemy3EncyclopediaLarge1Texture;
+        private Texture2D enemy4EncyclopediaLarge1Texture;
+        private Texture2D enemy5EncyclopediaLarge1Texture;
+        private Texture2D enemy6EncyclopediaLarge1Texture;
+        private Texture2D enemy7EncyclopediaLarge1Texture;
         #endregion
 
         #endregion
@@ -410,6 +418,14 @@ namespace RTS
             enemy5EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\snowL");
             enemy6EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\muffinL");
             enemy7EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\puddinL");
+
+            enemy1EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\stockingL");
+            enemy2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\muffinL");
+            enemy3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\stickL");
+            enemy4EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\puddinL");
+            enemy5EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\snowL");
+            enemy6EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\muffinL");
+            enemy7EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\puddinL");
             #endregion
 
             #endregion
@@ -1472,7 +1488,7 @@ namespace RTS
                         }
                         
                         // draw select tower
-                        if (currentLevel == 1)
+                        if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3)
                         {
                             for (int i = 0; i < player1.getBuildableTowers().Count; i++)
                             {
@@ -1558,12 +1574,7 @@ namespace RTS
                             }
                             towerSelectCoord = new Vector2(100, 200);
                         }
-                        else if (currentLevel == 2)
-                        {
-                        }
-                        else if (currentLevel == 3)
-                        {
-                        }
+                        
                     }
                     #endregion
 
@@ -2834,13 +2845,12 @@ namespace RTS
             }
             if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 0 && yPos1 == 0)
             {
-                showGameScreen = true;
-                loadingGameScreen2 = true;
+                showLevel1SelectScreen = true;
                 showTitleScreen = false;
                 showPauseScreen = false;
                 showLevel2Screen = false;
                 //restartGame = true;
-                game.goNextLevel();
+                //game.goNextLevel();
             }
 
             if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 1 && yPos1 == 0)
@@ -2869,13 +2879,12 @@ namespace RTS
             }
             if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 0 && yPos1 == 0)
             {
-                showGameScreen = true;
-                loadingGameScreen3 = true;
                 showTitleScreen = false;
                 showPauseScreen = false;
                 showLevel3Screen = false;
+                showLevel1SelectScreen = true;
                 //restartGame = true;
-                game.goNextLevel();
+                //game.goNextLevel();
             }
 
             if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 1 && yPos1 == 0)
@@ -2896,14 +2905,17 @@ namespace RTS
             if (currentLevel == 1)
             {
                 player1.setTowerSelectMax(2);
+                player2.setTowerSelectMax(2);
             }
             else if (currentLevel == 2)
             {
                 player1.setTowerSelectMax(3);
+                player2.setTowerSelectMax(3);
             }
             else if (currentLevel == 3)
             {
                 player1.setTowerSelectMax(4);
+                player2.setTowerSelectMax(4);
             }
 
 
@@ -3034,7 +3046,7 @@ namespace RTS
                 }
                 else if (player2.getTowerSelectCount() != player2.getTowerSelectMax())
                 {
-                    currentState = GamePad.GetState(PlayerIndex.Two);
+                    //currentState = GamePad.GetState(PlayerIndex.Two);
                     if (xPos2 == 0 && yPos2 == 0)
                     {
                         if (player2.getBuildableTowers()[0] == true)
@@ -3123,9 +3135,10 @@ namespace RTS
                 else
                 {
                     selectElapsedTime += 1;
-                    if (selectElapsedTime >= 2)
+                    if (selectElapsedTime >= 1)
                     {
-                        currentState = GamePad.GetState(PlayerIndex.One);
+                        selectElapsedTime = 0;
+                        //currentState = GamePad.GetState(PlayerIndex.One);
                         if (currentLevel == 1)
                         {
                             showGameScreen = true;
@@ -3134,6 +3147,7 @@ namespace RTS
                             showPauseScreen = false;
                             showLevel1SelectScreen = false;
                             restartGame = true;
+                            
                         }
                         else if (currentLevel == 2)
                         {

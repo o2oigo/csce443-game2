@@ -71,7 +71,7 @@ namespace RTS
         // public ExplosionParticleSystem explosion2;
         public ExplosionSmokeParticleSystem smoke;
 
-        int live = 100;
+        int live = 25;
 
         public FireParticleSystem fire;
         public FireParticleSystem fireTower;
@@ -380,7 +380,7 @@ namespace RTS
                 if (live < 1)
                 {
                     userInterface.setScreenStatus("showGameOverScreen", true);
-                    live = 10;
+                    live = 25;
                 }
                 else if (wave.isLevelFinish == true && wave.CurrentLevel == 1 && userInterface.getScreen("showGameScreen") == true)
                 {
@@ -792,7 +792,7 @@ namespace RTS
             wave = new Wave(this,userInterface);
 
             this.ResetElapsedTime();
-            live = 100;
+            live = 25;
 
             camera.ResetCamera();
         }
@@ -840,7 +840,7 @@ namespace RTS
             
             this.ResetElapsedTime();
 
-            live = 100;
+            live = 25;
 
             camera.ResetCamera();
         }
