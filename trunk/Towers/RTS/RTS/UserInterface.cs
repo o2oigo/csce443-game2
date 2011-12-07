@@ -178,6 +178,14 @@ namespace RTS
         private Texture2D flameTowerEncyclopediaLargeTexture;
         private Texture2D shockTowerEncyclopediaLargeTexture;
 
+        private Texture2D arrowTowerEncyclopediaLarge1Texture;
+        private Texture2D canonTowerEncyclopediaLarge1Texture;
+        private Texture2D missileTowerEncyclopediaLarge1Texture;
+        private Texture2D magicTowerEncyclopediaLarge1Texture;
+        private Texture2D iceTowerEncyclopediaLarge1Texture;
+        private Texture2D flameTowerEncyclopediaLarge1Texture;
+        private Texture2D shockTowerEncyclopediaLarge1Texture;
+
         // Tower Description part 2
         private Texture2D arrowTower2EncyclopediaLargeTexture;
         private Texture2D canonTower2EncyclopediaLargeTexture;
@@ -187,6 +195,14 @@ namespace RTS
         private Texture2D flameTower2EncyclopediaLargeTexture;
         private Texture2D shockTower2EncyclopediaLargeTexture;
 
+        private Texture2D arrowTower2EncyclopediaLarge1Texture;
+        private Texture2D canonTower2EncyclopediaLarge1Texture;
+        private Texture2D missileTower2EncyclopediaLarge1Texture;
+        private Texture2D magicTower2EncyclopediaLarge1Texture;
+        private Texture2D iceTower2EncyclopediaLarge1Texture;
+        private Texture2D flameTower2EncyclopediaLarge1Texture;
+        private Texture2D shockTower2EncyclopediaLarge1Texture;
+
         // Tower Description part 3
         private Texture2D arrowTower3EncyclopediaLargeTexture;
         private Texture2D canonTower3EncyclopediaLargeTexture;
@@ -195,6 +211,14 @@ namespace RTS
         private Texture2D iceTower3EncyclopediaLargeTexture;
         private Texture2D flameTower3EncyclopediaLargeTexture;
         private Texture2D shockTower3EncyclopediaLargeTexture;
+
+        private Texture2D arrowTower3EncyclopediaLarge1Texture;
+        private Texture2D canonTower3EncyclopediaLarge1Texture;
+        private Texture2D missileTower3EncyclopediaLarge1Texture;
+        private Texture2D magicTower3EncyclopediaLarge1Texture;
+        private Texture2D iceTower3EncyclopediaLarge1Texture;
+        private Texture2D flameTower3EncyclopediaLarge1Texture;
+        private Texture2D shockTower3EncyclopediaLarge1Texture;
         #endregion
 
         #region enemy
@@ -285,24 +309,24 @@ namespace RTS
             canonTowerEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannon1");
             missileTowerEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missile");
             magicTowerEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\magic");
-            iceTowerEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice");
+            iceTowerEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice1");
             flameTowerEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flame");
             shockTowerEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\lightning1");
 
-            arrowTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrow");
+            arrowTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrow2");
             canonTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannon3");
-            missileTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missile");
+            missileTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missile2");
             magicTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\magic");
-            iceTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice");
-            flameTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flame");
+            iceTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice2");
+            flameTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flame2");
             shockTower2EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\lightning3");
 
-            arrowTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrow");
+            arrowTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrow3");
             canonTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannon5");
-            missileTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missile");
+            missileTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missile3");
             magicTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\magic");
-            iceTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice");
-            flameTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flame");
+            iceTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice3");
+            flameTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flame3");
             shockTower3EncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\lightning5");
 
 
@@ -312,25 +336,53 @@ namespace RTS
             canonTowerEncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannon1L");
             missileTowerEncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missileL");
             magicTowerEncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\magicL");
-            iceTowerEncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\iceL");
+            iceTowerEncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice1L");
             flameTowerEncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flameL");
             shockTowerEncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\lightning1L");
 
-            arrowTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrowL");
+            arrowTowerEncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrowLv1");
+            canonTowerEncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannonLv1");
+            missileTowerEncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\missileLv1");
+            magicTowerEncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\magicDescription");
+            iceTowerEncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\iceLv1");
+            flameTowerEncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\flameLv1");
+            shockTowerEncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\telsaLv1");
+
+
+
+            arrowTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrow2L");
             canonTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannon3L");
-            missileTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missileL");
+            missileTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missile2L");
             magicTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\magicL");
-            iceTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\iceL");
-            flameTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flameL");
+            iceTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice2L");
+            flameTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flame2L");
             shockTower2EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\lightning3L");
 
-            arrowTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrowL");
+            arrowTower2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrowLv2");
+            canonTower2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannonLv2");
+            missileTower2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\missileLv2");
+            magicTower2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\magicDescription");
+            iceTower2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\iceLv2");
+            flameTower2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\flameLv2");
+            shockTower2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\telsaLv2");
+
+
+
+            arrowTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrow3L");
             canonTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannon5L");
-            missileTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missileL");
+            missileTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\missle3L");
             magicTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\magicL");
-            iceTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\iceL");
-            flameTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flameL");
+            iceTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\ice3L");
+            flameTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\flame3L");
             shockTower3EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\lightning5L");
+
+            arrowTower3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\arrowLv3");
+            canonTower3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\cannonLv3");
+            missileTower3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\missileLv3");
+            magicTower3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\magicDescription");
+            iceTower3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\iceLv3");
+            flameTower3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\flameLv3");
+            shockTower3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\telsaLv3");
             #endregion
 
             #region enemy encyclopedia
