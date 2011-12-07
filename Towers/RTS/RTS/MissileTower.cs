@@ -34,6 +34,8 @@ namespace RTS
         public override void  LoadContent()
         {
             shootSound = contentManager.Load<SoundEffect>("Sound/cannon");
+            shootSound2 = contentManager.Load<SoundEffect>("Sound/cannon2");
+            shootSound3 = contentManager.Load<SoundEffect>("Sound/cannon3");
 
             missileTowerTexture = contentManager.Load<Texture2D>("missileLevel1");
             missileTowerUpgrade2Texture = contentManager.Load<Texture2D>("missileLevel2");

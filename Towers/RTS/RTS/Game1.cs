@@ -490,6 +490,11 @@ namespace RTS
                                         FlameTower temp = (FlameTower)player.getTowers()[k];
                                         temp.getSound().Stop();
                                     }
+                                    else if (player.getTowers()[k].getTowerName() == "Ice Tower")
+                                    {
+                                        IceTower temp = (IceTower)player.getTowers()[k];
+                                        temp.getSound().Stop();
+                                    }
                                     Sprite.removeList(tower);
                                     player.getTowers().RemoveAt(k);
 
@@ -577,14 +582,16 @@ namespace RTS
                     {   
                         if (tower.getTowerName() == "Ice Tower")
                         {
+                            IceTower temp = (IceTower)tower;
                             if (Vector2.Distance(enemies[i].Position, tower.Position) <= tower.getRange())
                             {
+                                //temp.getSound().Play();
                                 if (enemies[i].EffectStn is EnemyEffectStun) { }
                                 else
                                 {
                                     enemies[i].MoveSpeed = .2f;
                                 }
-                            }                            
+                            }
                         }
                     }
                 }
@@ -679,6 +686,11 @@ namespace RTS
                         FlameTower temp = (FlameTower)player.getTowers()[k];
                         temp.getSound().Stop();
                     }
+                    else if (player.getTowers()[k].getTowerName() == "Ice Tower")
+                    {
+                        IceTower temp = (IceTower)player.getTowers()[k];
+                        temp.getSound().Stop();
+                    }
                     Sprite.removeList(player.getTowers()[k]);
                     player.getTowers().RemoveAt(k);
                 }
@@ -714,6 +726,11 @@ namespace RTS
                     if (player.getTowers()[k].getTowerName() == "Flame Tower")
                     {
                         FlameTower temp = (FlameTower)player.getTowers()[k];
+                        temp.getSound().Stop();
+                    }
+                    else if (player.getTowers()[k].getTowerName() == "Ice Tower")
+                    {
+                        IceTower temp = (IceTower)player.getTowers()[k];
                         temp.getSound().Stop();
                     }
                     Sprite.removeList(player.getTowers()[k]);
@@ -805,6 +822,11 @@ namespace RTS
                     if (player.getTowers()[k].getTowerName() == "Flame Tower")
                     {
                         FlameTower temp = (FlameTower)player.getTowers()[k];
+                        temp.getSound().Stop();
+                    }
+                    else if (player.getTowers()[k].getTowerName() == "Ice Tower")
+                    {
+                        IceTower temp = (IceTower)player.getTowers()[k];
                         temp.getSound().Stop();
                     }
                 }

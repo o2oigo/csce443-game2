@@ -47,6 +47,8 @@ namespace RTS
         protected int ilevel = 1;
         protected string towerName = "Cannon Tower";
         protected SoundEffect shootSound;
+        protected SoundEffect shootSound2;
+        protected SoundEffect shootSound3;
         protected bool isShooting = false;
        // protected int attackDamage = 25;
 
@@ -101,7 +103,9 @@ namespace RTS
         
         public virtual void LoadContent()
         {
-            shootSound = contentManager.Load<SoundEffect>("Sound/cannon2 - no filter");
+            shootSound = contentManager.Load<SoundEffect>("Sound/cannon");
+            shootSound2 = contentManager.Load<SoundEffect>("Sound/cannon2");
+            shootSound3 = contentManager.Load<SoundEffect>("Sound/cannon3");
 
             cannon1Texture = contentManager.Load<Texture2D>("cannon1");
             cannon2Texture = contentManager.Load<Texture2D>("cannon2");
@@ -227,7 +231,14 @@ namespace RTS
 
         public virtual void playShootSound()
         {
-            shootSound.Play();
+            Random rand = new Random();
+            int next = rand.Next(1, 4);
+            if (next == 1)
+                shootSound.Play();
+            else if (next == 2)
+                shootSound2.Play();
+            else
+                shootSound3.Play();
         }
 
         public virtual void updateProjectiles(GameTime gameTime)

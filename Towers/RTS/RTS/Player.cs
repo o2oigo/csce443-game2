@@ -691,6 +691,20 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear() == true)
                         {
+                            if (towerList[i].getTowerName() == "Flame Tower")
+                            {
+
+                                FlameTower temp = (FlameTower)towerList[i];
+                                temp.getSound().Stop();
+
+                            }
+                            if (towerList[i].getTowerName() == "Ice Tower")
+                            {
+
+                                IceTower temp = (IceTower)towerList[i];
+                                temp.getSound().Stop();
+
+                            }
                             if (towerList[i].getTowerLvl() == "level 1")
                             {
                                 addMoney(5);
@@ -1070,6 +1084,13 @@ namespace RTS
                             {
 
                                 FlameTower temp = (FlameTower)towerList[i];
+                                temp.getSound().Stop();
+
+                            }
+                            if (towerList[i].getTowerName() == "Ice Tower")
+                            {
+
+                                IceTower temp = (IceTower)towerList[i];
                                 temp.getSound().Stop();
 
                             }
