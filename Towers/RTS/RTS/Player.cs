@@ -58,8 +58,14 @@ namespace RTS
         private Texture2D buildTexture;
         private Texture2D cancelTexture;
         private Texture2D upgradeTexture;
+        private Texture2D upgradeInactiveTexture;
+        private Texture2D upgradeSelectTexture;
         private Texture2D sellTexture;
+        private Texture2D sellInactiveTexture;
+        private Texture2D sellSelectTexture;
         private Texture2D enhanceTexture;
+        private Texture2D enhanceInactiveTexture;
+        private Texture2D enhanceSelectTexture;
         private Texture2D fireTowerBuildTexture;
         private Texture2D lightningTowerBuildTexture;
         private Texture2D arrowTowerBuildTexture;
@@ -170,8 +176,14 @@ namespace RTS
             buildTexture = contentManager.Load<Texture2D>("buildSmall");
             cancelTexture = contentManager.Load<Texture2D>("cancelSmall");
             upgradeTexture = contentManager.Load<Texture2D>("upgradeSmall");
+            upgradeSelectTexture = contentManager.Load<Texture2D>("upgradeSmallSelected");
+            upgradeInactiveTexture = contentManager.Load<Texture2D>("upgradeSmallInactive");
             enhanceTexture = contentManager.Load<Texture2D>("enhanceSmall");
+            enhanceInactiveTexture = contentManager.Load<Texture2D>("enhanceSmallInactive");
+            enhanceSelectTexture = contentManager.Load<Texture2D>("enhanceSmallSelected");
             sellTexture = contentManager.Load<Texture2D>("sellSmall");
+            sellInactiveTexture = contentManager.Load<Texture2D>("sellSmallInactive");
+            sellSelectTexture = contentManager.Load<Texture2D>("sellSmallSelected");
 
             lightningTowerBuildTexture = contentManager.Load<Texture2D>("lightningTowerSmall");
             //fireTowerBuildTexture = contentManager.Load<Texture2D>("fTowerSmall");
@@ -369,7 +381,7 @@ namespace RTS
                     spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                     spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
-                    //spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                    spriteBatch.Draw(enhanceInactiveTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
 
                     if (shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4)
                     {
@@ -381,7 +393,7 @@ namespace RTS
                     spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                     spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
-                    spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                    spriteBatch.Draw(enhanceInactiveTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
 
                     if (shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4)
                     {
@@ -620,7 +632,7 @@ namespace RTS
                     }
                 }
 
-                else if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= (float)Math.PI / 4  && upgradeBuildMode == true)
+                else if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= - (float)Math.PI / 4  && upgradeBuildMode == true)
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
