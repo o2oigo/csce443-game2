@@ -24,9 +24,9 @@ namespace RTS
             flameTexture = game.Content.Load<Texture2D>("fireParticle");
             towerName = "Flame Tower";
             this.ilevel = level;
-            damage = new Damage(0.0f, this.ilevel, ElementType.Fire, null);
+            damage = new Damage(.037f, this.ilevel, ElementType.Fire, null);
             damage.type = ElementType.Fire;
-            damage.effect = new EnemyEffectBurn(game, 30, 0.5f);
+            damage.effect = new EnemyEffectBurn(game, 30, 0.018f);
 
             if (level == 2)
                 setToLvlTwo();
@@ -34,7 +34,7 @@ namespace RTS
                 setToLvlThree();
 
             this.shootTimer = .05f;
-            this.towerRange = 300f;
+            this.towerRange = rangeVariable * 2;
             
         }
 
@@ -73,8 +73,9 @@ namespace RTS
             flameTowerTexture = flameTowerUpgrade2Texture;
 
             maxHP = hp = 150;
-            damage.amount = 0.9f;
-            damage.effect = new EnemyEffectBurn(game, 50, 0.7f);
+            damage.amount = 0.037f * 2f;
+            towerRange = rangeVariable * 2f;
+            damage.effect = new EnemyEffectBurn(game, 50, 0.018f * 2f);
             level = "level 2";
             ilevel = 2;
         }
@@ -84,8 +85,9 @@ namespace RTS
             flameTowerTexture = flameTowerUpgrade3Texture;
 
             maxHP = hp = 200;
-            damage.amount = 1.3f;
-            damage.effect = new EnemyEffectBurn(game, 70, 0.9f);
+            //damage.amount = 1.3f;
+            towerRange = rangeVariable * 3f;
+            damage.effect = new EnemyEffectBurn(game, 70, .018f * 2f);
             level = "level 3";
             ilevel = 3;
         }

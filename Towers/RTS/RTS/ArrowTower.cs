@@ -53,7 +53,9 @@ namespace RTS
             : base(game, playerIndex, startPosition)
         {
             towerName = "Arrow Tower";
-            damage = new Damage(10, this.ilevel, ElementType.Normal, null);      
+            damage = new Damage(1, this.ilevel, ElementType.Normal, null);
+            this.towerRange = rangeVariable * 4;
+            this.shootTimer = timeVariable / 3;
         }
 
         public override void  LoadContent()
@@ -164,7 +166,9 @@ namespace RTS
             arrow12Texture = arrow212Texture;
 
             maxHP = hp = 150;
-            damage.amount = 20;
+            damage.amount = 2;
+            this.towerRange = rangeVariable * 5;
+            this.shootTimer = timeVariable / 4;
             level = "level 2";
             ilevel = 2;
         }
@@ -185,7 +189,9 @@ namespace RTS
             arrow12Texture = arrow312Texture;
 
             maxHP = hp = 200;
-            damage.amount = 30;
+            damage.amount = 3;
+            this.towerRange = rangeVariable * 6;
+            this.shootTimer = timeVariable / 5;
             level = "level 3";
             ilevel = 3;
         }

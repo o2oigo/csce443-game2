@@ -318,6 +318,7 @@ namespace RTS
                    // player2.addOtherPlayerTowers(player1.getTowers());
                     player2.Update(gameTime, enemies);
                    // player1.addOtherPlayerTowers(player2.getTowers());
+                    Player.updateTowers(gameTime, enemies);
                 
 
                 //Update Enemies
@@ -485,7 +486,7 @@ namespace RTS
                     {
                         if (stones[j].Type == ElementType.Normal)
                         {
-                            Player.addMoney(50);
+                            Player.addMoney(3);
                         }
                         else
                         {

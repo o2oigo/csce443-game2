@@ -20,11 +20,15 @@ namespace RTS
         protected PlayerIndex playerIndex;
         protected Enemy shootAt;
 
-        protected float shootTimer = .8f;
-        protected float soundTimer = 1f;
-        protected float towerRange = 400;
+
         protected float shootElapsedTime = 5f;
         protected float soundElapsedTime = 0f;
+        protected float timeVariable = 4f;
+        protected float rangeVariable = 80f;
+        protected float shootTimer;
+        protected float soundTimer = 1f;
+        protected float towerRange;
+        
 
         protected SpriteFont font;
         //protected int shotsTaken = 0;
@@ -124,9 +128,13 @@ namespace RTS
             graphicsDevice = game.GraphicsDevice;
             position = startPosition;
             currentState = GamePad.GetState(PlayerIndex.One);
+
+            towerRange = rangeVariable * 2 ;
+            shootTimer = timeVariable / 2;
+
             //towerRange = 50;
 
-            //damage = new Damage(10, 1,ElementType.Normal, new EnemyEffectBurn(game,5,1));
+            damage = new Damage(3, 1,ElementType.Normal, null);
             //damage = new Damage(10, 1, ElementType.Normal, null);
 
             map = game.Map;
@@ -254,7 +262,7 @@ namespace RTS
                 {
                     if (shootAt == null && Vector2.Distance(position, enemy.Position) <= towerRange)
                         shootAt = enemy;
-                    if (Vector2.Distance(position, enemy.Position) <= towerRange && (Vector2.Distance(map.getBaseCoordinate(), enemy.Position) < Vector2.Distance(map.getBaseCoordinate(), shootAt.Position)))
+                    if (Vector2.Distance(position, enemy.Position) <= towerRange && enemy.HP < shootAt.HP /*(Vector2.Distance(map.getBaseCoordinate(), enemy.Position) < Vector2.Distance(map.getBaseCoordinate(), shootAt.Position))*/)
                     {
                         shootAt = enemy;     
                         break;
@@ -408,7 +416,9 @@ namespace RTS
             cannon12Texture = cannon212Texture;
 
             maxHP = hp = 150;
-            damage.amount = 20;
+            damage.amount = 4;
+            towerRange = rangeVariable * 3;
+            shootTimer = timeVariable / 3;
             level = "level 2";
             ilevel = 2;
 
@@ -430,7 +440,9 @@ namespace RTS
             cannon12Texture = cannon312Texture;
 
             maxHP = hp = 200;
-            damage.amount = 30;
+            damage.amount = 6;
+            towerRange = rangeVariable * 4;
+            shootTimer = timeVariable / 3;
             level = "level 3";
             ilevel = 3;
         }

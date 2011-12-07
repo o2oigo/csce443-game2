@@ -22,7 +22,8 @@ namespace RTS
             lightningTexture = game.Content.Load<Texture2D>("LightningParticle");
             towerName = "Lightning Tower";
             this.ilevel = level;
-            damage = new Damage(5, this.ilevel, ElementType.Lightning, null);
+            damage = new Damage(1, this.ilevel, ElementType.Lightning, null);
+            
             //damage.type = ElementType.Lightning;
             damage.effect = new EnemyEffectStun(game, 5);
             //if (isFire)
@@ -35,7 +36,8 @@ namespace RTS
             if (level == 3)
                 setToLvlThree();
 
-            this.shootTimer = 2f;
+            this.shootTimer = 4/4;
+            this.towerRange = rangeVariable * 4;
         }
 
         public override void  LoadContent()
@@ -68,7 +70,7 @@ namespace RTS
         {
             lightningTowerTexture = lightningTowerUpgrade2Texture;
             maxHP = hp = 150;
-            damage.amount = 10;
+            damage.amount = 2;
             //damage.type = ElementType.Normal;
             level = "level 2";
             ilevel = 2;
@@ -78,7 +80,8 @@ namespace RTS
         {
             lightningTowerTexture = lightningTowerUpgrade3Texture;
             maxHP = hp = 200;
-            damage.amount = 15;
+            damage.amount = 3;
+            this.towerRange = rangeVariable * 5;
             //damage.type = ElementType.Normal;
             level = "level 3";
             ilevel = 3;
