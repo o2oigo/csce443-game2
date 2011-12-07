@@ -25,6 +25,8 @@ namespace RTS
         MouseState oldMousestate;
         GamePadState currentState;
         GamePadState oldState;
+        float distance;
+        float oldDistance;
 
         bool level1 = true;
         bool level2 = false;
@@ -87,43 +89,56 @@ namespace RTS
                 maxZoom = 1;
             }
 
-            if (keystate.IsKeyDown(Keys.Right))
-                Position += new Vector2(400.0f * elapsedTime, 0.0f);
-
-            if (keystate.IsKeyDown(Keys.Left))
-                Position += new Vector2(-400.0f * elapsedTime, 0.0f);
-
-            if (keystate.IsKeyDown(Keys.Down))
-                Position += new Vector2(0.0f, 400.0f * elapsedTime);
-
-            if (keystate.IsKeyDown(Keys.Up))
-                Position += new Vector2(0.0f, -400.0f * elapsedTime);
+            //if (keystate.IsKeyDown(Keys.Right))
+            //    Position += new Vector2(400.0f * elapsedTime, 0.0f);
+            //
+            //if (keystate.IsKeyDown(Keys.Left))
+            //    Position += new Vector2(-400.0f * elapsedTime, 0.0f);
+            //
+            //if (keystate.IsKeyDown(Keys.Down))
+            //    Position += new Vector2(0.0f, 400.0f * elapsedTime);
+            //
+            //if (keystate.IsKeyDown(Keys.Up))
+            //    Position += new Vector2(0.0f, -400.0f * elapsedTime);
+            //
+            //// override previous Position function
+            //if (keystate.IsKeyDown(Keys.L))
+            //{
+            //    Position = new Vector2(players[0].Position.X - (1280/2),players[0].Position.Y - (1024/2));
+            //}
 
             // override previous Position function
-            if (keystate.IsKeyDown(Keys.L))
-            {
-                Position = new Vector2(players[0].Position.X - (1280/2),players[0].Position.Y - (1024/2));
-            }
-
-            // override previous Position function
-            Position = new Vector2(players[0].Position.X - (1280 / 2), players[0].Position.Y - (1024 / 2));
+            //Position = new Vector2(players[0].Position.X - (1280 / 2), players[0].Position.Y - (1024 / 2));
 
             if (keystate.IsKeyDown(Keys.PageUp))
             {
                 if (Zoom < maxZoom)
-                    Zoom += 2.5f * elapsedTime * Zoom;
+                    Zoom += 5.5f * elapsedTime * Zoom;
             }
 
             if (keystate.IsKeyDown(Keys.PageDown))
             {   
                 if (Zoom > minZoom)
-                    Zoom -= 2.5f * elapsedTime * Zoom;
+                    Zoom -= 5.5f * elapsedTime * Zoom;
             }
 
+            Vector2 playerMidPoint = new Vector2((players[0].Position.X + players[1].Position.X)/2, (players[0].Position.Y+players[1].Position.Y)/ 2);
+            Position = new Vector2(playerMidPoint.X - (1280 / 2), playerMidPoint.Y - (1024 / 2));
             
-            
+            float tempZoom = 1280/(float)(Vector2.Distance(players[0].Position,players[1].Position));
+            distance = Vector2.Distance(players[0].Position, players[1].Position);
 
+            if (distance < 800)
+                Zoom = 1;
+            else if (distance >= 800)
+            {
+                if (Zoom > minZoom && distance > oldDistance)
+                    Zoom -= .1f * elapsedTime * Zoom;
+                if (Zoom < maxZoom && distance < oldDistance)
+                    Zoom += .1f * elapsedTime * Zoom;
+            }
             oldKeyState = keystate;
+            oldDistance = distance;
         }
 
         /// <summary>
