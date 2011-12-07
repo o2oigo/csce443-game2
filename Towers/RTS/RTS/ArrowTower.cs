@@ -61,18 +61,18 @@ namespace RTS
             shootSound = contentManager.Load<SoundEffect>("Sound/cannon");
 
             //Level 1
-            arrow1Texture = contentManager.Load<Texture2D>("arrow7");
-            arrow2Texture = contentManager.Load<Texture2D>("arrow8");
-            arrow3Texture = contentManager.Load<Texture2D>("arrow9");
-            arrow4Texture = contentManager.Load<Texture2D>("arrow10");
-            arrow5Texture = contentManager.Load<Texture2D>("arrow11");
-            arrow6Texture = contentManager.Load<Texture2D>("arrow12");
-            arrow7Texture = contentManager.Load<Texture2D>("arrow1");
-            arrow8Texture = contentManager.Load<Texture2D>("arrow2");
-            arrow9Texture = contentManager.Load<Texture2D>("arrow3");
-            arrow10Texture = contentManager.Load<Texture2D>("arrow4");
-            arrow11Texture = contentManager.Load<Texture2D>("arrow5");
-            arrow12Texture = contentManager.Load<Texture2D>("arrow6");
+            arrow1Texture = contentManager.Load<Texture2D>("arrow1");
+            arrow2Texture = contentManager.Load<Texture2D>("arrow2");
+            arrow3Texture = contentManager.Load<Texture2D>("arrow3");
+            arrow4Texture = contentManager.Load<Texture2D>("arrow4");
+            arrow5Texture = contentManager.Load<Texture2D>("arrow5");
+            arrow6Texture = contentManager.Load<Texture2D>("arrow6");
+            arrow7Texture = contentManager.Load<Texture2D>("arrow7");
+            arrow8Texture = contentManager.Load<Texture2D>("arrow8");
+            arrow9Texture = contentManager.Load<Texture2D>("arrow9");
+            arrow10Texture = contentManager.Load<Texture2D>("arrow10");
+            arrow11Texture = contentManager.Load<Texture2D>("arrow11");
+            arrow12Texture = contentManager.Load<Texture2D>("arrow12");
 
             //Level 3
             arrow21Texture = contentManager.Load<Texture2D>("arrowLevelTwo7");
@@ -89,18 +89,18 @@ namespace RTS
             arrow212Texture = contentManager.Load<Texture2D>("arrowLevelTwo6");
 
             //Level 3
-            arrow31Texture = contentManager.Load<Texture2D>("arrowLevelThree1");
-            arrow32Texture = contentManager.Load<Texture2D>("arrowLevelThree2");
-            arrow33Texture = contentManager.Load<Texture2D>("arrowLevelThree3");
-            arrow34Texture = contentManager.Load<Texture2D>("arrowLevelThree4");
-            arrow35Texture = contentManager.Load<Texture2D>("arrowLevelThree5");
-            arrow36Texture = contentManager.Load<Texture2D>("arrowLevelThree6");
-            arrow37Texture = contentManager.Load<Texture2D>("arrowLevelThree7");
-            arrow38Texture = contentManager.Load<Texture2D>("arrowLevelThree8");
-            arrow39Texture = contentManager.Load<Texture2D>("arrowLevelThree9");
-            arrow310Texture = contentManager.Load<Texture2D>("arrowLevelThree10");
-            arrow311Texture = contentManager.Load<Texture2D>("arrowLevelThree11");
-            arrow312Texture = contentManager.Load<Texture2D>("arrowLevelThree12");
+            arrow31Texture = contentManager.Load<Texture2D>("arrowLevelThree7");
+            arrow32Texture = contentManager.Load<Texture2D>("arrowLevelThree8");
+            arrow33Texture = contentManager.Load<Texture2D>("arrowLevelThree9");
+            arrow34Texture = contentManager.Load<Texture2D>("arrowLevelThree10");
+            arrow35Texture = contentManager.Load<Texture2D>("arrowLevelThree11");
+            arrow36Texture = contentManager.Load<Texture2D>("arrowLevelThree12");
+            arrow37Texture = contentManager.Load<Texture2D>("arrowLevelThree1");
+            arrow38Texture = contentManager.Load<Texture2D>("arrowLevelThree2");
+            arrow39Texture = contentManager.Load<Texture2D>("arrowLevelThree3");
+            arrow310Texture = contentManager.Load<Texture2D>("arrowLevelThree4");
+            arrow311Texture = contentManager.Load<Texture2D>("arrowLevelThree5");
+            arrow312Texture = contentManager.Load<Texture2D>("arrowLevelThree6");
 
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
