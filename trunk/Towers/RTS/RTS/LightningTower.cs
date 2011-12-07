@@ -22,8 +22,8 @@ namespace RTS
             lightningTexture = game.Content.Load<Texture2D>("LightningParticle");
             towerName = "Lightning Tower";
             this.ilevel = level;
-            //damage = new Damage(10, this.ilevel, ElementType.Lightning, null);
-            damage.type = ElementType.Lightning;
+            damage = new Damage(5, this.ilevel, ElementType.Lightning, null);
+            //damage.type = ElementType.Lightning;
             damage.effect = new EnemyEffectStun(game, 2);
             //if (isFire)
             //{
@@ -44,7 +44,7 @@ namespace RTS
 
             lightningTowerTexture = contentManager.Load<Texture2D>("lightningTower");
             lightningTowerUpgrade2Texture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
-            lightningTowerUpgrade2Texture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
+            lightningTowerUpgrade3Texture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = lightningTowerTexture.Width / 2;
@@ -72,7 +72,7 @@ namespace RTS
         public override void setToLvlThree()
         {
             lightningTowerTexture = lightningTowerUpgrade3Texture;
-            base.setToLvlTwo();
+            base.setToLvlThree();
         }
  
         public override void createProjectile(Enemy target)
