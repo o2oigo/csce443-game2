@@ -58,6 +58,7 @@ namespace RTS
         protected double shootRotationAngle = 0;
 
         //private Texture2D texture;
+        //Level 1
         private Texture2D cannon1Texture;
         private Texture2D cannon2Texture;
         private Texture2D cannon3Texture;
@@ -70,6 +71,35 @@ namespace RTS
         private Texture2D cannon10Texture;
         private Texture2D cannon11Texture;
         private Texture2D cannon12Texture;
+
+        //Level 2
+        private Texture2D cannon21Texture;
+        private Texture2D cannon22Texture;
+        private Texture2D cannon23Texture;
+        private Texture2D cannon24Texture;
+        private Texture2D cannon25Texture;
+        private Texture2D cannon26Texture;
+        private Texture2D cannon27Texture;
+        private Texture2D cannon28Texture;
+        private Texture2D cannon29Texture;
+        private Texture2D cannon210Texture;
+        private Texture2D cannon211Texture;
+        private Texture2D cannon212Texture;
+
+        //Level 3
+        private Texture2D cannon31Texture;
+        private Texture2D cannon32Texture;
+        private Texture2D cannon33Texture;
+        private Texture2D cannon34Texture;
+        private Texture2D cannon35Texture;
+        private Texture2D cannon36Texture;
+        private Texture2D cannon37Texture;
+        private Texture2D cannon38Texture;
+        private Texture2D cannon39Texture;
+        private Texture2D cannon310Texture;
+        private Texture2D cannon311Texture;
+        private Texture2D cannon312Texture;
+
         protected Texture2D turretTexture;
 
         protected List<Projectile> projectileList = new List<Projectile>(5);
@@ -121,6 +151,33 @@ namespace RTS
             cannon10Texture = contentManager.Load<Texture2D>("cannon10");
             cannon11Texture = contentManager.Load<Texture2D>("cannon11");
             cannon12Texture = contentManager.Load<Texture2D>("cannon12");
+
+            cannon21Texture = contentManager.Load<Texture2D>("cannonThree11");
+            cannon22Texture = contentManager.Load<Texture2D>("cannonThree10");
+            cannon23Texture = contentManager.Load<Texture2D>("cannonThree9");
+            cannon24Texture = contentManager.Load<Texture2D>("cannonThree8");
+            cannon25Texture = contentManager.Load<Texture2D>("cannonThree7");
+            cannon26Texture = contentManager.Load<Texture2D>("cannonThree6");
+            cannon27Texture = contentManager.Load<Texture2D>("cannonThree5");
+            cannon28Texture = contentManager.Load<Texture2D>("cannonThree4");
+            cannon29Texture = contentManager.Load<Texture2D>("cannonThree3");
+            cannon210Texture = contentManager.Load<Texture2D>("cannonThree2");
+            cannon211Texture = contentManager.Load<Texture2D>("cannonThree1");
+            cannon212Texture = contentManager.Load<Texture2D>("cannonThree12");
+
+            cannon31Texture = contentManager.Load<Texture2D>("cannonFive11");
+            cannon32Texture = contentManager.Load<Texture2D>("cannonFive10");
+            cannon33Texture = contentManager.Load<Texture2D>("cannonFive9");
+            cannon34Texture = contentManager.Load<Texture2D>("cannonFive8");
+            cannon35Texture = contentManager.Load<Texture2D>("cannonFive7");
+            cannon36Texture = contentManager.Load<Texture2D>("cannonFive6");
+            cannon37Texture = contentManager.Load<Texture2D>("cannonFive5");
+            cannon38Texture = contentManager.Load<Texture2D>("cannonFive4");
+            cannon39Texture = contentManager.Load<Texture2D>("cannonFive3");
+            cannon310Texture = contentManager.Load<Texture2D>("cannonFive2");
+            cannon311Texture = contentManager.Load<Texture2D>("cannonFive1");
+            cannon312Texture = contentManager.Load<Texture2D>("cannonFive12");
+
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = cannon1Texture.Width / 2;
@@ -337,12 +394,21 @@ namespace RTS
 
         public virtual void setToLvlTwo()
         {
+            cannon1Texture = cannon21Texture;
+            cannon2Texture = cannon22Texture;
+            cannon3Texture = cannon23Texture;
+            cannon4Texture = cannon24Texture;
+            cannon5Texture = cannon25Texture;
+            cannon6Texture = cannon26Texture;
+            cannon7Texture = cannon27Texture;
+            cannon8Texture = cannon28Texture;
+            cannon9Texture = cannon29Texture;
+            cannon10Texture = cannon210Texture;
+            cannon11Texture = cannon211Texture;
+            cannon12Texture = cannon212Texture;
 
-            //shotsToDestroy = 150;
-            //hp += 50;
             maxHP = hp = 150;
             damage.amount = 20;
-            //damage.type = ElementType.Normal;
             level = "level 2";
             ilevel = 2;
 
@@ -350,6 +416,19 @@ namespace RTS
 
         public virtual void setToLvlThree()
         {
+            cannon1Texture = cannon31Texture;
+            cannon2Texture = cannon32Texture;
+            cannon3Texture = cannon33Texture;
+            cannon4Texture = cannon34Texture;
+            cannon5Texture = cannon35Texture;
+            cannon6Texture = cannon36Texture;
+            cannon7Texture = cannon37Texture;
+            cannon8Texture = cannon38Texture;
+            cannon9Texture = cannon39Texture;
+            cannon10Texture = cannon310Texture;
+            cannon11Texture = cannon311Texture;
+            cannon12Texture = cannon312Texture;
+
             maxHP = hp = 200;
             damage.amount = 30;
             level = "level 3";
