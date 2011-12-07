@@ -705,16 +705,19 @@ namespace RTS
                             {
                                 spriteBatch.Draw(arrowTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(arrowTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(arrowTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 2)
                             {
                                 spriteBatch.Draw(arrowTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(arrowTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(arrowTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 3)
                             {
                                 spriteBatch.Draw(arrowTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(arrowTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(arrowTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                         }
                         if (xPos2 == 1 && yPos2 == 0)
@@ -727,16 +730,19 @@ namespace RTS
                             {
                                 spriteBatch.Draw(canonTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(canonTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(canonTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 2)
                             {
                                 spriteBatch.Draw(canonTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(canonTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(canonTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 3)
                             {
                                 spriteBatch.Draw(canonTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(canonTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(canonTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                         }
                         if (xPos2 == 0 && yPos2 == 1)
@@ -749,16 +755,19 @@ namespace RTS
                             {
                                 spriteBatch.Draw(magicTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(magicTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(magicTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 2)
                             {
                                 spriteBatch.Draw(magicTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(magicTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(magicTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 3)
                             {
                                 spriteBatch.Draw(magicTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(magicTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(magicTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                         }
                         if (xPos2 == 1 && yPos2 == 1)
@@ -771,16 +780,19 @@ namespace RTS
                             {
                                 spriteBatch.Draw(missileTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(missileTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(missileTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 2)
                             {
                                 spriteBatch.Draw(missileTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(missileTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(missileTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 3)
                             {
                                 spriteBatch.Draw(missileTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(missileTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(missileTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                         }
                         if (xPos2 == 0 && yPos2 == 2)
@@ -793,16 +805,19 @@ namespace RTS
                             {
                                 spriteBatch.Draw(flameTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(flameTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(flameTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 2)
                             {
                                 spriteBatch.Draw(flameTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(flameTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(flameTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 3)
                             {
                                 spriteBatch.Draw(flameTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(flameTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(flameTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                         }
                         if (xPos2 == 1 && yPos2 == 2)
@@ -815,16 +830,19 @@ namespace RTS
                             {
                                 spriteBatch.Draw(iceTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(iceTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(iceTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 2)
                             {
                                 spriteBatch.Draw(iceTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(iceTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(iceTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 3)
                             {
                                 spriteBatch.Draw(iceTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(iceTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(iceTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                         }
                         if (xPos2 == 0 && yPos2 == 3)
@@ -837,16 +855,19 @@ namespace RTS
                             {
                                 spriteBatch.Draw(shockTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(shockTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(shockTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 2)
                             {
                                 spriteBatch.Draw(shockTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(shockTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(shockTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                             else if (towerLevelEncyclopedia == 3)
                             {
                                 spriteBatch.Draw(shockTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
                                 spriteBatch.Draw(shockTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(shockTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
                             }
                         }
                     }
