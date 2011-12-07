@@ -75,7 +75,7 @@ namespace RTS
             //LevelDictionary.Add(levelnumber, InitializeWave(numberofwaves));
             //NOTE: number of waves must match ReinitializeWave info (each wave must be populated with enemy)
             LevelDictionary.Add(1, InitializeWave(1));
-            LevelDictionary.Add(2, InitializeWave(2));
+            LevelDictionary.Add(2, InitializeWave(1));
             LevelDictionary.Add(3, InitializeWave(1));
         }
 
@@ -99,10 +99,20 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 0, 8);
+                    //AddNormalEnemy(i, 1, 20, 8);
+                    //AddNormalEnemy(i, 1, 30, 12);
+                    //AddFastEnemy(i, 3, 6, 15);
+                    //AddHPEnemy(i, 1, 5, 20);
+                    //AddNormalEnemy(i, 1, 20, 8);
+                   // AddNormalEnemy(i, 1, 30, 12);
+                   // AddFastEnemy(i, 3, 6, 15);
+                   // AddHPEnemy(i, 1, 5, 20);
+                   // AddNormalEnemy(i, 1, 20, 8);
+                  //  AddNormalEnemy(i, 1, 30, 12);
+                  //  AddFastEnemy(i, 3, 6, 15);
+                   // AddHPEnemy(i, 1, 5, 20);
                     //AddNormalEnemy(i, 2, 30, 20);
-                    //AddFastEnemy(i, 3, 10, 15);
-                    //AddFastEnemy(i, 4, 17, 15);
+                    //AddFastEnemy(i, 3, 15, 15);
                     //AddAttackingEnemy(i, 1, 1, 1);
                     //AddFastEnemy(i, 1, 1, 1);
                     //AddHPEnemy(i, 1, 1, 1);
@@ -150,11 +160,21 @@ namespace RTS
                     //AddAttackingEnemy(i, 10, 5, 100);
                     break;
                 case 2:
-                    AddAttackingEnemy(i, 1, 5, 15);
-                    AddNormalEnemy(i, 2, 5, 30);
-                    AddHPEnemy(i, 3, 5, 15);
-                    AddFastEnemy(i, 3, 5, 20);
-                    AddHPEnemy(i, 4,2, 10);
+                   // AddNormalEnemy(i, 1, 20, 8);
+                    //AddNormalEnemy(i, 1, 30, 12);
+                   // AddFastEnemy(i, 3, 6, 15);
+                   // AddHPEnemy(i, 1, 5, 20);
+                  //  AddAttackingEnemy(i, 1, 10, 12);
+                  //  AddNormalEnemy(i, 2, 20, 8);
+                  //  AddNormalEnemy(i, 2, 30, 12);
+                  //  AddFastEnemy(i, 2, 6, 15);
+                  //  AddHPEnemy(i, 2, 5, 20);
+                  //  AddAttackingEnemy(i, 3, 15, 12);
+                  //  AddPhysicalOnlyEnemy(i, 3, 10, 7);
+                    //AddNormalEnemy(i, 2, 5, 50);
+                    //AddHPEnemy(i, 3, 5, 1);
+                    //AddFastEnemy(i, 3, 5, 100);
+                    //AddHPEnemy(i, 4,2, 1);
                     //AddFastEnemy(i, 5, 2, 1);
                     //AddFastEnemy(i, 6, 10, 100);
                     //AddAttackingEnemy(i, 7, 5, 100);
@@ -171,7 +191,16 @@ namespace RTS
                     //AddAttackingEnemy(i, 10, 5, 100);
                     break;
                 case 3:
-                    AddAttackingEnemy(i, 1, 0, 100);
+                   // AddNormalEnemy(i, 1, 20, 12);
+                   // AddFastEnemy(i, 1, 6, 15);
+                   // AddHPEnemy(i, 1, 5, 20);
+                   // AddAttackingEnemy(i, 2, 10, 12);
+                  //  AddMagicOnlyEnemy(i, 2, 10, 7);
+                   // AddHPEnemy(i, 2, 10, 15);
+                  //  AddRegenEnemy(i, 3, 12, 10);
+                  //  AddNormalEnemy(i, 3, 30, 12);
+                  //  AddFastEnemy(i, 3, 6, 15);
+                    //AddAttackingEnemy(i, 1, 0, 100);
                     //AddNormalEnemy(i, 2, 10, 100);
                     //AddHPEnemy(i, 3, 5, 100);
                     //AddHPEnemy(i, 4, 10, 100);
