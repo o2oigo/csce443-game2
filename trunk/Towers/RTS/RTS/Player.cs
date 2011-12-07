@@ -21,6 +21,12 @@ namespace RTS
         GamePadState currentState;
         GamePadState oldState;
 
+        // tower cost
+        int magicTowerCost = 10;
+        int arrowTowerCost = 10;
+        int cannonTowerCost = 15;
+        int missileTowerCost = 20;
+
         private float elapsedTime;
 
         private Vector2 mousePos;
@@ -294,7 +300,7 @@ namespace RTS
             if (buildMode == true)
             {
                 // if player aim up, basic tower will showed up
-                if (mainBuildMode == true && upgradeBuildMode == false && (shootRotationAngle >= -3 * (float)Math.PI / 4 && shootRotationAngle < -(float)Math.PI / 4))
+                if (mainBuildMode == true && upgradeBuildMode == false && upgradeBuildMagicMode == false && (shootRotationAngle >= -3 * (float)Math.PI / 4 && shootRotationAngle < -(float)Math.PI / 4))
                 {
                     // default texture (not greyed nor selected)
                     spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
@@ -304,29 +310,29 @@ namespace RTS
                     spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
 
 
-                    if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -7 * (float)Math.PI / 12 && money >= 10)
+                    if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -7 * (float)Math.PI / 12 && money >= 10 && (map.TileTypeAt(position) == MapTileType.MapGrass))
                         spriteBatch.Draw(arrowTowerBuildSelectTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
 
-                    if (shootRotationAngle >= -7 * (float)Math.PI / 12 && shootRotationAngle < -5 * (float)Math.PI / 12 && money >= 15)
+                    if (shootRotationAngle >= -7 * (float)Math.PI / 12 && shootRotationAngle < -5 * (float)Math.PI / 12 && money >= 15 && (map.TileTypeAt(position) == MapTileType.MapGrass))
                         spriteBatch.Draw(canonTowerBuildSelectTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
 
-                    if (shootRotationAngle >= -5 * (float)Math.PI / 12 && shootRotationAngle <= -(float)Math.PI / 4 && money >= 20)
+                    if (shootRotationAngle >= -5 * (float)Math.PI / 12 && shootRotationAngle <= -(float)Math.PI / 4 && money >= 20 && (map.TileTypeAt(position) == MapTileType.MapGrass))
                         spriteBatch.Draw(magicTowerBuildSelectTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
 
-                    if (money < 10)
+                    if (money < arrowTowerCost || (map.TileTypeAt(position) != MapTileType.MapGrass))
                     {
                         spriteBatch.Draw(arrowTowerBuildInactiveTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
                         spriteBatch.Draw(canonTowerBuildInactiveTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
                         spriteBatch.Draw(magicTowerBuildInactiveTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
                     }
 
-                    if (money < 15)
+                    if (money < cannonTowerCost)
                     {
                         spriteBatch.Draw(canonTowerBuildInactiveTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
                         spriteBatch.Draw(magicTowerBuildInactiveTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
                     }
 
-                    if (money < 20)
+                    if (money < missileTowerCost)
                     {
                         spriteBatch.Draw(magicTowerBuildInactiveTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
                     }
@@ -334,13 +340,13 @@ namespace RTS
                 }
 
                 // If player aim other place, only show the base texture, not extension
-                else if (mainBuildMode == true)
+                else if (mainBuildMode == true && upgradeBuildMagicMode == false && upgradeBuildMode == false)
                 {
                     spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                 }
 
-                else if (upgradeBuildMode == true)
+                else if (upgradeBuildMode == true && upgradeBuildMagicMode == false)
                 {
                     spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
@@ -418,14 +424,14 @@ namespace RTS
                     {
                         upgradeBuildMagicMode = true;
                         upgradeBuildMode = false;
-                        mainBuildMode = false;
+                        //mainBuildMode = false;
                     }
 
                     else
                     {
                         upgradeBuildMagicMode = false;
-                        upgradeBuildMode = true;
-                        mainBuildMode = false;
+                        upgradeBuildMode = true; 
+                        //mainBuildMode = false;
                     }
                     
                     break;
@@ -520,18 +526,18 @@ namespace RTS
                 else
                     mainBuildMode = false;
 
-                if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= -(float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
+                if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= (float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
                 {
-                    if (mainBuildMode == true)
+                    if (mainBuildMode == true && upgradeBuildMagicMode == false && upgradeBuildMode == false)
                     {
                         if (map.TileTypeAt(position) == MapTileType.MapGrass)
                         {
                             // for arrow tower
                             if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -7 * (float)Math.PI / 12)
                             {
-                                if (money >= 10)
+                                if (money >= arrowTowerCost)
                                 {
-                                    removeMoney(10);
+                                    removeMoney(arrowTowerCost);
                                     createArrowTower();
                                     buildMode = false;
                                     mainBuildMode = false;
@@ -541,26 +547,44 @@ namespace RTS
                             // for cannon tower
                             else if (shootRotationAngle >= -7 * (float)Math.PI / 12 && shootRotationAngle < -5 * (float)Math.PI / 12)
                             {
-                                if (money >= 15 && fireStoneInInventory > 0)
+                                if (money >= cannonTowerCost)
                                 {
-                                    removeMoney(15);
+                                    removeMoney(cannonTowerCost);
                                     removeStoneFromInventory(0);
                                     int level = 1;
                                     bool isFire = true;
-                                    createMissileTower(Position, level, isFire);
+                                    //createMissileTower(Position, level, isFire);
                                     //createArrowTower(Position, level, isFire);
-                                    //createTower();
+                                    createTower();
+                                    buildMode = false;
+                                    mainBuildMode = false;
+                                }
+                            }
+
+                            // for missile tower
+                            else if (shootRotationAngle >= -5 * (float)Math.PI / 12 && shootRotationAngle <= -(float)Math.PI / 4)
+                            {
+                                if (money >= missileTowerCost)
+                                {
+                                    removeMoney(missileTowerCost);
+                                    int level = 1;
+                                    bool isFire = true;
+                                    createMissileTower(Position, level, isFire);
+                                    //createMagicTower();
                                     buildMode = false;
                                     mainBuildMode = false;
                                 }
                             }
 
                             // for magic tower
-                            else if (shootRotationAngle >= -5 * (float)Math.PI / 12 && shootRotationAngle <= -(float)Math.PI / 4)
+                            else if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= (float)Math.PI / 4)
                             {
-                                if (money >= 20)
+                                if (money >= magicTowerCost)
                                 {
-                                    removeMoney(20);
+                                    removeMoney(magicTowerCost);
+                                    int level = 1;
+                                    bool isFire = true;
+                                    //createMissileTower(Position, level, isFire);
                                     createMagicTower();
                                     buildMode = false;
                                     mainBuildMode = false;

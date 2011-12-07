@@ -741,16 +741,8 @@ namespace RTS
             camera.ResetCamera();
         }
 
-        public void resetGame()
+        public void resetTower()
         {
-            /*
-            for (int i = enemies.Count - 1; i >= 0; i--)
-            {
-                Enemy currentEnemy = enemies[i];
-                Sprite.removeList(enemies[i]);
-                enemies.RemoveAt(i);
-            }
-            */
             foreach (Player player in players)
             {
                 for (int k = 0; k < player.getTowers().Count; k++)
@@ -771,6 +763,19 @@ namespace RTS
 
                 }
             }
+        }
+
+        public void resetGame()
+        {
+            /*
+            for (int i = enemies.Count - 1; i >= 0; i--)
+            {
+                Enemy currentEnemy = enemies[i];
+                Sprite.removeList(enemies[i]);
+                enemies.RemoveAt(i);
+            }
+            */
+            resetTower();
             player1.restartGameLevel1();
             player2.restartGameLevel1();
             //enemies.Clear();
