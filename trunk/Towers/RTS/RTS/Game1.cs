@@ -79,8 +79,12 @@ namespace RTS
 
         SoundEffect menuSound;
         SoundEffect level1Sound;
-        SoundEffectInstance menuSoundInstance;
-        SoundEffectInstance level1SoundInstance;
+        SoundEffect level2Sound;
+        SoundEffect level3Sound;
+        public SoundEffectInstance menuSoundInstance;
+        public SoundEffectInstance level1SoundInstance;
+        public SoundEffectInstance level2SoundInstance;
+        public SoundEffectInstance level3SoundInstance;
 
         float lampTimer = .8f;
         float lampElapsedTime = 5f;
@@ -230,24 +234,32 @@ namespace RTS
            // level1Song = Content.Load<Song>("Sound/level1Song");
             menuSound = Content.Load<SoundEffect>("Sound/menuSong");
             level1Sound = Content.Load<SoundEffect>("Sound/level1Song");
+            level2Sound = Content.Load<SoundEffect>("Sound/level2Song");
+            level3Sound = Content.Load<SoundEffect>("Sound/level3Song");
             music = new Dictionary<string, SoundEffect>();
             music.Add("menuSound", menuSound);
             music.Add("level1Sound", level1Sound);
-           // menuSoundInstance = new SoundEffectInstance();
+            music.Add("level2Sound", level2Sound);
+            music.Add("level3Sound", level3Sound);
+
             if (menuSoundInstance != null)
                 menuSoundInstance.Dispose();
             menuSoundInstance = music["menuSound"].CreateInstance();
             menuSoundInstance.IsLooped = true;
-           // level1SoundInstance = new SoundEffectInstance();
             if (level1SoundInstance != null)
                 level1SoundInstance.Dispose();
             level1SoundInstance = music["level1Sound"].CreateInstance();
-            level1SoundInstance.IsLooped = true;
+            level1SoundInstance.IsLooped = true; 
+            if (level2SoundInstance != null)
+                level2SoundInstance.Dispose();
+            level2SoundInstance = music["level2Sound"].CreateInstance();
+            level2SoundInstance.IsLooped = true;     
+            if (level3SoundInstance != null)
+                level3SoundInstance.Dispose();
+            level3SoundInstance = music["level3Sound"].CreateInstance();
+            level3SoundInstance.IsLooped = true;
+
             menuSoundInstance.Play();
-            //Song level2Song = Content.Load<Song>("Sound/MainSong");  
-            //Song level3Song = Content.Load<Song>("Sound/MainSong");  
-           // Song endSong = Content.Load<Song>("Sound/MainSong");
-            //MediaPlayer.Play(menuSong);
 
             Sprite.LoadContent(Content);
         }
@@ -282,6 +294,7 @@ namespace RTS
             fireTower.Update(gameTime);
             ice.Update(gameTime);
             light.Update(gameTime);
+            
 
             userInterface.setWavesNumber(wave.CurrentWave);
             
@@ -295,8 +308,6 @@ namespace RTS
 
             if (userInterface.getScreen("showGameScreen") == true)
             {
-                menuSoundInstance.Stop();
-                level1SoundInstance.Play();
                 
                 camera.Update(gameTime);
                 wave.Update(gameTime);

@@ -17,7 +17,7 @@ namespace RTS
         SoundEffectInstance instance;
         SoundEffect iceSound;
 
-        float particleTimer = .35f;
+        float particleTimer = .25f;
         float particleElapsedTime = 5f;
 
         public IceTower(Game1 game, PlayerIndex playerIndex, Vector2 startPosition, int level, bool isFire) 
