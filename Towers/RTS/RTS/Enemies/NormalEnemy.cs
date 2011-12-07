@@ -23,7 +23,7 @@ namespace RTS
             base.Initialize(game, health);
             attackDamage = 0;
             range = 200;
-            weakAgainst = ElementType.Lightning;
+            weakAgainst = ElementType.None;
             strongAgainst = ElementType.None;
             //moveSpeed = 50.0f;
         }

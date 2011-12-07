@@ -445,6 +445,21 @@ namespace RTS
                     spriteBatch.DrawString(font, "Game Paused", new Vector2(500, 250), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 270), Color.Black);
                     spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
+
+                    int tmp2 = (int)((game.Wave.WaveTimer / game.Wave.IntervalWave) * 140);
+                    if (game.Wave.WaveTimer > 0)
+                    {
+                        spriteBatch.Draw(timerBar, new Vector2((width / 2) - timerBar.Width / 2, 10), Color.White);
+                        spriteBatch.Draw(timerSprite, new Vector2(((width / 2) + 35 - tmp2), 3), new Rectangle(0, 0, timerSprite.Width, timerSprite.Height), Color.White, 0f, Vector2.Zero, 0.8f, SpriteEffects.None, 1.0f);
+                    }
+                    spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getMoney(), uiMoneyPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getFireStoneInInventory(), uiFirePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+
                 }
                 #endregion
 
@@ -473,11 +488,13 @@ namespace RTS
                 #region game screen for gamepad user
                 if (showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, Player.getFireStoneInInventory() + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
-                    spriteBatch.DrawString(font, Player.getWaterStoneInInventory() + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
-                    spriteBatch.DrawString(font, Player.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
-                    //spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
-                    spriteBatch.DrawString(font, "Lives: " + game.getLive(), uiPosition3, Color.Black);
+                    int tmp2 = (int)((game.Wave.WaveTimer / game.Wave.IntervalWave) * 140);
+
+                    if (game.Wave.WaveTimer > 0)
+                    {
+                        spriteBatch.Draw(timerBar, new Vector2((width / 2) - timerBar.Width / 2, 10), Color.White);
+                        spriteBatch.Draw(timerSprite, new Vector2(((width / 2) + 35 - tmp2), 3), new Rectangle(0, 0, timerSprite.Width, timerSprite.Height), Color.White, 0f, Vector2.Zero, 0.8f, SpriteEffects.None, 1.0f);
+                    }
                     spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
                     spriteBatch.DrawString(font, "" + Player.getMoney(), uiMoneyPosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
@@ -486,30 +503,7 @@ namespace RTS
                     spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
                     spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
 
-                    if (nextWave == 1)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: Normal", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 2)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: Normal", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 3)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: High HP", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 4)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: High HP", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 5)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: Fast", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 6)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: ???", uiPosition4, Color.Black);
-                    }
+
                 }
                 #endregion
 
@@ -1398,7 +1392,22 @@ namespace RTS
                 {
                     spriteBatch.DrawString(font, "Game Paused", new Vector2(500, 250), Color.Black);
                     spriteBatch.DrawString(font, "Press delete to quit", new Vector2(500, 270), Color.Black);
+                    
+                    //spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
+                    int tmp2 = (int)((game.Wave.WaveTimer / game.Wave.IntervalWave) * 140);
+                    if (game.Wave.WaveTimer > 0)
+                    {
+                        spriteBatch.Draw(timerBar, new Vector2((width / 2) - timerBar.Width / 2, 10), Color.White);
+                        spriteBatch.Draw(timerSprite, new Vector2(((width / 2) + 35 - tmp2), 3), new Rectangle(0, 0, timerSprite.Width, timerSprite.Height), Color.White, 0f, Vector2.Zero, 0.8f, SpriteEffects.None, 1.0f);
+                    }
                     spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getMoney(), uiMoneyPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getFireStoneInInventory(), uiFirePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+
                 }
                 #endregion
 
@@ -1427,14 +1436,7 @@ namespace RTS
                 #region game screen for keyboard user
                 if (showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, Player.getFireStoneInInventory() + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
-                    spriteBatch.DrawString(font, Player.getWaterStoneInInventory() + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
-                    spriteBatch.DrawString(font, Player.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
-                    //spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
-                    spriteBatch.DrawString(font, "Lives: " + game.getLive(), uiPosition3, Color.Black);
-
                     int tmp2 = (int)((game.Wave.WaveTimer / game.Wave.IntervalWave) * 140);
-
                     if (game.Wave.WaveTimer > 0)
                     {
                         spriteBatch.Draw(timerBar, new Vector2((width / 2) - timerBar.Width / 2, 10), Color.White);
@@ -1448,32 +1450,6 @@ namespace RTS
                     spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
                     spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
 
-                    //Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)this).HP / ((Enemy)this).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
-
-                    if (nextWave == 1)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: Normal", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 2)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: Normal", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 3)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: High HP", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 4)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: High HP", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 5)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: Fast", uiPosition4, Color.Black);
-                    }
-                    else if (nextWave == 6)
-                    {
-                        spriteBatch.DrawString(font, "Next Wave: ???", uiPosition4, Color.Black);
-                    }
                 }
                 #endregion
 

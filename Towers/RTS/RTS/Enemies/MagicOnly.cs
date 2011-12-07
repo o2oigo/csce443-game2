@@ -11,8 +11,8 @@ namespace RTS
     /// <summary>
     /// PUDDING - NORMAL
     /// Only gets hit by Magic (Fire/Lightning/Ice)
-    /// WEAKNESS: NONE
-    /// STRENGTH: NONE
+    /// WEAKNESS: None
+    /// STRENGTH: Normal
     /// </summary>
     public class MagicOnlyEnemy : Enemy
     {
@@ -22,7 +22,7 @@ namespace RTS
 
             range = 200;
             weakAgainst = ElementType.None;
-            strongAgainst = ElementType.None;
+            strongAgainst = ElementType.Normal;
             //moveSpeed = 50.0f;
         }
 

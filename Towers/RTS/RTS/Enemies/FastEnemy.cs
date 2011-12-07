@@ -11,8 +11,8 @@ namespace RTS
     /// <summary>
     /// STOCKING - RED
     /// Moves fastest
-    /// WEAKNESS: ICE
-    /// STRENGTH: FIRE
+    /// WEAKNESS: LIGHTNING
+    /// STRENGTH: NONE
     /// </summary>
 
     public class FastEnemy : Enemy
@@ -22,8 +22,8 @@ namespace RTS
             base.Initialize(game, health);
 
             range = 200;
-            weakAgainst = ElementType.Ice;
-            strongAgainst = ElementType.Fire;
+            weakAgainst = ElementType.Lightning;
+            strongAgainst = ElementType.None;
             maxSpeed = moveSpeed = 1.0f;
         }
 
