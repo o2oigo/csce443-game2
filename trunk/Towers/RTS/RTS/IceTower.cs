@@ -37,7 +37,7 @@ namespace RTS
 
             this.shootTimer = .05f;
             this.soundTimer = 1f;
-            this.towerRange = rangeVariable * 2f;
+            this.towerRange = rangeVariable * 1f;
 
             iceSound.Play();
             
@@ -76,9 +76,10 @@ namespace RTS
 
         public override void setToLvlTwo()
         {
+            //game.ice.setSpeed(25, 30);
             iceTowerTexture = iceTowerUpgrade2Texture;
             maxHP = hp = 150;
-            towerRange = rangeVariable * 3f;
+            towerRange = rangeVariable * 2f;
             level = "level 2";
             ilevel = 2;
         }
@@ -87,7 +88,7 @@ namespace RTS
         {
             iceTowerTexture = iceTowerUpgrade3Texture;
             maxHP = hp = 200;
-            towerRange = rangeVariable * 4f;
+            towerRange = rangeVariable * 2f;
             level = "level 3";
             ilevel = 3;
         }
@@ -157,6 +158,10 @@ namespace RTS
             particleElapsedTime += elapsedTime;
             if (particleElapsedTime >= particleTimer)
             {
+                if(ilevel == 1)
+                    game.ice.setSpeed(20, 25);
+                else
+                    game.ice.setSpeed(25,30);
                 game.ice.PickRandomDirection();
                 game.ice.AddParticles(position);
                 particleElapsedTime = 0f;

@@ -21,8 +21,8 @@ namespace RTS
         public override void Initialize(Game1 game, float health)
         {
             base.Initialize(game, health);
-            attackDamage = 0;
-            range = 200;
+            attackDamage = 3;
+            range = 250;
             weakAgainst = ElementType.None;
             strongAgainst = ElementType.None;
             //moveSpeed = 50.0f;

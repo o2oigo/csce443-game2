@@ -54,7 +54,7 @@ namespace RTS
         private float effectTimer;
         private float effectTimer2;
         private float shootElapsedTime;
-        private float shootTimer = 2.7f;
+        private float shootTimer = 2.5f;
         private float circle = MathHelper.Pi * 2;
 
         const float atDestinationLimit = 1f;
