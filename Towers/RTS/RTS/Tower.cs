@@ -42,7 +42,9 @@ namespace RTS
         }
 
         private bool dead = false;
-        private bool playerIsNear = false;
+        //private bool playerIsNear = false;
+        private bool player1IsNear = false;
+        private bool player2IsNear = false;
         protected string level = "level 1";
         protected int ilevel = 1;
         protected string towerName = "Cannon Tower";
@@ -354,14 +356,20 @@ namespace RTS
             ilevel = 3;
         }
 
-        public void setPlayerIsNear(bool _playerIsNear)
+        public void setPlayerIsNear(bool _playerIsNear, PlayerIndex index)
         {
-            playerIsNear = _playerIsNear;
+            if(index == PlayerIndex.One)
+                player1IsNear = _playerIsNear;
+            else if (index == PlayerIndex.Two)
+                player2IsNear = _playerIsNear;
         }
 
-        public bool getPlayerIsNear()
+        public bool getPlayerIsNear(PlayerIndex index)
         {
-            return playerIsNear;
+            if (index == PlayerIndex.One)
+                return player1IsNear;
+            else// if (index == PlayerIndex.Two)
+                return player2IsNear;
         }
 
         public void setTowerName(string _towerName)
