@@ -329,19 +329,19 @@ namespace RTS
                 userInterface.setScreenStatus("showGameOverScreen", true);
                 live = 10;
             }
-            else if (wave.isLevelFinish == true && wave.CurrentLevel == 1)
+            else if (wave.isLevelFinish == true && wave.CurrentLevel == 1 && userInterface.getScreen("showGameScreen") == true)
             {
                 userInterface.setScreenStatus("showGameScreen", false);
                 userInterface.setScreenStatus("showLevel2Screen", true);
                 resetGame();
             }
-            else if (wave.isLevelFinish == true && wave.CurrentLevel == 2)
+            else if (wave.isLevelFinish == true && wave.CurrentLevel == 2 && userInterface.getScreen("showGameScreen") == true)
             {
                 userInterface.setScreenStatus("showGameScreen", false);
                 userInterface.setScreenStatus("showLevel3Screen", true);
                 resetGame();
             }
-            else if (wave.isGameFinish == true)
+            else if (wave.isGameFinish == true && userInterface.getScreen("showGameScreen") == true)
             {
                 userInterface.setScreenStatus("showWinScreen", true);
             }

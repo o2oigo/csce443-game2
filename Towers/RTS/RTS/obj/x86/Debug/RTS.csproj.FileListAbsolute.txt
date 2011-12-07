@@ -637,10 +637,6 @@ E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectileRed.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\ProjectilePurple.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\CrossHair1.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\TurretPurple.xnb
-E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenu.xnb
-E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\buildTowerMenuSelect.xnb
-E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenu.xnb
-E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\cancelMenuSelect.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\ssPlaceHolder.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\fireParticle.xnb
 E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\build.xnb
@@ -1189,3 +1185,9 @@ C:\anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level2.xnb
 C:\anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level3j.xnb
 C:\anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level3.xnb
 C:\anthony\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\missile.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\1.3.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level2 copy.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level2.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level3j.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\level3.xnb
+E:\Game2\Tower Defence\Towers\RTS\RTS\bin\x86\Debug\Content\Encyclopedia\missile.xnb

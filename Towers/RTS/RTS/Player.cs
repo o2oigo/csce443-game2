@@ -81,10 +81,10 @@ namespace RTS
         //private Texture2D startMenuTexture;
         //private Texture2D quitMenuTexture;
 
-        private bool buildMode = false;
-        private bool mainBuildMode = false;
-        private bool upgradeBuildMode = false;
-        private bool upgradeBuildMagicMode = false;
+        public bool buildMode = false;
+        public bool mainBuildMode = false;
+        public bool upgradeBuildMode = false;
+        public bool upgradeBuildMagicMode = false;
         //private bool upgradeSubBuildMode = false;
         private bool maxCapacityTower = false;
         SpriteFont font;
