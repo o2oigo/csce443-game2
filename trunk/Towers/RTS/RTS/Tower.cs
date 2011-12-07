@@ -195,7 +195,7 @@ namespace RTS
                 {
                     if (shootAt == null && Vector2.Distance(position, enemy.Position) <= towerRange)
                         shootAt = enemy;
-                    if (Vector2.Distance(position, enemy.Position) <= towerRange /*&& (Vector2.Distance(game.House.Position, enemy.Position) < Vector2.Distance(game.House.Position, shootAt.Position))*/)
+                    if (Vector2.Distance(position, enemy.Position) <= towerRange && (Vector2.Distance(map.getBaseCoordinate(), enemy.Position) < Vector2.Distance(map.getBaseCoordinate(), shootAt.Position)))
                     {
                         shootAt = enemy;     
                         break;

@@ -50,8 +50,8 @@ namespace RTS
             minAcceleration = 0;
             maxAcceleration = 0;
 
-            minLifetime = 5f;
-            maxLifetime = 6f;
+            minLifetime = 5.3f;
+            maxLifetime = 6.3f;
 
             minScale = .3f;
             maxScale = .35f;
