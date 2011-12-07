@@ -12,8 +12,8 @@ namespace RTS
     /// <summary>
     /// Petulent Pudding (Sr)
     /// Has ability to attack, higher attack range, higher attack damage
-    /// WEAKNESS: FIRE
-    /// STRENGTH: LIGHTNING
+    /// WEAKNESS: LIGHTNING
+    /// STRENGTH: FIRE
     /// </summary>
 
     public class AttackingEnemy : Enemy
