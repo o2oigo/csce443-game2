@@ -27,7 +27,7 @@ namespace RTS
 
         protected Dictionary<int, Dictionary<int, Queue<Enemy>>> LevelDictionary = new Dictionary<int, Dictionary<int, Queue<Enemy>>>();
 
-        bool levelDelay = false; 
+        //bool levelDelay = false; 
 
         private int currentWave = 0;
         public int CurrentWave
@@ -99,7 +99,13 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 100, 1);
+                    AddNormalEnemy(i, 1, 1, 1);
+                    AddAttackingEnemy(i, 1, 1, 1);
+                    AddFastEnemy(i, 1, 1, 1);
+                    AddHPEnemy(i, 1, 1, 1);
+                    AddMagicOnlyEnemy(i, 1, 1, 1);
+                    AddPhysicalOnlyEnemy(i, 1, 1, 1);
+                    AddRegenEnemy(i, 1, 1, 1);
                     //AddFastEnemy(i, 1, 10, 100);
                     //AddNormalEnemy(i, 1, 2, 100);
                     //AddFastEnemy(i, 1, 5, 100);
@@ -280,7 +286,7 @@ namespace RTS
                     }
                     timer = 0;
                 }
-                if (currentWave == LevelDictionary[currentLevel].Count() && waveFinished && game.Enemies.Count() == 0 && levelDelay)
+                if (currentWave == LevelDictionary[currentLevel].Count() && waveFinished && game.Enemies.Count() == 0)
                 {
                     levelFinished = true;
                     //timer = 0;

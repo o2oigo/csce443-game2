@@ -151,11 +151,28 @@ namespace RTS
         public void LoadContent(String textureName)
         {
            // texture = contentManager.Load<Texture2D>("elfFront1");
-            Texture2D tFront = contentManager.Load<Texture2D>("elfFront");
-            Texture2D tBack = contentManager.Load<Texture2D>("elfBack");
-            Texture2D tRight = contentManager.Load<Texture2D>("elfRight");
-            Texture2D tRightDown = contentManager.Load<Texture2D>("elfRightDown");
-            Texture2D tRightUp = contentManager.Load<Texture2D>("elfRightUp");
+            Texture2D tFront;
+            Texture2D tBack;
+            Texture2D tRight;
+            Texture2D tRightDown;
+            Texture2D tRightUp;
+            if (playerIndex == PlayerIndex.One)
+            {
+                tFront = contentManager.Load<Texture2D>("elfFront");
+                tBack = contentManager.Load<Texture2D>("elfBack");
+                tRight = contentManager.Load<Texture2D>("elfRight");
+                tRightDown = contentManager.Load<Texture2D>("elfRightDown");
+                tRightUp = contentManager.Load<Texture2D>("elfRightUp");
+            }
+            else
+            {
+                tFront = contentManager.Load<Texture2D>("elfNewFront");
+                tBack = contentManager.Load<Texture2D>("elfNewBack");
+                tRight = contentManager.Load<Texture2D>("elfNewRight");
+                tRightDown = contentManager.Load<Texture2D>("elfNewRightDown");
+                tRightUp = contentManager.Load<Texture2D>("elfNewRightUp");
+            }
+
             Dictionary<String, SpriteSheet> txtMap = new Dictionary<string, SpriteSheet>();
             txtMap["front"] = new SpriteSheet(tFront, 22);
             txtMap["back"] = new SpriteSheet(tBack, 22);

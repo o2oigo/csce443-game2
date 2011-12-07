@@ -32,17 +32,17 @@ namespace RTS
 
         public override void LoadContent()
         {
-            Texture2D tFront = contentManager.Load<Texture2D>("enemyMuffinFront");
-            Texture2D tBack = contentManager.Load<Texture2D>("enemyMuffinBack");
-            Texture2D tRight = contentManager.Load<Texture2D>("enemyMuffinRight");
-            Texture2D tRightDown = contentManager.Load<Texture2D>("enemyMuffin45");
-            Texture2D tRightUp = contentManager.Load<Texture2D>("enemyMuffin135");
+            Texture2D tFront = contentManager.Load<Texture2D>("enemypuddingFrontB");
+            Texture2D tBack = contentManager.Load<Texture2D>("enemypuddingBackB");
+            Texture2D tRight = contentManager.Load<Texture2D>("enemypuddingRightB");
+            Texture2D tRightDown = contentManager.Load<Texture2D>("enemypudding45B");
+            Texture2D tRightUp = contentManager.Load<Texture2D>("enemypudding135B");
             Dictionary<String, SpriteSheet> txtMap = new Dictionary<string, SpriteSheet>();
-            txtMap["front"] = new SpriteSheet(tFront, 21);
-            txtMap["back"] = new SpriteSheet(tBack, 21);
-            txtMap["right"] = new SpriteSheet(tRight, 21);
-            txtMap["rightUp"] = new SpriteSheet(tRightUp, 21);
-            txtMap["rightDown"] = new SpriteSheet(tRightDown, 21);
+            txtMap["front"] = new SpriteSheet(tFront, 15);
+            txtMap["back"] = new SpriteSheet(tBack, 15);
+            txtMap["right"] = new SpriteSheet(tRight, 15);
+            txtMap["rightUp"] = new SpriteSheet(tRightUp, 15);
+            txtMap["rightDown"] = new SpriteSheet(tRightDown, 15);
 
             animation = new SpriteAnimation(txtMap, true);
             animation.CurrentSprite = "front";
