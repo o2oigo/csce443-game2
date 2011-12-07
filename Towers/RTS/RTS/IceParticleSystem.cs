@@ -44,8 +44,8 @@ namespace RTS
 
             textureFilename = "iceParticle";
 
-            minInitialSpeed = 25;
-            maxInitialSpeed = 30;
+            minInitialSpeed = 20;
+            maxInitialSpeed = 25;
 
             minAcceleration = 0;
             maxAcceleration = 0;

@@ -74,7 +74,7 @@ namespace RTS
         {
             //LevelDictionary.Add(levelnumber, InitializeWave(numberofwaves));
             //NOTE: number of waves must match ReinitializeWave info (each wave must be populated with enemy)
-            LevelDictionary.Add(1, InitializeWave(1));
+            LevelDictionary.Add(1, InitializeWave(3));
             LevelDictionary.Add(2, InitializeWave(2));
             LevelDictionary.Add(3, InitializeWave(1));
         }
@@ -100,7 +100,8 @@ namespace RTS
             {
                 case 1:
                     AddNormalEnemy(i, 1, 20, 8);
-                    AddNormalEnemy(i, 1, 30, 20);
+                    AddNormalEnemy(i, 2, 30, 20);
+                    AddFastEnemy(i, 3, 15, 15);
                     //AddAttackingEnemy(i, 1, 1, 1);
                     //AddFastEnemy(i, 1, 1, 1);
                     //AddHPEnemy(i, 1, 1, 1);
