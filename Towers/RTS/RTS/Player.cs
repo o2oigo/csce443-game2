@@ -102,6 +102,7 @@ namespace RTS
         private List<Missile> missileList = new List<Missile>(5);
         private List<Tower> towerList = new List<Tower>(20);
         private static List<Stone> stoneList = new List<Stone>(20);
+        private List<bool> buildableTowers = new List<bool>(7);
 
         private List<Enemy> enemyList = new List<Enemy>(30);
 
@@ -120,6 +121,13 @@ namespace RTS
             this.playerIndex = index;
             this.currentState = GamePad.GetState(playerIndex);
             this.map = game.Map;
+            this.buildableTowers.Add(false); //[0] Arrow Tower
+            this.buildableTowers.Add(false); //[1] Cannon Tower
+            this.buildableTowers.Add(false); //[2] Missile Tower
+            this.buildableTowers.Add(true);  //[3] Magic Tower
+            this.buildableTowers.Add(false); //[4] Lightning Tower
+            this.buildableTowers.Add(false); //[5] Flame Tower
+            this.buildableTowers.Add(false); //[6] Ice Tower
         }
 
         public void LoadContent(String textureName)
@@ -1347,6 +1355,11 @@ namespace RTS
 
                 }
             }
+        }
+
+        public List<bool> getBuildableTowers()
+        {
+            return buildableTowers;
         }
 
         static public void addMoney(int _money)
