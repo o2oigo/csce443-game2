@@ -149,6 +149,18 @@ namespace RTS
             this.buildableTowers.Add(false); //[4] Lightning Tower
             this.buildableTowers.Add(false); //[5] Flame Tower
             this.buildableTowers.Add(false); //[6] Ice Tower
+            Stone fire = new Stone();
+            fire.Initialize(game, new Vector2(-100,-100), 0);
+            stoneList.Add(fire);
+            stoneList.Add(fire);
+            Stone ice = new Stone();
+            ice.Initialize(game, new Vector2(-100, -100), 2);
+            stoneList.Add(ice);
+            stoneList.Add(ice);
+            Stone lightning = new Stone();
+            lightning.Initialize(game, new Vector2(-100, -100), 1);
+            stoneList.Add(lightning);
+            stoneList.Add(lightning);
         }
 
         public void LoadContent(String textureName)
