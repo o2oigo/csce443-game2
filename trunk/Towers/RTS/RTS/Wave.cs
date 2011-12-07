@@ -16,7 +16,8 @@ namespace RTS
 
         double timer;
         // in milliseconds
-        const double intervalSpawn = 1000; // 2 seconds
+        const int intervalSpawnMin = 1700; //
+        const int intervalSpawnMax = 2000;
         const double intervalWave = 10000; // 10 seconds
         const double intervalLevel = 9000; 
 
@@ -92,7 +93,27 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 100, 100);
+                    AddNormalEnemy(i, 1, 10, 100);
+                    AddFastEnemy(i, 1, 10, 100);
+                    AddNormalEnemy(i, 1, 2, 100);
+                    AddFastEnemy(i, 1, 5, 100);
+                    AddNormalEnemy(i, 1, 8, 100);
+                    AddFastEnemy(i, 1, 3, 100);
+                    AddHPEnemy(i, 1, 10, 100);
+                    AddNormalEnemy(i, 1, 10, 100);
+                    AddFastEnemy(i, 1, 10, 100);
+                    AddNormalEnemy(i, 1, 2, 100);
+                    AddFastEnemy(i, 1, 5, 100);
+                    AddNormalEnemy(i, 1, 8, 100);
+                    AddFastEnemy(i, 1, 3, 100);
+                    AddHPEnemy(i, 1, 10, 100);
+                    AddNormalEnemy(i, 1, 10, 100);
+                    AddFastEnemy(i, 1, 10, 100);
+                    AddNormalEnemy(i, 1, 2, 100);
+                    AddFastEnemy(i, 1, 5, 100);
+                    AddNormalEnemy(i, 1, 8, 100);
+                    AddFastEnemy(i, 1, 3, 100);
+                    AddHPEnemy(i, 1, 10, 100);
                     //AddHPEnemy(i, 2, 10, 100);
                     //AddAttackingEnemy(i, 3, 10, 100);
                     //AddFastEnemy(i, 4, 10, 100);
@@ -226,6 +247,8 @@ namespace RTS
 
         public void Update(GameTime gameTime)
         {
+            Random random = new Random();
+            int spawnTimer = random.Next(intervalSpawnMin, intervalSpawnMax);
             timer += gameTime.ElapsedGameTime.TotalMilliseconds;
             if (currentWave == 0)
             {
@@ -238,7 +261,7 @@ namespace RTS
             }
             else
             {
-                if (!waveFinished && timer > intervalSpawn)
+                if (!waveFinished && timer > spawnTimer)
                 {
                     if (LevelDictionary[currentLevel][currentWave].Count != 0)
                     {
