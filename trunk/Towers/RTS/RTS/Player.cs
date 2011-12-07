@@ -526,7 +526,7 @@ namespace RTS
                 else
                     mainBuildMode = false;
 
-                if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= (float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount)
+                if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle <= (float)Math.PI / 4 && buildMode == true && towerList.Count < maxTowerCount && upgradeBuildMode == false && upgradeBuildMagicMode == false)
                 {
                     if (mainBuildMode == true && upgradeBuildMagicMode == false && upgradeBuildMode == false)
                     {
