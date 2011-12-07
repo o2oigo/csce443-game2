@@ -19,9 +19,15 @@ namespace RTS
         const int intervalSpawnMin = 1700; //
         const int intervalSpawnMax = 2000;
         const double intervalWave = 10000; // 10 seconds
-        const double intervalLevel = 9000; 
+        public double IntervalWave
+        {
+            get { return intervalWave; } 
+        }
+        const double intervalLevel = 15000; 
 
         protected Dictionary<int, Dictionary<int, Queue<Enemy>>> LevelDictionary = new Dictionary<int, Dictionary<int, Queue<Enemy>>>();
+
+        bool levelDelay = false; 
 
         private int currentWave = 0;
         public int CurrentWave
@@ -81,7 +87,7 @@ namespace RTS
                 WaveDictionary.Add(i, new Queue<Enemy>());
             }
             return WaveDictionary;
-        }   
+        }
 
         #region Hard coded enemy in each level
 
@@ -241,6 +247,7 @@ namespace RTS
                     game.CreateTrees();
                     game.CreateLamps();
                     ReinitializeLevel(currentLevel);
+                    timer = 0;
                 }
             //}
         }
@@ -273,7 +280,7 @@ namespace RTS
                     }
                     timer = 0;
                 }
-                if (currentWave == LevelDictionary[currentLevel].Count() && waveFinished && game.Enemies.Count() == 0)
+                if (currentWave == LevelDictionary[currentLevel].Count() && waveFinished && game.Enemies.Count() == 0 && levelDelay)
                 {
                     levelFinished = true;
                     //timer = 0;
@@ -285,7 +292,8 @@ namespace RTS
                 }
                 else if (waveFinished && game.Enemies.Count() == 0 && !levelFinished && timer <= intervalWave)
                 {
-                    waveTimer = intervalWave - timer;
+                    if ((intervalWave - timer) < 0) waveTimer = 0;
+                    else waveTimer = intervalWave - timer;
                 }
                 if (levelFinished && game.Enemies.Count() == 0 && !gameFinished && timer > intervalWave)
                 {

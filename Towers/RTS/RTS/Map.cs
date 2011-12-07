@@ -119,7 +119,7 @@ namespace RTS
 
             endList.Add(content.Load<Texture2D>("house"));
             endList.Add(content.Load<Texture2D>("house"));
-            endList.Add(content.Load<Texture2D>("house"));
+            endList.Add(content.Load<Texture2D>("castleLarge"));
 
             ReloadMap();
 
