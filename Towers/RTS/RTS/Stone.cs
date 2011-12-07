@@ -73,7 +73,7 @@ namespace RTS
                     stoneTexture = contentManager.Load<Texture2D>("lightningStone");
                     break;
                 case ElementType.Ice:
-                    stoneTexture = contentManager.Load<Texture2D>("healingStone");
+                    stoneTexture = contentManager.Load<Texture2D>("iceStone");
                     break;
                 case ElementType.Normal:
                     stoneTexture = contentManager.Load<Texture2D>("money");
