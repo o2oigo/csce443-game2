@@ -57,6 +57,7 @@ namespace RTS
         private Texture2D menu4Texture;
         private Texture2D buildTexture;
         private Texture2D cancelTexture;
+        private Texture2D cancelSelectTexture;
         private Texture2D upgradeTexture;
         private Texture2D upgradeInactiveTexture;
         private Texture2D upgradeSelectTexture;
@@ -179,6 +180,7 @@ namespace RTS
             //menu4Texture = contentManager.Load<Texture2D>("cancelMenuSelect");
             buildTexture = contentManager.Load<Texture2D>("buildSmall");
             cancelTexture = contentManager.Load<Texture2D>("cancelSmall");
+            cancelSelectTexture = contentManager.Load<Texture2D>("cancelSmallSelected");
             upgradeTexture = contentManager.Load<Texture2D>("upgradeSmall");
             upgradeSelectTexture = contentManager.Load<Texture2D>("upgradeSmallSelected");
             upgradeInactiveTexture = contentManager.Load<Texture2D>("upgradeSmallInactive");
@@ -360,6 +362,15 @@ namespace RTS
                         spriteBatch.Draw(missileTowerBuildInactiveTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
                     }
 
+
+
+                }
+
+                else if (mainBuildMode == true && upgradeBuildMode == false && upgradeBuildMagicMode == false && shootRotationAngle <= 3 * (float)Math.PI / 4 && shootRotationAngle > 1 * (float)Math.PI / 4)
+                {
+                    spriteBatch.Draw(cancelSelectTexture, new Vector2(position.X - 45, position.Y + 45), Color.White);
+                    spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
+                    spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 30, position.Y - 30), Color.White);
                 }
 
                 else if (mainBuildMode == true && upgradeBuildMode == false && upgradeBuildMagicMode == false && (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4))
@@ -393,9 +404,19 @@ namespace RTS
                     spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
                     spriteBatch.Draw(enhanceInactiveTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
 
-                    if (shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4)
+                    if (shootRotationAngle >= -3 * (float)Math.PI / 4 && shootRotationAngle < -1 * (float)Math.PI / 4)
                     {
+                        spriteBatch.Draw(upgradeSelectTexture, new Vector2(position.X - 45, position.Y - 115), Color.White);
                     }
+                    else if (shootRotationAngle <= 3 * (float)Math.PI / 4 && shootRotationAngle > 1 * (float)Math.PI / 4)
+                    {
+                        spriteBatch.Draw(cancelSelectTexture, new Vector2(position.X - 45, position.Y + 45), Color.White);
+                    }
+                    else if ((shootRotationAngle <= -3 * (float)Math.PI / 4 && shootRotationAngle >= -(float)Math.PI) || (shootRotationAngle <= (float)Math.PI && shootRotationAngle > 3 * (float)Math.PI / 4))
+                    {
+                        spriteBatch.Draw(sellSelectTexture, new Vector2(position.X - 103, position.Y - 33), Color.White);
+                    }
+
                 }
 
                 else if (upgradeBuildMagicMode == true)
@@ -403,31 +424,54 @@ namespace RTS
                     spriteBatch.Draw(upgradeTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
                     spriteBatch.Draw(sellTexture, new Vector2(position.X - 100, position.Y - 30), Color.White);
-                    spriteBatch.Draw(enhanceInactiveTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                    spriteBatch.Draw(enhanceTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
 
                     if (shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4)
                     {
-                        spriteBatch.Draw(flameTowerBuildTexture, new Vector2(position.X + 90, position.Y + 0), Color.White);
+                        spriteBatch.Draw(flameTowerBuildTexture, new Vector2(position.X + 90, position.Y - 30), Color.White);
                         spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 60, position.Y - 90), Color.White);
-                        spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
+                        spriteBatch.Draw(iceTowerBuildTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
 
 
                         if (fireStoneInInventory < 1)
                         {
-                            spriteBatch.Draw(flameTowerBuildInactiveTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
+                            spriteBatch.Draw(flameTowerBuildInactiveTexture, new Vector2(position.X + 90, position.Y - 30), Color.White);
                         }
                         if (lightningStoneInInventory < 1)
                         {
-                            spriteBatch.Draw(lightningTowerBuildInactiveTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
+                            spriteBatch.Draw(lightningTowerBuildInactiveTexture, new Vector2(position.X + 60, position.Y - 90), Color.White);
+                        }
+                        if (healStoneInInventory < 1)
+                        {
+                            spriteBatch.Draw(iceTowerBuildInactiveTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
                         }
                         if (fireStoneInInventory > 0 && shootRotationAngle >= -1 * (float)Math.PI / 12 && shootRotationAngle < 1 * (float)Math.PI / 12)
                         {
-                            spriteBatch.Draw(flameTowerBuildSelectTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
+                            spriteBatch.Draw(flameTowerBuildSelectTexture, new Vector2(position.X + 90, position.Y - 30), Color.White);
                         }
                         if (lightningStoneInInventory > 0 && shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < -1 * (float)Math.PI / 12)
                         {
-                            spriteBatch.Draw(lightningTowerBuildSelectTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
+                            spriteBatch.Draw(lightningTowerBuildSelectTexture, new Vector2(position.X + 60, position.Y - 90), Color.White);
                         }
+                        if (healStoneInInventory > 0 && shootRotationAngle >= (float)Math.PI / 12 && shootRotationAngle < 1 * (float)Math.PI / 4)
+                        {
+                            spriteBatch.Draw(iceTowerBuildSelectTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
+                        }
+                    }
+
+                    else if (shootRotationAngle <= 3 * (float)Math.PI / 4 && shootRotationAngle > 1 * (float)Math.PI / 4)
+                    {
+                        spriteBatch.Draw(cancelSelectTexture, new Vector2(position.X - 45, position.Y + 45), Color.White);
+                    }
+
+                    else if (shootRotationAngle >= -3 * (float)Math.PI / 4 && shootRotationAngle < -1 * (float)Math.PI / 4)
+                    {
+                        spriteBatch.Draw(upgradeSelectTexture, new Vector2(position.X - 45, position.Y - 115), Color.White);
+                    }
+
+                    else if ((shootRotationAngle <= -3 * (float)Math.PI / 4 && shootRotationAngle >= -(float)Math.PI) || (shootRotationAngle <= (float)Math.PI && shootRotationAngle > 3 * (float)Math.PI / 4))
+                    {
+                        spriteBatch.Draw(sellSelectTexture, new Vector2(position.X - 103, position.Y - 33), Color.White);
                     }
                 }
             }
