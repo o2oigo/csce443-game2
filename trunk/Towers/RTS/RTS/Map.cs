@@ -131,7 +131,7 @@ namespace RTS
         public Rectangle endRectangle()
         {
             Vector2 tmp = MapToWorld(endTile,false);
-            Rectangle rct = new Rectangle((int)tmp.X - endList[currentMap].Width/4, (int)tmp.Y, endList[currentMap].Width, endList[currentMap].Height / 6);
+            Rectangle rct = new Rectangle((int)tmp.X - endList[currentMap].Width/5, (int)tmp.Y, (int)(endList[currentMap].Width*0.75), endList[currentMap].Height / 6);
             return rct;
         }
 

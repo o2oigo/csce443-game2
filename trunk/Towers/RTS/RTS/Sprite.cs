@@ -27,6 +27,13 @@ namespace RTS
             set { position = value; }
         }
 
+        protected Vector2 lowerLeft;
+        public Vector2 LowerLeft
+        {
+            get { return lowerLeft; }
+            //set { lowerLeft = value; }
+        }
+
         public Rectangle FeetSize
         {
             get { return new Rectangle((int)position.X, (int)position.Y, Size.Width, 10); }
@@ -54,7 +61,7 @@ namespace RTS
 
         public static void LoadContent(ContentManager Content)
         {
-            hpBarFrame = Content.Load<Texture2D>("hpFrame");
+            hpBarFrame = Content.Load<Texture2D>("hpBorder");
             hpBarInside = Content.Load<Texture2D>("hpInsid");
         }
 
@@ -121,8 +128,8 @@ namespace RTS
                 pos.Y -= 30;
                 Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)this).HP / ((Enemy)this).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
             
-                spriteBatch.Draw(hpBarInside, newRect, Color.White);
                 spriteBatch.Draw(hpBarFrame, pos, Color.White);
+                spriteBatch.Draw(hpBarInside, newRect, Color.White);
             }
         }
 
@@ -147,7 +154,7 @@ namespace RTS
             var length = (from i in allObjects
                           orderby i.Position.Y
                           select i) as List<Sprite>;
-            var lambda = allObjects.OrderBy(i => i.Position.Y).ToList();
+            var lambda = allObjects.OrderBy(i => (i.Position.Y)).ToList();
             allObjects = lambda;
         }
 

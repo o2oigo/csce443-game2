@@ -186,6 +186,10 @@ namespace RTS
 
             origin.X = Size.Width / 2;
             origin.Y = Size.Height / 2;
+
+            lowerLeft.X = position.X;
+            lowerLeft.Y = position.Y + Size.Height;
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -1133,7 +1137,7 @@ namespace RTS
             {
                 //Rectangle treeRect = new Rectangle((int)t.Origin.X, (int)t.Origin.Y, t.Texture.Width / 3, t.Texture.Height / 3);
                 Rectangle lampRect = new Rectangle((int)l.Origin.X+15, (int)l.Origin.Y+5, 1, 1);
-                if (lampRect.Intersects(player))
+                if (lampRect.Intersects(new Rectangle((int)tmpPos.X - 5, (int)tmpPos.Y, (int)(animation.currentSpriteSheet().size.Width*0.75), (int)(animation.currentSpriteSheet().size.Height * 0.75))))
                 {
                     collision = true;
                     break;

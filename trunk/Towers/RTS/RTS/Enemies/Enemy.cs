@@ -24,10 +24,16 @@ namespace RTS
             get { return attackDamage; }
         }
 
-        protected EnemyEffect effect = null;
-        public EnemyEffect Effect
+        protected EnemyEffect effectStn = null;
+        public EnemyEffect EffectStn
         {
-            get { return effect; }
+            get { return effectStn; }
+        }
+
+        protected EnemyEffect effectBurn = null;
+        public EnemyEffect EffectBurn
+        {
+            get { return effectBurn; }
         }
 
         Random rand = new Random();
@@ -46,6 +52,7 @@ namespace RTS
         private float curveTimer = 0;
         private float elapsedTime;
         private float effectTimer;
+        private float effectTimer2;
         private float shootElapsedTime;
         private float shootTimer = 2.7f;
         private float circle = MathHelper.Pi * 2;
@@ -216,21 +223,37 @@ namespace RTS
             ////Elapsed Time Calculations
             effectTimer += (float)gameTime.ElapsedGameTime.Milliseconds;
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            effectTimer += (float)gameTime.ElapsedGameTime.Milliseconds;
+            //effectTimer2 += (float)gameTime.ElapsedGameTime.Milliseconds;
+            effectTimer2 += (float)gameTime.ElapsedGameTime.Milliseconds;
             shootElapsedTime += elapsedTime;
 
-            if (effect != null && effectTimer>100)
+            if (effectBurn != null && effectTimer>200)
             {
-                if (!effect.isValid(gameTime))
+                if (!effectBurn.isValid(gameTime))
                 {
-                    effect.undoEffect(this);
-                    effect = null;
+                    effectBurn.undoEffect(this);
+                    effectBurn = null;
                     effectTimer = 0f;
                 }
                 else if (effectTimer > 500)
                 {
-                    effect.applyEffects(this);
+                    effectBurn.applyEffects(this);
                     effectTimer = 0f;
+                }
+            }
+
+            if (effectStn != null && effectTimer2 > 200)
+            {
+                if (!effectStn.isValid(gameTime))
+                {
+                    effectStn.undoEffect(this);
+                    effectStn = null;
+                    effectTimer2 = 0f;
+                }
+                else if (effectTimer2 > 500)
+                {
+                    effectStn.applyEffects(this);
+                    effectTimer2 = 0f;
                 }
             }
 
@@ -453,13 +476,21 @@ namespace RTS
 
             hp -= damage.amount * dmgOffset;
 
-            if (effect == null && damage.effect != null)
+            if (effectStn == null && damage.effect is EnemyEffectStun)
             {
                 if (strongAgainst != damage.type)
                 {
-                    effect = damage.effect;
+                    effectStn = damage.effect;
                     applyOffset(damage);
                 }   
+            }
+            if (effectBurn == null && damage.effect is EnemyEffectBurn)
+            {
+                if (strongAgainst != damage.type)
+                {
+                    effectBurn = damage.effect;
+                    applyOffset(damage);
+                }
             }
 
             if (hp <= 0)
@@ -468,26 +499,29 @@ namespace RTS
 
         public void applyOffset(Damage damage)
         {
-            if (effect is EnemyEffectBurn)
+            //if (effect is EnemyEffectBurn)
+            if (effectBurn is EnemyEffectBurn)
             {
-                EnemyEffectBurn tmpEffect = (EnemyEffectBurn)effect;
+                //EnemyEffectBurn tmpEffect = (EnemyEffectBurn)effect;
+
                 if (weakAgainst == ElementType.Fire)
-                    tmpEffect.Offset = 1.5f;
+                    effectBurn.Offset = 1.5f;
                 else if (strongAgainst == ElementType.Fire)
-                    tmpEffect.Offset = 0;
-                else tmpEffect.Offset = 1.0f;
+                    effectBurn.Offset = 0;
+                else effectBurn.Offset = 1.0f;
             }
-            if (effect is EnemyEffectStun)
+            //if (effect is EnemyEffectStun)
+            if (effectStn is EnemyEffectStun)
             {
-                EnemyEffectStun tmpEffect = (EnemyEffectStun)effect;
+                //EnemyEffectStun tmpEffect = (EnemyEffectStun)effect;
                 if (weakAgainst == ElementType.Lightning)
                     //tmpEffect.Duration = tmpEffect.Duration + (int)((float)tmpEffect.Duration * 0.5f * damage.level);
-                    tmpEffect.Offset = 1.5f * damage.level;
+                    effectStn.Offset = 1.5f * damage.level;
                 else if (strongAgainst == ElementType.Lightning)
                     //tmpEffect.Duration = 0;
-                    tmpEffect.Offset = 0f;
+                    effectStn.Offset = 0f;
                 else
-                    tmpEffect.Offset = 1.0f * damage.level;
+                    effectStn.Offset = 1.0f * damage.level;
                     //tmpEffect.Duration = tmpEffect.Duration - (int)((float)tmpEffect.Duration * 0.5f);
             }
         }
@@ -507,7 +541,7 @@ namespace RTS
 
         public void Attack(List<Tower> towers, GameTime gameTime)
         {
-            if (!(effect is EnemyEffectStun))
+            if (!(effectStn is EnemyEffectStun))
             {
                 foreach (Tower i in towers)
                 {
