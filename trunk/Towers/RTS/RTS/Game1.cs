@@ -71,18 +71,22 @@ namespace RTS
         public LightningParticleSystem lightning;
         public FlameTowerSmokeParticleSystem flameTowerSmoke;
         public IceParticleSystem ice;
+        public LampParticleSystem light;
 
         Dictionary<string, SoundEffect> music;
-        SoundEffect soundeffect;
-        SoundEffectInstance songInstance;
+     //   SoundEffect soundeffect;
+      //  SoundEffectInstance songInstance;
 
         SoundEffect menuSound;
         SoundEffect level1Sound;
         SoundEffectInstance menuSoundInstance;
         SoundEffectInstance level1SoundInstance;
 
-        Song menuSong;
-        Song level1Song; 
+        float lampTimer = .8f;
+        float lampElapsedTime = 5f;
+
+       // Song menuSong;
+      //  Song level1Song; 
 
         private Map map;
         public Map Map
@@ -184,27 +188,30 @@ namespace RTS
             camera = new Camera(GraphicsDevice.Viewport);
             camera.Initialize(this, PlayerIndex.One, new Vector2(100, 100), players);
 
-            explosion = new ExplosionParticleSystem(this, 1000, camera);
+            explosion = new ExplosionParticleSystem(this, 10000, camera);
             Components.Add(explosion);
 
-            smoke = new ExplosionSmokeParticleSystem(this, 100, camera);
+            smoke = new ExplosionSmokeParticleSystem(this, 10000, camera);
             Components.Add(smoke);
 
-            flameTowerSmoke = new FlameTowerSmokeParticleSystem(this, 5000, camera);
+            flameTowerSmoke = new FlameTowerSmokeParticleSystem(this, 10000, camera);
             Components.Add(flameTowerSmoke);
 
-            fire = new FireParticleSystem(this, 5000, camera);
+            fire = new FireParticleSystem(this, 10000, camera);
             Components.Add(fire);
 
-            ice = new IceParticleSystem(this, 5000, camera);
+            ice = new IceParticleSystem(this, 10000, camera);
             Components.Add(ice);
 
-            fireTower = new FireParticleSystem(this, 1000, camera);
+            fireTower = new FireParticleSystem(this, 10000, camera);
             fireTower.setSpeed(500, 600);
             Components.Add(fireTower);
 
-            lightning = new LightningParticleSystem(this, 10, camera);
+            lightning = new LightningParticleSystem(this, 20, camera);
             Components.Add(lightning);
+
+            light = new LampParticleSystem(this, 100, camera);
+            Components.Add(light);
 
            /* soundeffect = Content.Load<SoundEffect>("MainSong");
             music = new Dictionary<string, SoundEffect>();
@@ -261,6 +268,8 @@ namespace RTS
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+
+            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -272,6 +281,7 @@ namespace RTS
             lightning.Update(gameTime);
             fireTower.Update(gameTime);
             ice.Update(gameTime);
+            light.Update(gameTime);
 
             userInterface.setWavesNumber(wave.CurrentWave);
             
@@ -313,6 +323,15 @@ namespace RTS
                         stones[i].Update(gameTime);
                         if (!stones[i].isAppear) stones.Remove(stones[i]);
                     }
+                }
+
+                //Update Lamp Particles
+                lampElapsedTime += elapsedTime;
+                if (lampElapsedTime >= lampTimer)
+                {
+                    lampElapsedTime = 0f;
+                    foreach (Lamp lamp in lamps)       
+                        light.AddParticles(new Vector2(lamp.Position.X + 21, lamp.Position.Y - 27));       
                 }
 
                 //Detect Collisions
@@ -586,7 +605,10 @@ namespace RTS
                             if (Vector2.Distance(enemies[i].Position, tower.Position) <= tower.getRange())
                             {
                                 //temp.getSound().Play();
-                                if (enemies[i].EffectStn is EnemyEffectStun) { }
+                                if (enemies[i].EffectStn is EnemyEffectStun) 
+                                {
+                                   // enemies[i].MoveSpeed = 0f;
+                                }
                                 else
                                 {
                                     enemies[i].MoveSpeed = .2f;

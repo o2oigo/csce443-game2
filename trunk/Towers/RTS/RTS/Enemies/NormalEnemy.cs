@@ -21,7 +21,7 @@ namespace RTS
         public override void Initialize(Game1 game, float health)
         {
             base.Initialize(game, health);
-            attackDamage = 5;
+            attackDamage = 0;
             range = 200;
             weakAgainst = ElementType.Lightning;
             strongAgainst = ElementType.None;
