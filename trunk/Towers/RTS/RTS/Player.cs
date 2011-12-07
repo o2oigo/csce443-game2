@@ -567,7 +567,7 @@ namespace RTS
             updateProjectiles(gameTime);
 
             //Update Towers
-            updateTowers(gameTime, enemies);
+            //updateTowers(gameTime, enemies);
 
             //Update Inventory
             updateInventory();
@@ -711,9 +711,9 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear(playerIndex) == true && towerList[i].getTowerIntLevel() == 1)
                         {
-                            if (money >= 10)
+                            if (money >= 15)
                             {
-                                removeMoney(10);
+                                removeMoney(15);
 
                                 towerList[i].setToLvlTwo();
                                 buildMode = false;
@@ -723,9 +723,9 @@ namespace RTS
 
                         else if (towerList[i].getPlayerIsNear(playerIndex) == true && (towerList[i].getTowerIntLevel() == 2 || towerList[i].getTowerIntLevel() == 3))
                         {
-                            if (money >= 10)
+                            if (money >= 30)
                             {
-                                removeMoney(10);
+                                removeMoney(30);
                                 towerList[i].setToLvlThree();
                                 buildMode = false;
                                 upgradeBuildMode = false;
@@ -1094,9 +1094,9 @@ namespace RTS
                         {
                             if (towerList[i].getPlayerIsNear(playerIndex) == true && towerList[i].getTowerIntLevel() == 1)
                             {
-                                if (money >= 10)
+                                if (money >= 15)
                                 {
-                                    removeMoney(10);
+                                    removeMoney(15);
 
                                     towerList[i].setToLvlTwo();
                                     buildMode = false;
@@ -1105,9 +1105,9 @@ namespace RTS
                             }
                             else if (towerList[i].getPlayerIsNear(playerIndex) == true && towerList[i].getTowerIntLevel() == 2)
                             {
-                                if (money >= 10)
+                                if (money >= 30)
                                 {
-                                    removeMoney(10);
+                                    removeMoney(30);
                                     towerList[i].setToLvlThree();
                                     buildMode = false;
                                     upgradeBuildMode = false;
@@ -1432,7 +1432,7 @@ namespace RTS
             towerList.Add(tower);
         }
 
-        public void updateTowers(GameTime gameTime, List<Enemy> enemies)
+        public static void updateTowers(GameTime gameTime, List<Enemy> enemies)
         {
            // for (int i = 0; i < towerList.Count; i++)
             foreach (Tower t in towerList)

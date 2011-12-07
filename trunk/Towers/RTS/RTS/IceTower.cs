@@ -37,7 +37,7 @@ namespace RTS
 
             this.shootTimer = .05f;
             this.soundTimer = 1f;
-            this.towerRange = 175f;
+            this.towerRange = rangeVariable * 2f;
 
             iceSound.Play();
             
@@ -78,6 +78,7 @@ namespace RTS
         {
             iceTowerTexture = iceTowerUpgrade2Texture;
             maxHP = hp = 150;
+            towerRange = rangeVariable * 3f;
             level = "level 2";
             ilevel = 2;
         }
@@ -86,6 +87,7 @@ namespace RTS
         {
             iceTowerTexture = iceTowerUpgrade3Texture;
             maxHP = hp = 200;
+            towerRange = rangeVariable * 4f;
             level = "level 3";
             ilevel = 3;
         }

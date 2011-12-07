@@ -20,14 +20,14 @@ namespace RTS
             missileTexture = game.Content.Load<Texture2D>("fireParticle");
             towerName = "Missile Tower";
             this.ilevel = level;
-            damage = new Damage(30, this.ilevel, ElementType.Normal, null);
+            damage = new Damage(5, this.ilevel, ElementType.Normal, null);
             if (level == 2)
                 setToLvlTwo();
             if (level == 3)
                 setToLvlThree();
 
-            this.shootTimer = 3f;
-            this.towerRange = 450f;
+            this.shootTimer = timeVariable / 1f;
+            this.towerRange = rangeVariable * 5f;
             
         }
 
@@ -91,7 +91,8 @@ namespace RTS
         {
             missileTowerTexture = missileTowerUpgrade2Texture;
             maxHP = hp = 150;
-            damage.amount = 50f;
+//damage.amount = 5f;
+            towerRange = rangeVariable * 7f;
             level = "level 2";
             ilevel = 2;
         }
@@ -100,7 +101,7 @@ namespace RTS
         {
             missileTowerTexture = missileTowerUpgrade3Texture;
             maxHP = hp = 200;
-            damage.amount = 100f;
+            damage.amount = 7f;
             level = "level 3";
             ilevel = 3;
         }

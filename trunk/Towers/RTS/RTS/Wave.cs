@@ -16,8 +16,8 @@ namespace RTS
 
         double timer;
         // in milliseconds
-        const int intervalSpawnMin = 1700; //
-        const int intervalSpawnMax = 2000;
+        const int intervalSpawnMin = 2500; //
+        const int intervalSpawnMax = 3000;
         const double intervalWave = 10000; // 10 seconds
         public double IntervalWave
         {
@@ -99,13 +99,14 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 1, 1);
-                    AddAttackingEnemy(i, 1, 1, 1);
-                    AddFastEnemy(i, 1, 1, 1);
-                    AddHPEnemy(i, 1, 1, 1);
-                    AddMagicOnlyEnemy(i, 1, 1, 1);
-                    AddPhysicalOnlyEnemy(i, 1, 1, 1);
-                    AddRegenEnemy(i, 1, 1, 1);
+                    AddNormalEnemy(i, 1, 20, 8);
+                    AddNormalEnemy(i, 1, 30, 20);
+                    //AddAttackingEnemy(i, 1, 1, 1);
+                    //AddFastEnemy(i, 1, 1, 1);
+                    //AddHPEnemy(i, 1, 1, 1);
+                    //AddMagicOnlyEnemy(i, 1, 1, 1);
+                   // AddPhysicalOnlyEnemy(i, 1, 1, 1);
+                   // AddRegenEnemy(i, 1, 1, 1);
                     //AddFastEnemy(i, 1, 10, 100);
                     //AddNormalEnemy(i, 1, 2, 100);
                     //AddFastEnemy(i, 1, 5, 100);
