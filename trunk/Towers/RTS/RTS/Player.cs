@@ -458,7 +458,7 @@ namespace RTS
                         {
                             spriteBatch.Draw(lightningTowerBuildInactiveTexture, new Vector2(position.X + 60, position.Y - 90), Color.White);
                         }
-                        if (healStoneInInventory < 1)
+                        if (iceStoneInInventory < 1)
                         {
                             spriteBatch.Draw(iceTowerBuildInactiveTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
                         }
@@ -470,7 +470,7 @@ namespace RTS
                         {
                             spriteBatch.Draw(lightningTowerBuildSelectTexture, new Vector2(position.X + 60, position.Y - 90), Color.White);
                         }
-                        if (healStoneInInventory > 0 && shootRotationAngle >= (float)Math.PI / 12 && shootRotationAngle < 1 * (float)Math.PI / 4)
+                        if (iceStoneInInventory > 0 && shootRotationAngle >= (float)Math.PI / 12 && shootRotationAngle < 1 * (float)Math.PI / 4)
                         {
                             spriteBatch.Draw(iceTowerBuildSelectTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
                         }

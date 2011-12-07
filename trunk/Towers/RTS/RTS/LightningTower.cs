@@ -45,7 +45,7 @@ namespace RTS
 
             lightningTowerTexture = contentManager.Load<Texture2D>("lightningTower");
             lightningTowerUpgrade2Texture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
-            lightningTowerUpgrade3Texture = contentManager.Load<Texture2D>("lightningTowerUpgrade");
+            lightningTowerUpgrade3Texture = contentManager.Load<Texture2D>("lightningTowerLevel3");
             turretTexture = contentManager.Load<Texture2D>("TowerTurret");
             font = contentManager.Load<SpriteFont>("font");
             origin.X = lightningTowerTexture.Width / 2;
