@@ -597,8 +597,8 @@ namespace RTS
             //Get Input
             if (currentState.IsConnected)//Game Pad
                 updateGamePad();
-            else //Keyboard and Mouse
-                updateKeyboard();
+            //else //Keyboard and Mouse
+            //    updateKeyboard();
 
             //Update position based on speed and angle
             updateMovement();
@@ -653,10 +653,10 @@ namespace RTS
             }
 
             //Shoot
-            if (currentState.IsButtonDown(Buttons.RightShoulder) && oldState.IsButtonUp(Buttons.RightShoulder))
-            {
-                createProjectile();
-            }
+            //if (currentState.IsButtonDown(Buttons.RightShoulder) && oldState.IsButtonUp(Buttons.RightShoulder))
+            //{
+            //    createProjectile();
+            //}
 
             //Build Mode
             if (oldState.IsButtonUp(Buttons.LeftShoulder) && currentState.IsButtonDown(Buttons.LeftShoulder) && buildMode == false)
