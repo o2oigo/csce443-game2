@@ -104,9 +104,9 @@ namespace RTS
         //private bool upgradeSubBuildMode = false;
         private bool maxCapacityTower = false;
         SpriteFont font;
-        private int fireStoneInInventory = 1;
-        private int waterStoneInInventory = 1;
-        private int healStoneInInventory = 1;
+        private static int fireStoneInInventory = 1;
+        private static int waterStoneInInventory = 1;
+        private static int healStoneInInventory = 1;
         static int money = 35;
         private float timeForResources = 0;
         private Vector2 uiPosition1;
@@ -116,7 +116,8 @@ namespace RTS
 
         private List<Projectile> projectileList = new List<Projectile>(5);
         private List<Missile> missileList = new List<Missile>(5);
-        private List<Tower> towerList = new List<Tower>(20);
+        private static List<Tower> towerList = new List<Tower>(20);
+        private List<Tower> otherPlayerTowerList = new List<Tower>(20);
         private static List<Stone> stoneList = new List<Stone>(20);
         private List<bool> buildableTowers = new List<bool>(7);
 
@@ -459,7 +460,7 @@ namespace RTS
             foreach (Tower tower in towerList)
             {
                 //Set upgrade mode if near tower
-                if (tower.getPlayerIsNear() == true)
+                if (tower.getPlayerIsNear(playerIndex) == true)
                 {
                     if (tower is MagicTower)
                     {
@@ -647,7 +648,7 @@ namespace RTS
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true && towerList[i].getTowerIntLevel() == 1)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true && towerList[i].getTowerIntLevel() == 1)
                         {
                             if (money >= 10)
                             {
@@ -659,7 +660,7 @@ namespace RTS
                             }
                         }
 
-                        else if (towerList[i].getPlayerIsNear() == true && (towerList[i].getTowerIntLevel() == 2 || towerList[i].getTowerIntLevel() == 3))
+                        else if (towerList[i].getPlayerIsNear(playerIndex) == true && (towerList[i].getTowerIntLevel() == 2 || towerList[i].getTowerIntLevel() == 3))
                         {
                             if (money >= 10)
                             {
@@ -683,7 +684,7 @@ namespace RTS
 
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
                             if (healStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
@@ -712,7 +713,7 @@ namespace RTS
 
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
                             if (fireStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
@@ -742,7 +743,7 @@ namespace RTS
 
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
                             if (waterStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
@@ -767,7 +768,7 @@ namespace RTS
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
                             if (towerList[i].getTowerName() == "Flame Tower")
                             {
@@ -1030,7 +1031,7 @@ namespace RTS
                     {
                         for (int i = 0; i < towerList.Count(); i++)
                         {
-                            if (towerList[i].getPlayerIsNear() == true && towerList[i].getTowerIntLevel() == 1)
+                            if (towerList[i].getPlayerIsNear(playerIndex) == true && towerList[i].getTowerIntLevel() == 1)
                             {
                                 if (money >= 10)
                                 {
@@ -1041,7 +1042,7 @@ namespace RTS
                                     upgradeBuildMode = false;
                                 }
                             }
-                            else if (towerList[i].getPlayerIsNear() == true && towerList[i].getTowerIntLevel() == 2)
+                            else if (towerList[i].getPlayerIsNear(playerIndex) == true && towerList[i].getTowerIntLevel() == 2)
                             {
                                 if (money >= 10)
                                 {
@@ -1069,7 +1070,7 @@ namespace RTS
 
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
                             if (healStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
@@ -1098,7 +1099,7 @@ namespace RTS
 
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
                             if (fireStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
@@ -1129,7 +1130,7 @@ namespace RTS
 
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
                             if (waterStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
@@ -1156,7 +1157,7 @@ namespace RTS
                 {
                     for (int i = 0; i < towerList.Count(); i++)
                     {
-                        if (towerList[i].getPlayerIsNear() == true)
+                        if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
                             if (towerList[i].getTowerName() == "Flame Tower")
                             {
@@ -1323,6 +1324,11 @@ namespace RTS
             }
         }
 
+        public PlayerIndex getPlayerIndex()
+        {
+            return playerIndex;
+        }
+
         public void createTower()
         {
             Tower tower = new Tower(game, playerIndex, this.position);
@@ -1401,7 +1407,7 @@ namespace RTS
             }
         }
 
-        public void addStoneToInventory(Stone st)
+        public static void addStoneToInventory(Stone st)
         {
             //Stone stone = new Stone();
             //stone.Initialize(game, this.position, _stoneType);
@@ -1425,6 +1431,16 @@ namespace RTS
 
                 }
             }
+        }
+
+        public List<Tower> getOtherPlayerTowers()
+        {
+            return otherPlayerTowerList;
+        }
+
+        public void setOtherPlayerTowers(List<Tower> towers)
+        {
+            this.otherPlayerTowerList = towers;
         }
 
         public List<bool> getBuildableTowers()
@@ -1452,7 +1468,7 @@ namespace RTS
             return origin;
         }
 
-        public List<Tower> getTowers()
+        public static List<Tower> getTowers()
         {
             return towerList;
         }
@@ -1522,21 +1538,21 @@ namespace RTS
             return maxCapacityTower;
         }
 
-        public int getMoney()
+        public static int getMoney()
         {
             return money;
         }
 
 
-        public int getFireStoneInInventory()
+        public static int getFireStoneInInventory()
         {
             return fireStoneInInventory;
         }
-        public int getWaterStoneInInventory()
+        public static int getWaterStoneInInventory()
         {
             return waterStoneInInventory;
         }
-        public int getHealStoneInInventory()
+        public static int getHealStoneInInventory()
         {
             return healStoneInInventory;
         }

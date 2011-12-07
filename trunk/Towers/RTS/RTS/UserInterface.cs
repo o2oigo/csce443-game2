@@ -473,18 +473,18 @@ namespace RTS
                 #region game screen for gamepad user
                 if (showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, player1.getFireStoneInInventory() + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
-                    spriteBatch.DrawString(font, player1.getWaterStoneInInventory() + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
-                    spriteBatch.DrawString(font, player1.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
+                    spriteBatch.DrawString(font, Player.getFireStoneInInventory() + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
+                    spriteBatch.DrawString(font, Player.getWaterStoneInInventory() + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
+                    spriteBatch.DrawString(font, Player.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
                     //spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
                     spriteBatch.DrawString(font, "Lives: " + game.getLive(), uiPosition3, Color.Black);
                     spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
-                    spriteBatch.DrawString(font, "" + player1.getMoney(), uiMoneyPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getMoney(), uiMoneyPosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + player1.getFireStoneInInventory(), uiFirePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + player1.getHealStoneInInventory(), uiIcePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + player1.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getFireStoneInInventory(), uiFirePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
 
                     if (nextWave == 1)
                     {
@@ -1406,9 +1406,9 @@ namespace RTS
                 #region game screen for keyboard user
                 if (showGameScreen == true)
                 {
-                    spriteBatch.DrawString(font, player1.getFireStoneInInventory() + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
-                    spriteBatch.DrawString(font, player1.getWaterStoneInInventory() + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
-                    spriteBatch.DrawString(font, player1.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
+                    spriteBatch.DrawString(font, Player.getFireStoneInInventory() + " Fire Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 40), Color.Black);
+                    spriteBatch.DrawString(font, Player.getWaterStoneInInventory() + " Thunder Stone", new Vector2(uiPosition2.X, uiPosition2.Y + 20), Color.Black);
+                    spriteBatch.DrawString(font, Player.getHealStoneInInventory() + " Ice Stone", uiPosition2, Color.Black);
                     //spriteBatch.DrawString(font, "Resources: " + player1.getMoney(), uiPosition1, Color.Black);
                     spriteBatch.DrawString(font, "Lives: " + game.getLive(), uiPosition3, Color.Black);
 
@@ -1420,12 +1420,12 @@ namespace RTS
                         spriteBatch.Draw(timerSprite, new Vector2(((width / 2) + 35 - tmp2), 3), new Rectangle(0, 0, timerSprite.Width, timerSprite.Height), Color.White, 0f, Vector2.Zero, 0.8f, SpriteEffects.None, 1.0f);
                     }
                     spriteBatch.Draw(statusBar, new Vector2(10, -10), Color.White);
-                    spriteBatch.DrawString(font, "" + player1.getMoney(), uiMoneyPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getMoney(), uiMoneyPosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + player1.getFireStoneInInventory(), uiFirePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + player1.getHealStoneInInventory(), uiIcePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + player1.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getFireStoneInInventory(), uiFirePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
 
                     //Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)this).HP / ((Enemy)this).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
 

@@ -313,17 +313,19 @@ namespace RTS
                 wave.Update(gameTime);
                 
                 //Update Player
-                foreach (Player player in players)
-                {
-                    player.Update(gameTime, enemies);
-                }
+             
+                    player1.Update(gameTime, enemies);
+                   // player2.addOtherPlayerTowers(player1.getTowers());
+                    player2.Update(gameTime, enemies);
+                   // player1.addOtherPlayerTowers(player2.getTowers());
+                
 
                 //Update Enemies
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     //Get current enemy and update
                     Enemy currentEnemy = enemies[i];
-                    currentEnemy.Update(gameTime, players[0].getTowers());
+                    currentEnemy.Update(gameTime, Player.getTowers());
                 }
 
                 //Update Stone Timer
@@ -429,13 +431,13 @@ namespace RTS
                     e.DrawHPBarEnemy(spriteBatch);
                 }
 
-                foreach (Player p in players)
-                {
-                    foreach (Tower t in p.getTowers())
+               // foreach (Player p in players)
+              //  {
+                    foreach (Tower t in Player.getTowers())
                     {
                         t.DrawHPBarTower(spriteBatch);
                     }
-                }
+              //  }
 
                 foreach (Player p in players)
                 {
@@ -459,21 +461,40 @@ namespace RTS
                 Rectangle playerRect = new Rectangle((int)(player.Position.X - player.getOrigin().X), (int)(player.Position.Y - player.getOrigin().Y), player.Size.Width, player.Size.Height);
 
                 //Loop through all player's tower
-                for (int k = 0; k < player.getTowers().Count; k++)
+                for (int k = 0; k < Player.getTowers().Count; k++)
                 {
-                    Tower tower = player.getTowers()[k];
+                    Tower tower = Player.getTowers()[k];
                     Rectangle towerRect = new Rectangle((int)(tower.Position.X - tower.getOrigin().X), (int)(tower.Position.Y - tower.getOrigin().Y), tower.getTexture().Width, tower.getTexture().Height);
 
                     //Check if player stand near a tower
                     if (towerRect.Intersects(playerRect))
                     {
-                        tower.setPlayerIsNear(true);
+                        tower.setPlayerIsNear(true, player.getPlayerIndex());
                     }
                     else
                     {
-                        tower.setPlayerIsNear(false);
+                        tower.setPlayerIsNear(false, player.getPlayerIndex());
                     }
                 }
+
+                //Loop through all stones
+                for (int j = 0; j < stones.Count; j++)
+                {
+                    Rectangle currentStoneRect = new Rectangle((int)stones[j].Position.X, (int)stones[j].Position.Y, stones[j].Texture.Width, stones[j].Texture.Height);
+                    if (playerRect.Intersects(currentStoneRect))
+                    {
+                        if (stones[j].Type == ElementType.Normal)
+                        {
+                            Player.addMoney(50);
+                        }
+                        else
+                        {
+                            Player.addStoneToInventory(stones[j]);
+                        }
+                        stones.Remove(stones[j]);
+                    }
+                }
+            }
 
                 //Loop through all enemies
                 //Rectangle houseRect = new Rectangle((int)House.Origin.X - (House.Texture.Width / 2) + 30, (int)House.Origin.Y - 40, House.Texture.Width - 30, House.Texture.Height / 4);
@@ -505,28 +526,28 @@ namespace RTS
                         }*/
 
                         //Check if player's towers are hit by any of current enemy's current projectile
-                        for (int k = 0; k < player.getTowers().Count; k++)
+                        for (int k = 0; k < Player.getTowers().Count; k++)
                         {
-                            Tower tower = player.getTowers()[k];
+                            Tower tower = Player.getTowers()[k];
                             Rectangle towerRect = new Rectangle((int)(tower.Position.X - tower.getOrigin().X), (int)(tower.Position.Y - tower.getOrigin().Y), tower.getTexture().Width, tower.getTexture().Height);
                             if (towerRect.Intersects(enemyProjectileRect))
                             {
                                 currentEnemy.getProjectiles().Remove(proj);
                                 tower.Hit(currentEnemy.AttackDamage);
-                                if (player.getTowers().Count != 0 && tower.isDead())
-                                { 
-                                    if (player.getTowers()[k].getTowerName() == "Flame Tower")
+                                if (Player.getTowers().Count != 0 && tower.isDead())
+                                {
+                                    if (Player.getTowers()[k].getTowerName() == "Flame Tower")
                                     {
-                                        FlameTower temp = (FlameTower)player.getTowers()[k];
+                                        FlameTower temp = (FlameTower)Player.getTowers()[k];
                                         temp.getSound().Stop();
                                     }
-                                    else if (player.getTowers()[k].getTowerName() == "Ice Tower")
+                                    else if (Player.getTowers()[k].getTowerName() == "Ice Tower")
                                     {
-                                        IceTower temp = (IceTower)player.getTowers()[k];
+                                        IceTower temp = (IceTower)Player.getTowers()[k];
                                         temp.getSound().Stop();
                                     }
                                     Sprite.removeList(tower);
-                                    player.getTowers().RemoveAt(k);
+                                    Player.getTowers().RemoveAt(k);
 
                                 }
                             }
@@ -534,7 +555,7 @@ namespace RTS
                     }
                 }
 
-                //Loop through all enemies
+               /* //Loop through all enemies
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     //Get current enemy and create collision box
@@ -554,7 +575,7 @@ namespace RTS
                             currentEnemy.Hit(1.0f);
                         }
                     }
-                }
+                }*/
 
                 //Loop through all enemies
                 for (int i = 0; i < enemies.Count; i++)
@@ -565,9 +586,9 @@ namespace RTS
 
 
                     //Check if current enemy is hit by any of player's tower's projectiles
-                    for (int k = 0; k < player.getTowers().Count; k++)
+                    for (int k = 0; k < Player.getTowers().Count; k++)
                     {
-                        Tower tower = player.getTowers()[k];
+                        Tower tower = Player.getTowers()[k];
                         for (int j = 0; j < tower.getProjectiles().Count; j++)
                         {
                             Projectile proj = tower.getProjectiles()[j];
@@ -586,29 +607,13 @@ namespace RTS
                         }
                     }
                 }
-                //Loop through all stones
-                for (int j = 0; j < stones.Count; j++)
-                {
-                    Rectangle currentStoneRect = new Rectangle((int)stones[j].Position.X, (int)stones[j].Position.Y, stones[j].Texture.Width, stones[j].Texture.Height);
-                    if (playerRect.Intersects(currentStoneRect))
-                    {
-                        if (stones[j].Type == ElementType.Normal)
-                        {
-                            Player.addMoney(50);
-                        }
-                        else
-                        {
-                            player.addStoneToInventory(stones[j]);
-                        }
-                        stones.Remove(stones[j]);
-                    }
-                }
+                
 
                 //Ice Tower Range Collision
                 for (int i = 0; i < enemies.Count; i++)
                 { 
                    // enemies[i].MoveSpeed = .5f;     
-                    foreach (Tower tower in player.getTowers())
+                    foreach (Tower tower in Player.getTowers())
                     {   
                         if (tower.getTowerName() == "Ice Tower")
                         {
@@ -628,7 +633,6 @@ namespace RTS
                         }
                     }
                 }
-            }
         }
 
         public void checkDeadEnemies()
@@ -709,25 +713,25 @@ namespace RTS
                 Sprite.removeList(enemies[i]);
                 enemies.RemoveAt(i);
             }
-            foreach (Player player in players)
-            {
-                for (int k = 0; k < player.getTowers().Count; k++)
+            //foreach (Player player in players)
+            //{
+                for (int k = 0; k < Player.getTowers().Count; k++)
                 {
                     //Tower tower = player1.getTowers()[k];
-                    if (player.getTowers()[k].getTowerName() == "Flame Tower")
+                    if (Player.getTowers()[k].getTowerName() == "Flame Tower")
                     {
-                        FlameTower temp = (FlameTower)player.getTowers()[k];
+                        FlameTower temp = (FlameTower)Player.getTowers()[k];
                         temp.getSound().Stop();
                     }
-                    else if (player.getTowers()[k].getTowerName() == "Ice Tower")
+                    else if (Player.getTowers()[k].getTowerName() == "Ice Tower")
                     {
-                        IceTower temp = (IceTower)player.getTowers()[k];
+                        IceTower temp = (IceTower)Player.getTowers()[k];
                         temp.getSound().Stop();
                     }
-                    Sprite.removeList(player.getTowers()[k]);
-                    player.getTowers().RemoveAt(k);
+                    Sprite.removeList(Player.getTowers()[k]);
+                    Player.getTowers().RemoveAt(k);
                 }
-            }
+            //}
 
             player1.restartGameLevel1();
             player2.restartGameLevel1();
@@ -743,26 +747,26 @@ namespace RTS
 
         public void resetTower()
         {
-            foreach (Player player in players)
-            {
-                for (int k = 0; k < player.getTowers().Count; k++)
+          //  foreach (Player player in players)
+          //  {
+                for (int k = 0; k < Player.getTowers().Count; k++)
                 {
                     //Tower tower = player1.getTowers()[k];
-                    if (player.getTowers()[k].getTowerName() == "Flame Tower")
+                    if (Player.getTowers()[k].getTowerName() == "Flame Tower")
                     {
-                        FlameTower temp = (FlameTower)player.getTowers()[k];
+                        FlameTower temp = (FlameTower)Player.getTowers()[k];
                         temp.getSound().Stop();
                     }
-                    else if (player.getTowers()[k].getTowerName() == "Ice Tower")
+                    else if (Player.getTowers()[k].getTowerName() == "Ice Tower")
                     {
-                        IceTower temp = (IceTower)player.getTowers()[k];
+                        IceTower temp = (IceTower)Player.getTowers()[k];
                         temp.getSound().Stop();
                     }
-                    Sprite.removeList(player.getTowers()[k]);
-                    player.getTowers().RemoveAt(k);
+                    Sprite.removeList(Player.getTowers()[k]);
+                    Player.getTowers().RemoveAt(k);
 
                 }
-            }
+          //  }
         }
 
         public void resetGame()
@@ -852,23 +856,23 @@ namespace RTS
         {
             wave.nextLevel();
             backgroundTexture = mapTextureDict[wave.CurrentLevel];
-            foreach (Player player in players)
-            {
-                for (int k = 0; k < player.getTowers().Count; k++)
+         //   foreach (Player player in players)
+          //  {
+            for (int k = 0; k < Player.getTowers().Count; k++)
                 {
                     //Tower tower = player1.getTowers()[k];
-                    if (player.getTowers()[k].getTowerName() == "Flame Tower")
+                    if (Player.getTowers()[k].getTowerName() == "Flame Tower")
                     {
-                        FlameTower temp = (FlameTower)player.getTowers()[k];
+                        FlameTower temp = (FlameTower)Player.getTowers()[k];
                         temp.getSound().Stop();
                     }
-                    else if (player.getTowers()[k].getTowerName() == "Ice Tower")
+                    else if (Player.getTowers()[k].getTowerName() == "Ice Tower")
                     {
-                        IceTower temp = (IceTower)player.getTowers()[k];
+                        IceTower temp = (IceTower)Player.getTowers()[k];
                         temp.getSound().Stop();
                     }
                 }
-            }
+          //  }
         }
 
 
