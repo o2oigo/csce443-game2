@@ -25,7 +25,7 @@ namespace RTS
         Texture2D timerSprite;
         Texture2D timerBar;
         
-        public bool runTestChecking = false;  // true to show the test Status on every screen, false to show nothing
+        public bool runTestChecking = true;  // true to show the test Status on every screen, false to show nothing
         SpriteFont font;
 
 
@@ -39,6 +39,9 @@ namespace RTS
         private bool showLevel1Screen = false;
         private bool showLevel2Screen = false;
         private bool showLevel3Screen = false;
+        private bool showLevel1SelectScreen = false;
+        private bool showLevel2SelectScreen = false;
+        private bool showLevel3SelectScreen = false;
         private bool loadingGameScreen1 = false;
         private bool loadingGameScreen2 = false;
         private bool loadingGameScreen3 = false;
@@ -141,6 +144,7 @@ namespace RTS
         private Texture2D mainEncyclopediaTexture;
         private Texture2D mainTowerEncyclopediaTexture;
         private Texture2D mainEnemyEncyclopediaTexture;
+        private Texture2D selectTowerTexture;
 
         #region tower
         // Tower part level 1
@@ -272,7 +276,7 @@ namespace RTS
             showTower3EncyclopediaScreen = false;
             restartGame = false;
             player1 = players[0];
-            //player2 = players[1];
+            player2 = players[1];
         }
        
 
@@ -301,6 +305,7 @@ namespace RTS
             mainEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopediaWindow");
             mainTowerEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia_tower_yellow");
             mainEnemyEncyclopediaTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\encyclopedia_enemy_yellow");
+            selectTowerTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\towerSlelectionWindow");
 
             #region tower encyclopedia
             // tower part
@@ -1260,6 +1265,230 @@ namespace RTS
                 #endregion
 
 
+                #region level1 select
+                if (showLevel1SelectScreen)
+                {
+                    if (currentLevel == 1)
+                        spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
+                    else if (currentLevel == 2)
+                        spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
+                    else if (currentLevel == 3)
+                        spriteBatch.Draw(encyclopediaBackgroundTexture, new Vector2(0, 0), Color.White);
+                    spriteBatch.Draw(towerEncyclopediaTexture, new Vector2(0, 0), Color.White);
+
+                    
+                    spriteBatch.Draw(arrowTowerEncyclopediaTexture, new Vector2(350, 320), Color.LightBlue);
+                    spriteBatch.Draw(canonTowerEncyclopediaTexture, new Vector2(450, 320), Color.LightBlue);
+                    spriteBatch.Draw(missileTowerEncyclopediaTexture, new Vector2(450, 435), Color.LightBlue);
+                    spriteBatch.Draw(magicTowerEncyclopediaTexture, new Vector2(350, 435), Color.LightBlue);
+                    spriteBatch.Draw(flameTowerEncyclopediaTexture, new Vector2(350, 600), Color.LightBlue);
+                    spriteBatch.Draw(iceTowerEncyclopediaTexture, new Vector2(450, 600), Color.LightBlue);
+                    spriteBatch.Draw(shockTowerEncyclopediaTexture, new Vector2(350, 715), Color.LightBlue);
+
+
+                    #region level1 tower encyclopedia
+                    if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3)
+                    {
+                        uiEncyclopediaPosition1 = new Vector2(900, 240);
+                        uiEncyclopediaPosition2 = new Vector2(900, 350);
+                        uiEncyclopediaPosition3 = new Vector2(900, 460);
+                        uiEncyclopediaPosition4 = new Vector2(900, 260);
+
+                        if (xPos2 == 0 && yPos2 == 0)
+                        {
+                            spriteBatch.Draw(arrowTowerEncyclopediaTexture, new Vector2(350, 320), Color.White);
+                            spriteBatch.Draw(arrowTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.LightBlue);
+                            spriteBatch.Draw(arrowTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.LightBlue);
+                            spriteBatch.Draw(arrowTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.LightBlue);
+                            if (towerLevelEncyclopedia == 1)
+                            {
+                                spriteBatch.Draw(arrowTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(arrowTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(arrowTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 2)
+                            {
+                                spriteBatch.Draw(arrowTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(arrowTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(arrowTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 3)
+                            {
+                                spriteBatch.Draw(arrowTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(arrowTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(arrowTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                        }
+                        if (xPos2 == 1 && yPos2 == 0)
+                        {
+                            spriteBatch.Draw(canonTowerEncyclopediaTexture, new Vector2(450, 320), Color.White);
+                            spriteBatch.Draw(canonTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.LightBlue);
+                            spriteBatch.Draw(canonTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.LightBlue);
+                            spriteBatch.Draw(canonTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.LightBlue);
+                            if (towerLevelEncyclopedia == 1)
+                            {
+                                spriteBatch.Draw(canonTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(canonTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(canonTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 2)
+                            {
+                                spriteBatch.Draw(canonTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(canonTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(canonTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 3)
+                            {
+                                spriteBatch.Draw(canonTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(canonTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(canonTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                        }
+                        if (xPos2 == 0 && yPos2 == 1)
+                        {
+                            spriteBatch.Draw(magicTowerEncyclopediaTexture, new Vector2(350, 435), Color.White);
+                            spriteBatch.Draw(magicTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.LightBlue);
+                            spriteBatch.Draw(magicTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.LightBlue);
+                            spriteBatch.Draw(magicTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.LightBlue);
+                            if (towerLevelEncyclopedia == 1)
+                            {
+                                spriteBatch.Draw(magicTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(magicTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(magicTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 2)
+                            {
+                                spriteBatch.Draw(magicTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(magicTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(magicTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 3)
+                            {
+                                spriteBatch.Draw(magicTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(magicTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(magicTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                        }
+                        if (xPos2 == 1 && yPos2 == 1)
+                        {
+                            spriteBatch.Draw(missileTowerEncyclopediaTexture, new Vector2(450, 435), Color.White);
+                            spriteBatch.Draw(missileTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.LightBlue);
+                            spriteBatch.Draw(missileTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.LightBlue);
+                            spriteBatch.Draw(missileTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.LightBlue);
+                            if (towerLevelEncyclopedia == 1)
+                            {
+                                spriteBatch.Draw(missileTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(missileTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(missileTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 2)
+                            {
+                                spriteBatch.Draw(missileTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(missileTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(missileTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 3)
+                            {
+                                spriteBatch.Draw(missileTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(missileTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(missileTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                        }
+                        if (xPos2 == 0 && yPos2 == 2)
+                        {
+                            spriteBatch.Draw(flameTowerEncyclopediaTexture, new Vector2(350, 600), Color.White);
+                            spriteBatch.Draw(flameTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.LightBlue);
+                            spriteBatch.Draw(flameTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.LightBlue);
+                            spriteBatch.Draw(flameTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.LightBlue);
+                            if (towerLevelEncyclopedia == 1)
+                            {
+                                spriteBatch.Draw(flameTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(flameTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(flameTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 2)
+                            {
+                                spriteBatch.Draw(flameTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(flameTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(flameTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 3)
+                            {
+                                spriteBatch.Draw(flameTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(flameTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(flameTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                        }
+                        if (xPos2 == 1 && yPos2 == 2)
+                        {
+                            spriteBatch.Draw(iceTowerEncyclopediaTexture, new Vector2(450, 600), Color.White);
+                            spriteBatch.Draw(iceTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.LightBlue);
+                            spriteBatch.Draw(iceTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.LightBlue);
+                            spriteBatch.Draw(iceTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.LightBlue);
+                            if (towerLevelEncyclopedia == 1)
+                            {
+                                spriteBatch.Draw(iceTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(iceTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(iceTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 2)
+                            {
+                                spriteBatch.Draw(iceTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(iceTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(iceTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 3)
+                            {
+                                spriteBatch.Draw(iceTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(iceTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(iceTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                        }
+                        if (xPos2 == 0 && yPos2 == 3)
+                        {
+                            spriteBatch.Draw(shockTowerEncyclopediaTexture, new Vector2(350, 715), Color.White);
+                            spriteBatch.Draw(shockTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.LightBlue);
+                            spriteBatch.Draw(shockTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.LightBlue);
+                            spriteBatch.Draw(shockTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.LightBlue);
+                            if (towerLevelEncyclopedia == 1)
+                            {
+                                spriteBatch.Draw(shockTowerEncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(shockTowerEncyclopediaTexture, uiEncyclopediaPosition1, Color.White);
+                                spriteBatch.Draw(shockTowerEncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 2)
+                            {
+                                spriteBatch.Draw(shockTower2EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(shockTower2EncyclopediaTexture, uiEncyclopediaPosition2, Color.White);
+                                spriteBatch.Draw(shockTower2EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                            else if (towerLevelEncyclopedia == 3)
+                            {
+                                spriteBatch.Draw(shockTower3EncyclopediaLargeTexture, new Vector2(620, 270), Color.White);
+                                spriteBatch.Draw(shockTower3EncyclopediaTexture, uiEncyclopediaPosition3, Color.White);
+                                spriteBatch.Draw(shockTower3EncyclopediaLarge1Texture, new Vector2(620, 580), Color.White);
+                            }
+                        }
+                        
+                        // draw select tower
+                        if (currentLevel == 1)
+                        {
+
+                        }
+                        else if (currentLevel == 2)
+                        {
+                        }
+                        else if (currentLevel == 3)
+                        {
+                        }
+                    }
+                    #endregion
+
+
+                }
+                #endregion
+
+
                 #region testing boolean
                 // testing purpose only, set runTestChecking = true to enable this
                 if (runTestChecking)
@@ -1365,6 +1594,26 @@ namespace RTS
                         spriteBatch.DrawString(font, "showWinScreen == false", new Vector2(100, 680), Color.Yellow);
 
                     spriteBatch.DrawString(font, "currentLevel == " + currentLevel, new Vector2(100, 700), Color.Yellow);
+
+                    if (showLevel1SelectScreen == true)
+                        spriteBatch.DrawString(font, "showLevel1SelectScreen == true", new Vector2(100, 720), Color.Red);
+                    else
+                        spriteBatch.DrawString(font, "showLevel1SelectScreen == false", new Vector2(100, 620), Color.Yellow);
+
+                    if (showLevel2SelectScreen == true)
+                        spriteBatch.DrawString(font, "showLevel2SelectScreen == true", new Vector2(100, 740), Color.Red);
+                    else
+                        spriteBatch.DrawString(font, "showLevel2SelectScreen == false", new Vector2(100, 740), Color.Yellow);
+
+                    if (showLevel3SelectScreen == true)
+                        spriteBatch.DrawString(font, "showLevel3SelectScreen == true", new Vector2(100, 760), Color.Red);
+                    else
+                        spriteBatch.DrawString(font, "showLevel3SelectScreen == false", new Vector2(100, 760), Color.Yellow);
+
+                    if (player1.getBuildableTowers()[0] == true)
+                    {
+                        spriteBatch.DrawString(font, "This is true", new Vector2(100, 780), Color.Red);
+                    }
                 }
                 #endregion
 
@@ -2379,6 +2628,15 @@ namespace RTS
             else if (showLevel3Screen == true)
                 updateGamePadForLevel3Screen();
 
+            else if (showLevel1SelectScreen == true)
+                updateGamePadForLevel1SelectScreen();
+
+            else if (showLevel2SelectScreen == true)
+                updateGamePadForLevel2SelectScreen();
+
+            else if (showLevel3SelectScreen == true)
+                updateGamePadForLevel3SelectScreen();
+
             else if (showGameScreen == true)
                 updateGamePadForGameScreen();
 
@@ -2461,12 +2719,8 @@ namespace RTS
             }
             if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 0 && yPos1 == 0)
             {
-                showGameScreen = true;
-                loadingGameScreen1 = true;
-                showTitleScreen = false;
-                showPauseScreen = false;
+                showLevel1SelectScreen = true;
                 showLevel1Screen = false;
-                restartGame = true;
             }
 
             if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A) && xPos1 == 1 && yPos1 == 0)
@@ -2548,6 +2802,287 @@ namespace RTS
                 xPos1 = 0;
                 yPos1 = 0;
             }
+        }
+
+        private void updateGamePadForLevel1SelectScreen()
+        {
+            xPosMax = 1;
+            yPosMax = 3;
+            xPos1 = 0;
+            yPos1 = 0;
+            if (currentLevel == 1)
+            {
+                player1.setTowerSelectMax(2);
+            }
+            else if (currentLevel == 2)
+            {
+                player1.setTowerSelectMax(3);
+            }
+            else if (currentLevel == 3)
+            {
+                player1.setTowerSelectMax(4);
+            }
+
+
+            if (currentState.IsButtonDown(Buttons.B) && oldState.IsButtonUp(Buttons.B))
+            {
+                showLevel1Screen = true;
+                showLevel1SelectScreen = false;
+            }
+
+            if ((currentState.IsButtonDown(Buttons.DPadRight) && oldState.IsButtonUp(Buttons.DPadRight) ||
+                currentState.ThumbSticks.Left.X >= 0.5 && oldState.ThumbSticks.Left.X < 0.5) && xPos2 < xPosMax)
+            {
+                xPos2++;
+                towerLevelEncyclopedia = 1;
+            }
+            if ((currentState.IsButtonDown(Buttons.DPadLeft) && oldState.IsButtonUp(Buttons.DPadLeft) ||
+                currentState.ThumbSticks.Left.X <= -0.5 && oldState.ThumbSticks.Left.X > -0.5) && xPos2 > 0)
+            {
+                xPos2--;
+                towerLevelEncyclopedia = 1;
+            }
+            if ((currentState.IsButtonDown(Buttons.DPadUp) && oldState.IsButtonUp(Buttons.DPadUp) ||
+                currentState.ThumbSticks.Left.Y >= 0.5 && oldState.ThumbSticks.Left.Y < 0.5) && yPos2 > 0)
+            {
+                yPos2--;
+                towerLevelEncyclopedia = 1;
+            }
+            if ((currentState.IsButtonDown(Buttons.DPadDown) && oldState.IsButtonUp(Buttons.DPadDown) ||
+                currentState.ThumbSticks.Left.Y <= -0.5 && oldState.ThumbSticks.Left.Y > -0.5) && yPos2 < yPosMax)
+            {
+                yPos2++;
+                towerLevelEncyclopedia = 1;
+            }
+
+            if (yPos2 == 3)
+            {
+                xPos2 = 0;
+            }
+
+            
+            if (currentState.IsButtonDown(Buttons.A) && oldState.IsButtonUp(Buttons.A))
+            {
+                if (player1.getTowerSelectCount() != player1.getTowerSelectMax())
+                {
+                    if (xPos2 == 0 && yPos2 == 0)
+                    {
+                        if (player1.getBuildableTowers()[0] == true)
+                        {
+                            player1.getBuildableTowers()[0] = false;
+                            player1.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player1.getBuildableTowers()[0] = true;
+                            player1.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 1 && yPos2 == 0)
+                    {
+                        if (player1.getBuildableTowers()[1] == true)
+                        {
+                            player1.getBuildableTowers()[1] = false;
+                            player1.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player1.getBuildableTowers()[1] = true;
+                            player1.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 1 && yPos2 == 1)
+                    {
+                        if (player1.getBuildableTowers()[2] == true)
+                        {
+                            player1.getBuildableTowers()[2] = false;
+                            player1.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player1.getBuildableTowers()[2] = true;
+                            player1.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 0 && yPos2 == 3)
+                    {
+                        if (player1.getBuildableTowers()[4] == true)
+                        {
+                            player1.getBuildableTowers()[4] = false;
+                            player1.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player1.getBuildableTowers()[4] = true;
+                            player1.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 0 && yPos2 == 2)
+                    {
+                        if (player1.getBuildableTowers()[5] == true)
+                        {
+                            player1.getBuildableTowers()[5] = false;
+                            player1.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player1.getBuildableTowers()[5] = true;
+                            player1.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 1 && yPos2 == 2)
+                    {
+                        if (player1.getBuildableTowers()[6] == true)
+                        {
+                            player1.getBuildableTowers()[6] = false;
+                            player1.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player1.getBuildableTowers()[6] = true;
+                            player1.addTowerSelectCount();
+                        }
+                    }
+                }
+                else if (player2.getTowerSelectCount() != player2.getTowerSelectMax())
+                {
+                    currentState = GamePad.GetState(PlayerIndex.Two);
+                    if (xPos2 == 0 && yPos2 == 0)
+                    {
+                        if (player2.getBuildableTowers()[0] == true)
+                        {
+                            player2.getBuildableTowers()[0] = false;
+                            player2.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player2.getBuildableTowers()[0] = true;
+                            player2.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 1 && yPos2 == 0)
+                    {
+                        if (player2.getBuildableTowers()[1] == true)
+                        {
+                            player2.getBuildableTowers()[1] = false;
+                            player2.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player2.getBuildableTowers()[1] = true;
+                            player2.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 1 && yPos2 == 1)
+                    {
+                        if (player2.getBuildableTowers()[2] == true)
+                        {
+                            player2.getBuildableTowers()[2] = false;
+                            player2.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player2.getBuildableTowers()[2] = true;
+                            player2.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 0 && yPos2 == 3)
+                    {
+                        if (player2.getBuildableTowers()[4] == true)
+                        {
+                            player2.getBuildableTowers()[4] = false;
+                            player2.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player2.getBuildableTowers()[4] = true;
+                            player2.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 0 && yPos2 == 2)
+                    {
+                        if (player2.getBuildableTowers()[5] == true)
+                        {
+                            player2.getBuildableTowers()[5] = false;
+                            player2.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player2.getBuildableTowers()[5] = true;
+                            player2.addTowerSelectCount();
+                        }
+                    }
+
+                    else if (xPos2 == 1 && yPos2 == 2)
+                    {
+                        if (player2.getBuildableTowers()[6] == true)
+                        {
+                            player2.getBuildableTowers()[6] = false;
+                            player2.subtractTowerSelectCount();
+                        }
+                        else
+                        {
+                            player2.getBuildableTowers()[6] = true;
+                            player2.addTowerSelectCount();
+                        }
+                    }
+                }
+
+                else
+                {
+                    currentState = GamePad.GetState(PlayerIndex.One);
+                    if (currentLevel == 1)
+                    {
+                        showGameScreen = true;
+                        loadingGameScreen1 = true;
+                        showTitleScreen = false;
+                        showPauseScreen = false;
+                        showLevel1SelectScreen = false;
+                        restartGame = true;
+                    }
+                    else if (currentLevel == 2)
+                    {
+                        showGameScreen = true;
+                        loadingGameScreen2 = true;
+                        showTitleScreen = false;
+                        showPauseScreen = false;
+                        showLevel1SelectScreen = false;
+                        //restartGame = true;
+                        game.goNextLevel();
+                    }
+                    else if (currentLevel == 3)
+                    {
+                        showGameScreen = true;
+                        loadingGameScreen3 = true;
+                        showTitleScreen = false;
+                        showPauseScreen = false;
+                        showLevel1SelectScreen = false;
+                        //restartGame = true;
+                        game.goNextLevel();
+                    }
+                }
+
+
+
+            }
+
+        }
+
+        private void updateGamePadForLevel2SelectScreen()
+        {
+        }
+
+        private void updateGamePadForLevel3SelectScreen()
+        {
         }
 
         private void updateGamePadForPauseScreen()
