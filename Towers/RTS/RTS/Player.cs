@@ -73,6 +73,7 @@ namespace RTS
         private Texture2D missileTowerBuildTexture;
         private Texture2D canonTowerBuildTexture;
         private Texture2D magicTowerBuildTexture;
+        private Texture2D iceTowerBuildTexture;
         
 
         private Texture2D fireTowerBuildSelectTexture;
@@ -82,6 +83,7 @@ namespace RTS
         private Texture2D missileTowerBuildSelectTexture;
         private Texture2D canonTowerBuildSelectTexture;
         private Texture2D magicTowerBuildSelectTexture;
+        private Texture2D iceTowerBuildSelectTexture;
 
         private Texture2D fireTowerBuildInactiveTexture;
         private Texture2D lightningTowerBuildInactiveTexture;
@@ -90,6 +92,7 @@ namespace RTS
         private Texture2D missileTowerBuildInactiveTexture;
         private Texture2D canonTowerBuildInactiveTexture;
         private Texture2D magicTowerBuildInactiveTexture;
+        private Texture2D iceTowerBuildInactiveTexture;
         //private Texture2D backgroundTexture;
         //private Texture2D startMenuTexture;
         //private Texture2D quitMenuTexture;
@@ -192,6 +195,7 @@ namespace RTS
             missileTowerBuildTexture = contentManager.Load<Texture2D>("missileTowerMenu");
             canonTowerBuildTexture = contentManager.Load<Texture2D>("cannonTowerSmall");
             magicTowerBuildTexture = contentManager.Load<Texture2D>("magicTowerMenu");
+            iceTowerBuildTexture = contentManager.Load<Texture2D>("iceTowerMenu");
             
             lightningTowerBuildSelectTexture = contentManager.Load<Texture2D>("lightningTowerSmallSelected");
             //fireTowerBuildSelectTexture = contentManager.Load<Texture2D>("flameTowerMenuSelected");
@@ -200,6 +204,7 @@ namespace RTS
             missileTowerBuildSelectTexture = contentManager.Load<Texture2D>("missileTowerMenuSelected");
             canonTowerBuildSelectTexture = contentManager.Load<Texture2D>("connonTowerSmallSelected");
             magicTowerBuildSelectTexture = contentManager.Load<Texture2D>("magicTowerMenuSelected");
+            iceTowerBuildSelectTexture = contentManager.Load<Texture2D>("iceTowerMenuSelected");
 
             lightningTowerBuildInactiveTexture = contentManager.Load<Texture2D>("lightningTowerSmallInactive");
             //fireTowerBuildInactiveTexture = contentManager.Load<Texture2D>("fireTowerMenuInactive");
@@ -208,6 +213,7 @@ namespace RTS
             missileTowerBuildInactiveTexture = contentManager.Load<Texture2D>("missileTowerMenuInactive");
             canonTowerBuildInactiveTexture = contentManager.Load<Texture2D>("connonTowerSmallInactive");
             magicTowerBuildInactiveTexture = contentManager.Load<Texture2D>("magicTowerMenuInactive");
+            iceTowerBuildInactiveTexture = contentManager.Load<Texture2D>("iceTowerMenuInactive");
             
             font = contentManager.Load<SpriteFont>("font");
 
@@ -321,6 +327,7 @@ namespace RTS
                     spriteBatch.Draw(arrowTowerBuildTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
                     spriteBatch.Draw(canonTowerBuildTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
                     spriteBatch.Draw(missileTowerBuildTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
+                    spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 30, position.Y - 30), Color.White);
 
 
                     if (shootRotationAngle > -3 * (float)Math.PI / 4 && shootRotationAngle < -7 * (float)Math.PI / 12 && money >= 10 && (map.TileTypeAt(position) == MapTileType.MapGrass))
@@ -338,6 +345,7 @@ namespace RTS
                         spriteBatch.Draw(arrowTowerBuildInactiveTexture, new Vector2(position.X - 100, position.Y - 170), Color.White);
                         spriteBatch.Draw(canonTowerBuildInactiveTexture, new Vector2(position.X - 40, position.Y - 195), Color.White);
                         spriteBatch.Draw(missileTowerBuildInactiveTexture, new Vector2(position.X + 25, position.Y - 170), Color.White);
+                        spriteBatch.Draw(magicTowerBuildInactiveTexture, new Vector2(position.X + 30, position.Y - 30), Color.White);
                     }
 
                     if (money < cannonTowerCost)
@@ -355,16 +363,16 @@ namespace RTS
 
                 else if (mainBuildMode == true && upgradeBuildMode == false && upgradeBuildMagicMode == false && (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4))
                 {
-                    spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                    spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 30, position.Y - 30), Color.White);
                     spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
 
                     if (shootRotationAngle > -(float)Math.PI / 4 && shootRotationAngle <= (float)Math.PI / 4 && money >= 10 && (map.TileTypeAt(position) == MapTileType.MapGrass))
-                        spriteBatch.Draw(magicTowerBuildSelectTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                        spriteBatch.Draw(magicTowerBuildSelectTexture, new Vector2(position.X + 30, position.Y - 30), Color.White);
 
-                    if (money < magicTowerCost)
+                    if (money < magicTowerCost || (map.TileTypeAt(position) != MapTileType.MapGrass))
                     {
-                        spriteBatch.Draw(magicTowerBuildInactiveTexture, new Vector2(position.X + 20, position.Y - 30), Color.White);
+                        spriteBatch.Draw(magicTowerBuildInactiveTexture, new Vector2(position.X + 30, position.Y - 30), Color.White);
                     }
 
                 }
@@ -374,6 +382,7 @@ namespace RTS
                 {
                     spriteBatch.Draw(buildTexture, new Vector2(position.X - 40, position.Y - 110), Color.White);
                     spriteBatch.Draw(cancelTexture, new Vector2(position.X - 40, position.Y + 50), Color.White);
+                    spriteBatch.Draw(magicTowerBuildTexture, new Vector2(position.X + 30, position.Y - 30), Color.White);
                 }
 
                 else if (upgradeBuildMode == true && upgradeBuildMagicMode == false)
@@ -397,8 +406,10 @@ namespace RTS
 
                     if (shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < (float)Math.PI / 4)
                     {
-                        spriteBatch.Draw(flameTowerBuildTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
-                        spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
+                        spriteBatch.Draw(flameTowerBuildTexture, new Vector2(position.X + 90, position.Y + 0), Color.White);
+                        spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 60, position.Y - 90), Color.White);
+                        spriteBatch.Draw(lightningTowerBuildTexture, new Vector2(position.X + 60, position.Y + 30), Color.White);
+
 
                         if (fireStoneInInventory < 1)
                         {
