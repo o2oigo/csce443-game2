@@ -457,8 +457,8 @@ namespace RTS
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);
                     spriteBatch.DrawString(font, "" + Player.getFireStoneInInventory(), uiFirePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.geticeStoneInInventory(), uiIcePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getlightningStoneInInventory(), uiLightningPosition, Color.White);
 
                 }
                 #endregion
@@ -500,8 +500,8 @@ namespace RTS
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);
                     spriteBatch.DrawString(font, "" + Player.getFireStoneInInventory(), uiFirePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.geticeStoneInInventory(), uiIcePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getlightningStoneInInventory(), uiLightningPosition, Color.White);
 
 
                 }
@@ -1405,8 +1405,8 @@ namespace RTS
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);
                     spriteBatch.DrawString(font, "" + Player.getFireStoneInInventory(), uiFirePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.geticeStoneInInventory(), uiIcePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getlightningStoneInInventory(), uiLightningPosition, Color.White);
 
                 }
                 #endregion
@@ -1447,8 +1447,8 @@ namespace RTS
                     spriteBatch.DrawString(font, "" + game.getLive(), uiLifePosition, Color.White);
                     spriteBatch.DrawString(font, "" + game.Wave.CurrentWave + " / " + game.Wave.totalWave(), uiWavePosition, Color.White);
                     spriteBatch.DrawString(font, "" + Player.getFireStoneInInventory(), uiFirePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + Player.getHealStoneInInventory(), uiIcePosition, Color.White);
-                    spriteBatch.DrawString(font, "" + Player.getWaterStoneInInventory(), uiLightningPosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.geticeStoneInInventory(), uiIcePosition, Color.White);
+                    spriteBatch.DrawString(font, "" + Player.getlightningStoneInInventory(), uiLightningPosition, Color.White);
 
                 }
                 #endregion

@@ -99,7 +99,7 @@ namespace RTS
             switch (i)
             {
                 case 1:
-                    AddNormalEnemy(i, 1, 1, 100);
+                    AddNormalEnemy(i, 1, 100, 1);
                     //AddFastEnemy(i, 1, 10, 100);
                     //AddNormalEnemy(i, 1, 2, 100);
                     //AddFastEnemy(i, 1, 5, 100);

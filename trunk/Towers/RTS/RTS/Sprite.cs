@@ -61,7 +61,7 @@ namespace RTS
 
         public static void LoadContent(ContentManager Content)
         {
-            hpBarFrame = Content.Load<Texture2D>("hpBorder");
+            hpBarFrame = Content.Load<Texture2D>("hpFrame");
             hpBarInside = Content.Load<Texture2D>("hpInsid");
         }
 
@@ -124,19 +124,19 @@ namespace RTS
             if (((Enemy)this).Moving==true)
             {
                 Vector2 pos = this.Position;
-                pos.X -= 40;
+                pos.X -= 30;
                 pos.Y -= 30;
                 Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Enemy)this).HP / ((Enemy)this).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
             
-                spriteBatch.Draw(hpBarFrame, pos, Color.White);
                 spriteBatch.Draw(hpBarInside, newRect, Color.White);
+                spriteBatch.Draw(hpBarFrame, pos, Color.White);
             }
         }
 
         public void DrawHPBarTower(SpriteBatch spriteBatch)
         {
                 Vector2 pos = this.Position;
-                pos.X -= 40;
+                pos.X -= 25;
                 pos.Y += 40;
                 Rectangle newRect = new Rectangle((int)pos.X, (int)pos.Y, (int)((((Tower)this).HP / ((Tower)this).MaxHP) * hpBarInside.Width), (int)hpBarInside.Height);
 
