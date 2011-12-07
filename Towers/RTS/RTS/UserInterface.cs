@@ -490,6 +490,11 @@ namespace RTS
                 #region pre-level one game screen for gamepad user
                 if (showLevel1Screen == true)
                 {
+                    game.menuSoundInstance.Stop();
+                    game.level2SoundInstance.Stop();
+                    game.level3SoundInstance.Stop();
+                    game.level1SoundInstance.Play();
+
                     spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
                     if (xPos1 == 1 && yPos1 == 0)
                     {
@@ -507,6 +512,11 @@ namespace RTS
                 #region pre-level two game screen for gamepad user
                 else if (showLevel2Screen == true)
                 {
+                    game.menuSoundInstance.Stop();
+                    game.level2SoundInstance.Play();
+                    game.level3SoundInstance.Stop();
+                    game.level1SoundInstance.Stop();
+
                     spriteBatch.Draw(level2MapTexture, new Vector2(0, 0), Color.White);
                     if (xPos1 == 1 && yPos1 == 0)
                     {
@@ -524,6 +534,10 @@ namespace RTS
                 #region pre-level three game screen for gamepad user
                 else if (showLevel3Screen == true)
                 {
+                    game.menuSoundInstance.Stop();
+                    game.level2SoundInstance.Stop();
+                    game.level3SoundInstance.Play();
+                    game.level1SoundInstance.Stop();
                     spriteBatch.Draw(level3MapTexture, new Vector2(0, 0), Color.White);
                     if (xPos1 == 1 && yPos1 == 0)
                     {
@@ -1409,6 +1423,11 @@ namespace RTS
                 #region pre-level one game screen for keyboard user
                 if (showLevel1Screen == true)
                 {
+                    game.menuSoundInstance.Stop();
+                    game.level2SoundInstance.Stop();
+                    game.level3SoundInstance.Stop();
+                    game.level1SoundInstance.Play();
+     
                     spriteBatch.Draw(level1MapTexture, new Vector2(0, 0), Color.White);
                     if (xPos1 == 1 && yPos1 == 0)
                     {
@@ -1426,6 +1445,11 @@ namespace RTS
                 #region pre-level two game screen for keyboard user
                 else if (showLevel2Screen == true)
                 {
+                    game.menuSoundInstance.Stop();
+                    game.level2SoundInstance.Play();
+                    game.level3SoundInstance.Stop();
+                    game.level1SoundInstance.Stop();
+
                     spriteBatch.Draw(level2MapTexture, new Vector2(0, 0), Color.White);
                     if (xPos1 == 1 && yPos1 == 0)
                     {
@@ -1443,6 +1467,10 @@ namespace RTS
                 #region pre-level three game screen for keyboard user
                 else if (showLevel3Screen == true)
                 {
+                    game.menuSoundInstance.Stop();
+                    game.level2SoundInstance.Stop();
+                    game.level3SoundInstance.Play();
+                    game.level1SoundInstance.Stop();
                     spriteBatch.Draw(level3MapTexture, new Vector2(0, 0), Color.White);
                     if (xPos1 == 1 && yPos1 == 0)
                     {
