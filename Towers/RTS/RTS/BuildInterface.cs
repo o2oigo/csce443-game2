@@ -29,8 +29,8 @@ namespace RTS
         private bool upgradeBuildMode = false;
 
         private int fireStoneInInventory = 1;
-        private int waterStoneInInventory = 1;
-        private int healStoneInInventory = 1;
+        private int lightningStoneInInventory = 1;
+        private int iceStoneInInventory = 1;
 
         private int money = 35;
 

@@ -105,8 +105,8 @@ namespace RTS
         private bool maxCapacityTower = false;
         SpriteFont font;
         private static int fireStoneInInventory = 1;
-        private static int waterStoneInInventory = 1;
-        private static int healStoneInInventory = 1;
+        private static int lightningStoneInInventory = 1;
+        private static int iceStoneInInventory = 1;
         static int money = 35;
         private float timeForResources = 0;
         private Vector2 uiPosition1;
@@ -246,8 +246,8 @@ namespace RTS
                 {
                     animation.CurrentSprite = "right";
                 }
-                else if (moveRotationAngle == Math.PI) //for keyboard
-                //else if (moveRotationAngle == -Math.PI) //for game pad
+                //else if (moveRotationAngle == Math.PI) //for keyboard
+                else if (moveRotationAngle == -Math.PI) //for game pad
                 {
                     animation.CurrentSprite = "right";
                     isFlipped = SpriteEffects.FlipHorizontally;
@@ -416,7 +416,7 @@ namespace RTS
                         {
                             spriteBatch.Draw(flameTowerBuildInactiveTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
                         }
-                        if (waterStoneInInventory < 1)
+                        if (lightningStoneInInventory < 1)
                         {
                             spriteBatch.Draw(lightningTowerBuildInactiveTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
                         }
@@ -424,7 +424,7 @@ namespace RTS
                         {
                             spriteBatch.Draw(flameTowerBuildSelectTexture, new Vector2(position.X + 80, position.Y + 20), Color.White);
                         }
-                        if (waterStoneInInventory > 0 && shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < -1 * (float)Math.PI / 12)
+                        if (lightningStoneInInventory > 0 && shootRotationAngle >= -(float)Math.PI / 4 && shootRotationAngle < -1 * (float)Math.PI / 12)
                         {
                             spriteBatch.Draw(lightningTowerBuildSelectTexture, new Vector2(position.X + 80, position.Y - 80), Color.White);
                         }
@@ -686,9 +686,9 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
-                            if (healStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            if (iceStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
-                                removeStoneFromInventory(2);
+                                removeStoneFromInventory(1);
                                 //towerList[i].setToFireTower();
                                 int level = towerList[i].getLevel();
                                 bool isFire = false;
@@ -745,9 +745,9 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
-                            if (waterStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            if (lightningStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
-                                removeStoneFromInventory(1);
+                                removeStoneFromInventory(2);
                                 int level = towerList[i].getLevel();
                                 bool isFire = false;
                                 if (towerList[i].damage.type == ElementType.Fire)
@@ -1072,7 +1072,7 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
-                            if (healStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            if (iceStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
                                 removeStoneFromInventory(2);
                                 //towerList[i].setToFireTower();
@@ -1132,7 +1132,7 @@ namespace RTS
                     {
                         if (towerList[i].getPlayerIsNear(playerIndex) == true)
                         {
-                            if (waterStoneInInventory >= 1 && towerList[i] is MagicTower)
+                            if (lightningStoneInInventory >= 1 && towerList[i] is MagicTower)
                             {
                                 removeStoneFromInventory(1);
                                 int level = towerList[i].getLevel();
@@ -1385,8 +1385,8 @@ namespace RTS
         public void updateInventory()
         {
             fireStoneInInventory = 0;
-            waterStoneInInventory = 0;
-            healStoneInInventory = 0;
+            lightningStoneInInventory = 0;
+            iceStoneInInventory = 0;
 
             for (int i = 0; i < stoneList.Count; i++)
             {
@@ -1397,11 +1397,11 @@ namespace RTS
                 }
                 else if (_stone.Type == ElementType.Lightning)
                 {
-                    waterStoneInInventory++;
+                    lightningStoneInInventory++;
                 }
                 else if (_stone.Type == ElementType.Ice)
                 {
-                    healStoneInInventory++;
+                    iceStoneInInventory++;
                 }
 
             }
@@ -1548,13 +1548,13 @@ namespace RTS
         {
             return fireStoneInInventory;
         }
-        public static int getWaterStoneInInventory()
+        public static int getlightningStoneInInventory()
         {
-            return waterStoneInInventory;
+            return lightningStoneInInventory;
         }
-        public static int getHealStoneInInventory()
+        public static int geticeStoneInInventory()
         {
-            return healStoneInInventory;
+            return iceStoneInInventory;
         }
 
         //If the player was hit by an enemy or projectile
@@ -1595,8 +1595,8 @@ namespace RTS
             maxCapacityTower = false;
 
             fireStoneInInventory = 0;
-            waterStoneInInventory = 0;
-            healStoneInInventory = 0;
+            lightningStoneInInventory = 0;
+            iceStoneInInventory = 0;
             money = 35;
             timeForResources = 0;
 
