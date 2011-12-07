@@ -579,7 +579,7 @@ namespace RTS
                         {
                             if (Vector2.Distance(enemies[i].Position, tower.Position) <= tower.getRange())
                             {
-                                if (enemies[i].Effect is EnemyEffectStun){}
+                                if (enemies[i].EffectStn is EnemyEffectStun) { }
                                 else
                                 {
                                     enemies[i].MoveSpeed = .2f;

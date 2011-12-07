@@ -24,7 +24,7 @@ namespace RTS
             flameTexture = game.Content.Load<Texture2D>("fireParticle");
             towerName = "Flame Tower";
             this.ilevel = level;
-            damage = new Damage(0.5f, this.ilevel, ElementType.Fire, null);
+            damage = new Damage(0.0f, this.ilevel, ElementType.Fire, null);
             damage.type = ElementType.Fire;
             damage.effect = new EnemyEffectBurn(game, 30, 0.5f);
 
