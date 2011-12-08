@@ -2105,6 +2105,45 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Encyclopedia\Mr. Malevolent Muffin .png">
+      <Name>Mr. Malevolent Muffin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Encyclopedia\Mrs. Malevolent Muffin.png">
+      <Name>Mrs. Malevolent Muffin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Encyclopedia\Petulant Pudding %28Jr.%29.png">
+      <Name>Petulant Pudding %28Jr.%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Encyclopedia\Petulant Pudding %28Sr.%29.png">
+      <Name>Petulant Pudding %28Sr.%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Encyclopedia\Severed Snow Head.png">
+      <Name>Severed Snow Head</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Encyclopedia\The Stalking Stocking.png">
+      <Name>The Stalking Stocking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Encyclopedia\Contentious Candy Cane.png">
+      <Name>Contentious Candy Cane</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

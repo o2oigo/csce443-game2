@@ -419,13 +419,13 @@ namespace RTS
             enemy6EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\muffinL");
             enemy7EncyclopediaLargeTexture = contentManager.Load<Texture2D>(".\\encyclopedia\\puddinL");
 
-            enemy1EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\stockingL");
-            enemy2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\muffinL");
-            enemy3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\stickL");
-            enemy4EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\puddinL");
-            enemy5EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\snowL");
-            enemy6EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\muffinL");
-            enemy7EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\puddinL");
+            enemy1EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\The Stalking Stocking");
+            enemy2EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\Mr. Malevolent Muffin");
+            enemy3EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\Contentious Candy Cane");
+            enemy4EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\Petulant Pudding (Jr.)");
+            enemy5EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\Severed Snow Head");
+            enemy6EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\Mrs. Malevolent Muffin");
+            enemy7EncyclopediaLarge1Texture = contentManager.Load<Texture2D>(".\\encyclopedia\\Petulant Pudding (Sr.)");
             #endregion
 
             #endregion
@@ -1233,8 +1233,7 @@ namespace RTS
                     spriteBatch.Draw(enemyEncyclopediaTexture, new Vector2(230, 130), Color.LightBlue);
                     //spriteBatch.Draw(enemyEncyclopediaTexture, new Vector2(0, 0), Color.LightBlue);
 
-                    if (currentLevel == 1)
-                    {
+                    
                         spriteBatch.Draw(enemy1EncyclopediaTexture, new Vector2(300, 300), Color.LightBlue);
                         spriteBatch.Draw(enemy2EncyclopediaTexture, new Vector2(400, 300), Color.LightBlue);
                         spriteBatch.Draw(enemy3EncyclopediaTexture, new Vector2(300, 430), Color.LightBlue);
@@ -1242,41 +1241,48 @@ namespace RTS
                         spriteBatch.Draw(enemy5EncyclopediaTexture, new Vector2(300, 560), Color.LightBlue);
                         spriteBatch.Draw(enemy6EncyclopediaTexture, new Vector2(400, 560), Color.LightBlue);
                         spriteBatch.Draw(enemy7EncyclopediaTexture, new Vector2(300, 690), Color.LightBlue);
-                    }
+
                     if (xPos2 == 0 && yPos2 == 0)
                     {
                         spriteBatch.Draw(enemy1EncyclopediaTexture, new Vector2(300, 300), Color.White);
                         spriteBatch.Draw(enemy1EncyclopediaLargeTexture, new Vector2(620, 300), Color.White);
+                        spriteBatch.Draw(enemy1EncyclopediaLarge1Texture, new Vector2(525, 600), Color.White);
                     }
                     if (xPos2 == 1 && yPos2 == 0)
                     {
                         spriteBatch.Draw(enemy2EncyclopediaTexture, new Vector2(400, 300), Color.White);
                         spriteBatch.Draw(enemy2EncyclopediaLargeTexture, new Vector2(620, 300), Color.White);
+                        spriteBatch.Draw(enemy2EncyclopediaLarge1Texture, new Vector2(525, 600), Color.White);
                     }
                     if (xPos2 == 0 && yPos2 == 1)
                     {
                         spriteBatch.Draw(enemy3EncyclopediaTexture, new Vector2(300, 430), Color.White);
                         spriteBatch.Draw(enemy3EncyclopediaLargeTexture, new Vector2(620, 300), Color.White);
+                        spriteBatch.Draw(enemy3EncyclopediaLarge1Texture, new Vector2(525, 600), Color.White);
                     }
                     if (xPos2 == 1 && yPos2 == 1)
                     {
                         spriteBatch.Draw(enemy4EncyclopediaTexture, new Vector2(400, 430), Color.White);
                         spriteBatch.Draw(enemy4EncyclopediaLargeTexture, new Vector2(620, 300), Color.White);
+                        spriteBatch.Draw(enemy4EncyclopediaLarge1Texture, new Vector2(525, 600), Color.White);
                     }
                     if (xPos2 == 0 && yPos2 == 2)
                     {
                         spriteBatch.Draw(enemy5EncyclopediaTexture, new Vector2(300, 560), Color.White);
                         spriteBatch.Draw(enemy5EncyclopediaLargeTexture, new Vector2(620, 300), Color.White);
+                        spriteBatch.Draw(enemy5EncyclopediaLarge1Texture, new Vector2(525, 600), Color.White);
                     }
                     if (xPos2 == 1 && yPos2 == 2)
                     {
                         spriteBatch.Draw(enemy6EncyclopediaTexture, new Vector2(400, 560), Color.White);
                         spriteBatch.Draw(enemy6EncyclopediaLargeTexture, new Vector2(620, 300), Color.White);
+                        spriteBatch.Draw(enemy6EncyclopediaLarge1Texture, new Vector2(525, 600), Color.White);
                     }
                     if (xPos2 == 0 && yPos2 == 3)
                     {
                         spriteBatch.Draw(enemy7EncyclopediaTexture, new Vector2(300, 690), Color.White);
                         spriteBatch.Draw(enemy7EncyclopediaLargeTexture, new Vector2(620, 300), Color.White);
+                        spriteBatch.Draw(enemy7EncyclopediaLarge1Texture, new Vector2(525, 600), Color.White);
                     }
                 }
                 #endregion
@@ -3363,12 +3369,12 @@ namespace RTS
             if (showEnemy1EncyclopediaScreen == true)
             {
                 xPosMax = 1;
-                yPosMax = 1;
+                yPosMax = 3;
             }
             else if (showEnemy2EncyclopediaScreen == true)
             {
                 xPosMax = 1;
-                yPosMax = 2;
+                yPosMax = 3;
             }
             else if (showEnemy3EncyclopediaScreen == true)
             {
@@ -3404,7 +3410,7 @@ namespace RTS
 
             if (currentLevel == 1)
             {
-                if (yPos2 == 1)
+                if (yPos2 == 3)
                 {
                     xPos2 = 0;
                 }
@@ -3412,7 +3418,7 @@ namespace RTS
 
             else if (currentLevel == 2)
             {
-                if (yPos2 == 2)
+                if (yPos2 == 3)
                 {
                     xPos2 = 0;
                 }
