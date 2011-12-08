@@ -156,6 +156,12 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="Mr. Malevolent Muffin .png" />
+    <Content Include="Mrs. Malevolent Muffin.png" />
+    <Content Include="Petulant Pudding %28Jr.%29.png" />
+    <Content Include="Petulant Pudding %28Sr.%29.png" />
+    <Content Include="Severed Snow Head.png" />
+    <Content Include="The Stalking Stocking.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MapData\PathfindingData.csproj">
